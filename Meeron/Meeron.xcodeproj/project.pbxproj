@@ -1,0 +1,815 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3718BE8AF541385CF808C252 /* Pods_Meeron_MeeronUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5EF8D64124D0454D3C4E9B /* Pods_Meeron_MeeronUITests.framework */; };
+		83511768BAE0E1B0E00A950F /* Pods_Meeron.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 383E64CC54A9384A6DD9195F /* Pods_Meeron.framework */; };
+		EEFC4BCCA91F31025BC2118A /* Pods_MeeronTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD834A38ED0D19B51564F255 /* Pods_MeeronTests.framework */; };
+		FC6AB4D627C0C4D700797C44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */; };
+		FC6AB4D827C0C4D700797C44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */; };
+		FC6AB4DA27C0C4D700797C44 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D927C0C4D700797C44 /* LoginViewController.swift */; };
+		FC6AB4DD27C0C4D700797C44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6AB4DB27C0C4D700797C44 /* Main.storyboard */; };
+		FC6AB4DF27C0C4D800797C44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6AB4DE27C0C4D800797C44 /* Assets.xcassets */; };
+		FC6AB4E227C0C4D800797C44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6AB4E027C0C4D800797C44 /* LaunchScreen.storyboard */; };
+		FC6AB4ED27C0C4D800797C44 /* MeeronTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4EC27C0C4D800797C44 /* MeeronTests.swift */; };
+		FC6AB4F727C0C4D800797C44 /* MeeronUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4F627C0C4D800797C44 /* MeeronUITests.swift */; };
+		FC6AB4F927C0C4D800797C44 /* MeeronUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4F827C0C4D800797C44 /* MeeronUITestsLaunchTests.swift */; };
+		FC6AB50627C0CE7F00797C44 /* kakao_login_large_narrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6AB50527C0CE7F00797C44 /* kakao_login_large_narrow.png */; };
+		FC6AB50827C10CC300797C44 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB50727C10CC300797C44 /* API.swift */; };
+		FC6AB50A27C112F000797C44 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB50927C112F000797C44 /* Token.swift */; };
+		FC6AB51027C13B1900797C44 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB50F27C13B1900797C44 /* LoginViewModel.swift */; };
+		FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FC6AB4E927C0C4D800797C44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC6AB4CA27C0C4D700797C44 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC6AB4D127C0C4D700797C44;
+			remoteInfo = Meeron;
+		};
+		FC6AB4F327C0C4D800797C44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC6AB4CA27C0C4D700797C44 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FC6AB4D127C0C4D700797C44;
+			remoteInfo = Meeron;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01AA3A0715D9B98DBD1AB726 /* Pods-Meeron-MeeronUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meeron-MeeronUITests.debug.xcconfig"; path = "Target Support Files/Pods-Meeron-MeeronUITests/Pods-Meeron-MeeronUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1C8713DD729EB4DA69F1FDB8 /* Pods-MeeronTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeeronTests.debug.xcconfig"; path = "Target Support Files/Pods-MeeronTests/Pods-MeeronTests.debug.xcconfig"; sourceTree = "<group>"; };
+		383E64CC54A9384A6DD9195F /* Pods_Meeron.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meeron.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DCF0F0F29E2B46AB6554407 /* Pods-Meeron-MeeronUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meeron-MeeronUITests.release.xcconfig"; path = "Target Support Files/Pods-Meeron-MeeronUITests/Pods-Meeron-MeeronUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6207F176C4E45461312215FB /* Pods-Meeron.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meeron.release.xcconfig"; path = "Target Support Files/Pods-Meeron/Pods-Meeron.release.xcconfig"; sourceTree = "<group>"; };
+		6F60DB07CD4954C9B7D9B6E0 /* Pods-Meeron.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Meeron.debug.xcconfig"; path = "Target Support Files/Pods-Meeron/Pods-Meeron.debug.xcconfig"; sourceTree = "<group>"; };
+		8F5EF8D64124D0454D3C4E9B /* Pods_Meeron_MeeronUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meeron_MeeronUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD834A38ED0D19B51564F255 /* Pods_MeeronTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeeronTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE9DA68492809C9169A960CA /* Pods-MeeronTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeeronTests.release.xcconfig"; path = "Target Support Files/Pods-MeeronTests/Pods-MeeronTests.release.xcconfig"; sourceTree = "<group>"; };
+		FC6AB4D227C0C4D700797C44 /* Meeron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meeron.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FC6AB4D927C0C4D700797C44 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FC6AB4DC27C0C4D700797C44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FC6AB4DE27C0C4D800797C44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC6AB4E127C0C4D800797C44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FC6AB4E327C0C4D800797C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC6AB4E827C0C4D800797C44 /* MeeronTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeeronTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6AB4EC27C0C4D800797C44 /* MeeronTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeeronTests.swift; sourceTree = "<group>"; };
+		FC6AB4F227C0C4D800797C44 /* MeeronUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeeronUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC6AB4F627C0C4D800797C44 /* MeeronUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeeronUITests.swift; sourceTree = "<group>"; };
+		FC6AB4F827C0C4D800797C44 /* MeeronUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeeronUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FC6AB50527C0CE7F00797C44 /* kakao_login_large_narrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kakao_login_large_narrow.png; path = ../../../Downloads/kakao_login/ko/kakao_login_large_narrow.png; sourceTree = "<group>"; };
+		FC6AB50727C10CC300797C44 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		FC6AB50927C112F000797C44 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		FC6AB50F27C13B1900797C44 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC6AB4CF27C0C4D700797C44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83511768BAE0E1B0E00A950F /* Pods_Meeron.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC6AB4E527C0C4D800797C44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEFC4BCCA91F31025BC2118A /* Pods_MeeronTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC6AB4EF27C0C4D800797C44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3718BE8AF541385CF808C252 /* Pods_Meeron_MeeronUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1EBC37DC2E35C3A6439B9C26 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6F60DB07CD4954C9B7D9B6E0 /* Pods-Meeron.debug.xcconfig */,
+				6207F176C4E45461312215FB /* Pods-Meeron.release.xcconfig */,
+				01AA3A0715D9B98DBD1AB726 /* Pods-Meeron-MeeronUITests.debug.xcconfig */,
+				5DCF0F0F29E2B46AB6554407 /* Pods-Meeron-MeeronUITests.release.xcconfig */,
+				1C8713DD729EB4DA69F1FDB8 /* Pods-MeeronTests.debug.xcconfig */,
+				DE9DA68492809C9169A960CA /* Pods-MeeronTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D4B3C28C6CAF93AFBBE84FF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				383E64CC54A9384A6DD9195F /* Pods_Meeron.framework */,
+				8F5EF8D64124D0454D3C4E9B /* Pods_Meeron_MeeronUITests.framework */,
+				DD834A38ED0D19B51564F255 /* Pods_MeeronTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC6AB4C927C0C4D700797C44 = {
+			isa = PBXGroup;
+			children = (
+				FC6AB4D427C0C4D700797C44 /* Meeron */,
+				FC6AB4EB27C0C4D800797C44 /* MeeronTests */,
+				FC6AB4F527C0C4D800797C44 /* MeeronUITests */,
+				FC6AB4D327C0C4D700797C44 /* Products */,
+				1EBC37DC2E35C3A6439B9C26 /* Pods */,
+				D4B3C28C6CAF93AFBBE84FF5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FC6AB4D327C0C4D700797C44 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC6AB4D227C0C4D700797C44 /* Meeron.app */,
+				FC6AB4E827C0C4D800797C44 /* MeeronTests.xctest */,
+				FC6AB4F227C0C4D800797C44 /* MeeronUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC6AB4D427C0C4D700797C44 /* Meeron */ = {
+			isa = PBXGroup;
+			children = (
+				FC6AB50E27C13B0600797C44 /* Models */,
+				FC6AB50D27C1345F00797C44 /* ViewModels */,
+				FC6AB50C27C1344B00797C44 /* VCs */,
+				FC6AB50B27C1343200797C44 /* Networking */,
+				FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */,
+				FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */,
+				FC6AB4DB27C0C4D700797C44 /* Main.storyboard */,
+				FC6AB50527C0CE7F00797C44 /* kakao_login_large_narrow.png */,
+				FC6AB4DE27C0C4D800797C44 /* Assets.xcassets */,
+				FC6AB4E027C0C4D800797C44 /* LaunchScreen.storyboard */,
+				FC6AB4E327C0C4D800797C44 /* Info.plist */,
+			);
+			path = Meeron;
+			sourceTree = "<group>";
+		};
+		FC6AB4EB27C0C4D800797C44 /* MeeronTests */ = {
+			isa = PBXGroup;
+			children = (
+				FC6AB4EC27C0C4D800797C44 /* MeeronTests.swift */,
+			);
+			path = MeeronTests;
+			sourceTree = "<group>";
+		};
+		FC6AB4F527C0C4D800797C44 /* MeeronUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FC6AB4F627C0C4D800797C44 /* MeeronUITests.swift */,
+				FC6AB4F827C0C4D800797C44 /* MeeronUITestsLaunchTests.swift */,
+			);
+			path = MeeronUITests;
+			sourceTree = "<group>";
+		};
+		FC6AB50B27C1343200797C44 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				FC6AB50727C10CC300797C44 /* API.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		FC6AB50C27C1344B00797C44 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				FC6AB4D927C0C4D700797C44 /* LoginViewController.swift */,
+			);
+			path = VCs;
+			sourceTree = "<group>";
+		};
+		FC6AB50D27C1345F00797C44 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FC6AB50F27C13B1900797C44 /* LoginViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		FC6AB50E27C13B0600797C44 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FC6AB50927C112F000797C44 /* Token.swift */,
+				FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FC6AB4D127C0C4D700797C44 /* Meeron */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC6AB4FC27C0C4D800797C44 /* Build configuration list for PBXNativeTarget "Meeron" */;
+			buildPhases = (
+				D34F3FB4D621604D075D3EF5 /* [CP] Check Pods Manifest.lock */,
+				FC6AB4CE27C0C4D700797C44 /* Sources */,
+				FC6AB4CF27C0C4D700797C44 /* Frameworks */,
+				FC6AB4D027C0C4D700797C44 /* Resources */,
+				B739BE5130880765DBD29AB9 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Meeron;
+			productName = Meeron;
+			productReference = FC6AB4D227C0C4D700797C44 /* Meeron.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FC6AB4E727C0C4D800797C44 /* MeeronTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC6AB4FF27C0C4D800797C44 /* Build configuration list for PBXNativeTarget "MeeronTests" */;
+			buildPhases = (
+				3F1022320508DA66F9A890D0 /* [CP] Check Pods Manifest.lock */,
+				FC6AB4E427C0C4D800797C44 /* Sources */,
+				FC6AB4E527C0C4D800797C44 /* Frameworks */,
+				FC6AB4E627C0C4D800797C44 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FC6AB4EA27C0C4D800797C44 /* PBXTargetDependency */,
+			);
+			name = MeeronTests;
+			productName = MeeronTests;
+			productReference = FC6AB4E827C0C4D800797C44 /* MeeronTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FC6AB4F127C0C4D800797C44 /* MeeronUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC6AB50227C0C4D800797C44 /* Build configuration list for PBXNativeTarget "MeeronUITests" */;
+			buildPhases = (
+				08A202CCEF6AF90F56D6FD93 /* [CP] Check Pods Manifest.lock */,
+				FC6AB4EE27C0C4D800797C44 /* Sources */,
+				FC6AB4EF27C0C4D800797C44 /* Frameworks */,
+				FC6AB4F027C0C4D800797C44 /* Resources */,
+				251B9455B101119D53CD0CB0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FC6AB4F427C0C4D800797C44 /* PBXTargetDependency */,
+			);
+			name = MeeronUITests;
+			productName = MeeronUITests;
+			productReference = FC6AB4F227C0C4D800797C44 /* MeeronUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FC6AB4CA27C0C4D700797C44 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					FC6AB4D127C0C4D700797C44 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					FC6AB4E727C0C4D800797C44 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = FC6AB4D127C0C4D700797C44;
+					};
+					FC6AB4F127C0C4D800797C44 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = FC6AB4D127C0C4D700797C44;
+					};
+				};
+			};
+			buildConfigurationList = FC6AB4CD27C0C4D700797C44 /* Build configuration list for PBXProject "Meeron" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FC6AB4C927C0C4D700797C44;
+			productRefGroup = FC6AB4D327C0C4D700797C44 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FC6AB4D127C0C4D700797C44 /* Meeron */,
+				FC6AB4E727C0C4D800797C44 /* MeeronTests */,
+				FC6AB4F127C0C4D800797C44 /* MeeronUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FC6AB4D027C0C4D700797C44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC6AB50627C0CE7F00797C44 /* kakao_login_large_narrow.png in Resources */,
+				FC6AB4E227C0C4D800797C44 /* LaunchScreen.storyboard in Resources */,
+				FC6AB4DF27C0C4D800797C44 /* Assets.xcassets in Resources */,
+				FC6AB4DD27C0C4D700797C44 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC6AB4E627C0C4D800797C44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC6AB4F027C0C4D800797C44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08A202CCEF6AF90F56D6FD93 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Meeron-MeeronUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		251B9455B101119D53CD0CB0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meeron-MeeronUITests/Pods-Meeron-MeeronUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meeron-MeeronUITests/Pods-Meeron-MeeronUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Meeron-MeeronUITests/Pods-Meeron-MeeronUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F1022320508DA66F9A890D0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MeeronTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B739BE5130880765DBD29AB9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meeron/Pods-Meeron-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Meeron/Pods-Meeron-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Meeron/Pods-Meeron-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D34F3FB4D621604D075D3EF5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Meeron-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC6AB4CE27C0C4D700797C44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC6AB4DA27C0C4D700797C44 /* LoginViewController.swift in Sources */,
+				FC6AB50A27C112F000797C44 /* Token.swift in Sources */,
+				FC6AB51027C13B1900797C44 /* LoginViewModel.swift in Sources */,
+				FC6AB4D627C0C4D700797C44 /* AppDelegate.swift in Sources */,
+				FC6AB4D827C0C4D700797C44 /* SceneDelegate.swift in Sources */,
+				FC6AB50827C10CC300797C44 /* API.swift in Sources */,
+				FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC6AB4E427C0C4D800797C44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC6AB4ED27C0C4D800797C44 /* MeeronTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC6AB4EE27C0C4D800797C44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC6AB4F927C0C4D800797C44 /* MeeronUITestsLaunchTests.swift in Sources */,
+				FC6AB4F727C0C4D800797C44 /* MeeronUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FC6AB4EA27C0C4D800797C44 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC6AB4D127C0C4D700797C44 /* Meeron */;
+			targetProxy = FC6AB4E927C0C4D800797C44 /* PBXContainerItemProxy */;
+		};
+		FC6AB4F427C0C4D800797C44 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FC6AB4D127C0C4D700797C44 /* Meeron */;
+			targetProxy = FC6AB4F327C0C4D800797C44 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FC6AB4DB27C0C4D700797C44 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC6AB4DC27C0C4D700797C44 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FC6AB4E027C0C4D800797C44 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC6AB4E127C0C4D800797C44 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FC6AB4FA27C0C4D800797C44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FC6AB4FB27C0C4D800797C44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FC6AB4FD27C0C4D800797C44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F60DB07CD4954C9B7D9B6E0 /* Pods-Meeron.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 27XCYNSTBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Meeron/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fourtune.Meeron;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FC6AB4FE27C0C4D800797C44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6207F176C4E45461312215FB /* Pods-Meeron.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 27XCYNSTBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Meeron/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fourtune.Meeron;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FC6AB50027C0C4D800797C44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C8713DD729EB4DA69F1FDB8 /* Pods-MeeronTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 27XCYNSTBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meeron.MeeronTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Meeron.app/Meeron";
+			};
+			name = Debug;
+		};
+		FC6AB50127C0C4D800797C44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE9DA68492809C9169A960CA /* Pods-MeeronTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 27XCYNSTBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meeron.MeeronTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Meeron.app/Meeron";
+			};
+			name = Release;
+		};
+		FC6AB50327C0C4D800797C44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01AA3A0715D9B98DBD1AB726 /* Pods-Meeron-MeeronUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 27XCYNSTBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meeron.MeeronUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Meeron;
+			};
+			name = Debug;
+		};
+		FC6AB50427C0C4D800797C44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DCF0F0F29E2B46AB6554407 /* Pods-Meeron-MeeronUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 27XCYNSTBL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meeron.MeeronUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Meeron;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FC6AB4CD27C0C4D700797C44 /* Build configuration list for PBXProject "Meeron" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC6AB4FA27C0C4D800797C44 /* Debug */,
+				FC6AB4FB27C0C4D800797C44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC6AB4FC27C0C4D800797C44 /* Build configuration list for PBXNativeTarget "Meeron" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC6AB4FD27C0C4D800797C44 /* Debug */,
+				FC6AB4FE27C0C4D800797C44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC6AB4FF27C0C4D800797C44 /* Build configuration list for PBXNativeTarget "MeeronTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC6AB50027C0C4D800797C44 /* Debug */,
+				FC6AB50127C0C4D800797C44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC6AB50227C0C4D800797C44 /* Build configuration list for PBXNativeTarget "MeeronUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC6AB50327C0C4D800797C44 /* Debug */,
+				FC6AB50427C0C4D800797C44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FC6AB4CA27C0C4D700797C44 /* Project object */;
+}
