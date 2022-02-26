@@ -10,6 +10,14 @@
 		3718BE8AF541385CF808C252 /* Pods_Meeron_MeeronUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5EF8D64124D0454D3C4E9B /* Pods_Meeron_MeeronUITests.framework */; };
 		83511768BAE0E1B0E00A950F /* Pods_Meeron.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 383E64CC54A9384A6DD9195F /* Pods_Meeron.framework */; };
 		EEFC4BCCA91F31025BC2118A /* Pods_MeeronTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD834A38ED0D19B51564F255 /* Pods_MeeronTests.framework */; };
+		FC06E98327C3ABFF004065E3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06E98227C3ABFF004065E3 /* HomeViewController.swift */; };
+		FC06E98927C3DC71004065E3 /* UIColor+CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06E98827C3DC71004065E3 /* UIColor+CustomColor.swift */; };
+		FC06E98C27C3F02C004065E3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06E98B27C3F02C004065E3 /* TabBarController.swift */; };
+		FC06E98F27C3F63E004065E3 /* SizeValueConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06E98E27C3F63E004065E3 /* SizeValueConstant.swift */; };
+		FC19AAF827C75933000B5119 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19AAF727C75933000B5119 /* CalendarViewModel.swift */; };
+		FC19AAFA27C782A6000B5119 /* String+CustomDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19AAF927C782A6000B5119 /* String+CustomDate.swift */; };
+		FC23A9FC27C547B9009565B2 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23A9FB27C547B9009565B2 /* CalendarViewController.swift */; };
+		FC47215A27C9D23900F7A035 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47215927C9D23900F7A035 /* KeychainManager.swift */; };
 		FC6AB4D627C0C4D700797C44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */; };
 		FC6AB4D827C0C4D700797C44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */; };
 		FC6AB4DA27C0C4D700797C44 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D927C0C4D700797C44 /* LoginViewController.swift */; };
@@ -19,11 +27,14 @@
 		FC6AB4ED27C0C4D800797C44 /* MeeronTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4EC27C0C4D800797C44 /* MeeronTests.swift */; };
 		FC6AB4F727C0C4D800797C44 /* MeeronUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4F627C0C4D800797C44 /* MeeronUITests.swift */; };
 		FC6AB4F927C0C4D800797C44 /* MeeronUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4F827C0C4D800797C44 /* MeeronUITestsLaunchTests.swift */; };
-		FC6AB50627C0CE7F00797C44 /* kakao_login_large_narrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FC6AB50527C0CE7F00797C44 /* kakao_login_large_narrow.png */; };
 		FC6AB50827C10CC300797C44 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB50727C10CC300797C44 /* API.swift */; };
 		FC6AB50A27C112F000797C44 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB50927C112F000797C44 /* Token.swift */; };
 		FC6AB51027C13B1900797C44 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB50F27C13B1900797C44 /* LoginViewModel.swift */; };
 		FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */; };
+		FC7CA8F027C27C3800110D24 /* kakao_login_medium_wide.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7CA8EF27C27C3800110D24 /* kakao_login_medium_wide.png */; };
+		FC8393A427C66F6400981622 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8393A327C66F6400981622 /* DateCell.swift */; };
+		FC9FD92D27C4BF60009DE526 /* MeetingCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FD92C27C4BF60009DE526 /* MeetingCardCell.swift */; };
+		FCB70BA227C92CD4008831F7 /* AllCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB70BA127C92CD4008831F7 /* AllCalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +64,14 @@
 		8F5EF8D64124D0454D3C4E9B /* Pods_Meeron_MeeronUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meeron_MeeronUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD834A38ED0D19B51564F255 /* Pods_MeeronTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeeronTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9DA68492809C9169A960CA /* Pods-MeeronTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeeronTests.release.xcconfig"; path = "Target Support Files/Pods-MeeronTests/Pods-MeeronTests.release.xcconfig"; sourceTree = "<group>"; };
+		FC06E98227C3ABFF004065E3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FC06E98827C3DC71004065E3 /* UIColor+CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColor.swift"; sourceTree = "<group>"; };
+		FC06E98B27C3F02C004065E3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		FC06E98E27C3F63E004065E3 /* SizeValueConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeValueConstant.swift; sourceTree = "<group>"; };
+		FC19AAF727C75933000B5119 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		FC19AAF927C782A6000B5119 /* String+CustomDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CustomDate.swift"; sourceTree = "<group>"; };
+		FC23A9FB27C547B9009565B2 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		FC47215927C9D23900F7A035 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		FC6AB4D227C0C4D700797C44 /* Meeron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meeron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,11 +85,15 @@
 		FC6AB4F227C0C4D800797C44 /* MeeronUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeeronUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6AB4F627C0C4D800797C44 /* MeeronUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeeronUITests.swift; sourceTree = "<group>"; };
 		FC6AB4F827C0C4D800797C44 /* MeeronUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeeronUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		FC6AB50527C0CE7F00797C44 /* kakao_login_large_narrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kakao_login_large_narrow.png; path = ../../../Downloads/kakao_login/ko/kakao_login_large_narrow.png; sourceTree = "<group>"; };
 		FC6AB50727C10CC300797C44 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		FC6AB50927C112F000797C44 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		FC6AB50F27C13B1900797C44 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		FC7CA8EE27C2255400110D24 /* Meeron.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meeron.entitlements; sourceTree = "<group>"; };
+		FC7CA8EF27C27C3800110D24 /* kakao_login_medium_wide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kakao_login_medium_wide.png; path = ../../../Downloads/kakao_login/ko/kakao_login_medium_wide.png; sourceTree = "<group>"; };
+		FC8393A327C66F6400981622 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		FC9FD92C27C4BF60009DE526 /* MeetingCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCardCell.swift; sourceTree = "<group>"; };
+		FCB70BA127C92CD4008831F7 /* AllCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCalendarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +147,50 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FC06E98527C3DC2A004065E3 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				FC47215827C9D21500F7A035 /* Manager */,
+				FC06E98D27C3F614004065E3 /* Constant */,
+				FC06E98627C3DC50004065E3 /* Extension */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		FC06E98627C3DC50004065E3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FC06E98827C3DC71004065E3 /* UIColor+CustomColor.swift */,
+				FC19AAF927C782A6000B5119 /* String+CustomDate.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FC06E98A27C3E120004065E3 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FC6AB4DE27C0C4D800797C44 /* Assets.xcassets */,
+				FC6AB4E327C0C4D800797C44 /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		FC06E98D27C3F614004065E3 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				FC06E98E27C3F63E004065E3 /* SizeValueConstant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		FC47215827C9D21500F7A035 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FC47215927C9D23900F7A035 /* KeychainManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		FC6AB4C927C0C4D700797C44 = {
 			isa = PBXGroup;
 			children = (
@@ -149,17 +216,19 @@
 		FC6AB4D427C0C4D700797C44 /* Meeron */ = {
 			isa = PBXGroup;
 			children = (
+				FC9FD92B27C4BF48009DE526 /* Cell */,
+				FC7CA8EE27C2255400110D24 /* Meeron.entitlements */,
 				FC6AB50E27C13B0600797C44 /* Models */,
+				FC06E98527C3DC2A004065E3 /* Util */,
 				FC6AB50D27C1345F00797C44 /* ViewModels */,
 				FC6AB50C27C1344B00797C44 /* VCs */,
 				FC6AB50B27C1343200797C44 /* Networking */,
+				FC06E98A27C3E120004065E3 /* Resource */,
 				FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */,
 				FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */,
 				FC6AB4DB27C0C4D700797C44 /* Main.storyboard */,
-				FC6AB50527C0CE7F00797C44 /* kakao_login_large_narrow.png */,
-				FC6AB4DE27C0C4D800797C44 /* Assets.xcassets */,
+				FC7CA8EF27C27C3800110D24 /* kakao_login_medium_wide.png */,
 				FC6AB4E027C0C4D800797C44 /* LaunchScreen.storyboard */,
-				FC6AB4E327C0C4D800797C44 /* Info.plist */,
 			);
 			path = Meeron;
 			sourceTree = "<group>";
@@ -193,6 +262,10 @@
 			isa = PBXGroup;
 			children = (
 				FC6AB4D927C0C4D700797C44 /* LoginViewController.swift */,
+				FC06E98227C3ABFF004065E3 /* HomeViewController.swift */,
+				FC06E98B27C3F02C004065E3 /* TabBarController.swift */,
+				FC23A9FB27C547B9009565B2 /* CalendarViewController.swift */,
+				FCB70BA127C92CD4008831F7 /* AllCalendarViewController.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -201,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				FC6AB50F27C13B1900797C44 /* LoginViewModel.swift */,
+				FC19AAF727C75933000B5119 /* CalendarViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -212,6 +286,15 @@
 				FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FC9FD92B27C4BF48009DE526 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FC9FD92C27C4BF60009DE526 /* MeetingCardCell.swift */,
+				FC8393A327C66F6400981622 /* DateCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,9 +406,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC6AB50627C0CE7F00797C44 /* kakao_login_large_narrow.png in Resources */,
 				FC6AB4E227C0C4D800797C44 /* LaunchScreen.storyboard in Resources */,
 				FC6AB4DF27C0C4D800797C44 /* Assets.xcassets in Resources */,
+				FC7CA8F027C27C3800110D24 /* kakao_login_medium_wide.png in Resources */,
 				FC6AB4DD27C0C4D700797C44 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,11 +538,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC6AB4DA27C0C4D700797C44 /* LoginViewController.swift in Sources */,
+				FC06E98927C3DC71004065E3 /* UIColor+CustomColor.swift in Sources */,
 				FC6AB50A27C112F000797C44 /* Token.swift in Sources */,
+				FC06E98C27C3F02C004065E3 /* TabBarController.swift in Sources */,
+				FCB70BA227C92CD4008831F7 /* AllCalendarViewController.swift in Sources */,
 				FC6AB51027C13B1900797C44 /* LoginViewModel.swift in Sources */,
 				FC6AB4D627C0C4D700797C44 /* AppDelegate.swift in Sources */,
 				FC6AB4D827C0C4D700797C44 /* SceneDelegate.swift in Sources */,
+				FC9FD92D27C4BF60009DE526 /* MeetingCardCell.swift in Sources */,
+				FC23A9FC27C547B9009565B2 /* CalendarViewController.swift in Sources */,
+				FC19AAF827C75933000B5119 /* CalendarViewModel.swift in Sources */,
+				FC8393A427C66F6400981622 /* DateCell.swift in Sources */,
 				FC6AB50827C10CC300797C44 /* API.swift in Sources */,
+				FC47215A27C9D23900F7A035 /* KeychainManager.swift in Sources */,
+				FC06E98327C3ABFF004065E3 /* HomeViewController.swift in Sources */,
+				FC19AAFA27C782A6000B5119 /* String+CustomDate.swift in Sources */,
+				FC06E98F27C3F63E004065E3 /* SizeValueConstant.swift in Sources */,
 				FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -638,11 +732,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Meeron/Meeron.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 27XCYNSTBL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Meeron/Info.plist;
+				INFOPLIST_FILE = Meeron/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -667,11 +762,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Meeron/Meeron.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 27XCYNSTBL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Meeron/Info.plist;
+				INFOPLIST_FILE = Meeron/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
