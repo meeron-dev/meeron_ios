@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="AgendaSelectBarCell" reuseIdentifier="AgendaSelectBarCell" id="gx2-C7-bxh" customClass="AgendaSelectBarCell" customModule="Meeron" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="161" height="139"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OZj-VP-zz9">
+                <rect key="frame" x="0.0" y="0.0" width="161" height="139"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XkA-1n-JwF">
+                        <rect key="frame" x="58.5" y="47.5" width="44" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="n" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYf-Ev-0cx">
+                                <rect key="frame" x="17" y="11.5" width="10" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SYf-Ev-0cx" firstAttribute="centerX" secondItem="XkA-1n-JwF" secondAttribute="centerX" id="3jM-rT-egH"/>
+                            <constraint firstAttribute="width" constant="44" id="Ayk-kJ-0s9"/>
+                            <constraint firstAttribute="height" constant="44" id="q9c-1f-cZC"/>
+                            <constraint firstItem="SYf-Ev-0cx" firstAttribute="centerY" secondItem="XkA-1n-JwF" secondAttribute="centerY" id="rbB-iD-tMZ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="XkA-1n-JwF" firstAttribute="centerX" secondItem="OZj-VP-zz9" secondAttribute="centerX" id="LGh-dz-4b0"/>
+                    <constraint firstItem="XkA-1n-JwF" firstAttribute="centerY" secondItem="OZj-VP-zz9" secondAttribute="centerY" id="Vb1-qv-FIc"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="161" height="139"/>
+            <connections>
+                <outlet property="agendaNumber" destination="SYf-Ev-0cx" id="gqt-Rn-Gd7"/>
+                <outlet property="barIndexView" destination="XkA-1n-JwF" id="0zZ-Um-R35"/>
+            </connections>
+            <point key="canvasLocation" x="28.260869565217394" y="-200.55803571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

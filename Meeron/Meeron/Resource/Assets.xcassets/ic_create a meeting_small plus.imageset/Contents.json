@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ic_w calender_close.png",
+      "filename" : "ic_create a meeting_small plus.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ic_w calender_close@2x.png",
+      "filename" : "ic_create a meeting_small plus@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ic_w calender_close@3x.png",
+      "filename" : "ic_create a meeting_small plus@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,8 +19,5 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "template-rendering-intent" : "original"
   }
 }

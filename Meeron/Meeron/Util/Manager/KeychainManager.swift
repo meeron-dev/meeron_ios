@@ -30,13 +30,14 @@ class KeychainManager {
     }
     
     func update(service:String, account:String, value:String) -> Bool {
+        print("update", account)
         let query:NSDictionary = [
             kSecClass:kSecClassGenericPassword,
             kSecAttrService:service,
             kSecAttrAccount:account
         ]
         let attributes:NSDictionary = [kSecAttrGeneric:value]
-        
+        print(account, value)
         return errSecSuccess == SecItemUpdate(query, attributes)
     }
     
