@@ -15,6 +15,6 @@ struct MeetingCreation {
 
 struct Agenda {
     var title:String = ""
-    var issue:[String] = []
+    var issue:[String] = [""]
     var document:[Data] = []
 }

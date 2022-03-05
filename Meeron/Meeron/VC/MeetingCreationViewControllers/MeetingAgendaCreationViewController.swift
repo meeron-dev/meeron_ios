@@ -18,6 +18,9 @@ class MeetingAgendaCreationViewController: UIViewController {
     @IBOutlet weak var meetingTitle:UILabel!
     
     
+    @IBOutlet weak var agendaTitleTextField: UITextField!
+    @IBOutlet weak var agendaTitleLabel: UILabel!
+    
     @IBOutlet weak var addAgendaButton:UIButton!
     @IBOutlet weak var deleteAgendaButton:UIButton!
     @IBOutlet weak var addAgendaButtonWidth: NSLayoutConstraint!
@@ -27,44 +30,71 @@ class MeetingAgendaCreationViewController: UIViewController {
     @IBOutlet weak var agendaSelectBarCollectionView: UICollectionView!
     
     @IBOutlet weak var addIssueButton: UIButton!
+    @IBOutlet weak var agendaIssueTableView: UITableView!
+    @IBOutlet weak var agendaDocumentTableView: UITableView!
+    @IBOutlet weak var agendaIssueTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var agendaDocumentTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var addDocumentButton: UIButton!
-    //var nowAgendaIndex = 1
     
+    @IBOutlet weak var agendaContentViewHeight: NSLayoutConstraint!
     let meetingAgendaCreationVM = MeetingAgendaCreationViewModel()
     
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        agendaSelectBarCollectionView.delegate = self
-        agendaSelectBarCollectionView.dataSource = self
-        agendaSelectBarCollectionView.register(UINib(nibName: "AgendaSelectBarCell", bundle: nil), forCellWithReuseIdentifier: "AgendaSelectBarCell")
-        
-        
         
         configureUI()
         setupCollectionView()
-        
+        setupTableView()
+        saveContent()
+        meetingAgendaCreationVM.initAgendas()
     }
     
-    private func setupCollectionView() {
+    private func setupTableView() {
         
-        setupCollectionViewLayout()
-        
-        /*meetingAgendaCreationVM.agendasSubject.bind(to: agendaSelectBarCollectionView.rx.items) { collectionView, row, element in
+        meetingAgendaCreationVM.agendaIssueSubject.bind(to: agendaIssueTableView.rx.items) { tableView, row, element in
             let indexPath = IndexPath(row: row, section: 0)
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AgendaSelectBarCell", for: indexPath) as! AgendaSelectBarCell
-            //cell.agendaNumberLabel.text = String(row+1)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AgendaIssueCell", for: indexPath) as! AgendaIssueCell
+            cell.agendaIssueTextField.text = element
+            cell.setCellInfo(vm: self.meetingAgendaCreationVM, index: row)
             return cell
         }.disposed(by: disposeBag)
         
-        agendaSelectBarCollectionView.rx.itemSelected
-            .subscribe(onNext: { indexPath in
-                print(indexPath)
-                //self.meetingAgendaCreationVM.nowAgendaIndex = indexPath.row+1
+        meetingAgendaCreationVM.agendaDocumentSubject.bind(to: agendaDocumentTableView.rx.items) {tableView, row, element in
+            let indexPath = IndexPath(row: row, section: 0)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AgendaDocumentCell", for: indexPath) as! AgendaDocumentCell
+            return cell
+        }.disposed(by: disposeBag)
+        
+        
+        meetingAgendaCreationVM.agendaIssueSubject
+            .map{$0.count}
+            .subscribe(onNext: {
+                self.agendaIssueTableViewHeight.constant = CGFloat($0*60)
+                self.agendaContentViewHeight.constant = 700 + self.agendaIssueTableViewHeight.constant + self.agendaDocumentTableViewHeight.constant
             }).disposed(by: disposeBag)
-        */
-        //meetingAgendaCreationVM.initAgendas()
+        
+        meetingAgendaCreationVM.agendaDocumentSubject
+            .map{$0.count}
+            .subscribe(onNext: {
+                self.agendaDocumentTableViewHeight.constant = CGFloat($0*60)
+                self.agendaContentViewHeight.constant = 700 + self.agendaIssueTableViewHeight.constant + self.agendaDocumentTableViewHeight.constant
+            }).disposed(by: disposeBag)
+    }
+    
+    
+    
+    private func setupCollectionView() {
+        setupCollectionViewLayout()
+        
+        meetingAgendaCreationVM.agendasSubject.bind(to: agendaSelectBarCollectionView.rx.items) { collectionView, row, element in
+            let indexPath = IndexPath(row: row, section: 0)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AgendaSelectBarCell", for: indexPath) as! AgendaSelectBarCell
+            cell.agendaNumber.text = String(row+1)
+            cell.setVM(vm: self.meetingAgendaCreationVM)
+            return cell
+        }.disposed(by: disposeBag)
         
     }
     
@@ -76,7 +106,6 @@ class MeetingAgendaCreationViewController: UIViewController {
         agendaSelectBarCollectionViewlayout.minimumInteritemSpacing = 0
         
         agendaSelectBarCollectionView.collectionViewLayout = agendaSelectBarCollectionViewlayout
-        //agendaSelectBarCollectionView.canCancelContentTouches = false
     }
     
     private func configureUI() {
@@ -86,6 +115,42 @@ class MeetingAgendaCreationViewController: UIViewController {
         nextButton.addShadow()
         
         addTapGesture()
+        
+        
+        meetingAgendaCreationVM.nowAgendaSubject.subscribe(onNext: {
+            self.setAgendaContent(data: $0)
+        }).disposed(by: disposeBag)
+        
+        meetingAgendaCreationVM.nowAgendaIndexSubject.subscribe(onNext: {
+            print($0+1)
+            if $0+1 == 1 {
+                self.agendaTitleLabel.text = "핵심 아젠다"
+            }else {
+                self.agendaTitleLabel.text = "아젠다"
+            }
+            self.changeAgendaButtonWidth(index: $0)
+        }).disposed(by: disposeBag)
+    }
+    
+    private func changeAgendaButtonWidth(index:Int) {
+        if index == 0 {
+            deleteAgendaButton.setImage(UIImage(), for: .disabled)
+            addAgendaButton.setImage(UIImage(named: "ic_create a meeting_agenda plus"), for: .normal)
+            deleteAgendaButtonWidth.constant = 0
+            deleteAgendaButton.isEnabled = false
+        }else if index == 4 {
+            addAgendaButton.setImage(UIImage(), for: .disabled)
+            deleteAgendaButton.setImage(UIImage(named: "ic_create a meeting_agenda delete"), for: .normal)
+            addAgendaButtonWidth.constant = 0
+            addAgendaButton.isEnabled = false
+        }else {
+            deleteAgendaButtonWidth.constant = 46
+            addAgendaButtonWidth.constant = 46
+            addAgendaButton.isEnabled = true
+            deleteAgendaButton.isEnabled = true
+            addAgendaButton.setImage(UIImage(named: "ic_create a meeting_agenda plus"), for: .normal)
+            deleteAgendaButton.setImage(UIImage(named: "ic_create a meeting_agenda delete"), for: .normal)
+        }
     }
     
     private func addTapGesture() {
@@ -104,9 +169,24 @@ class MeetingAgendaCreationViewController: UIViewController {
             }
         }).disposed(by: disposeBag)
         
+        addIssueButton.rx.tap.subscribe(onNext :{ _ in
+            self.meetingAgendaCreationVM.addIssue()
+        }).disposed(by: disposeBag)
+        
+        addDocumentButton.rx.tap.subscribe(onNext: {
+            self.meetingAgendaCreationVM.addDocument()
+        }).disposed(by: disposeBag)
+        
     }
     
-    func setAgendaContent() {
+    func saveContent() {
+        agendaTitleTextField.rx.text.subscribe(onNext: {
+            self.meetingAgendaCreationVM.saveAgendaTitle(title: $0 ?? "")
+        }).disposed(by: disposeBag)
+    }
+    
+    func setAgendaContent(data:Agenda) {
+        agendaTitleTextField.text = data.title
         print("아젠다 정보 바뀜")
     }
     
@@ -123,22 +203,3 @@ class MeetingAgendaCreationViewController: UIViewController {
     }
 }
 
-
-extension MeetingAgendaCreationViewController:UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
-    }
-}
-
-extension MeetingAgendaCreationViewController:UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AgendaSelectBarCell", for: indexPath) as! AgendaSelectBarCell
-        return cell
-    }
-    
-    
-}

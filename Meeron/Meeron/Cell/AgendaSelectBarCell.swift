@@ -7,21 +7,39 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class AgendaSelectBarCell:UICollectionViewCell {
     
-    @IBOutlet weak var barIndexView: UIView!
+    @IBOutlet weak var agendaNumberView: UIView!
     @IBOutlet weak var agendaNumber: UILabel!
+    
+    var meetingAgendaCreationVM:MeetingAgendaCreationViewModel!
+    
+    let disposeBag = DisposeBag()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         let tapGesture = UITapGestureRecognizer()
-        tapGesture.addTarget(self, action: #selector(selectedIndex))
-        //contentView.addGestureRecognizer(tapGesture)
+        tapGesture.addTarget(self, action: #selector(selectNumber))
+        contentView.addGestureRecognizer(tapGesture)
+        
+    }
+    func setVM(vm:MeetingAgendaCreationViewModel) {
+        meetingAgendaCreationVM = vm
+        meetingAgendaCreationVM.nowAgendaIndexSubject.subscribe(onNext: {
+            if String($0+1) == self.agendaNumber.text  {
+                self.agendaNumber.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 30)
+                self.agendaNumber.textColor = .mrBlue
+            }else {
+                self.agendaNumber.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 30)
+                self.agendaNumber.textColor = UIColor(red: 129/255, green: 129/255, blue: 129/255, alpha: 1)
+            }
+        }).disposed(by: disposeBag)
     }
     
-    @objc func selectedIndex() {
-        agendaNumber.textColor = .mrBlue
-        print("선택")
+    @objc func selectNumber() {
+        meetingAgendaCreationVM.nowAgendaIndexSubject.onNext(Int(agendaNumber.text!)!-1)
     }
 }

@@ -26,7 +26,6 @@
 		FC47215A27C9D23900F7A035 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47215927C9D23900F7A035 /* KeychainManager.swift */; };
 		FC47215C27CA14E700F7A035 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47215B27CA14E700F7A035 /* User.swift */; };
 		FC651A8827D256C800A64D8A /* AgendaSelectBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC651A8727D256C800A64D8A /* AgendaSelectBarCell.swift */; };
-		FC651A8A27D2619A00A64D8A /* AgendaSelectBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC651A8927D2619A00A64D8A /* AgendaSelectBarCell.xib */; };
 		FC6AB4D627C0C4D700797C44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */; };
 		FC6AB4D827C0C4D700797C44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */; };
 		FC6AB4DA27C0C4D700797C44 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D927C0C4D700797C44 /* LoginViewController.swift */; };
@@ -105,7 +104,6 @@
 		FC47215927C9D23900F7A035 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		FC47215B27CA14E700F7A035 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FC651A8727D256C800A64D8A /* AgendaSelectBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaSelectBarCell.swift; sourceTree = "<group>"; };
-		FC651A8927D2619A00A64D8A /* AgendaSelectBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgendaSelectBarCell.xib; sourceTree = "<group>"; };
 		FC6AB4D227C0C4D700797C44 /* Meeron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meeron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -359,7 +357,6 @@
 				FC3808A327D0CF2F0023D713 /* AgendaIssueCell.swift */,
 				FC3808A527D0CFA30023D713 /* AgendaDocumentCell.swift */,
 				FC651A8727D256C800A64D8A /* AgendaSelectBarCell.swift */,
-				FC651A8927D2619A00A64D8A /* AgendaSelectBarCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -509,7 +506,6 @@
 				FC6AB4DF27C0C4D800797C44 /* Assets.xcassets in Resources */,
 				FC7CA8F027C27C3800110D24 /* kakao_login_medium_wide.png in Resources */,
 				FC6AB4DD27C0C4D700797C44 /* Main.storyboard in Resources */,
-				FC651A8A27D2619A00A64D8A /* AgendaSelectBarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
