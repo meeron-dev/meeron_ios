@@ -25,6 +25,8 @@ class MeetingParticipantCreationViewController:UIViewController {
         super.viewDidLoad()
         configureUI()
     }
+    
+    
     private func configureUI() {
         self.navigationItem.titleView = UILabel.meetingCreationNavigationItemTitleLabel
         

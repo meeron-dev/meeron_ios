@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpN-Ny-xiO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2dh-xJ-uqc">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -1711,7 +1711,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="BasicInfoContentView" destination="xiL-P6-mrd" id="8Dx-Hj-GAb"/>
+                        <outlet property="basicInfoContentView" destination="xiL-P6-mrd" id="8Dx-Hj-GAb"/>
+                        <outlet property="basicInfoScrollView" destination="ymJ-Po-A05" id="yz0-qN-wcG"/>
                         <outlet property="bringMeetingInfoButton" destination="aw8-Lu-Hnf" id="wWh-Ba-GCy"/>
                         <outlet property="meetingDateLabel" destination="JNQ-FC-tZI" id="yk7-wR-5Wz"/>
                         <outlet property="meetingManagersLabel" destination="Ft1-Hw-QmF" id="iXN-LW-mim"/>
@@ -2488,10 +2489,10 @@
             </objects>
             <point key="canvasLocation" x="6757" y="496"/>
         </scene>
-        <!--Manager Select View Controller-->
+        <!--Profile Select View Controller-->
         <scene sceneID="CFm-rW-Abr">
             <objects>
-                <viewController storyboardIdentifier="ManagerSelectViewController" id="r7f-Qo-rf8" customClass="ManagerSelectViewController" customModule="Meeron" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ManagerSelectViewController" id="r7f-Qo-rf8" customClass="ProfileSelectViewController" customModule="Meeron" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ENE-T6-MVS">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2524,6 +2525,17 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rCE-Bx-hm4">
+                                        <rect key="frame" x="30" y="203" width="330" height="597"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FRS-ye-GsL">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22u-Ff-9RG">
                                         <rect key="frame" x="201.66666666666663" y="690" width="158.33333333333337" height="57"/>
                                         <constraints>
@@ -2544,6 +2556,9 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="baseBackgroundColor" red="0.20392156862745098" green="0.59999999999999998" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="done:" destination="r7f-Qo-rf8" eventType="touchUpInside" id="flE-lg-h4G"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVV-bK-dgo">
                                         <rect key="frame" x="30" y="690" width="158.66666666666666" height="57"/>
@@ -2564,12 +2579,19 @@
                                             </attributedString>
                                             <color key="baseForegroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="close:" destination="r7f-Qo-rf8" eventType="touchUpInside" id="eYb-IP-YPW"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="rCE-Bx-hm4" firstAttribute="leading" secondItem="GVL-KE-2mk" secondAttribute="leading" constant="30" id="2Ma-wI-nbA"/>
                                     <constraint firstItem="aPZ-dt-fhZ" firstAttribute="leading" secondItem="GVL-KE-2mk" secondAttribute="leading" constant="30" id="5Eb-WU-ObE"/>
+                                    <constraint firstItem="rCE-Bx-hm4" firstAttribute="top" secondItem="noD-NR-tHe" secondAttribute="bottom" constant="40" id="8bR-5f-zIi"/>
+                                    <constraint firstAttribute="trailing" secondItem="rCE-Bx-hm4" secondAttribute="trailing" constant="30" id="FrO-pi-jlF"/>
                                     <constraint firstAttribute="bottom" secondItem="22u-Ff-9RG" secondAttribute="bottom" constant="53" id="Kfi-sx-6Jd"/>
+                                    <constraint firstAttribute="bottom" secondItem="rCE-Bx-hm4" secondAttribute="bottom" id="LX2-jQ-IRt"/>
                                     <constraint firstItem="aVV-bK-dgo" firstAttribute="leading" secondItem="GVL-KE-2mk" secondAttribute="leading" constant="30" id="OnL-8K-T9J"/>
                                     <constraint firstItem="noD-NR-tHe" firstAttribute="top" secondItem="T3l-jH-DPK" secondAttribute="bottom" constant="92" id="Yg9-Lw-zn8"/>
                                     <constraint firstItem="T3l-jH-DPK" firstAttribute="top" secondItem="GVL-KE-2mk" secondAttribute="top" constant="49" id="aFc-Uw-Cfm"/>
@@ -2595,10 +2617,16 @@
                             <constraint firstItem="GVL-KE-2mk" firstAttribute="top" secondItem="PpQ-g3-Coj" secondAttribute="top" id="tRc-si-9eV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="SelectTitleLabel" destination="T3l-jH-DPK" id="Gke-X7-h1e"/>
+                        <outlet property="closeButton" destination="aVV-bK-dgo" id="7qZ-8q-w8L"/>
+                        <outlet property="doneButton" destination="22u-Ff-9RG" id="mJc-Gx-Wum"/>
+                        <outlet property="profileCollectionView" destination="rCE-Bx-hm4" id="np8-88-fUd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0s-dA-vjw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3395.652173913044" y="-285.26785714285711"/>
+            <point key="canvasLocation" x="3395.3846153846152" y="-285.78199052132697"/>
         </scene>
         <!--Meeting Participant Creation View Controller-->
         <scene sceneID="RJg-NV-kg9">
@@ -2814,10 +2842,10 @@
             </objects>
             <point key="canvasLocation" x="5811.594202898551" y="495.53571428571428"/>
         </scene>
-        <!--Time Select View Controller-->
+        <!--Team Select View Controller-->
         <scene sceneID="wtw-Jz-rpV">
             <objects>
-                <viewController storyboardIdentifier="TimeSelectViewController" id="OIJ-mD-WkO" customClass="TimeSelectViewController" customModule="Meeron" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimeSelectViewController" id="OIJ-mD-WkO" customClass="TeamSelectViewController" customModule="Meeron" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V38-fK-DSS">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2831,21 +2859,21 @@
                                         <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hKK-IU-oOb">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hKK-IU-oOb">
                                         <rect key="frame" x="0.0" y="136" width="390" height="664"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="cnX-Lz-TsR">
-                                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="63.333332061767578"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MeetingTeamSelectCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MeetingTeamSelectCell" id="cnX-Lz-TsR" customClass="MeetingTeamSelectCell" customModule="Meeron" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="63"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cnX-Lz-TsR" id="lG4-yb-1Lr">
-                                                    <rect key="frame" x="0.0" y="0.0" width="390" height="63.333332061767578"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="390" height="63"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OOO 팀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3aR-RA-S6j">
-                                                            <rect key="frame" x="30" y="20" width="330" height="23.333333333333329"/>
+                                                            <rect key="frame" x="30" y="20" width="330" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -2856,6 +2884,9 @@
                                                         <constraint firstAttribute="bottom" secondItem="3aR-RA-S6j" secondAttribute="bottom" constant="20" id="fzb-yL-mEv"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="teamName" destination="3aR-RA-S6j" id="IhU-Ej-wbw"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -2878,6 +2909,9 @@
                                             </attributedString>
                                             <color key="baseBackgroundColor" red="0.20392156862745098" green="0.59999999999999998" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="done:" destination="OIJ-mD-WkO" eventType="touchUpInside" id="II8-eL-XMx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGT-a0-aW9">
                                         <rect key="frame" x="30" y="690" width="158.66666666666666" height="57"/>
@@ -2899,6 +2933,9 @@
                                             <color key="baseForegroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="baseBackgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="close:" destination="OIJ-mD-WkO" eventType="touchUpInside" id="UEZ-Hz-GrB"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2926,6 +2963,11 @@
                             <constraint firstItem="NiH-55-2yQ" firstAttribute="trailing" secondItem="TN6-1S-573" secondAttribute="trailing" id="u4J-0T-Iti"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="closeButton" destination="kGT-a0-aW9" id="ZCk-kR-E4V"/>
+                        <outlet property="doneButton" destination="AYd-rN-IUL" id="yPA-eX-AIR"/>
+                        <outlet property="teamTableView" destination="hKK-IU-oOb" id="DZU-Ub-ocW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p1T-H0-yO6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
