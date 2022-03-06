@@ -37,18 +37,43 @@ class MeetingAgendaCreationViewController: UIViewController {
     @IBOutlet weak var addDocumentButton: UIButton!
     
     @IBOutlet weak var agendaContentViewHeight: NSLayoutConstraint!
+    var scrollViewOriginalOffset = CGPoint(x: 0, y: 0)
+    
     let meetingAgendaCreationVM = MeetingAgendaCreationViewModel()
+    
+    @IBOutlet weak var agendaContentView: UIView!
+    
+    @IBOutlet weak var agendaContentScrollView: UIScrollView!
     
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         configureUI()
         setupCollectionView()
         setupTableView()
         saveContent()
+        setupKeyboardNoti()
         meetingAgendaCreationVM.initAgendas()
+        
+    }
+    
+    func setupKeyboardNoti() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification:Notification) {
+        scrollViewOriginalOffset = agendaContentScrollView.contentOffset
+        agendaContentScrollView.setContentOffset(CGPoint(x: 0, y: 250+scrollViewOriginalOffset.y), animated: true)
+        
+    }
+    
+    @objc func keyboardWillHide(notification:Notification) {
+        agendaContentScrollView.setContentOffset(scrollViewOriginalOffset, animated: true)
     }
     
     private func setupTableView() {
@@ -187,7 +212,6 @@ class MeetingAgendaCreationViewController: UIViewController {
     
     func setAgendaContent(data:Agenda) {
         agendaTitleTextField.text = data.title
-        print("아젠다 정보 바뀜")
     }
     
     @objc func dismissKeyboard() {
@@ -201,5 +225,8 @@ class MeetingAgendaCreationViewController: UIViewController {
     @IBAction func next(_ sender: Any) {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
-

@@ -1792,7 +1792,7 @@
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의 생성 후에도 추가 및 편집이 가능합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cer-Nx-J8L">
-                                                <rect key="frame" x="64" y="555" width="262" height="18"/>
+                                                <rect key="frame" x="64" y="705" width="262" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1862,14 +1862,14 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DCM-JE-fgL">
-                                                                    <rect key="frame" x="30" y="64" width="330" height="1"/>
+                                                                    <rect key="frame" x="30" y="66" width="330" height="1"/>
                                                                     <color key="backgroundColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="0.90000000000000002" id="mAE-Nz-2XF"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="odJ-GQ-B1J">
-                                                                    <rect key="frame" x="30" y="11" width="330" height="52"/>
+                                                                    <rect key="frame" x="30" y="11" width="277" height="54"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="cSg-hO-hoh"/>
                                                                     </constraints>
@@ -1877,33 +1877,46 @@
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="삭제" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F31-zy-RUc">
-                                                                    <rect key="frame" x="360" y="33" width="0.0" height="30"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEh-z5-FaS">
+                                                                    <rect key="frame" x="317" y="11" width="60" height="54"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" id="6z1-VE-CVh"/>
-                                                                        <constraint firstAttribute="height" constant="30" id="7xN-4r-KMP"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="Foo-6b-XUd"/>
+                                                                        <constraint firstAttribute="width" constant="60" id="XQS-wS-99S"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <buttonConfiguration key="configuration" style="plain">
+                                                                        <attributedString key="attributedTitle">
+                                                                            <fragment content="삭제">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                    <font key="NSFont" size="12" name="AppleSDGothicNeo-Regular"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
+                                                                        <color key="baseForegroundColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </buttonConfiguration>
+                                                                    <connections>
+                                                                        <action selector="deleteCell:" destination="Cv8-fR-ZUp" eventType="touchUpInside" id="9z1-mS-6lr"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="odJ-GQ-B1J" firstAttribute="top" secondItem="xW0-xw-uj2" secondAttribute="topMargin" id="45j-Oh-1Bi"/>
                                                                 <constraint firstItem="DCM-JE-fgL" firstAttribute="leading" secondItem="odJ-GQ-B1J" secondAttribute="leading" id="H0Z-qj-xdV"/>
-                                                                <constraint firstItem="DCM-JE-fgL" firstAttribute="top" secondItem="F31-zy-RUc" secondAttribute="bottom" constant="1" id="HOS-Yp-fmm"/>
                                                                 <constraint firstAttribute="trailing" secondItem="DCM-JE-fgL" secondAttribute="trailing" constant="30" id="Nl0-4j-ipt"/>
                                                                 <constraint firstItem="odJ-GQ-B1J" firstAttribute="leading" secondItem="xW0-xw-uj2" secondAttribute="leading" constant="30" id="Rld-VG-TIX"/>
-                                                                <constraint firstItem="F31-zy-RUc" firstAttribute="leading" secondItem="odJ-GQ-B1J" secondAttribute="trailing" id="iG8-xw-tN2"/>
+                                                                <constraint firstAttribute="trailing" secondItem="xEh-z5-FaS" secondAttribute="trailing" constant="13" id="ZY1-lK-D9r"/>
+                                                                <constraint firstItem="xEh-z5-FaS" firstAttribute="centerY" secondItem="odJ-GQ-B1J" secondAttribute="centerY" id="b90-I5-CTZ"/>
+                                                                <constraint firstItem="xEh-z5-FaS" firstAttribute="leading" secondItem="odJ-GQ-B1J" secondAttribute="trailing" constant="10" id="eqK-fr-GQT"/>
                                                                 <constraint firstItem="DCM-JE-fgL" firstAttribute="top" secondItem="odJ-GQ-B1J" secondAttribute="bottom" constant="1" id="j8R-Xl-Nqb"/>
-                                                                <constraint firstAttribute="bottomMargin" secondItem="DCM-JE-fgL" secondAttribute="bottom" constant="10" id="lBo-oC-vD2"/>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="DCM-JE-fgL" secondAttribute="bottom" constant="8" id="lBo-oC-vD2"/>
                                                                 <constraint firstItem="DCM-JE-fgL" firstAttribute="leading" secondItem="xW0-xw-uj2" secondAttribute="leading" constant="30" id="olK-uX-1PO"/>
-                                                                <constraint firstItem="F31-zy-RUc" firstAttribute="trailing" secondItem="DCM-JE-fgL" secondAttribute="trailing" id="q9F-xT-8cs"/>
+                                                                <constraint firstItem="DCM-JE-fgL" firstAttribute="top" secondItem="xEh-z5-FaS" secondAttribute="bottom" constant="1" id="xSL-xl-J2n"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
-                                                            <outlet property="agendaIssueDeleteLabel" destination="F31-zy-RUc" id="rXd-Qo-FQP"/>
-                                                            <outlet property="agendaIssueDeleteLabelWidth" destination="6z1-VE-CVh" id="qlS-DW-EU4"/>
+                                                            <outlet property="agendaIssueDeleteButton" destination="xEh-z5-FaS" id="o5M-oO-aWb"/>
+                                                            <outlet property="agendaIssueDeleteButtonWidth" destination="XQS-wS-99S" id="o0Q-qH-l4g"/>
                                                             <outlet property="agendaIssueTextField" destination="odJ-GQ-B1J" id="QIp-MJ-4mi"/>
                                                         </connections>
                                                     </tableViewCell>
@@ -1928,10 +1941,10 @@
                                                 <buttonConfiguration key="configuration" style="plain" image="ic_create a meeting_small plus"/>
                                             </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WWe-ax-NlE">
-                                                <rect key="frame" x="0.0" y="475" width="390" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="475" width="390" height="150"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" id="pYy-a2-S6R"/>
+                                                    <constraint firstAttribute="height" constant="150" id="pYy-a2-S6R"/>
                                                 </constraints>
                                                 <color key="sectionIndexBackgroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <prototypes>
@@ -1942,8 +1955,8 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="390" height="86"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="기획안.pdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPu-u6-QqQ">
-                                                                    <rect key="frame" x="30" y="11" width="250" height="54"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기획안.pdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPu-u6-QqQ">
+                                                                    <rect key="frame" x="30" y="11" width="267" height="54"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="Np9-Ye-gaM"/>
                                                                     </constraints>
@@ -1951,26 +1964,39 @@
                                                                     <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="삭제" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ci2-sD-fcH">
-                                                                    <rect key="frame" x="290" y="23" width="50" height="30"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67N-1h-8dK">
+                                                                    <rect key="frame" x="317" y="23" width="60" height="30"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="50" id="6Jl-qF-QgG"/>
-                                                                        <constraint firstAttribute="height" constant="30" id="8As-Ql-QwA"/>
+                                                                        <constraint firstAttribute="width" constant="60" id="jXC-jB-nm2"/>
+                                                                        <constraint firstAttribute="height" constant="30" id="sdI-cu-nM8"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <buttonConfiguration key="configuration" style="plain">
+                                                                        <attributedString key="attributedTitle">
+                                                                            <fragment content="삭제">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                    <font key="NSFont" size="12" name="AppleSDGothicNeo-Regular"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
+                                                                        <color key="baseForegroundColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </buttonConfiguration>
+                                                                </button>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstAttribute="bottomMargin" secondItem="cPu-u6-QqQ" secondAttribute="bottom" constant="10" id="0wr-Xc-Ybl"/>
-                                                                <constraint firstAttribute="trailingMargin" secondItem="ci2-sD-fcH" secondAttribute="trailing" constant="30" id="In1-Qg-Vx9"/>
-                                                                <constraint firstItem="ci2-sD-fcH" firstAttribute="leading" secondItem="cPu-u6-QqQ" secondAttribute="trailing" constant="10" id="LLa-RH-mNC"/>
+                                                                <constraint firstAttribute="trailing" secondItem="67N-1h-8dK" secondAttribute="trailing" constant="13" id="1O9-vK-ZnG"/>
+                                                                <constraint firstItem="67N-1h-8dK" firstAttribute="centerY" secondItem="cPu-u6-QqQ" secondAttribute="centerY" id="GLl-Uw-n2o"/>
                                                                 <constraint firstItem="cPu-u6-QqQ" firstAttribute="top" secondItem="0Nm-R4-qVg" secondAttribute="topMargin" id="NVh-Dd-NEb"/>
+                                                                <constraint firstItem="67N-1h-8dK" firstAttribute="leading" secondItem="cPu-u6-QqQ" secondAttribute="trailing" constant="20" id="PCO-f1-c8z"/>
                                                                 <constraint firstItem="cPu-u6-QqQ" firstAttribute="leading" secondItem="0Nm-R4-qVg" secondAttribute="leading" constant="30" id="acm-ON-aFg"/>
-                                                                <constraint firstItem="ci2-sD-fcH" firstAttribute="centerY" secondItem="cPu-u6-QqQ" secondAttribute="centerY" id="cEc-WF-a3y"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="deleteDocumentButton" destination="67N-1h-8dK" id="SFl-kC-OoF"/>
+                                                            <outlet property="documentLabel" destination="cPu-u6-QqQ" id="Jc2-Ky-NJm"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
@@ -2174,6 +2200,8 @@
                         <outlet property="addAgendaButtonWidth" destination="9jI-MK-2AF" id="BdE-Kl-fYd"/>
                         <outlet property="addDocumentButton" destination="4FQ-lU-nNc" id="482-b3-J7H"/>
                         <outlet property="addIssueButton" destination="pr4-NL-DCx" id="0Qc-of-fXM"/>
+                        <outlet property="agendaContentScrollView" destination="WMl-kg-pbw" id="DMm-0A-HWT"/>
+                        <outlet property="agendaContentView" destination="APB-y5-PjC" id="fxi-3I-WTa"/>
                         <outlet property="agendaContentViewHeight" destination="1qc-Xi-pnl" id="uo9-Hf-9pR"/>
                         <outlet property="agendaDocumentTableView" destination="WWe-ax-NlE" id="WJZ-f0-WPw"/>
                         <outlet property="agendaDocumentTableViewHeight" destination="pYy-a2-S6R" id="bbh-Dh-xLb"/>

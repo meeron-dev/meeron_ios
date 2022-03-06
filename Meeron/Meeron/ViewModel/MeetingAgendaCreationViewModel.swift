@@ -17,6 +17,8 @@ class MeetingAgendaCreationViewModel {
     var nowAgendaIndexSubject = BehaviorSubject<Int>(value: 0)
     var nowAgendaSubject = PublishSubject<Agenda>()
     
+    var nowIssueIndex = 0
+    
     var agendaIssueSubject = PublishSubject<[String]>()
     var agendaDocumentSubject = PublishSubject<[Data]>()
     
@@ -29,6 +31,8 @@ class MeetingAgendaCreationViewModel {
         nowAgendaIndexSubject.subscribe(onNext: {
             self.nowAgendaIndex = $0
             self.nowAgendaSubject.onNext(self.agendas[self.nowAgendaIndex])
+            self.agendaIssueSubject.onNext(self.agendas[self.nowAgendaIndex].issue)
+            self.agendaDocumentSubject.onNext(self.agendas[self.nowAgendaIndex].document)
             print($0+1)
         }).disposed(by: disposeBag)
         
@@ -76,6 +80,12 @@ class MeetingAgendaCreationViewModel {
     
     func saveAgendaTitle(title:String) {
         agendas[nowAgendaIndex].title = title
+    }
+    
+    func saveAgendaIssue(issue:String, index:Int) {
+        if index < agendas[nowAgendaIndex].issue.count {
+            agendas[nowAgendaIndex].issue[index] = issue
+        }
     }
     
     func deleteIssue(index:Int) {
