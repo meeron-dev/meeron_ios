@@ -46,7 +46,6 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
         
         prevButton.addShadow()
         nextButton.addShadow()
-        //addPlaceholder()
         addTapGesture()
         configureTextField()
         
@@ -88,14 +87,7 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
         
     }
     
-    private func addPlaceholder() {
-        //meetingTitleTextField.placeholder = "필수 입력 정보입니다."
-        //meetingNatureTextField.placeholder = "필수 입력 정보입니다."
-        let attribute = NSAttributedString(string: "필수 입력 정보입니다.", attributes: [.foregroundColor:UIColor(red: 129, green: 129, blue: 129, alpha: 100), .font:UIFont(name: "AppleSDGothicNeo-Regular", size: 16)!])
-        meetingTitleTextField.attributedPlaceholder = attribute
-        //meetingNatureTextField.attributedPlaceholder = attribute
-        
-    }
+    
     
     func addTapGesture() {
         let managersTapGesture = UITapGestureRecognizer()
@@ -114,7 +106,7 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     }
     
     @objc func showManagerSelectView() {
-        let managerSelectVC = self.storyboard?.instantiateViewController(withIdentifier: "ManagerSelectViewController") as! ProfileSelectViewController
+        let managerSelectVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileSelectViewController") as! ProfileSelectViewController
         managerSelectVC.modalPresentationStyle = .custom
         managerSelectVC.transitioningDelegate = self
         present(managerSelectVC, animated: true, completion: nil)

@@ -11,7 +11,7 @@ import UIKit
 class ProfileSelectViewController:UIViewController {
     @IBOutlet weak var profileCollectionView: UICollectionView!
     
-    @IBOutlet weak var SelectTitleLabel: UILabel!
+    @IBOutlet weak var profileSelectTitleLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class ProfileSelectViewController:UIViewController {
     private func setupCollectionView() {
         profileCollectionView.dataSource = self
         profileCollectionView.delegate = self
-        profileCollectionView.register(UINib(nibName: "ParticipantProfileCell", bundle: nil), forCellWithReuseIdentifier: "ParticipantProfileCell")
+        profileCollectionView.register(UINib(nibName: "MeetingParticipantProfileCell", bundle: nil), forCellWithReuseIdentifier: "MeetingParticipantProfileCell")
     }
     
     private func setupCollectionViewLayout() {
@@ -67,7 +67,7 @@ extension ProfileSelectViewController:UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ParticipantProfileCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MeetingParticipantProfileCell", for: indexPath)
         return cell
     }
     
