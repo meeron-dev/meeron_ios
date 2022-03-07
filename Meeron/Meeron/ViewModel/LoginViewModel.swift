@@ -64,9 +64,9 @@ class LoginViewModel {
         let resource:Resource<Token>
         
         if let nickname = nickname, let profileImageUrl = profileImageUrl{
-            resource = Resource<Token>(url: "https://dev.meeron.net/api/login", parameter:["email":email, "nickname":nickname, "profileImageUrl":profileImageUrl,"provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
+            resource = Resource<Token>(url: URLConstant.login, parameter:["email":email, "nickname":nickname, "profileImageUrl":profileImageUrl,"provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
         }else{
-            resource = Resource<Token>(url: "https://dev.meeron.net/api/login", parameter:["email":email,"provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
+            resource = Resource<Token>(url: URLConstant.login, parameter:["email":email,"provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
         }
         
 
@@ -104,10 +104,10 @@ class LoginViewModel {
         
         API().load(resource: resource)
             .subscribe(onNext: { userWorkspace in
+                self.loginSuccess.onNext(true)
                 print(userWorkspace)
                 guard let userWorkspace  = userWorkspace else  {return}
                 
-
             }).disposed(by: disposeBag)
     }
 }

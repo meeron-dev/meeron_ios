@@ -28,7 +28,9 @@ class AgendaSelectBarCell:UICollectionViewCell {
     }
     func setVM(vm:MeetingAgendaCreationViewModel) {
         meetingAgendaCreationVM = vm
-        meetingAgendaCreationVM.nowAgendaIndexSubject.subscribe(onNext: {
+        meetingAgendaCreationVM.nowAgendaIndexSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: {
             if String($0+1) == self.agendaNumber.text  {
                 self.agendaNumber.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 30)
                 self.agendaNumber.textColor = .mrBlue

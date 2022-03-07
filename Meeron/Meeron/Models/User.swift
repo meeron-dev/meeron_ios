@@ -40,7 +40,7 @@ struct User:Codable {
     var userId: Int
     var loginEmail: String
     var contactEmail: String?
-    var name: String
+    var name: String?
     var profileImageUrl: String?
     var phone:String?
 }
@@ -50,10 +50,22 @@ struct UserWorkspace:Codable {
 }
 
 struct MyWorkspaceUser:Codable {
-    var workspaceUserId: Int
-    var workspaceId: Int
-    var nickname: String
-    var profileImageUrl: String
-    var position: String
+    var workspaceUserId: Int?
+    var workspaceId: Int?
+    var nickname: String?
+    var profileImageUrl: String?
+    var position: String?
     var workspaceAdmin: Bool
+}
+
+
+struct WorkspaceUserProfiles:Codable {
+    var workspaceUsers:[WorkspaceUser]
+}
+
+struct WorkspaceUser:Codable {
+    var workspaceUserId: Int
+    var profileImageUrl: String?
+    var nickname: String
+    var position: String
 }

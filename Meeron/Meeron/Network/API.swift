@@ -35,9 +35,10 @@ struct API {
     
     let disposeBag = DisposeBag()
     
-    let host = "dev.meeron.net"
+    let protocolHost = "https://dev.meeron.net"
     
     func load<T:Codable>(resource:Resource<T>) -> Observable<T?> {
+        
         return RxAlamofire.requestData(resource.method, resource.url, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
             .flatMap({ (response, data) -> Observable<T?> in
                 switch response.statusCode {
@@ -51,7 +52,7 @@ struct API {
     }
     
     func login(email:String, nickname:String, profileImageUrl:String, provider:String) {
-        let url = "https://" + host + "/api/login"
+        let url = protocolHost + "/api/login"
         let parameters = ["email":email, "nickname":nickname,"profileImageUrl":profileImageUrl,"provider":provider]
         RxAlamofire.requestJSON(.post, url, parameters: parameters, encoding: JSONEncoding.default,headers: ["Content-Type": "application/json"])
             .subscribe(onNext: { response, json in

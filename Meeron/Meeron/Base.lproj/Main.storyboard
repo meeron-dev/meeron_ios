@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9lR-14-rWE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -2025,7 +2025,7 @@
                                                                     <rect key="frame" x="4.6666666666666679" y="5" width="44" height="44"/>
                                                                     <subviews>
                                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWP-kt-eMI">
-                                                                            <rect key="frame" x="13.666666666666666" y="4" width="16.666666666666671" height="36"/>
+                                                                            <rect key="frame" x="13.333333333333332" y="4" width="17" height="36"/>
                                                                             <attributedString key="attributedText">
                                                                                 <fragment content="n">
                                                                                     <attributes>
@@ -2233,7 +2233,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyY-RY-Oa6">
-                                <rect key="frame" x="30" y="125" width="41" height="30"/>
+                                <rect key="frame" x="30" y="125" width="65" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="FxD-4q-Yyg"/>
                                 </constraints>
@@ -2242,7 +2242,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="생성되었습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Eb-XN-DdI">
-                                <rect key="frame" x="30" y="160" width="134" height="30"/>
+                                <rect key="frame" x="30" y="160" width="158" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="158" id="Eia-qh-FJE"/>
                                 </constraints>
@@ -2261,7 +2261,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDL-Kq-J8n">
-                                <rect key="frame" x="201.66666666666663" y="734" width="158.33333333333337" height="57"/>
+                                <rect key="frame" x="213.66666666666663" y="734" width="170.33333333333337" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="BhF-Yp-Qun"/>
                                 </constraints>
@@ -2280,7 +2280,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Yq-f6-XFI">
-                                <rect key="frame" x="30" y="734" width="158.66666666666666" height="57"/>
+                                <rect key="frame" x="30" y="734" width="170.66666666666666" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="6m5-UJ-2Rs"/>
                                 </constraints>
@@ -2301,7 +2301,7 @@
                                 </buttonConfiguration>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFN-wX-0ei">
-                                <rect key="frame" x="30" y="230" width="330" height="37"/>
+                                <rect key="frame" x="30" y="230" width="354" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="FsN-Uh-upV"/>
                                 </constraints>
@@ -2310,7 +2310,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yyyy년 M월 d일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHL-Y9-9Xl">
-                                <rect key="frame" x="146.66666666666663" y="295" width="213.33333333333337" height="35"/>
+                                <rect key="frame" x="146.66666666666663" y="295" width="237.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="ifn-zj-5bf"/>
                                 </constraints>
@@ -2329,7 +2329,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의 성격 내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kg9-hb-lQ0">
-                                <rect key="frame" x="146.66666666666663" y="348" width="213.33333333333337" height="35"/>
+                                <rect key="frame" x="146.66666666666663" y="348" width="237.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="jA9-nT-fH0"/>
                                 </constraints>
@@ -2348,7 +2348,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OOO 외 n명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4Y-Tx-HQW">
-                                <rect key="frame" x="146.66666666666663" y="401" width="213.33333333333337" height="35"/>
+                                <rect key="frame" x="146.66666666666663" y="401" width="237.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="cFO-3Y-rR5"/>
                                 </constraints>
@@ -2367,7 +2367,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OOO 팀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOq-Gl-DiR">
-                                <rect key="frame" x="146.66666666666663" y="454" width="213.33333333333337" height="35"/>
+                                <rect key="frame" x="146.66666666666663" y="454" width="237.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="d3J-9E-btu"/>
                                 </constraints>
@@ -2386,7 +2386,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yyyy년 M월 d일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXn-ba-GGG">
-                                <rect key="frame" x="146.66666666666663" y="507" width="213.33333333333337" height="35"/>
+                                <rect key="frame" x="146.66666666666663" y="507" width="237.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="djJ-qv-ftA"/>
                                 </constraints>
@@ -2405,7 +2405,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="n명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uni-UJ-hg5">
-                                <rect key="frame" x="146.66666666666663" y="560" width="213.33333333333337" height="35"/>
+                                <rect key="frame" x="146.66666666666663" y="560" width="237.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="3w4-4d-r33"/>
                                 </constraints>
@@ -2489,10 +2489,10 @@
             </objects>
             <point key="canvasLocation" x="6757" y="496"/>
         </scene>
-        <!--ProfileSelectViewController-->
+        <!--MeetingProfileSelectViewController-->
         <scene sceneID="CFm-rW-Abr">
             <objects>
-                <viewController storyboardIdentifier="ProfileSelectViewController" title="ProfileSelectViewController" id="r7f-Qo-rf8" customClass="ProfileSelectViewController" customModule="Meeron" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MeetingProfileSelectViewController" title="MeetingProfileSelectViewController" id="r7f-Qo-rf8" customClass="MeetingProfileSelectViewController" customModule="Meeron" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ENE-T6-MVS">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2622,6 +2622,7 @@
                         <outlet property="doneButton" destination="22u-Ff-9RG" id="mJc-Gx-Wum"/>
                         <outlet property="profileCollectionView" destination="rCE-Bx-hm4" id="np8-88-fUd"/>
                         <outlet property="profileSelectTitleLabel" destination="T3l-jH-DPK" id="Gke-X7-h1e"/>
+                        <outlet property="searchTextField" destination="uVb-Gz-g65" id="uar-AR-Rjd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L0s-dA-vjw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

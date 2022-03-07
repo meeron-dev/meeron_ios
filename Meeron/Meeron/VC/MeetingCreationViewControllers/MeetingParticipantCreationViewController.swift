@@ -114,7 +114,9 @@ class MeetingParticipantCreationViewController:UIViewController {
     }
     
     @IBAction func searchParticipant(_ sender: Any) {
-        let profileSelectVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileSelectViewController") as! ProfileSelectViewController
+        let profileSelectVC = self.storyboard?.instantiateViewController(withIdentifier: "MeetingProfileSelectViewController") as! MeetingProfileSelectViewController
+        profileSelectVC.modalPresentationStyle = .custom
+        profileSelectVC.transitioningDelegate = self
         present(profileSelectVC, animated: true, completion: nil)
         profileSelectVC.profileSelectTitleLabel.text = "회의 참가자 선택하기"
     }

@@ -17,13 +17,13 @@ class MeetingParticipantProfileCell: UICollectionViewCell {
     @IBOutlet weak var managerLabel: UILabel!
     @IBOutlet weak var shadowView: UIView!
     
+    var profileUserId:Int?
+    var meetingProfileSelectVM:MeetingProfileSelectViewModel?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         configureUI()
         addTapGesture()
-        
-        
     }
     
     private func addTapGesture() {
@@ -36,12 +36,18 @@ class MeetingParticipantProfileCell: UICollectionViewCell {
     @objc private func tapProfile() {
         if selectedView.backgroundColor == UIColor(red: 52/255, green: 153/255, blue: 181/255, alpha: 0.7) {
             selectedView.backgroundColor = nil
+            guard let id = profileUserId else {return}
+            meetingProfileSelectVM?.deleteSelectedProfileUserIds(id: id)
         }else {
             selectedView.backgroundColor = UIColor(red: 52/255, green: 153/255, blue: 181/255, alpha: 0.7)
+            guard let id = profileUserId else {return}
+            meetingProfileSelectVM?.addSelectedProfileUserIds(id: id)
         }
     }
     
     private func configureUI() {
+        selectedView.backgroundColor = nil
+        
         shadowView.backgroundColor = .white
         shadowView.layer.cornerRadius = profileImageView.frame.height/2
         shadowView.layer.shadowRadius = 2
@@ -56,5 +62,24 @@ class MeetingParticipantProfileCell: UICollectionViewCell {
         managerLabel.text = ""
         selectedView.backgroundColor = nil
     }
-
+    
+    func setData(data:WorkspaceUser, vm:MeetingProfileSelectViewModel) {
+        profilePositionLabel.text = data.position
+        profileNameLabel.text = data.nickname
+        profileUserId = data.workspaceUserId
+        meetingProfileSelectVM = vm
+        
+        if data.profileImageUrl != nil {
+            let imgURL = URL(string: data.profileImageUrl!)!
+            DispatchQueue.global().async {
+                let imgData = try? Data(contentsOf: imgURL)
+                if imgData != nil {
+                    DispatchQueue.main.async {
+                        self.profileImageView.image = UIImage(data: imgData!)
+                    }
+                }
+            }
+        }
+        
+    }
 }

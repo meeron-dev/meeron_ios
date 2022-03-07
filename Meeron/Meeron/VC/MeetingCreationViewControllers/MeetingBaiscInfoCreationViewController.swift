@@ -69,17 +69,29 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     }
     
     private func configureTextField() {
-        meetingTitleTextField.rx.text.subscribe(onNext: {
+        meetingTitleTextField.rx.text.orEmpty
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: {
             if $0 != "" {
                 self.meetingTitleTextLimitLabelWidth.constant = 0
+                if $0.count > 35 {
+                    self.meetingTitleTextField.text = String($0.prefix(35))
+                    self.meetingTitleTextField.resignFirstResponder()
+                }
             }else{
                 self.meetingTitleTextLimitLabelWidth.constant = 80
             }
         }).disposed(by: disposeBag)
         
-        meetingNatureTextField.rx.text.subscribe(onNext: {
+        meetingNatureTextField.rx.text.orEmpty
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: {
             if $0 != "" {
                 self.meetingNatureTextLimitLabelWidth.constant = 0
+                if $0.count > 10 {
+                    self.meetingNatureTextField.text = String($0.prefix(10))
+                    self.meetingNatureTextField.resignFirstResponder()
+                }
             }else{
                 self.meetingNatureTextLimitLabelWidth.constant = 80
             }
@@ -106,7 +118,7 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     }
     
     @objc func showManagerSelectView() {
-        let managerSelectVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileSelectViewController") as! ProfileSelectViewController
+        let managerSelectVC = self.storyboard?.instantiateViewController(withIdentifier: "MeetingProfileSelectViewController") as! MeetingProfileSelectViewController
         managerSelectVC.modalPresentationStyle = .custom
         managerSelectVC.transitioningDelegate = self
         present(managerSelectVC, animated: true, completion: nil)

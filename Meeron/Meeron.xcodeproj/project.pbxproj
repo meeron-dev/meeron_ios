@@ -19,7 +19,7 @@
 		FC19AAFA27C782A6000B5119 /* String+CustomDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19AAF927C782A6000B5119 /* String+CustomDate.swift */; };
 		FC23A9FC27C547B9009565B2 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23A9FB27C547B9009565B2 /* CalendarViewController.swift */; };
 		FC28912A27CFCBAE00E8DFA7 /* DatePickerModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28912927CFCBAE00E8DFA7 /* DatePickerModalPresentationController.swift */; };
-		FC38089427D0779C0023D713 /* ProfileSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38089327D0779C0023D713 /* ProfileSelectViewController.swift */; };
+		FC38089427D0779C0023D713 /* MeetingProfileSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38089327D0779C0023D713 /* MeetingProfileSelectViewController.swift */; };
 		FC38089627D09DBA0023D713 /* TeamSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38089527D09DBA0023D713 /* TeamSelectViewController.swift */; };
 		FC3808A427D0CF2F0023D713 /* AgendaIssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3808A327D0CF2F0023D713 /* AgendaIssueCell.swift */; };
 		FC3808A627D0CFA30023D713 /* AgendaDocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3808A527D0CFA30023D713 /* AgendaDocumentCell.swift */; };
@@ -41,6 +41,8 @@
 		FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */; };
 		FC7CA8F027C27C3800110D24 /* kakao_login_medium_wide.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7CA8EF27C27C3800110D24 /* kakao_login_medium_wide.png */; };
 		FC8393A427C66F6400981622 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8393A327C66F6400981622 /* DateCell.swift */; };
+		FC9FC1F827D5E8A800340283 /* MeetingProfileSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */; };
+		FC9FC1FA27D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FC1F927D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift */; };
 		FC9FD92D27C4BF60009DE526 /* MeetingCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FD92C27C4BF60009DE526 /* MeetingCardCell.swift */; };
 		FCA1AF7D27CBBB0600152F53 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1AF7C27CBBB0600152F53 /* HomeViewModel.swift */; };
 		FCA1AF8127CBD11F00152F53 /* RealmStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1AF8027CBD11F00152F53 /* RealmStorage.swift */; };
@@ -101,7 +103,7 @@
 		FC19AAF927C782A6000B5119 /* String+CustomDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CustomDate.swift"; sourceTree = "<group>"; };
 		FC23A9FB27C547B9009565B2 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		FC28912927CFCBAE00E8DFA7 /* DatePickerModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerModalPresentationController.swift; sourceTree = "<group>"; };
-		FC38089327D0779C0023D713 /* ProfileSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSelectViewController.swift; sourceTree = "<group>"; };
+		FC38089327D0779C0023D713 /* MeetingProfileSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingProfileSelectViewController.swift; sourceTree = "<group>"; };
 		FC38089527D09DBA0023D713 /* TeamSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectViewController.swift; sourceTree = "<group>"; };
 		FC3808A327D0CF2F0023D713 /* AgendaIssueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaIssueCell.swift; sourceTree = "<group>"; };
 		FC3808A527D0CFA30023D713 /* AgendaDocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaDocumentCell.swift; sourceTree = "<group>"; };
@@ -128,6 +130,8 @@
 		FC7CA8EE27C2255400110D24 /* Meeron.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meeron.entitlements; sourceTree = "<group>"; };
 		FC7CA8EF27C27C3800110D24 /* kakao_login_medium_wide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kakao_login_medium_wide.png; path = ../../../Downloads/kakao_login/ko/kakao_login_medium_wide.png; sourceTree = "<group>"; };
 		FC8393A327C66F6400981622 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingProfileSelectViewModel.swift; sourceTree = "<group>"; };
+		FC9FC1F927D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingBaiscInfoCreationViewModel.swift; sourceTree = "<group>"; };
 		FC9FD92C27C4BF60009DE526 /* MeetingCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCardCell.swift; sourceTree = "<group>"; };
 		FCA1AF7C27CBBB0600152F53 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		FCA1AF8027CBD11F00152F53 /* RealmStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorage.swift; sourceTree = "<group>"; };
@@ -342,6 +346,8 @@
 				FCEFFD7027CF21CD00D54CD4 /* MeetingCreationViewModel.swift */,
 				FC0A6B9B27D1EB2300DBC745 /* MeetingAgendaCreationViewModel.swift */,
 				FCAE0D4027D4FFC600B05D94 /* MeetingParticipantCreationViewModel.swift */,
+				FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */,
+				FC9FC1F927D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -407,7 +413,7 @@
 				FCD75C2127CFD7BC00D0FDD4 /* MeetingParticipantCreationViewController.swift */,
 				FCD75C2327CFD83500D0FDD4 /* MeetingCreationResultViewController.swift */,
 				FCB36CF827CD1BB700ACF591 /* PickerViewController.swift */,
-				FC38089327D0779C0023D713 /* ProfileSelectViewController.swift */,
+				FC38089327D0779C0023D713 /* MeetingProfileSelectViewController.swift */,
 				FC38089527D09DBA0023D713 /* TeamSelectViewController.swift */,
 			);
 			path = MeetingCreationViewControllers;
@@ -672,9 +678,11 @@
 				FCD75C1E27CFD6B100D0FDD4 /* MeetingBaiscInfoCreationViewController.swift in Sources */,
 				FCD75C2427CFD83500D0FDD4 /* MeetingCreationResultViewController.swift in Sources */,
 				FC3808A427D0CF2F0023D713 /* AgendaIssueCell.swift in Sources */,
+				FC9FC1F827D5E8A800340283 /* MeetingProfileSelectViewModel.swift in Sources */,
 				FCAE0D3D27D4EFA500B05D94 /* MeetingTeamSelectCell.swift in Sources */,
 				FC3808A627D0CFA30023D713 /* AgendaDocumentCell.swift in Sources */,
 				FC38089627D09DBA0023D713 /* TeamSelectViewController.swift in Sources */,
+				FC9FC1FA27D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift in Sources */,
 				FC6AB4D627C0C4D700797C44 /* AppDelegate.swift in Sources */,
 				FCAE0D3A27D4A48800B05D94 /* MeetingParticipantProfileCell.swift in Sources */,
 				FC6AB4D827C0C4D700797C44 /* SceneDelegate.swift in Sources */,
@@ -689,7 +697,7 @@
 				FCEFFD7127CF21CD00D54CD4 /* MeetingCreationViewModel.swift in Sources */,
 				FCAE0D3F27D4FCC700B05D94 /* MeetingParticipantTeamCell.swift in Sources */,
 				FC47215A27C9D23900F7A035 /* KeychainManager.swift in Sources */,
-				FC38089427D0779C0023D713 /* ProfileSelectViewController.swift in Sources */,
+				FC38089427D0779C0023D713 /* MeetingProfileSelectViewController.swift in Sources */,
 				FCB36CF927CD1BB700ACF591 /* PickerViewController.swift in Sources */,
 				FC651A8827D256C800A64D8A /* AgendaSelectBarCell.swift in Sources */,
 				FC06E98327C3ABFF004065E3 /* HomeViewController.swift in Sources */,
