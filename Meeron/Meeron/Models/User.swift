@@ -50,8 +50,8 @@ struct UserWorkspace:Codable {
 }
 
 struct MyWorkspaceUser:Codable {
-    var workspaceUserId: Int?
-    var workspaceId: Int?
+    var workspaceUserId: Int
+    var workspaceId: Int
     var nickname: String?
     var profileImageUrl: String?
     var position: String?
@@ -63,7 +63,7 @@ struct WorkspaceUserProfiles:Codable {
     var workspaceUsers:[WorkspaceUser]
 }
 
-struct WorkspaceUser:Codable {
+struct WorkspaceUser:Codable, Equatable {
     var workspaceUserId: Int
     var profileImageUrl: String?
     var nickname: String

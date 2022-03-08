@@ -10,8 +10,9 @@ import Foundation
 struct URLConstant {
     static let protocolHost = "https://dev.meeron.net"
     
-    static let login = protocolHost+"/api/login"
-    static let user = protocolHost+"/api/users/me"
-    static let userWorkspace = protocolHost+"/api/users/1/workspace-users"
-    static let workspaceUserProfile = protocolHost+"/api/workspace-users"
+    static let login = protocolHost + "/api/login"
+    static let user = protocolHost + "/api/users/me"
+    static let userWorkspace = protocolHost + "/api/users/1/workspace-users"
+    static let workspaceUserProfile = protocolHost + "/api/workspace-users"
+    static let teamInWorkspace = protocolHost + "/api/teams"
 }

@@ -92,9 +92,7 @@ class LoginViewModel {
         API().load(resource: resource)
             .subscribe(onNext: { user in
                 guard let user = user else {return}
-                self.realmStorage.storeUserInfo(userId: user.userId)
-                UserDefaults.standard.set(String(user.userId), forKey: "userId")
-                print("USER ID :", user.userId)
+                self.saveUserId(id: user.userId)
                 self.loadUserWorkspace()
             }).disposed(by: disposeBag)
     }
@@ -105,9 +103,25 @@ class LoginViewModel {
         API().load(resource: resource)
             .subscribe(onNext: { userWorkspace in
                 self.loginSuccess.onNext(true)
+                
                 print(userWorkspace)
                 guard let userWorkspace  = userWorkspace else  {return}
+                if userWorkspace.myWorkspaceUsers.count > 0 {
+                    self.saveUserWorkspace(data: userWorkspace.myWorkspaceUsers)
+                }
                 
             }).disposed(by: disposeBag)
+    }
+    
+    func saveUserId(id:Int) {
+        self.realmStorage.storeUserInfo(userId: id)
+        UserDefaults.standard.set(String(id), forKey: "userId")
+        print("USER ID :", id)
+    }
+    
+    func saveUserWorkspace(data:[MyWorkspaceUser]) {
+        UserDefaults.standard.set(String(data[0].workspaceId), forKey:"workspaceId")
+        UserDefaults.standard.set(String(data[0].workspaceUserId), forKey: "workspaceUserId")
+        
     }
 }

@@ -17,13 +17,15 @@ class MeetingParticipantProfileCell: UICollectionViewCell {
     @IBOutlet weak var managerLabel: UILabel!
     @IBOutlet weak var shadowView: UIView!
     
-    var profileUserId:Int?
+    var profileData:WorkspaceUser?
+    
     var meetingProfileSelectVM:MeetingProfileSelectViewModel?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         configureUI()
         addTapGesture()
+        isDeselected()
     }
     
     private func addTapGesture() {
@@ -34,20 +36,36 @@ class MeetingParticipantProfileCell: UICollectionViewCell {
     }
     
     @objc private func tapProfile() {
-        if selectedView.backgroundColor == UIColor(red: 52/255, green: 153/255, blue: 181/255, alpha: 0.7) {
-            selectedView.backgroundColor = nil
-            guard let id = profileUserId else {return}
-            meetingProfileSelectVM?.deleteSelectedProfileUserIds(id: id)
+        if selectedView.backgroundColor == .selectedProfileBlue {
+            isDeselected()
         }else {
-            selectedView.backgroundColor = UIColor(red: 52/255, green: 153/255, blue: 181/255, alpha: 0.7)
-            guard let id = profileUserId else {return}
-            meetingProfileSelectVM?.addSelectedProfileUserIds(id: id)
+            isSelected()
         }
     }
     
-    private func configureUI() {
+    func isDeselected() {
         selectedView.backgroundColor = nil
+        profileNameLabel.textColor = .black
+        profilePositionLabel.textColor = .textBalck
+        profileNameLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 13)
+        profilePositionLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 12)
         
+        guard let data = profileData else {return}
+        meetingProfileSelectVM?.deleteSelectedProfileUserIds(profile: data)
+    }
+    
+    func isSelected() {
+        selectedView.backgroundColor = .selectedProfileBlue
+        profileNameLabel.textColor = .mrBlue
+        profilePositionLabel.textColor = .mrBlue
+        profileNameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 13)
+        profilePositionLabel.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 12)
+        
+        guard let data = profileData else {return}
+        meetingProfileSelectVM?.addSelectedProfileUserIds(profile: data)
+    }
+    
+    private func configureUI() {
         shadowView.backgroundColor = .white
         shadowView.layer.cornerRadius = profileImageView.frame.height/2
         shadowView.layer.shadowRadius = 2
@@ -60,14 +78,21 @@ class MeetingParticipantProfileCell: UICollectionViewCell {
         
         profileImageView.image = UIImage(systemName: "person")
         managerLabel.text = ""
+        
         selectedView.backgroundColor = nil
     }
     
     func setData(data:WorkspaceUser, vm:MeetingProfileSelectViewModel) {
         profilePositionLabel.text = data.position
         profileNameLabel.text = data.nickname
-        profileUserId = data.workspaceUserId
+        profileData = data
         meetingProfileSelectVM = vm
+        
+        if meetingProfileSelectVM!.isSelectedProfile(profile: data) {
+            selectedView.backgroundColor = .selectedProfileBlue
+        }else {
+            selectedView.backgroundColor = nil
+        }
         
         if data.profileImageUrl != nil {
             let imgURL = URL(string: data.profileImageUrl!)!

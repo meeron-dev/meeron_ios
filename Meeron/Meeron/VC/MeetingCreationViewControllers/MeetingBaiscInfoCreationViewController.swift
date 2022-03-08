@@ -27,12 +27,13 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     
     @IBOutlet weak var basicInfoContentView:UIView!
     
-    
     @IBOutlet weak var meetingTitleTextLimitLabelWidth: NSLayoutConstraint!
     @IBOutlet weak var meetingNatureTextLimitLabelWidth: NSLayoutConstraint!
     
     @IBOutlet weak var basicInfoScrollView: UIScrollView!
     var scrollViewOriginalOffset = CGPoint(x: 0, y: 0)
+    
+    let meetingBaiscInfoCreationVM = MeetingBaiscInfoCreationViewModel()
     
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
@@ -48,7 +49,6 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
         nextButton.addShadow()
         addTapGesture()
         configureTextField()
-        
         
     }
     
@@ -71,31 +71,33 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     private func configureTextField() {
         meetingTitleTextField.rx.text.orEmpty
             .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: {
-            if $0 != "" {
-                self.meetingTitleTextLimitLabelWidth.constant = 0
-                if $0.count > 35 {
-                    self.meetingTitleTextField.text = String($0.prefix(35))
-                    self.meetingTitleTextField.resignFirstResponder()
+            .withUnretained(self)
+            .subscribe(onNext: { owner, text in
+            if text != "" {
+                owner.meetingTitleTextLimitLabelWidth.constant = 0
+                if text.count > 35 {
+                    owner.meetingTitleTextField.text = String(text.prefix(35))
+                    owner.meetingTitleTextField.resignFirstResponder()
                 }
             }else{
-                self.meetingTitleTextLimitLabelWidth.constant = 80
+                owner.meetingTitleTextLimitLabelWidth.constant = 80
             }
         }).disposed(by: disposeBag)
         
         meetingNatureTextField.rx.text.orEmpty
+            .withUnretained(self)
             .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: {
-            if $0 != "" {
-                self.meetingNatureTextLimitLabelWidth.constant = 0
-                if $0.count > 10 {
-                    self.meetingNatureTextField.text = String($0.prefix(10))
-                    self.meetingNatureTextField.resignFirstResponder()
+            .subscribe(onNext: { owner, text in
+                if text != "" {
+                    owner.meetingNatureTextLimitLabelWidth.constant = 0
+                    if text.count > 10 {
+                        owner.meetingNatureTextField.text = String(text.prefix(10))
+                        owner.meetingNatureTextField.resignFirstResponder()
+                    }
+                }else{
+                    owner.meetingNatureTextLimitLabelWidth.constant = 80
                 }
-            }else{
-                self.meetingNatureTextLimitLabelWidth.constant = 80
-            }
-        }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         
     }
     
@@ -119,6 +121,8 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     
     @objc func showManagerSelectView() {
         let managerSelectVC = self.storyboard?.instantiateViewController(withIdentifier: "MeetingProfileSelectViewController") as! MeetingProfileSelectViewController
+        managerSelectVC.delegate = self
+        
         managerSelectVC.modalPresentationStyle = .custom
         managerSelectVC.transitioningDelegate = self
         present(managerSelectVC, animated: true, completion: nil)
@@ -126,8 +130,9 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     }
     
     @objc func showTeamSelectView() {
-        print("팀 선택")
-        let teamSelectVC = self.storyboard?.instantiateViewController(withIdentifier: "TimeSelectViewController") as! TeamSelectViewController
+        let teamSelectVC = self.storyboard?.instantiateViewController(withIdentifier: "MeetingTeamSelectViewController") as! MeetingTeamSelectViewController
+        teamSelectVC.delegate = self
+        
         teamSelectVC.modalPresentationStyle = .custom
         teamSelectVC.transitioningDelegate = self
         present(teamSelectVC, animated: true, completion: nil)
@@ -145,7 +150,6 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -154,5 +158,25 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
 extension MeetingBaiscInfoCreationViewController:UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return SelectItemModalPresentationController(presentedViewController: presented, presenting: presenting)
+    }
+}
+
+extension MeetingBaiscInfoCreationViewController:MeetingProfileSelectViewControllerDelegate {
+    func passSelectedProfiles(selectedProfiles: [WorkspaceUser]) {
+        meetingBaiscInfoCreationVM.setManagers(datas: selectedProfiles)
+        let managerNames = meetingBaiscInfoCreationVM.getManagerNames(datas: selectedProfiles)
+        meetingManagersLabel.text = managerNames.joined(separator: ", ")
+    }
+    
+}
+
+extension MeetingBaiscInfoCreationViewController: MeetingTeamSelectViewControllerDelegate {
+    func passSelectedTeam(data: Team?) {
+        meetingBaiscInfoCreationVM.setTeam(data: data)
+        if data == nil {
+            meetingTeamLabel.text = ""
+        }else {
+            meetingTeamLabel.text = data?.teamName
+        }
     }
 }

@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 import RxSwift
 
+protocol MeetingProfileSelectViewControllerDelegate: AnyObject {
+    func passSelectedProfiles(selectedProfiles:[WorkspaceUser])
+}
+
 class MeetingProfileSelectViewController:UIViewController {
     @IBOutlet weak var profileCollectionView: UICollectionView!
     
@@ -19,6 +23,8 @@ class MeetingProfileSelectViewController:UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     
     let meetingProfileSelectVM = MeetingProfileSelectViewModel()
+    
+    var delegate:MeetingProfileSelectViewControllerDelegate?
     
     let disposeBag = DisposeBag()
     
@@ -36,6 +42,16 @@ class MeetingProfileSelectViewController:UIViewController {
     private func configureUI() {
         closeButton.addShadow()
         doneButton.addShadow()
+        
+        meetingProfileSelectVM.selectedUserProfilesSubject
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: {
+                if $0.count > 0 {
+                    self.doneButton.isEnabled = true
+                }else {
+                    self.doneButton.isEnabled = false
+                }
+            }).disposed(by: disposeBag)
         
         setupCollectionView()
         setupCollectionViewLayout()
@@ -69,14 +85,12 @@ class MeetingProfileSelectViewController:UIViewController {
         
         profileCollectionView.collectionViewLayout = profileCollectionViewLayout
     }
-    
+
     @IBAction func close(_ sender: Any) {
-        if let presenter = presentationController as? MeetingBaiscInfoCreationViewController {
-            //presenter.meeting
-        }
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func done(_ sender: Any) {
+        delegate?.passSelectedProfiles(selectedProfiles: meetingProfileSelectVM.selectedUserProfiles)
         self.dismiss(animated: true, completion: nil)
     }
     

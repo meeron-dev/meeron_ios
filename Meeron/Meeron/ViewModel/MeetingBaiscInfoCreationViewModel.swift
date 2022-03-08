@@ -6,3 +6,29 @@
 //
 
 import Foundation
+import RxSwift
+
+class MeetingBaiscInfoCreationViewModel {
+    
+    var managers:[WorkspaceUser] = []
+    
+    var team:Team?
+    
+    let disposeBag = DisposeBag()
+    
+    func setManagers(datas:[WorkspaceUser]) {
+        managers = datas
+    }
+    
+    func getManagerNames(datas:[WorkspaceUser]) -> [String] {
+        var managerNames:[String] = []
+        _ = datas.map{ managerNames.append($0.nickname) }
+        
+        return managerNames
+    }
+    
+    func setTeam(data:Team?) {
+        team = data
+    }
+    
+}

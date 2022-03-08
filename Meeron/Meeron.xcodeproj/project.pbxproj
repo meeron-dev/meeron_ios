@@ -20,9 +20,11 @@
 		FC23A9FC27C547B9009565B2 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC23A9FB27C547B9009565B2 /* CalendarViewController.swift */; };
 		FC28912A27CFCBAE00E8DFA7 /* DatePickerModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC28912927CFCBAE00E8DFA7 /* DatePickerModalPresentationController.swift */; };
 		FC38089427D0779C0023D713 /* MeetingProfileSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38089327D0779C0023D713 /* MeetingProfileSelectViewController.swift */; };
-		FC38089627D09DBA0023D713 /* TeamSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38089527D09DBA0023D713 /* TeamSelectViewController.swift */; };
+		FC38089627D09DBA0023D713 /* MeetingTeamSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38089527D09DBA0023D713 /* MeetingTeamSelectViewController.swift */; };
 		FC3808A427D0CF2F0023D713 /* AgendaIssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3808A327D0CF2F0023D713 /* AgendaIssueCell.swift */; };
 		FC3808A627D0CFA30023D713 /* AgendaDocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3808A527D0CFA30023D713 /* AgendaDocumentCell.swift */; };
+		FC39DFD127D76E49002465EB /* MeetingTeamSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC39DFD027D76E49002465EB /* MeetingTeamSelectViewModel.swift */; };
+		FC39DFD327D777CF002465EB /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC39DFD227D777CF002465EB /* Team.swift */; };
 		FC47215A27C9D23900F7A035 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47215927C9D23900F7A035 /* KeychainManager.swift */; };
 		FC47215C27CA14E700F7A035 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47215B27CA14E700F7A035 /* User.swift */; };
 		FC651A8827D256C800A64D8A /* AgendaSelectBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC651A8727D256C800A64D8A /* AgendaSelectBarCell.swift */; };
@@ -104,9 +106,11 @@
 		FC23A9FB27C547B9009565B2 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		FC28912927CFCBAE00E8DFA7 /* DatePickerModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerModalPresentationController.swift; sourceTree = "<group>"; };
 		FC38089327D0779C0023D713 /* MeetingProfileSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingProfileSelectViewController.swift; sourceTree = "<group>"; };
-		FC38089527D09DBA0023D713 /* TeamSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamSelectViewController.swift; sourceTree = "<group>"; };
+		FC38089527D09DBA0023D713 /* MeetingTeamSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingTeamSelectViewController.swift; sourceTree = "<group>"; };
 		FC3808A327D0CF2F0023D713 /* AgendaIssueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaIssueCell.swift; sourceTree = "<group>"; };
 		FC3808A527D0CFA30023D713 /* AgendaDocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaDocumentCell.swift; sourceTree = "<group>"; };
+		FC39DFD027D76E49002465EB /* MeetingTeamSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingTeamSelectViewModel.swift; sourceTree = "<group>"; };
+		FC39DFD227D777CF002465EB /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		FC47215927C9D23900F7A035 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		FC47215B27CA14E700F7A035 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FC651A8727D256C800A64D8A /* AgendaSelectBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaSelectBarCell.swift; sourceTree = "<group>"; };
@@ -348,6 +352,7 @@
 				FCAE0D4027D4FFC600B05D94 /* MeetingParticipantCreationViewModel.swift */,
 				FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */,
 				FC9FC1F927D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift */,
+				FC39DFD027D76E49002465EB /* MeetingTeamSelectViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */,
 				FC47215B27CA14E700F7A035 /* User.swift */,
 				FCEFFD7427CF304300D54CD4 /* MeetingCreation.swift */,
+				FC39DFD227D777CF002465EB /* Team.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -414,7 +420,7 @@
 				FCD75C2327CFD83500D0FDD4 /* MeetingCreationResultViewController.swift */,
 				FCB36CF827CD1BB700ACF591 /* PickerViewController.swift */,
 				FC38089327D0779C0023D713 /* MeetingProfileSelectViewController.swift */,
-				FC38089527D09DBA0023D713 /* TeamSelectViewController.swift */,
+				FC38089527D09DBA0023D713 /* MeetingTeamSelectViewController.swift */,
 			);
 			path = MeetingCreationViewControllers;
 			sourceTree = "<group>";
@@ -669,6 +675,7 @@
 				FC6AB50A27C112F000797C44 /* Token.swift in Sources */,
 				FCA1AF7D27CBBB0600152F53 /* HomeViewModel.swift in Sources */,
 				FCEFFD6F27CF1E2300D54CD4 /* UIButton+ShadowEffect.swift in Sources */,
+				FC39DFD327D777CF002465EB /* Team.swift in Sources */,
 				FC28912A27CFCBAE00E8DFA7 /* DatePickerModalPresentationController.swift in Sources */,
 				FCD75C2227CFD7BC00D0FDD4 /* MeetingParticipantCreationViewController.swift in Sources */,
 				FC06E98C27C3F02C004065E3 /* TabBarController.swift in Sources */,
@@ -681,7 +688,7 @@
 				FC9FC1F827D5E8A800340283 /* MeetingProfileSelectViewModel.swift in Sources */,
 				FCAE0D3D27D4EFA500B05D94 /* MeetingTeamSelectCell.swift in Sources */,
 				FC3808A627D0CFA30023D713 /* AgendaDocumentCell.swift in Sources */,
-				FC38089627D09DBA0023D713 /* TeamSelectViewController.swift in Sources */,
+				FC38089627D09DBA0023D713 /* MeetingTeamSelectViewController.swift in Sources */,
 				FC9FC1FA27D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift in Sources */,
 				FC6AB4D627C0C4D700797C44 /* AppDelegate.swift in Sources */,
 				FCAE0D3A27D4A48800B05D94 /* MeetingParticipantProfileCell.swift in Sources */,
@@ -706,6 +713,7 @@
 				FC06E98F27C3F63E004065E3 /* SizeValueConstant.swift in Sources */,
 				FCAE0D4127D4FFC600B05D94 /* MeetingParticipantCreationViewModel.swift in Sources */,
 				FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */,
+				FC39DFD127D76E49002465EB /* MeetingTeamSelectViewModel.swift in Sources */,
 				FC47215C27CA14E700F7A035 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
