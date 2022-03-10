@@ -22,19 +22,33 @@ class MeetingAgendaCreationViewModel {
     var agendaIssueSubject = PublishSubject<[String]>()
     var agendaDocumentSubject = PublishSubject<[Data]>()
     
+    var meetingCreationData:MeetingCreation?
+    let meetingDateSubject = BehaviorSubject<String>(value: "")
+    let meetingTimeSubject = BehaviorSubject<String>(value: "")
+    let meetingTitleSubject = BehaviorSubject<String>(value: "")
+    
     let disposeBag = DisposeBag()
+    
     func initAgendas() {
         agendasSubject.onNext(agendas)
         nowAgendaIndexSubject.onNext(nowAgendaIndex)
         agendaIssueSubject.onNext(agendas[nowAgendaIndex].issue)
         
-        nowAgendaIndexSubject.subscribe(onNext: {
-            self.nowAgendaIndex = $0
-            self.nowAgendaSubject.onNext(self.agendas[self.nowAgendaIndex])
-            self.agendaIssueSubject.onNext(self.agendas[self.nowAgendaIndex].issue)
-            self.agendaDocumentSubject.onNext(self.agendas[self.nowAgendaIndex].document)
-            print($0+1)
-        }).disposed(by: disposeBag)
+        agendasSubject
+            .withUnretained(self)
+            .subscribe(onNext: { owner, agendas in
+                owner.meetingCreationData?.agendas = agendas
+            }).disposed(by: disposeBag)
+        
+        nowAgendaIndexSubject
+            .withUnretained(self)
+            .subscribe(onNext: { owner, index in
+                owner.nowAgendaIndex = index
+                owner.nowAgendaSubject.onNext(owner.agendas[owner.nowAgendaIndex])
+                owner.agendaIssueSubject.onNext(owner.agendas[owner.nowAgendaIndex].issue)
+                owner.agendaDocumentSubject.onNext(owner.agendas[owner.nowAgendaIndex].document)
+            
+            }).disposed(by: disposeBag)
         
     }
     
@@ -80,11 +94,13 @@ class MeetingAgendaCreationViewModel {
     
     func saveAgendaTitle(title:String) {
         agendas[nowAgendaIndex].title = title
+        agendasSubject.onNext(agendas)
     }
     
     func saveAgendaIssue(issue:String, index:Int) {
         if index < agendas[nowAgendaIndex].issue.count {
             agendas[nowAgendaIndex].issue[index] = issue
+            agendasSubject.onNext(agendas)
         }
     }
     
@@ -92,5 +108,12 @@ class MeetingAgendaCreationViewModel {
         agendas[nowAgendaIndex].issue.remove(at: index)
         agendasSubject.onNext(agendas)
         agendaIssueSubject.onNext(agendas[nowAgendaIndex].issue)
+    }
+    
+    func setMeetingCreationData(data: MeetingCreation) {
+        meetingCreationData = data
+        meetingDateSubject.onNext(data.date.changeMeetingCreationDateToKoreanString())
+        meetingTimeSubject.onNext(data.startTime.changeMeetingCreationTimeToAString() + " ~ " + data.endTime.changeMeetingCreationTimeToAString())
+        meetingTitleSubject.onNext(data.title)
     }
 }

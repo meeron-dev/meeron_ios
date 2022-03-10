@@ -8,9 +8,17 @@
 import Foundation
 
 struct MeetingCreation {
-    var date:Date?
-    var startTime:Date?
-    var endTime:Date?
+    var date:Date = Date()
+    var startTime:Date = Date()
+    var endTime:Date = Date()
+    var title:String = ""
+    var purpose:String = ""
+    var managers:[WorkspaceUser] = []
+    var team:Team?
+    var agendas:[Agenda] = []
+    var participants:[WorkspaceUser] = []
+    
+    var meetingId:String = ""
 }
 
 struct Agenda {

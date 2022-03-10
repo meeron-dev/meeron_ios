@@ -45,10 +45,21 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     private func configureUI() {
         self.navigationItem.titleView = UILabel.meetingCreationNavigationItemTitleLabel
         
+        
         configureButton()
         addTapGesture()
         configureTextField()
+        setMeetingCreationData()
         
+    }
+    
+    func setMeetingCreationData() {
+        meetingBaiscInfoCreationVM.meetingDateSubject
+            .bind(to: meetingDateLabel.rx.text)
+            .disposed(by: disposeBag)
+        meetingBaiscInfoCreationVM.meetingTimeSubject
+            .bind(to: meetingTimeLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
     private func configureButton() {
@@ -155,6 +166,11 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
         teamSelectVC.modalPresentationStyle = .custom
         teamSelectVC.transitioningDelegate = self
         present(teamSelectVC, animated: true, completion: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let meetingAgendaCreationVC = segue.destination as? MeetingAgendaCreationViewController else { return}
+        guard let data = meetingBaiscInfoCreationVM.meetingCreationData else {return}
+        meetingAgendaCreationVC.meetingAgendaCreationVM.setMeetingCreationData(data: data)
     }
     
     

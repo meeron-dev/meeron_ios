@@ -19,19 +19,47 @@ class MeetingParticipantCreationViewModel {
     let userProfilesSubejct = PublishSubject<[WorkspaceUser]>()
     
     var selectedUserProfiles:[WorkspaceUser] = []
+    var selectedUserProfilesSubject = PublishSubject<[WorkspaceUser]>()
     var selectedUserProfilesCountSubject = BehaviorSubject<Int>(value: 0)
     
+    var meetingCreationData:MeetingCreation?
+    let meetingDateSubject = BehaviorSubject<String>(value: "")
+    let meetingTimeSubject = BehaviorSubject<String>(value: "")
+    let meetingTitleSubject = BehaviorSubject<String>(value: "")
+    
     let teamRepository = TeamRepository()
+    let meetingCreationRepository = MeetingCreationRepository()
+    
+    let sucessMeetingAgendaCreationSubject = BehaviorSubject<Bool>(value: false)
+    let sucessMeetingParticipantCreationSubject = BehaviorSubject<Bool>(value: false)
     
     let disposeBag = DisposeBag()
     
     init(){
-        loadTeamInWorkspace()
         nowTeamSubject
             .withUnretained(self)
             .subscribe(onNext: { owner, team in
                 owner.chageNowTeam(team: team)
             }).disposed(by: disposeBag)
+        
+        selectedUserProfilesSubject
+            .withUnretained(self)
+            .subscribe(onNext: { owner, users in
+                owner.meetingCreationData?.participants = users
+            }).disposed(by: disposeBag)
+        
+    }
+    
+    func isManager(data:WorkspaceUser) -> Bool {
+        guard let meetingCreationData = meetingCreationData else {
+            return false
+        }
+
+        if meetingCreationData.managers.contains(data) {
+            return true
+        }else {
+            return false
+        }
     }
     
     func chageNowTeam(team:Team?) {
@@ -57,18 +85,22 @@ class MeetingParticipantCreationViewModel {
     
     func addSelectedUserProfile(data:WorkspaceUser) {
         selectedUserProfiles.append(data)
-        selectedUserProfilesCountSubject.onNext(selectedUserProfiles.count)
+        selectedUserProfilesSubject.onNext(selectedUserProfiles)
+        selectedUserProfilesCountSubject.onNext(selectedUserProfiles.count + meetingCreationData!.managers.count)
     }
     
-    func addSelectedUserProfiles(data:[WorkspaceUser]) {
-        selectedUserProfiles += data
-        selectedUserProfilesCountSubject.onNext(selectedUserProfiles.count)
+    func updateSelectedUserProfiles(data:[WorkspaceUser]) {
+        selectedUserProfiles = data
+        selectedUserProfilesSubject.onNext(selectedUserProfiles)
+        selectedUserProfilesCountSubject.onNext(selectedUserProfiles.count + meetingCreationData!.managers.count)
+        userProfilesSubejct.onNext(userProfiles)
     }
     
     func deleteSelectedUserProfile(data:WorkspaceUser) {
         if let index = selectedUserProfiles.firstIndex(of: data) {
             selectedUserProfiles.remove(at: index)
-            selectedUserProfilesCountSubject.onNext(selectedUserProfiles.count)
+            selectedUserProfilesSubject.onNext(selectedUserProfiles)
+            selectedUserProfilesCountSubject.onNext(selectedUserProfiles.count + meetingCreationData!.managers.count)
         }
     }
     
@@ -108,9 +140,63 @@ class MeetingParticipantCreationViewModel {
                 if let users = users {
                     owner.userProfiles = users.workspaceUsers
                     owner.userProfilesSubejct.onNext(users.workspaceUsers)
-                    print(users)
                 }
                 
             }).disposed(by: disposeBag)
+    }
+    
+    func setMeetingCreationData(data: MeetingCreation) {
+        meetingCreationData = data
+        meetingDateSubject.onNext(data.date.changeMeetingCreationDateToKoreanString())
+        meetingTimeSubject.onNext(data.startTime.changeMeetingCreationTimeToAString() + " ~ " + data.endTime.changeMeetingCreationTimeToAString())
+        meetingTitleSubject.onNext(data.title)
+        selectedUserProfilesCountSubject.onNext(meetingCreationData!.managers.count)
+        loadTeamInWorkspace()
+    }
+    
+    
+    func createMeeting() {
+        createMeetingBasicInfo()
+    }
+    
+    func createMeetingBasicInfo() {
+        meetingCreationRepository.createMeeting(data: meetingCreationData!)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, meeting in
+                if let meeting = meeting {
+                    owner.meetingCreationData?.meetingId = String(meeting.meetingId)
+                    owner.createMeetingParticipant()
+                    owner.createMeetingAgenda()
+                    print("미팅 id", meeting.meetingId)
+                }else {
+                    print("미팅 생성 실패")
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    func createMeetingParticipant() {
+        if meetingCreationData!.participants.count == 0 {
+            sucessMeetingParticipantCreationSubject.onNext(true)
+        }else {
+            meetingCreationRepository.createMeetingParticipant(data: meetingCreationData!, meetingId: meetingCreationData!.meetingId)
+                .withUnretained(self)
+                .subscribe(onNext: { owner, success in
+                    print("참가자 생성", success)
+                    owner.sucessMeetingParticipantCreationSubject.onNext(success)
+                }).disposed(by: disposeBag)
+        }
+    }
+    
+    func createMeetingAgenda() {
+        if meetingCreationData!.agendas.count == 0 {
+            sucessMeetingAgendaCreationSubject.onNext(true)
+        }else {
+            meetingCreationRepository.createMeetingAgenda(datas: meetingCreationData!.agendas, meetingId: meetingCreationData!.meetingId)
+                .withUnretained(self)
+                .subscribe(onNext: { owner, success in
+                    print("아젠다 생성", success)
+                    owner.sucessMeetingAgendaCreationSubject.onNext(success)
+                }).disposed(by: disposeBag)
+        }
     }
 }

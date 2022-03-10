@@ -13,12 +13,14 @@ class MeetingAgendaCreationViewController: UIViewController {
     @IBOutlet weak var prevButton:UIButton!
     @IBOutlet weak var nextButton:UIButton!
     
-    @IBOutlet weak var meetingDate:UILabel!
-    @IBOutlet weak var meetingTime:UILabel!
-    @IBOutlet weak var meetingTitle:UILabel!
+    @IBOutlet weak var meetingDateLabel:UILabel!
+    @IBOutlet weak var meetingTimeLabel:UILabel!
+    @IBOutlet weak var meetingTitleLabel:UILabel!
     
     
     @IBOutlet weak var agendaTitleTextField: UITextField!
+    @IBOutlet weak var agendaTitleTextLimitLabelWidth: NSLayoutConstraint!
+    
     @IBOutlet weak var agendaTitleLabel: UILabel!
     
     @IBOutlet weak var addAgendaButton:UIButton!
@@ -55,7 +57,10 @@ class MeetingAgendaCreationViewController: UIViewController {
         setupCollectionView()
         setupTableView()
         saveContent()
+        
         setupKeyboardNoti()
+        setMeetingCreationData()
+        
         meetingAgendaCreationVM.initAgendas()
         
     }
@@ -204,6 +209,18 @@ class MeetingAgendaCreationViewController: UIViewController {
         
     }
     
+    func setMeetingCreationData() {
+        meetingAgendaCreationVM.meetingDateSubject
+            .bind(to: meetingDateLabel.rx.text)
+            .disposed(by: disposeBag)
+        meetingAgendaCreationVM.meetingTimeSubject
+            .bind(to: meetingTimeLabel.rx.text)
+            .disposed(by: disposeBag)
+        meetingAgendaCreationVM.meetingTitleSubject
+            .bind(to: meetingTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
     func saveContent() {
         agendaTitleTextField.rx.text.subscribe(onNext: {
             self.meetingAgendaCreationVM.saveAgendaTitle(title: $0 ?? "")
@@ -212,6 +229,14 @@ class MeetingAgendaCreationViewController: UIViewController {
     
     func setAgendaContent(data:Agenda) {
         agendaTitleTextField.text = data.title
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let meetingParticipantCreationVC = segue.destination as? MeetingParticipantCreationViewController else {return}
+        
+        guard let data = meetingAgendaCreationVM.meetingCreationData else {return}
+        
+        meetingParticipantCreationVC.meetingParticipantCreationVM.setMeetingCreationData(data: data)
     }
     
     @objc func dismissKeyboard() {

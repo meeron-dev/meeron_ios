@@ -14,9 +14,9 @@ class MeetingParticipantCreationViewController:UIViewController {
     @IBOutlet weak var prevButton:UIButton!
     @IBOutlet weak var nextButton:UIButton!
     
-    @IBOutlet weak var meetingDate:UILabel!
-    @IBOutlet weak var meetingTime:UILabel!
-    @IBOutlet weak var meetingTitle:UILabel!
+    @IBOutlet weak var meetingDateLabel: UILabel!
+    @IBOutlet weak var meetingTimeLabel: UILabel!
+    @IBOutlet weak var meetingTitleLabel: UILabel!
     
     @IBOutlet weak var teamTableView: UITableView!
     @IBOutlet weak var participantCountLabel:UILabel!
@@ -38,6 +38,8 @@ class MeetingParticipantCreationViewController:UIViewController {
         configureUI()
         setupTableView()
         setupCollectionView()
+        setMeetingCreationData()
+        checkMeetingCreation()
     }
     
     private func setupCollectionView() {
@@ -55,6 +57,12 @@ class MeetingParticipantCreationViewController:UIViewController {
                 }else {
                     cell.deselectProfile()
                 }
+                
+                if self.meetingParticipantCreationVM.isManager(data: element) {
+                    cell.selectProfile()
+                    cell.managerLabel.text = "공동 관리자"
+                }
+                
                 return cell
             }.disposed(by: disposeBag)
         
@@ -62,7 +70,9 @@ class MeetingParticipantCreationViewController:UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
                 let cell = owner.participantProfileCollectionView.cellForItem(at: indexPath) as! MeetingParticipantProfileCell
-                owner.meetingParticipantCreationVM.selectUserProfile(data: cell.profileData!)
+                if cell.managerLabel.text != "공동 관리자" {
+                    owner.meetingParticipantCreationVM.selectUserProfile(data: cell.profileData!)
+                }
             }).disposed(by: disposeBag)
         
         setupCollectionViewLayout()
@@ -79,7 +89,7 @@ class MeetingParticipantCreationViewController:UIViewController {
     
     private func setupTableView() {
         
-        meetingParticipantCreationVM.teamsSubject.bind(to: teamTableView.rx.items) { tableView, row, element in
+        meetingParticipantCreationVM.teamsSubject.bind(to: teamTableView.rx.items) {  tableView, row, element in
             let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingParticipantTeamCell", for: IndexPath(row: row, section: 0)) as! MeetingParticipantTeamCell
             cell.setData(data: element)
             return cell
@@ -154,6 +164,19 @@ class MeetingParticipantCreationViewController:UIViewController {
         teamTableView.layer.shadowRadius = 0
     }
     
+    func setMeetingCreationData() {
+        meetingParticipantCreationVM.meetingDateSubject
+            .bind(to: meetingDateLabel.rx.text)
+            .disposed(by: disposeBag)
+        meetingParticipantCreationVM.meetingTimeSubject
+            .bind(to: meetingTimeLabel.rx.text)
+            .disposed(by: disposeBag)
+        meetingParticipantCreationVM.meetingTitleSubject
+            .bind(to: meetingTitleLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    
     @IBAction func back(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -171,6 +194,38 @@ class MeetingParticipantCreationViewController:UIViewController {
         profileSelectVC.transitioningDelegate = self
         present(profileSelectVC, animated: true, completion: nil)
         profileSelectVC.profileSelectTitleLabel.text = "회의 참가자 선택하기"
+        
+        profileSelectVC.meetingProfileSelectVM.setManagers(data: meetingParticipantCreationVM.meetingCreationData!.managers)
+        
+        profileSelectVC.meetingProfileSelectVM.selectedUserProfilesSubject.onNext(meetingParticipantCreationVM.selectedUserProfiles)
+        
+        profileSelectVC.meetingProfileSelectVM.selectedUserProfiles = meetingParticipantCreationVM.selectedUserProfiles
+        
+        
+    }
+    
+    func checkMeetingCreation() {
+        Observable.combineLatest(meetingParticipantCreationVM.sucessMeetingAgendaCreationSubject, meetingParticipantCreationVM.sucessMeetingParticipantCreationSubject) {
+            $0 && $1
+        }
+        .withUnretained(self)
+        .observe(on: MainScheduler.instance)
+        .subscribe(onNext: { owner, success in
+            if success {
+                owner.goMeetingCreationResultView()
+            }
+        }).disposed(by: disposeBag)
+    }
+    
+    @IBAction func createMeeting(_ sender: Any) {
+        
+        meetingParticipantCreationVM.createMeeting()
+    }
+    
+    func goMeetingCreationResultView() {
+        let meetingCreationResultVC = self.storyboard?.instantiateViewController(withIdentifier: "MeetingCreationResultViewController") as! MeetingCreationResultViewController
+        self.navigationController?.pushViewController(meetingCreationResultVC, animated: true)
+        meetingCreationResultVC.setMeetingCreationData(data: meetingParticipantCreationVM.meetingCreationData!)
     }
     
 }
@@ -178,7 +233,7 @@ class MeetingParticipantCreationViewController:UIViewController {
 extension MeetingParticipantCreationViewController: MeetingProfileSelectViewControllerDelegate {
     
     func passSelectedProfiles(selectedProfiles: [WorkspaceUser]) {
-        meetingParticipantCreationVM.addSelectedUserProfiles(data: selectedProfiles)
+        meetingParticipantCreationVM.updateSelectedUserProfiles(data: selectedProfiles)
     }
     
     

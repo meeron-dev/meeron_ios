@@ -37,7 +37,7 @@ class MeetingTimeCreationViewController:UIViewController {
         self.prevButton.addShadow()
         
         setupTime()
-        setupMeetingCreationData()
+        setMeetingCreationData()
     }
     
     func setupTime() {
@@ -52,8 +52,8 @@ class MeetingTimeCreationViewController:UIViewController {
         meetingEndTimeALabel.text = dateFormatter.string(from: now)
     }
     
-    func setupMeetingCreationData() {
-        meetingDateLabel.text = meetingCreationData.date!.toMeetingCreationDateFormatString()
+    func setMeetingCreationData() {
+        meetingDateLabel.text = meetingCreationData.date.changeMeetingCreationDateToKoreanString()
     }
     
     func addDateLabelTap() {
@@ -117,7 +117,7 @@ class MeetingTimeCreationViewController:UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let meetingBasicInfoCreationVC = segue.destination as? MeetingBaiscInfoCreationViewController else { return }
-        meetingBasicInfoCreationVC
+        meetingBasicInfoCreationVC.meetingBaiscInfoCreationVM.setMeetingCreationData(data: meetingCreationData)
     }
     
     @IBAction func back(_ sender: Any) {

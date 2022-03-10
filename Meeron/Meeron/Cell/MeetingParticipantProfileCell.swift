@@ -26,11 +26,11 @@ class MeetingParticipantProfileCell:UICollectionViewCell {
     }
     
     func setData(data:WorkspaceUser?) {
+        managerLabel.text = ""
         guard let data = data else {return}
         profileNameLabel.text = data.nickname
         profilePositionLabel.text = data.position
         profileData = data
-        
         
         if data.profileImageUrl != nil {
             let imgURL = URL(string: data.profileImageUrl!)!

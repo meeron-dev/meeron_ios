@@ -17,7 +17,7 @@ enum EncodingType {
 
 struct Resource<T:Codable> {
     let url:String
-    let parameter:[String:String]
+    let parameter:[String:Any]
     let headers:HTTPHeaders
     let method:HTTPMethod
     let encodingType:EncodingType
@@ -46,9 +46,23 @@ struct API {
                     let decodedData = try JSONDecoder().decode(T.self, from: data)
                     return Observable.just(decodedData)
                 default:
+                    print("📍",response)
                     return Observable.just(nil)
                 }
             })
+    }
+    
+    func requestResponse(resource:Resource<Bool>) -> Observable<Bool> {
+        return RxAlamofire.requestResponse(resource.method, resource.url, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
+            .flatMap { response -> Observable<Bool> in
+                switch response.statusCode{
+                case 200...299:
+                    return Observable.just(true)
+                default:
+                    print("📍",response)
+                    return Observable.just(false)
+                }
+        }
     }
     
     func login(email:String, nickname:String, profileImageUrl:String, provider:String) {

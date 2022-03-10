@@ -21,10 +21,19 @@ class MeetingBaiscInfoCreationViewModel {
     
     let disposeBag = DisposeBag()
    
+    var meetingCreationData:MeetingCreation?
+    var meetingDateSubject = BehaviorSubject<String>(value: "")
+    var meetingTimeSubject = BehaviorSubject<String>(value: "")
+    
     func setTitle(title:String) {
         self.title = title
         if title != "" {
-            validTitleSubject.onNext(true)
+            self.meetingCreationData?.title = title
+            if title.count < 3 {
+                validTitleSubject.onNext(false)
+            }else {
+                validTitleSubject.onNext(true)
+            }
         }else {
             validTitleSubject.onNext(false)
         }
@@ -34,6 +43,7 @@ class MeetingBaiscInfoCreationViewModel {
         self.purpose = purpose
         if purpose != "" {
             validPurposeSubject.onNext(true)
+            self.meetingCreationData?.purpose = purpose
         }else {
             validPurposeSubject.onNext(false)
         }
@@ -43,6 +53,7 @@ class MeetingBaiscInfoCreationViewModel {
         self.team = team
         if team != nil {
             validTeamSubject.onNext(true)
+            self.meetingCreationData?.team = team!
         }else{
             validTeamSubject.onNext(false)
         }
@@ -50,6 +61,7 @@ class MeetingBaiscInfoCreationViewModel {
     
     func setManagers(managers:[WorkspaceUser]) {
         self.managers = managers
+        self.meetingCreationData?.managers = managers
     }
     
     func getManagerNames(datas:[WorkspaceUser]) -> [String] {
@@ -59,5 +71,11 @@ class MeetingBaiscInfoCreationViewModel {
         return managerNames
     }
     
+    func setMeetingCreationData(data: MeetingCreation) {
+        meetingCreationData = data
+        meetingDateSubject.onNext(data.date.changeMeetingCreationDateToKoreanString())
+        meetingTimeSubject.onNext(data.startTime.changeMeetingCreationTimeToAString() + " ~ " + data.endTime.changeMeetingCreationTimeToAString())
+        
+    }
     
 }

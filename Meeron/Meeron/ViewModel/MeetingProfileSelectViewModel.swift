@@ -13,13 +13,25 @@ class MeetingProfileSelectViewModel {
     
     var selectedUserProfilesSubject = BehaviorSubject<[WorkspaceUser]>(value: [])
     var selectedUserProfiles:[WorkspaceUser] = []
+    
     var userProfilesSubject = PublishSubject<[WorkspaceUser]>()
     
-    
+    var managers:[WorkspaceUser] = []
+    let managersSubject = PublishSubject<[WorkspaceUser]>()
     
     let disposeBag = DisposeBag()
     
+    func setManagers(data:[WorkspaceUser]) {
+        managers = data
+    }
     
+    func isManager(data:WorkspaceUser) -> Bool {
+        if managers.contains(data) {
+            return true
+        }else {
+            return false
+        }
+    }
     
     func addSelectedProfileUserIds(profile:WorkspaceUser) {
         if !selectedUserProfiles.contains(profile) {

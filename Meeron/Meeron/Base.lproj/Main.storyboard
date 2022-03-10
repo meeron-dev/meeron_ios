@@ -1789,7 +1789,7 @@
                                                     <constraint firstAttribute="height" constant="0.90000000000000002" id="gY8-fc-hQG"/>
                                                 </constraints>
                                             </view>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="아젠다~~" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NCK-Wv-0DG">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NCK-Wv-0DG">
                                                 <rect key="frame" x="31" y="163" width="249" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="b4L-s3-ZVD"/>
@@ -1801,6 +1801,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공백 포함 45자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWg-O1-SbE">
                                                 <rect key="frame" x="280" y="164" width="80" height="30"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" constant="80" id="bDo-0O-j0G"/>
                                                     <constraint firstAttribute="height" constant="30" id="sMm-0o-ehn"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -2073,8 +2074,6 @@
                                             <constraint firstItem="pr4-NL-DCx" firstAttribute="leading" secondItem="VIe-Ws-Uh2" secondAttribute="trailing" constant="30" id="krq-IU-hQl"/>
                                             <constraint firstAttribute="trailing" secondItem="4FQ-lU-nNc" secondAttribute="trailing" constant="19" id="kwp-s4-AUW"/>
                                             <constraint firstItem="VIe-Ws-Uh2" firstAttribute="top" secondItem="5uv-ix-dJh" secondAttribute="bottom" constant="57" id="lSB-lU-5Lz"/>
-                                            <constraint firstItem="mWg-O1-SbE" firstAttribute="leading" secondItem="NCK-Wv-0DG" secondAttribute="trailing" id="mHZ-Wl-sBb"/>
-                                            <constraint firstItem="mWg-O1-SbE" firstAttribute="leading" secondItem="NCK-Wv-0DG" secondAttribute="trailing" id="nQe-5v-1ma"/>
                                             <constraint firstAttribute="trailing" secondItem="mWg-O1-SbE" secondAttribute="trailing" constant="30" id="nqh-9Q-qdg"/>
                                             <constraint firstAttribute="trailing" secondItem="YC5-7i-Kao" secondAttribute="trailing" id="pZY-ug-BmT"/>
                                             <constraint firstAttribute="trailing" secondItem="iXk-J1-onf" secondAttribute="trailing" constant="30" id="qpR-3t-WfP"/>
@@ -2191,11 +2190,12 @@
                         <outlet property="agendaSelectBarCollectionView" destination="hJC-Pu-SW4" id="ddt-VH-jnK"/>
                         <outlet property="agendaTitleLabel" destination="iXk-J1-onf" id="bkt-x5-6Cj"/>
                         <outlet property="agendaTitleTextField" destination="NCK-Wv-0DG" id="m3W-LK-ScJ"/>
+                        <outlet property="agendaTitleTextLimitLabelWidth" destination="bDo-0O-j0G" id="Ql9-PN-5AV"/>
                         <outlet property="deleteAgendaButton" destination="taR-dm-ncW" id="Ago-KY-5Ze"/>
                         <outlet property="deleteAgendaButtonWidth" destination="iOh-Wi-60H" id="QDK-Eq-cf7"/>
-                        <outlet property="meetingDate" destination="X9j-8m-aCP" id="Epr-QN-2VY"/>
-                        <outlet property="meetingTime" destination="1QU-0N-SHy" id="cdH-Sk-4Lu"/>
-                        <outlet property="meetingTitle" destination="3Rg-BK-iEk" id="1Q6-4d-oTy"/>
+                        <outlet property="meetingDateLabel" destination="X9j-8m-aCP" id="o4k-z6-xNa"/>
+                        <outlet property="meetingTimeLabel" destination="1QU-0N-SHy" id="5mH-aK-BfJ"/>
+                        <outlet property="meetingTitleLabel" destination="3Rg-BK-iEk" id="aFG-B5-Vh8"/>
                         <outlet property="nextButton" destination="Str-3l-GB0" id="XEa-B4-Acm"/>
                         <outlet property="prevButton" destination="xw2-Xj-8QK" id="eUX-4T-I5z"/>
                     </connections>
@@ -2212,26 +2212,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyY-RY-Oa6">
-                                <rect key="frame" x="30" y="125" width="65" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="FxD-4q-Yyg"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의가" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyY-RY-Oa6">
+                                <rect key="frame" x="30" y="81" width="330" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="생성되었습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Eb-XN-DdI">
-                                <rect key="frame" x="30" y="160" width="158" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="158" id="Eia-qh-FJE"/>
-                                </constraints>
+                                <rect key="frame" x="30" y="116" width="330" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의 날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WB2-qR-s7x">
-                                <rect key="frame" x="29.999999999999996" y="295" width="52.666666666666657" height="35"/>
+                                <rect key="frame" x="29.999999999999996" y="251" width="52.666666666666657" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="52.5" id="d9W-rN-ogo"/>
                                     <constraint firstAttribute="height" constant="35" id="lyO-NV-rIf"/>
@@ -2241,7 +2235,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDL-Kq-J8n">
-                                <rect key="frame" x="213.66666666666663" y="734" width="170.33333333333337" height="57"/>
+                                <rect key="frame" x="201.66666666666663" y="734" width="158.33333333333337" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="BhF-Yp-Qun"/>
                                 </constraints>
@@ -2260,7 +2254,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Yq-f6-XFI">
-                                <rect key="frame" x="30" y="734" width="170.66666666666666" height="57"/>
+                                <rect key="frame" x="30" y="734" width="158.66666666666666" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="6m5-UJ-2Rs"/>
                                 </constraints>
@@ -2281,7 +2275,7 @@
                                 </buttonConfiguration>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFN-wX-0ei">
-                                <rect key="frame" x="30" y="230" width="354" height="37"/>
+                                <rect key="frame" x="30" y="186" width="330" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="FsN-Uh-upV"/>
                                 </constraints>
@@ -2290,7 +2284,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yyyy년 M월 d일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHL-Y9-9Xl">
-                                <rect key="frame" x="146.66666666666663" y="295" width="237.33333333333337" height="35"/>
+                                <rect key="frame" x="146.66666666666663" y="251" width="213.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="ifn-zj-5bf"/>
                                 </constraints>
@@ -2299,7 +2293,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의 성격" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0q-pg-pCa">
-                                <rect key="frame" x="29.999999999999996" y="348" width="52.666666666666657" height="35"/>
+                                <rect key="frame" x="29.999999999999996" y="304" width="52.666666666666657" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="a0c-ty-J2d"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="52.5" id="pNT-aJ-PcM"/>
@@ -2309,7 +2303,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의 성격 내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kg9-hb-lQ0">
-                                <rect key="frame" x="146.66666666666663" y="348" width="237.33333333333337" height="35"/>
+                                <rect key="frame" x="146.66666666666663" y="304" width="213.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="jA9-nT-fH0"/>
                                 </constraints>
@@ -2318,7 +2312,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공동 관리자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0O-2u-QjB">
-                                <rect key="frame" x="30" y="401" width="65" height="35"/>
+                                <rect key="frame" x="30" y="357" width="65" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="TOh-XM-3op"/>
                                     <constraint firstAttribute="height" constant="35" id="Vhx-7M-3Zq"/>
@@ -2327,8 +2321,8 @@
                                 <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OOO 외 n명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4Y-Tx-HQW">
-                                <rect key="frame" x="146.66666666666663" y="401" width="237.33333333333337" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4Y-Tx-HQW">
+                                <rect key="frame" x="146.66666666666663" y="357" width="213.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="cFO-3Y-rR5"/>
                                 </constraints>
@@ -2337,7 +2331,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="담당 팀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udv-jb-Nn2">
-                                <rect key="frame" x="29.999999999999996" y="454" width="52.666666666666657" height="35"/>
+                                <rect key="frame" x="29.999999999999996" y="410" width="52.666666666666657" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="HQk-Mq-bPf"/>
                                     <constraint firstAttribute="width" constant="52.5" id="LeS-KP-A77"/>
@@ -2347,7 +2341,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OOO 팀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOq-Gl-DiR">
-                                <rect key="frame" x="146.66666666666663" y="454" width="237.33333333333337" height="35"/>
+                                <rect key="frame" x="146.66666666666663" y="410" width="213.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="d3J-9E-btu"/>
                                 </constraints>
@@ -2356,7 +2350,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아젠다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vl-PD-gze">
-                                <rect key="frame" x="29.999999999999996" y="507" width="36.666666666666657" height="35"/>
+                                <rect key="frame" x="29.999999999999996" y="463" width="36.666666666666657" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="3vw-Gv-SiW"/>
                                     <constraint firstAttribute="width" constant="36.5" id="eDm-xA-ZiM"/>
@@ -2365,8 +2359,8 @@
                                 <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yyyy년 M월 d일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXn-ba-GGG">
-                                <rect key="frame" x="146.66666666666663" y="507" width="237.33333333333337" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아젠다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXn-ba-GGG">
+                                <rect key="frame" x="146.66666666666663" y="463" width="213.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="djJ-qv-ftA"/>
                                 </constraints>
@@ -2375,7 +2369,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="참가자" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4D-LO-wqb">
-                                <rect key="frame" x="29.999999999999996" y="560" width="52.666666666666657" height="35"/>
+                                <rect key="frame" x="29.999999999999996" y="516" width="52.666666666666657" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="52.5" id="MfM-08-g0r"/>
                                     <constraint firstAttribute="height" constant="35" id="iB2-BH-b51"/>
@@ -2385,7 +2379,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="n명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uni-UJ-hg5">
-                                <rect key="frame" x="146.66666666666663" y="560" width="237.33333333333337" height="35"/>
+                                <rect key="frame" x="146.66666666666663" y="516" width="213.33333333333337" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="3w4-4d-r33"/>
                                 </constraints>
@@ -2408,10 +2402,10 @@
                             <constraint firstItem="C0c-uw-bsh" firstAttribute="trailing" secondItem="kg9-hb-lQ0" secondAttribute="trailing" constant="30" id="BCX-Y5-g1j"/>
                             <constraint firstItem="1Eb-XN-DdI" firstAttribute="top" secondItem="LyY-RY-Oa6" secondAttribute="bottom" constant="5" id="BWZ-eq-7OQ"/>
                             <constraint firstItem="C0c-uw-bsh" firstAttribute="trailing" secondItem="MXn-ba-GGG" secondAttribute="trailing" constant="30" id="Boa-Gb-ngY"/>
-                            <constraint firstItem="C0c-uw-bsh" firstAttribute="trailing" secondItem="LyY-RY-Oa6" secondAttribute="trailing" constant="319" id="E0a-9h-61c"/>
+                            <constraint firstItem="C0c-uw-bsh" firstAttribute="trailing" secondItem="LyY-RY-Oa6" secondAttribute="trailing" constant="30" id="E0a-9h-61c"/>
                             <constraint firstItem="hHL-Y9-9Xl" firstAttribute="leading" secondItem="WB2-qR-s7x" secondAttribute="trailing" constant="64" id="G6x-e5-Gsq"/>
                             <constraint firstItem="3vl-PD-gze" firstAttribute="leading" secondItem="C0c-uw-bsh" secondAttribute="leading" constant="30" id="Ght-r7-Vma"/>
-                            <constraint firstItem="C0c-uw-bsh" firstAttribute="trailing" secondItem="1Eb-XN-DdI" secondAttribute="trailing" constant="226" id="Hhh-Jv-vS3"/>
+                            <constraint firstItem="C0c-uw-bsh" firstAttribute="trailing" secondItem="1Eb-XN-DdI" secondAttribute="trailing" constant="30" id="Hhh-Jv-vS3"/>
                             <constraint firstItem="C0c-uw-bsh" firstAttribute="trailing" secondItem="jDL-Kq-J8n" secondAttribute="trailing" constant="30" id="I6l-gz-8kn"/>
                             <constraint firstItem="l0O-2u-QjB" firstAttribute="top" secondItem="p0q-pg-pCa" secondAttribute="bottom" constant="18" id="IiB-kB-1lU"/>
                             <constraint firstItem="kg9-hb-lQ0" firstAttribute="leading" secondItem="p0q-pg-pCa" secondAttribute="trailing" constant="64" id="MhA-J0-qGc"/>
@@ -2454,14 +2448,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="meetingAgenda" destination="MXn-ba-GGG" id="uUU-Kf-Pm2"/>
+                        <outlet property="meetingAgendaLabel" destination="MXn-ba-GGG" id="vUZ-de-0iz"/>
                         <outlet property="meetingCreationResultButton" destination="jDL-Kq-J8n" id="1hC-wP-aev"/>
-                        <outlet property="meetingDate" destination="hHL-Y9-9Xl" id="UX5-0k-vyb"/>
-                        <outlet property="meetingManagers" destination="X4Y-Tx-HQW" id="yaG-Fl-K7k"/>
-                        <outlet property="meetingNature" destination="kg9-hb-lQ0" id="Egg-hn-hWM"/>
-                        <outlet property="meetingParticipantCount" destination="uni-UJ-hg5" id="sfx-ju-gsl"/>
-                        <outlet property="meetingTeam" destination="sOq-Gl-DiR" id="1TK-Pl-jlA"/>
-                        <outlet property="meetingTitle" destination="HFN-wX-0ei" id="1Pq-Tq-eA7"/>
+                        <outlet property="meetingDateLabel" destination="hHL-Y9-9Xl" id="2wx-oj-sDa"/>
+                        <outlet property="meetingManagersLabel" destination="X4Y-Tx-HQW" id="QdW-MP-T40"/>
+                        <outlet property="meetingParticipantCountLabel" destination="uni-UJ-hg5" id="66R-Io-HXc"/>
+                        <outlet property="meetingPurposeLabel" destination="kg9-hb-lQ0" id="mQ0-Kz-Bmy"/>
+                        <outlet property="meetingTeamLabel" destination="sOq-Gl-DiR" id="3tu-tK-74J"/>
+                        <outlet property="meetingTitleLabel" destination="HFN-wX-0ei" id="xRu-In-ulf"/>
                         <outlet property="okButton" destination="7Yq-f6-XFI" id="c1G-Z6-FZP"/>
                     </connections>
                 </viewController>
@@ -2862,7 +2856,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled">
                                     <attributedString key="attributedTitle">
-                                        <fragment content="다음">
+                                        <fragment content="완료">
                                             <attributes>
                                                 <font key="NSFont" size="18" name="AppleSDGothicNeo-SemiBold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -2872,7 +2866,7 @@
                                     <color key="baseBackgroundColor" red="0.20392156862745098" green="0.59999999999999998" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="cyP-OW-zax" kind="show" id="c4d-3b-Hha"/>
+                                    <action selector="createMeeting:" destination="fXQ-in-2Tj" eventType="touchUpInside" id="jMp-9j-LUB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qN-Hl-dct">
@@ -2972,9 +2966,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="meetingDate" destination="Bqd-LI-CR8" id="yQc-wK-grw"/>
-                        <outlet property="meetingTime" destination="5gY-Ic-Xes" id="imb-gj-R1n"/>
-                        <outlet property="meetingTitle" destination="c8X-1C-bzX" id="fmA-sU-gD2"/>
+                        <outlet property="meetingDateLabel" destination="Bqd-LI-CR8" id="LGV-pT-GSK"/>
+                        <outlet property="meetingTimeLabel" destination="5gY-Ic-Xes" id="ZRb-AL-3f8"/>
+                        <outlet property="meetingTitleLabel" destination="c8X-1C-bzX" id="R7Z-ts-Rtg"/>
                         <outlet property="nextButton" destination="KXu-So-ipp" id="5k4-6E-npi"/>
                         <outlet property="nowTeamLabel" destination="1Ph-94-uBg" id="5DP-dq-OZF"/>
                         <outlet property="participantCountLabel" destination="YF8-x4-3aH" id="goa-5W-unq"/>

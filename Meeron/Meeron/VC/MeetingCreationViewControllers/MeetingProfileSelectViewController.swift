@@ -46,33 +46,6 @@ class MeetingProfileSelectViewController:UIViewController {
         view.addGestureRecognizer(panGesture)
     }
     
-    @objc func dismissWithPanGesture(_ sender:UIPanGestureRecognizer) {
-        viewTranslation = sender.translation(in: view)
-        viewVelocity = sender.velocity(in: view)
-        
-        switch sender.state {
-        case .changed:
-            if abs(viewVelocity.y) > abs(viewVelocity.x) {
-                if viewVelocity.y > 0 {
-                    UIView.animate(withDuration: 0.1) {
-                        self.view.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
-                    }
-                }
-            }
-        case .ended:
-            if viewTranslation.y < 400 {
-                UIView.animate(withDuration: 0.1) {
-                    self.view.transform = .identity
-                }
-            } else {
-                dismiss(animated: true, completion: nil)
-            }
-        default:
-            break
-        }
-
-    }
-    
     private func configureUI() {
         doneButton.addShadow()
         
@@ -132,6 +105,33 @@ class MeetingProfileSelectViewController:UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    @objc func dismissWithPanGesture(_ sender:UIPanGestureRecognizer) {
+        viewTranslation = sender.translation(in: view)
+        viewVelocity = sender.velocity(in: view)
+        
+        switch sender.state {
+        case .changed:
+            if abs(viewVelocity.y) > abs(viewVelocity.x) {
+                if viewVelocity.y > 0 {
+                    UIView.animate(withDuration: 0.1) {
+                        self.view.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+                    }
+                }
+            }
+        case .ended:
+            if viewTranslation.y < 400 {
+                UIView.animate(withDuration: 0.1) {
+                    self.view.transform = .identity
+                }
+            } else {
+                dismiss(animated: true, completion: nil)
+            }
+        default:
+            break
+        }
+
     }
 }
 

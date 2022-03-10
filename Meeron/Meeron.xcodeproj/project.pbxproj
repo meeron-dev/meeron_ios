@@ -45,6 +45,8 @@
 		FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */; };
 		FC7CA8F027C27C3800110D24 /* kakao_login_medium_wide.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7CA8EF27C27C3800110D24 /* kakao_login_medium_wide.png */; };
 		FC8393A427C66F6400981622 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8393A327C66F6400981622 /* DateCell.swift */; };
+		FC9A803F27D9D49300C3B836 /* MeetingCreationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A803E27D9D49300C3B836 /* MeetingCreationRepository.swift */; };
+		FC9A804127D9D53400C3B836 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A804027D9D53400C3B836 /* Meeting.swift */; };
 		FC9FC1F827D5E8A800340283 /* MeetingProfileSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */; };
 		FC9FC1FA27D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FC1F927D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift */; };
 		FC9FD92D27C4BF60009DE526 /* MeetingCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FD92C27C4BF60009DE526 /* MeetingCardCell.swift */; };
@@ -137,6 +139,8 @@
 		FC7CA8EE27C2255400110D24 /* Meeron.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meeron.entitlements; sourceTree = "<group>"; };
 		FC7CA8EF27C27C3800110D24 /* kakao_login_medium_wide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kakao_login_medium_wide.png; path = ../../../Downloads/kakao_login/ko/kakao_login_medium_wide.png; sourceTree = "<group>"; };
 		FC8393A327C66F6400981622 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		FC9A803E27D9D49300C3B836 /* MeetingCreationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCreationRepository.swift; sourceTree = "<group>"; };
+		FC9A804027D9D53400C3B836 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingProfileSelectViewModel.swift; sourceTree = "<group>"; };
 		FC9FC1F927D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingBaiscInfoCreationViewModel.swift; sourceTree = "<group>"; };
 		FC9FD92C27C4BF60009DE526 /* MeetingCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCardCell.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				FC3262E927D8954D00D5AA13 /* TeamRepository.swift */,
+				FC9A803E27D9D49300C3B836 /* MeetingCreationRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 				FC47215B27CA14E700F7A035 /* User.swift */,
 				FCEFFD7427CF304300D54CD4 /* MeetingCreation.swift */,
 				FC39DFD227D777CF002465EB /* Team.swift */,
+				FC9A804027D9D53400C3B836 /* Meeting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -388,10 +394,10 @@
 				FC3808A327D0CF2F0023D713 /* AgendaIssueCell.swift */,
 				FC3808A527D0CFA30023D713 /* AgendaDocumentCell.swift */,
 				FC651A8727D256C800A64D8A /* AgendaSelectBarCell.swift */,
-				FCAE0D3827D4A48800B05D94 /* MeetingProfileSelectCell.swift */,
-				FCAE0D3C27D4EFA500B05D94 /* MeetingTeamSelectCell.swift */,
 				FCAE0D3E27D4FCC700B05D94 /* MeetingParticipantTeamCell.swift */,
 				FC3262EB27D8C20500D5AA13 /* MeetingParticipantProfileCell.swift */,
+				FCAE0D3827D4A48800B05D94 /* MeetingProfileSelectCell.swift */,
+				FCAE0D3C27D4EFA500B05D94 /* MeetingTeamSelectCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -677,6 +683,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC9A803F27D9D49300C3B836 /* MeetingCreationRepository.swift in Sources */,
 				FC6AB4DA27C0C4D700797C44 /* LoginViewController.swift in Sources */,
 				FC06E98927C3DC71004065E3 /* UIColor+CustomColor.swift in Sources */,
 				FCA1AF8127CBD11F00152F53 /* RealmStorage.swift in Sources */,
@@ -717,6 +724,7 @@
 				FC3262EC27D8C20500D5AA13 /* MeetingParticipantProfileCell.swift in Sources */,
 				FC3262EA27D8954D00D5AA13 /* TeamRepository.swift in Sources */,
 				FC38089427D0779C0023D713 /* MeetingProfileSelectViewController.swift in Sources */,
+				FC9A804127D9D53400C3B836 /* Meeting.swift in Sources */,
 				FCB36CF927CD1BB700ACF591 /* PickerViewController.swift in Sources */,
 				FC651A8827D256C800A64D8A /* AgendaSelectBarCell.swift in Sources */,
 				FC06E98327C3ABFF004065E3 /* HomeViewController.swift in Sources */,

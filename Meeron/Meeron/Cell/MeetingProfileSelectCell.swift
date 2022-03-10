@@ -24,7 +24,6 @@ class MeetingProfileSelectCell: UICollectionViewCell {
         super.awakeFromNib()
         
         configureUI()
-        addTapGesture()
         deselectProfile()
     }
     
@@ -87,10 +86,20 @@ class MeetingProfileSelectCell: UICollectionViewCell {
         profileData = data
         meetingProfileSelectVM = vm
         
-        if meetingProfileSelectVM!.isSelectedProfile(profile: data) {
+        if vm.isSelectedProfile(profile: data) {
             selectProfile()
         }else {
             deselectProfile()
+        }
+        
+        if vm.isManager(data: data) {
+            selectProfile()
+            managerLabel.text = "공동 관리자"
+            entireProfileView.isUserInteractionEnabled = false
+        }else {
+            managerLabel.text = ""
+            entireProfileView.isUserInteractionEnabled = true
+            addTapGesture()
         }
         
         if data.profileImageUrl != nil {
