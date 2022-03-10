@@ -222,7 +222,7 @@ class MeetingAgendaCreationViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func next(_ sender: Any) {
+    @IBAction func exitMeeingCreation(_ sender: Any) {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
     

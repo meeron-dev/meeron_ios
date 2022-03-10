@@ -71,10 +71,10 @@ class MeetingDateCreationViewController:UIViewController {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let meetingTimeCreationVC = segue.destination as? MeetingTimeCreationViewController else { return }
         meetingTimeCreationVC.meetingCreationData = meetingCreationData
-    }*/
+    }
     
 }
 

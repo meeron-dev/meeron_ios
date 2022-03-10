@@ -15,7 +15,7 @@ class HomeViewController:UIViewController {
     @IBOutlet weak var meetingCollectionView: UICollectionView!
     @IBOutlet weak var calendarButton: UIButton!
     @IBOutlet weak var uncheckUpdatesDoneMeetingDotView: UIView!
-    @IBOutlet weak var bellBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var meetingCreationBarButtonItem: UIBarButtonItem!
     
     let disposeBag = DisposeBag()
     

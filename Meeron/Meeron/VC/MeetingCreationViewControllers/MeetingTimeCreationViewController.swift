@@ -20,7 +20,7 @@ class MeetingTimeCreationViewController:UIViewController {
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     
-    //var meetingCreationData:MeetingCreation!
+    var meetingCreationData:MeetingCreation!
     
     let disposeBag = DisposeBag()
     
@@ -37,7 +37,7 @@ class MeetingTimeCreationViewController:UIViewController {
         self.prevButton.addShadow()
         
         setupTime()
-        //setupMeetingCreationData()
+        setupMeetingCreationData()
     }
     
     func setupTime() {
@@ -52,9 +52,9 @@ class MeetingTimeCreationViewController:UIViewController {
         meetingEndTimeALabel.text = dateFormatter.string(from: now)
     }
     
-    /*func setupMeetingCreationData() {
+    func setupMeetingCreationData() {
         meetingDateLabel.text = meetingCreationData.date!.toMeetingCreationDateFormatString()
-    }*/
+    }
     
     func addDateLabelTap() {
         let meetingStartTimeLabelTap = UITapGestureRecognizer(target: self, action: #selector(showStartTimePickerView))
@@ -93,29 +93,31 @@ class MeetingTimeCreationViewController:UIViewController {
     }
     
     func setStartTime(time:Date) {
-        //meetingCreationData.startTime = time
+        meetingCreationData.startTime = time
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm"
         meetingStartTimeLabel.text = dateFormatter.string(from: time)
-        print(time)
+        
         dateFormatter.dateFormat = "a"
-        print(dateFormatter.string(from: time))
         meetingStartTimeALabel.text = dateFormatter.string(from: time)
         
     }
     
     func setEndTime(time:Date) {
-        //meetingCreationData.endTime = time
+        meetingCreationData.endTime = time
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mm"
         meetingEndTimeLabel.text = dateFormatter.string(from: time)
-        print(time)
+        
         dateFormatter.dateFormat = "a"
         meetingEndTimeALabel.text = dateFormatter.string(from: time)
-        dateFormatter.dateFormat = "yyyy년 M월 d일 h시 mm분"
-        print(dateFormatter.string(from: time))
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let meetingBasicInfoCreationVC = segue.destination as? MeetingBaiscInfoCreationViewController else { return }
+        meetingBasicInfoCreationVC
     }
     
     @IBAction func back(_ sender: Any) {

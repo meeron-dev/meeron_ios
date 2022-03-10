@@ -20,7 +20,7 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     @IBOutlet weak var bringMeetingInfoButton:UIButton!
     
     @IBOutlet weak var meetingTitleTextField:UITextField!
-    @IBOutlet weak var meetingNatureTextField:UITextField!
+    @IBOutlet weak var meetingPurposeTextField:UITextField!
     
     @IBOutlet weak var meetingManagersLabel:UILabel!
     @IBOutlet weak var meetingTeamLabel:UILabel!
@@ -28,7 +28,7 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     @IBOutlet weak var basicInfoContentView:UIView!
     
     @IBOutlet weak var meetingTitleTextLimitLabelWidth: NSLayoutConstraint!
-    @IBOutlet weak var meetingNatureTextLimitLabelWidth: NSLayoutConstraint!
+    @IBOutlet weak var meetingPurposeTextLimitLabelWidth: NSLayoutConstraint!
     
     @IBOutlet weak var basicInfoScrollView: UIScrollView!
     var scrollViewOriginalOffset = CGPoint(x: 0, y: 0)
@@ -45,11 +45,24 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     private func configureUI() {
         self.navigationItem.titleView = UILabel.meetingCreationNavigationItemTitleLabel
         
-        prevButton.addShadow()
-        nextButton.addShadow()
+        configureButton()
         addTapGesture()
         configureTextField()
         
+    }
+    
+    private func configureButton() {
+        prevButton.addShadow()
+        nextButton.addShadow()
+        
+        Observable.combineLatest(meetingBaiscInfoCreationVM.validTitleSubject, meetingBaiscInfoCreationVM.validPurposeSubject, meetingBaiscInfoCreationVM.validTeamSubject) {
+            $0 && $1 && $2
+        }
+        .withUnretained(self)
+        .observe(on: MainScheduler.instance)
+        .subscribe(onNext: { owner, valid in
+            owner.nextButton.isEnabled = valid
+        }).disposed(by: disposeBag)
     }
     
     func setupKeyboardNoti() {
@@ -69,6 +82,9 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     }
     
     private func configureTextField() {
+        meetingTitleTextField.attributedPlaceholder = NSAttributedString(string:"필수 입력 정보입니다.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
+        meetingPurposeTextField.attributedPlaceholder = NSAttributedString(string:"필수 입력 정보입니다.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray])
+        
         meetingTitleTextField.rx.text.orEmpty
             .observe(on: MainScheduler.asyncInstance)
             .withUnretained(self)
@@ -79,29 +95,32 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
                     owner.meetingTitleTextField.text = String(text.prefix(35))
                     owner.meetingTitleTextField.resignFirstResponder()
                 }
+                owner.meetingBaiscInfoCreationVM.setTitle(title: owner.meetingTitleTextField.text!)
             }else{
                 owner.meetingTitleTextLimitLabelWidth.constant = 80
+                owner.meetingBaiscInfoCreationVM.setTitle(title: "")
             }
         }).disposed(by: disposeBag)
         
-        meetingNatureTextField.rx.text.orEmpty
+        meetingPurposeTextField.rx.text.orEmpty
             .withUnretained(self)
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { owner, text in
                 if text != "" {
-                    owner.meetingNatureTextLimitLabelWidth.constant = 0
+                    owner.meetingPurposeTextLimitLabelWidth.constant = 0
                     if text.count > 10 {
-                        owner.meetingNatureTextField.text = String(text.prefix(10))
-                        owner.meetingNatureTextField.resignFirstResponder()
+                        owner.meetingPurposeTextField.text = String(text.prefix(10))
+                        owner.meetingPurposeTextField.resignFirstResponder()
                     }
+                    owner.meetingBaiscInfoCreationVM.setPurpose(purpose: owner.meetingPurposeTextField.text!)
+                    
                 }else{
-                    owner.meetingNatureTextLimitLabelWidth.constant = 80
+                    owner.meetingPurposeTextLimitLabelWidth.constant = 80
+                    owner.meetingBaiscInfoCreationVM.setPurpose(purpose: "")
                 }
             }).disposed(by: disposeBag)
         
     }
-    
-    
     
     func addTapGesture() {
         let managersTapGesture = UITapGestureRecognizer()
@@ -138,6 +157,7 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
         present(teamSelectVC, animated: true, completion: nil)
     }
     
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -163,7 +183,7 @@ extension MeetingBaiscInfoCreationViewController:UIViewControllerTransitioningDe
 
 extension MeetingBaiscInfoCreationViewController:MeetingProfileSelectViewControllerDelegate {
     func passSelectedProfiles(selectedProfiles: [WorkspaceUser]) {
-        meetingBaiscInfoCreationVM.setManagers(datas: selectedProfiles)
+        meetingBaiscInfoCreationVM.setManagers(managers: selectedProfiles)
         let managerNames = meetingBaiscInfoCreationVM.getManagerNames(datas: selectedProfiles)
         meetingManagersLabel.text = managerNames.joined(separator: ", ")
     }
@@ -172,11 +192,13 @@ extension MeetingBaiscInfoCreationViewController:MeetingProfileSelectViewControl
 
 extension MeetingBaiscInfoCreationViewController: MeetingTeamSelectViewControllerDelegate {
     func passSelectedTeam(data: Team?) {
-        meetingBaiscInfoCreationVM.setTeam(data: data)
+        meetingBaiscInfoCreationVM.setTeam(team: data)
         if data == nil {
-            meetingTeamLabel.text = ""
+            meetingTeamLabel.text = "필수 입력 정보입니다."
+            meetingTeamLabel.textColor = .darkGray
         }else {
             meetingTeamLabel.text = data?.teamName
+            meetingTeamLabel.textColor = .textBalck
         }
     }
 }

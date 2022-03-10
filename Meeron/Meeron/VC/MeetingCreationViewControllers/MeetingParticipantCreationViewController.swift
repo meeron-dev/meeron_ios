@@ -19,7 +19,8 @@ class MeetingParticipantCreationViewController:UIViewController {
     @IBOutlet weak var meetingTitle:UILabel!
     
     @IBOutlet weak var teamTableView: UITableView!
-    @IBOutlet weak var participantCountDate:UILabel!
+    @IBOutlet weak var participantCountLabel:UILabel!
+    @IBOutlet weak var nowTeamLabel: UILabel!
     
     @IBOutlet weak var searchButton:UIButton!
     
@@ -30,6 +31,7 @@ class MeetingParticipantCreationViewController:UIViewController {
     
     
     let meetingParticipantCreationVM = MeetingParticipantCreationViewModel()
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +41,30 @@ class MeetingParticipantCreationViewController:UIViewController {
     }
     
     private func setupCollectionView() {
-        participantProfileCollectionView.dataSource = self
-        participantProfileCollectionView.delegate = self
-        participantProfileCollectionView.register(UINib(nibName: "MeetingParticipantProfileCell", bundle: nil), forCellWithReuseIdentifier: "MeetingParticipantProfileCell")
+        
+        meetingParticipantCreationVM.userProfilesSubejct
+            .bind(to: participantProfileCollectionView.rx.items) { [weak self] collectionView, row, element in
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MeetingParticipantProfileCell", for: IndexPath(row: row, section: 0)) as! MeetingParticipantProfileCell
+                cell.setData(data: element)
+                guard let self = self else {
+                    return cell
+                }
+
+                if self.meetingParticipantCreationVM.isSelectedUserProfile(data: element) {
+                    cell.selectProfile()
+                }else {
+                    cell.deselectProfile()
+                }
+                return cell
+            }.disposed(by: disposeBag)
+        
+        participantProfileCollectionView.rx.itemSelected
+            .withUnretained(self)
+            .subscribe(onNext: { owner, indexPath in
+                let cell = owner.participantProfileCollectionView.cellForItem(at: indexPath) as! MeetingParticipantProfileCell
+                owner.meetingParticipantCreationVM.selectUserProfile(data: cell.profileData!)
+            }).disposed(by: disposeBag)
+        
         setupCollectionViewLayout()
         
     }
@@ -55,8 +78,20 @@ class MeetingParticipantCreationViewController:UIViewController {
     }
     
     private func setupTableView() {
-        teamTableView.delegate = self
-        teamTableView.dataSource = self
+        
+        meetingParticipantCreationVM.teamsSubject.bind(to: teamTableView.rx.items) { tableView, row, element in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingParticipantTeamCell", for: IndexPath(row: row, section: 0)) as! MeetingParticipantTeamCell
+            cell.setData(data: element)
+            return cell
+        }.disposed(by: disposeBag)
+        
+        teamTableView.rx.itemSelected
+            .withUnretained(self)
+            .subscribe(onNext: { owner, index in
+                let cell = owner.teamTableView.cellForRow(at: index) as! MeetingParticipantTeamCell
+                owner.meetingParticipantCreationVM.nowTeamSubject.onNext(cell.teamData)
+            }).disposed(by: disposeBag)
+        
     }
     
     private func configureUI() {
@@ -64,6 +99,20 @@ class MeetingParticipantCreationViewController:UIViewController {
         
         prevButton.addShadow()
         nextButton.addShadow()
+        
+        meetingParticipantCreationVM.selectedUserProfilesCountSubject
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, count in
+                owner.participantCountLabel.text = "\(count)명 선택됨"
+            }).disposed(by: disposeBag)
+        
+        meetingParticipantCreationVM.nowTeamSubject
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, team in
+                owner.nowTeamLabel.text = team?.teamName
+            }).disposed(by: disposeBag)
     }
     
     @IBAction func tapTeamTableViewButton(_ sender: Any) {
@@ -115,6 +164,9 @@ class MeetingParticipantCreationViewController:UIViewController {
     
     @IBAction func searchParticipant(_ sender: Any) {
         let profileSelectVC = self.storyboard?.instantiateViewController(withIdentifier: "MeetingProfileSelectViewController") as! MeetingProfileSelectViewController
+        
+        profileSelectVC.delegate = self
+        
         profileSelectVC.modalPresentationStyle = .custom
         profileSelectVC.transitioningDelegate = self
         present(profileSelectVC, animated: true, completion: nil)
@@ -123,36 +175,18 @@ class MeetingParticipantCreationViewController:UIViewController {
     
 }
 
+extension MeetingParticipantCreationViewController: MeetingProfileSelectViewControllerDelegate {
+    
+    func passSelectedProfiles(selectedProfiles: [WorkspaceUser]) {
+        meetingParticipantCreationVM.addSelectedUserProfiles(data: selectedProfiles)
+    }
+    
+    
+}
+
 extension MeetingParticipantCreationViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return SelectItemModalPresentationController(presentedViewController: presented, presenting: presenting)
     }
 }
-                                                    
-extension MeetingParticipantCreationViewController:UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return meetingParticipantCreationVM.teams.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingParticipantTeamCell") as! MeetingParticipantTeamCell
-        cell.teamLabel.text = meetingParticipantCreationVM.teams[indexPath.row]
-        return cell
-    }
-}
-
-extension MeetingParticipantCreationViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MeetingParticipantProfileCell", for: indexPath) as! MeetingParticipantProfileCell
-        return cell
-        
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
-    }
-
-}
+   

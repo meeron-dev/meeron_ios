@@ -13,7 +13,10 @@ class MeetingTeamSelectViewModel {
     var teams:[Team] = []
     var teamsSubject = PublishSubject<[Team]>()
     var selectedTeam:Team?
-    var selectedTeamSubject = PublishSubject<Team?>()
+    var selectedTeamSubject = BehaviorSubject<Team?>(value: nil)
+    
+    let teamRepository = TeamRepository()
+    
     let disposeBag = DisposeBag()
     
     init() {
@@ -24,17 +27,12 @@ class MeetingTeamSelectViewModel {
     
     
     func loadTeamInWorkspace() {
-        guard let workspaceId = UserDefaults.standard.string(forKey: "workspaceId") else {return}
-        
-        let urlString = URLConstant.teamInWorkspace+"?workspaceId="+workspaceId
-
-        let resource = Resource<Teams>(url:urlString, parameter: [:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
-        
-        API().load(resource: resource)
-            .subscribe(onNext: { [weak self] teams in
+        teamRepository.loadTeamInWorkspace()
+            .withUnretained(self)
+            .subscribe(onNext: { owner, teams in
                 if let teams = teams {
-                    self?.teams = teams.teams
-                    self?.teamsSubject.onNext(teams.teams)
+                    owner.teams = teams.teams
+                    owner.teamsSubject.onNext(teams.teams)
                 }
             }).disposed(by: disposeBag)
     }

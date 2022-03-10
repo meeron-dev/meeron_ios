@@ -23,9 +23,9 @@ class MeetingTeamSelectCell:UITableViewCell {
         teamName.text = data.teamName
     }
     
-    func isSelected() -> Bool {
+    func isSelectedTeam() -> Bool {
         if teamName.textColor == .mrBlue {
-            isDeseleted()
+            isDeseletedTeam()
             return false
         }
         teamName.textColor = .mrBlue
@@ -33,7 +33,7 @@ class MeetingTeamSelectCell:UITableViewCell {
         return true
     }
     
-    func isDeseleted() {
+    func isDeseletedTeam() {
         teamName.textColor = .textBalck
         teamName.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 19)
     }

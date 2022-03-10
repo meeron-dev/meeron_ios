@@ -28,4 +28,12 @@ extension UIColor {
     static var textBalck:UIColor {
         return UIColor(red: 65/255, green: 65/255, blue: 65/255, alpha: 1)
     }
+    
+    static var darkGray:UIColor {
+        return UIColor(red: 129/255, green: 129/255, blue: 129/255, alpha: 1)
+    }
+    
+    static var lightGray:UIColor {
+        return UIColor(red: 196/255, green: 196/255, blue: 196/255, alpha: 1)
+    }
 }

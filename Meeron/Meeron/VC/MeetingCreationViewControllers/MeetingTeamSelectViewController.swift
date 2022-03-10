@@ -16,13 +16,14 @@ protocol MeetingTeamSelectViewControllerDelegate {
 class MeetingTeamSelectViewController:UIViewController {
     
     @IBOutlet weak var teamTableView: UITableView!
-    
     @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var closeButton: UIButton!
     
     let meetingTeamSelectVM = MeetingTeamSelectViewModel()
     
     var delegate:MeetingTeamSelectViewControllerDelegate?
+    
+    var viewTranslation = CGPoint(x: 0, y: 0)
+    var viewVelocity = CGPoint(x: 0, y: 0)
     
     let disposeBag = DisposeBag()
     
@@ -31,6 +32,7 @@ class MeetingTeamSelectViewController:UIViewController {
         
         meetingTeamSelectVM.loadTeamInWorkspace()
         configureUI()
+        addGestureRecognizer()
     }
     
     private func configureUI() {
@@ -38,9 +40,40 @@ class MeetingTeamSelectViewController:UIViewController {
         configureTableView()
     }
     
+    func addGestureRecognizer() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dismissWithPanGesture))
+        view.addGestureRecognizer(panGesture)
+    }
+    
+    @objc func dismissWithPanGesture(_ sender:UIPanGestureRecognizer) {
+        viewTranslation = sender.translation(in: view)
+        viewVelocity = sender.velocity(in: view)
+        
+        switch sender.state {
+        case .changed:
+            if abs(viewVelocity.y) > abs(viewVelocity.x) {
+                if viewVelocity.y > 0 {
+                    UIView.animate(withDuration: 0.1) {
+                        self.view.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+                    }
+                }
+            }
+        case .ended:
+            if viewTranslation.y < 400 {
+                UIView.animate(withDuration: 0.1) {
+                    self.view.transform = .identity
+                }
+            } else {
+                dismiss(animated: true, completion: nil)
+            }
+        default:
+            break
+        }
+
+    }
+    
     private func configureButton() {
         doneButton.addShadow()
-        closeButton.addShadow()
         
         meetingTeamSelectVM.selectedTeamSubject
             .observe(on: MainScheduler.instance)
@@ -69,7 +102,7 @@ class MeetingTeamSelectViewController:UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
                 let cell = owner.teamTableView.cellForRow(at: indexPath) as! MeetingTeamSelectCell
-                if cell.isSelected() {
+                if cell.isSelectedTeam() {
                     owner.meetingTeamSelectVM.selectedTeamSubject.onNext(cell.teamData)
                 }else {
                     owner.meetingTeamSelectVM.selectedTeamSubject.onNext(nil)
@@ -80,15 +113,11 @@ class MeetingTeamSelectViewController:UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
                 let cell = owner.teamTableView.cellForRow(at: indexPath) as! MeetingTeamSelectCell
-                cell.isDeseleted()
+                cell.isDeseletedTeam()
             }).disposed(by: disposeBag)
         
     }
     
-    
-    @IBAction func close(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
     @IBAction func done(_ sender: Any) {
         delegate?.passSelectedTeam(data: meetingTeamSelectVM.selectedTeam)
