@@ -10,6 +10,14 @@ import UIKit
 
 class MeetingCardCell:UICollectionViewCell {
     
+    @IBOutlet weak var meetingNameLabel: UILabel!
+    @IBOutlet weak var meetingDateLabel: UILabel!
+    @IBOutlet weak var meetingTimeLabel: UILabel!
+    @IBOutlet weak var meetingTeamLabel: UILabel!
+    @IBOutlet weak var meetingPurposeLabel: UILabel!
+    
+    @IBOutlet weak var meetingAgendaLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -26,4 +34,10 @@ class MeetingCardCell:UICollectionViewCell {
         contentView.layer.masksToBounds = true
     }
     
+    func setData(data:TodayMeeting) {
+        meetingDateLabel.text = data.meetingDate.toKoreanDateString()
+        meetingNameLabel.text = data.meetingName
+        meetingTeamLabel.text = data.operationTeamName
+        meetingTimeLabel.text = data.startTime + "~" + data.endTime
+    }
 }

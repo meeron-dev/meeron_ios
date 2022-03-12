@@ -29,6 +29,8 @@
 		FC39DFD327D777CF002465EB /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC39DFD227D777CF002465EB /* Team.swift */; };
 		FC47215A27C9D23900F7A035 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47215927C9D23900F7A035 /* KeychainManager.swift */; };
 		FC47215C27CA14E700F7A035 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47215B27CA14E700F7A035 /* User.swift */; };
+		FC56F55327DCA80E00E54DFE /* MeetingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56F55227DCA80E00E54DFE /* MeetingRepository.swift */; };
+		FC56F55527DCAA5D00E54DFE /* TodayMeeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56F55427DCAA5D00E54DFE /* TodayMeeting.swift */; };
 		FC651A8827D256C800A64D8A /* AgendaSelectBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC651A8727D256C800A64D8A /* AgendaSelectBarCell.swift */; };
 		FC6AB4D627C0C4D700797C44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */; };
 		FC6AB4D827C0C4D700797C44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */; };
@@ -119,6 +121,8 @@
 		FC39DFD227D777CF002465EB /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		FC47215927C9D23900F7A035 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		FC47215B27CA14E700F7A035 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FC56F55227DCA80E00E54DFE /* MeetingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingRepository.swift; sourceTree = "<group>"; };
+		FC56F55427DCAA5D00E54DFE /* TodayMeeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMeeting.swift; sourceTree = "<group>"; };
 		FC651A8727D256C800A64D8A /* AgendaSelectBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaSelectBarCell.swift; sourceTree = "<group>"; };
 		FC6AB4D227C0C4D700797C44 /* Meeron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meeron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 			children = (
 				FC3262E927D8954D00D5AA13 /* TeamRepository.swift */,
 				FC9A803E27D9D49300C3B836 /* MeetingCreationRepository.swift */,
+				FC56F55227DCA80E00E54DFE /* MeetingRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 				FCEFFD7427CF304300D54CD4 /* MeetingCreation.swift */,
 				FC39DFD227D777CF002465EB /* Team.swift */,
 				FC9A804027D9D53400C3B836 /* Meeting.swift */,
+				FC56F55427DCAA5D00E54DFE /* TodayMeeting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -725,8 +731,10 @@
 				FC6AB50827C10CC300797C44 /* API.swift in Sources */,
 				FCAE0D3F27D4FCC700B05D94 /* MeetingParticipantTeamCell.swift in Sources */,
 				FC47215A27C9D23900F7A035 /* KeychainManager.swift in Sources */,
+				FC56F55527DCAA5D00E54DFE /* TodayMeeting.swift in Sources */,
 				FC3262EC27D8C20500D5AA13 /* MeetingParticipantProfileCell.swift in Sources */,
 				FC3262EA27D8954D00D5AA13 /* TeamRepository.swift in Sources */,
+				FC56F55327DCA80E00E54DFE /* MeetingRepository.swift in Sources */,
 				FC38089427D0779C0023D713 /* MeetingProfileSelectViewController.swift in Sources */,
 				FC9A804127D9D53400C3B836 /* Meeting.swift in Sources */,
 				FCB36CF927CD1BB700ACF591 /* PickerViewController.swift in Sources */,

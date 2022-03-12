@@ -60,4 +60,9 @@ class MeetingCreationResultViewController:UIViewController {
         }
         
     }
+    
+    @IBAction func done(_ sender: Any) {
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
 }

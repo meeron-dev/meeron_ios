@@ -15,7 +15,14 @@ class HomeViewController:UIViewController {
     @IBOutlet weak var meetingCollectionView: UICollectionView!
     @IBOutlet weak var calendarButton: UIButton!
     @IBOutlet weak var uncheckUpdatesDoneMeetingDotView: UIView!
+    
+    @IBOutlet weak var todayDateLabel: UILabel!
+    @IBOutlet weak var expectMeetingCountLabel: UILabel!
+    
+    @IBOutlet weak var noExpectMeetingLabelWidth: NSLayoutConstraint!
     @IBOutlet weak var meetingCreationBarButtonItem: UIBarButtonItem!
+    
+    let homeVM = HomeViewModel()
     
     let disposeBag = DisposeBag()
     
@@ -25,12 +32,31 @@ class HomeViewController:UIViewController {
         self.navigationItem.title = "워크스페이스"
         configureUI()
         setupCellPaging()
-        initMeetingCollectionView()
+        setupMeetingCollectionView()
         initTapAction()
+        
     }
     
     func configureUI() {
         uncheckUpdatesDoneMeetingDotView.layer.cornerRadius = uncheckUpdatesDoneMeetingDotView.frame.width/2
+        
+        todayDateLabel.text = Date().toMonthDateKoreanString()
+        
+        homeVM.todayMeetingCountSubject
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, count in
+                if count > 10 {
+                    owner.expectMeetingCountLabel.text = "진행 예정 10+"
+                    owner.noExpectMeetingLabelWidth.constant = 0
+                }else {
+                    owner.expectMeetingCountLabel.text = "진행 예정 \(count)"
+                    owner.noExpectMeetingLabelWidth.constant = 0
+                    if count == 0 {
+                        owner.noExpectMeetingLabelWidth.constant = 152
+                    }
+                }
+            }).disposed(by: disposeBag)
     }
     
     
@@ -48,10 +74,21 @@ class HomeViewController:UIViewController {
         meetingCollectionView.isPagingEnabled = false
     }
     
-    func initMeetingCollectionView() {
-        meetingCollectionView.delegate = self
-        meetingCollectionView.dataSource = self
+    func setupMeetingCollectionView() {
+        //meetingCollectionView.delegate = self
+        //meetingCollectionView.dataSource = self
         
+        homeVM.todayMeetingsSubject.bind(to: meetingCollectionView.rx.items) { collectionView, row, element in
+            if row < 10 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MeetingCardCell", for: IndexPath(row: row, section: 0)) as! MeetingCardCell
+                cell.setData(data: element)
+                return cell
+            }else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoMeetingCardCell", for: IndexPath(row: row, section: 0))
+                return cell
+            }
+            
+        }.disposed(by: disposeBag)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -59,6 +96,8 @@ class HomeViewController:UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 31, bottom: 0, right: 31)
         layout.itemSize = CGSize(width: 253, height: 451)
         meetingCollectionView.collectionViewLayout = layout
+        
+        homeVM.loadTodayMeeting()
     }
     
     @IBAction func createMeeting(_ sender: UIBarButtonItem) {
@@ -68,7 +107,7 @@ class HomeViewController:UIViewController {
     }
     
 }
-
+/*
 extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
@@ -86,7 +125,7 @@ extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath)
     }
-}
+}*/
 
 extension HomeViewController:UICollectionViewDelegateFlowLayout {
     

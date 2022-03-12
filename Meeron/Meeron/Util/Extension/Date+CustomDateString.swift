@@ -26,4 +26,10 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    func toMonthDateKoreanString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M월 d일"
+        return dateFormatter.string(from: self)
+    }
+    
 }
