@@ -70,7 +70,7 @@ class LoginViewModel {
         }
         
 
-        API().load(resource: resource)
+        API().requestData(resource: resource)
             .subscribe(onNext: {
                 if $0 != nil {
                     self.saveToken(token: $0!)
@@ -89,7 +89,7 @@ class LoginViewModel {
     func loadUser() {
         let resource = Resource<User>(url: URLConstant.user, parameter:[:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
         
-        API().load(resource: resource)
+        API().requestData(resource: resource)
             .subscribe(onNext: { user in
                 guard let user = user else {return}
                 self.saveUserId(id: user.userId)
@@ -100,7 +100,7 @@ class LoginViewModel {
     func loadUserWorkspace() {
         let resource = Resource<UserWorkspace>(url: URLConstant.userWorkspace, parameter: ["userId":UserDefaults.standard.string(forKey: "userId")!], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
         
-        API().load(resource: resource)
+        API().requestData(resource: resource)
             .subscribe(onNext: { userWorkspace in
                 self.loginSuccess.onNext(true)
                 

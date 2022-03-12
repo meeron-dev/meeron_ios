@@ -22,14 +22,16 @@ class AgendaIssueCell:UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        agendaIssueTextField.rx.text.subscribe(onNext: {
-            if $0 == "" {
-                self.agendaIssueDeleteButtonWidth.constant = 0
+        agendaIssueTextField.rx.text
+            .withUnretained(self)
+            .subscribe(onNext: { owner, text in
+            if text == "" {
+                owner.agendaIssueDeleteButtonWidth.constant = 0
             }else {
-                self.agendaIssueDeleteButtonWidth.constant = 60
+                owner.agendaIssueDeleteButtonWidth.constant = 60
             }
-            self.meetingAgendaCreationVM?.nowIssueIndex = self.cellIndex ?? 0
-            self.saveIssue()
+            owner.meetingAgendaCreationVM?.nowIssueIndex = self.cellIndex ?? 0
+            owner.saveIssue()
         }).disposed(by: disposeBag)
     }
     

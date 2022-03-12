@@ -34,6 +34,19 @@ class MeetingCreationResultViewController:UIViewController {
         okButton.addShadow()
         meetingCreationResultButton.addShadow()
         
+        guard let meetingCreationData = meetingCreationData else {
+            return
+        }
+
+        meetingTitleLabel.text = meetingCreationData.title
+        meetingDateLabel.text = meetingCreationData.date.changeMeetingCreationDateToKoreanString()
+        meetingPurposeLabel.text = meetingCreationData.purpose
+        if meetingCreationData.managers.count == 1 {
+            meetingManagersLabel.text = meetingCreationData.managers[0].nickname
+        }else if meetingCreationData.managers.count > 1 {
+            meetingManagersLabel.text = meetingCreationData.managers[0].nickname + "외 \(meetingCreationData.managers.count - 1)명"
+        }
+        meetingParticipantCountLabel.text = "\(meetingCreationData.participants.count)명"
     }
     
     func setMeetingCreationData(data:MeetingCreation) {

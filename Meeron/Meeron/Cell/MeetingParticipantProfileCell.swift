@@ -31,7 +31,7 @@ class MeetingParticipantProfileCell:UICollectionViewCell {
         profileNameLabel.text = data.nickname
         profilePositionLabel.text = data.position
         profileData = data
-        
+        /*
         if data.profileImageUrl != nil {
             let imgURL = URL(string: data.profileImageUrl!)!
             DispatchQueue.global().async {
@@ -42,7 +42,7 @@ class MeetingParticipantProfileCell:UICollectionViewCell {
                     }
                 }
             }
-        }
+        }*/
         
     }
     

@@ -1935,7 +1935,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="390" height="86"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기획안.pdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPu-u6-QqQ">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPu-u6-QqQ">
                                                                     <rect key="frame" x="30" y="11" width="267" height="54"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="Np9-Ye-gaM"/>
@@ -1962,6 +1962,9 @@
                                                                         </attributedString>
                                                                         <color key="baseForegroundColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </buttonConfiguration>
+                                                                    <connections>
+                                                                        <action selector="deleteDocument:" destination="tv1-WC-ni2" eventType="touchUpInside" id="efZ-lm-sGd"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
@@ -1974,7 +1977,6 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
-                                                            <outlet property="deleteDocumentButton" destination="67N-1h-8dK" id="SFl-kC-OoF"/>
                                                             <outlet property="documentLabel" destination="cPu-u6-QqQ" id="Jc2-Ky-NJm"/>
                                                         </connections>
                                                     </tableViewCell>

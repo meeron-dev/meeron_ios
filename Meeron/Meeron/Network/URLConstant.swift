@@ -16,5 +16,6 @@ struct URLConstant {
     static let workspaceUserProfile = protocolHost + "/api/workspace-users"
     static let teamInWorkspace = protocolHost + "/api/teams"
     static let meetingCreation = protocolHost + "/api/meetings"
+    static let meetingAgenda = protocolHost + "/api/agendas"
     
 }

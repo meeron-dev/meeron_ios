@@ -205,7 +205,7 @@ class MeetingParticipantCreationViewController:UIViewController {
     }
     
     func checkMeetingCreation() {
-        Observable.combineLatest(meetingParticipantCreationVM.sucessMeetingAgendaCreationSubject, meetingParticipantCreationVM.sucessMeetingParticipantCreationSubject) {
+        Observable.combineLatest(meetingParticipantCreationVM.sucessMeetingDocumentsCreationSubject, meetingParticipantCreationVM.sucessMeetingParticipantCreationSubject) {
             $0 && $1
         }
         .withUnretained(self)
@@ -225,7 +225,8 @@ class MeetingParticipantCreationViewController:UIViewController {
     func goMeetingCreationResultView() {
         let meetingCreationResultVC = self.storyboard?.instantiateViewController(withIdentifier: "MeetingCreationResultViewController") as! MeetingCreationResultViewController
         self.navigationController?.pushViewController(meetingCreationResultVC, animated: true)
-        meetingCreationResultVC.setMeetingCreationData(data: meetingParticipantCreationVM.meetingCreationData!)
+        
+        meetingCreationResultVC.meetingCreationData = meetingParticipantCreationVM.meetingCreationData!
     }
     
 }

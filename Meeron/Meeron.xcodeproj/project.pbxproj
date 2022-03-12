@@ -47,6 +47,7 @@
 		FC8393A427C66F6400981622 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8393A327C66F6400981622 /* DateCell.swift */; };
 		FC9A803F27D9D49300C3B836 /* MeetingCreationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A803E27D9D49300C3B836 /* MeetingCreationRepository.swift */; };
 		FC9A804127D9D53400C3B836 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A804027D9D53400C3B836 /* Meeting.swift */; };
+		FC9A804327DA503000C3B836 /* FileManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A804227DA503000C3B836 /* FileManagerViewController.swift */; };
 		FC9FC1F827D5E8A800340283 /* MeetingProfileSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */; };
 		FC9FC1FA27D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FC1F927D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift */; };
 		FC9FD92D27C4BF60009DE526 /* MeetingCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FD92C27C4BF60009DE526 /* MeetingCardCell.swift */; };
@@ -141,6 +142,7 @@
 		FC8393A327C66F6400981622 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		FC9A803E27D9D49300C3B836 /* MeetingCreationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCreationRepository.swift; sourceTree = "<group>"; };
 		FC9A804027D9D53400C3B836 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
+		FC9A804227DA503000C3B836 /* FileManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerViewController.swift; sourceTree = "<group>"; };
 		FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingProfileSelectViewModel.swift; sourceTree = "<group>"; };
 		FC9FC1F927D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingBaiscInfoCreationViewModel.swift; sourceTree = "<group>"; };
 		FC9FD92C27C4BF60009DE526 /* MeetingCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCardCell.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				FC06E98B27C3F02C004065E3 /* TabBarController.swift */,
 				FC23A9FB27C547B9009565B2 /* CalendarViewController.swift */,
 				FCB70BA127C92CD4008831F7 /* AllCalendarViewController.swift */,
+				FC9A804227DA503000C3B836 /* FileManagerViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 				FC6AB4D627C0C4D700797C44 /* AppDelegate.swift in Sources */,
 				FCAE0D3A27D4A48800B05D94 /* MeetingProfileSelectCell.swift in Sources */,
 				FC6AB4D827C0C4D700797C44 /* SceneDelegate.swift in Sources */,
+				FC9A804327DA503000C3B836 /* FileManagerViewController.swift in Sources */,
 				FC9FD92D27C4BF60009DE526 /* MeetingCardCell.swift in Sources */,
 				FCB36CF727CCF5A000ACF591 /* MeetingDateCreationViewController.swift in Sources */,
 				FC0A6B9C27D1EB2300DBC745 /* MeetingAgendaCreationViewModel.swift in Sources */,

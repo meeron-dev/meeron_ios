@@ -101,7 +101,7 @@ class MeetingProfileSelectCell: UICollectionViewCell {
             entireProfileView.isUserInteractionEnabled = true
             addTapGesture()
         }
-        
+        /*
         if data.profileImageUrl != nil {
             let imgURL = URL(string: data.profileImageUrl!)!
             DispatchQueue.global().async {
@@ -112,7 +112,7 @@ class MeetingProfileSelectCell: UICollectionViewCell {
                     }
                 }
             }
-        }
+        }*/
         
     }
 }

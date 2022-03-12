@@ -13,39 +13,31 @@ class MeetingCreationRepository {
     
     
     func createMeeting(data:MeetingCreation) -> Observable<Meeting?> {
-        let meetingAdminIds = data.managers.map{ $0.workspaceUserId }
-        var parameter:[String:Any] = [:]
-        if meetingAdminIds.count > 0 {
-            parameter = ["meetingDate": data.date.changeMeetingCreationDateToDashString(),
-                         "startTime":data.startTime.changeMeetingCreationTimeToString(),
-                         "endTime":data.endTime.changeMeetingCreationTimeToString(),
+        var meetingAdminIds = data.managers.map{ $0.workspaceUserId }
+        meetingAdminIds.append(Int(UserDefaults.standard.string(forKey: "workspaceUserId")!)!)
+        let parameter:[String:Any] = ["meetingDate": data.date.changeMeetingCreationDateToSlashString(),
+                         "startTime":data.startTime.changeMeetingCreationTimeToAString(),
+                         "endTime":data.endTime.changeMeetingCreationTimeToAString(),
                          "meetingName": data.title,
                          "meetingPurpose":data.purpose,
                          "operationTeamId": data.team!.teamId,
                          "meetingAdminIds":meetingAdminIds]
-        }else {
-            parameter = ["meetingDate": data.date.changeMeetingCreationDateToDashString(),
-                         "startTime":data.startTime.changeMeetingCreationTimeToString(),
-                         "endTime":data.endTime.changeMeetingCreationTimeToString(),
-                         "meetingName": data.title,
-                         "meetingPurpose":data.purpose,
-                         "operationTeamId": data.team!.teamId]
-        }
+        
         print("회의 생성 파라미터",parameter)
         let resource = Resource<Meeting>(url: URLConstant.meetingCreation, parameter: parameter, headers: ["Content-Type": "application/json","Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!], method: .post, encodingType: .JSONEncoding)
         
-        return  API().load(resource: resource)
+        return  API().requestData(resource: resource)
     }
     
     func createMeetingParticipant(data:MeetingCreation, meetingId:String) -> Observable<Bool> {
         
         let parameter = ["workspaceUserIds":data.participants.map{$0.workspaceUserId}]
-        let resource = Resource<Bool>(url: URLConstant.meetingCreation + "/" + meetingId + "/attendees" , parameter: parameter, headers: ["Content-Type":"application/json", "Authorization":KeychainManager().read(service: "Meeron", account: "accessToken")!], method: .post, encodingType: .JSONEncoding)
+        let resource = Resource<Bool>(url: URLConstant.meetingCreation + "/" + meetingId + "/attendees" , parameter: parameter, headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .post, encodingType: .JSONEncoding)
         print("참가자 생성", parameter)
         return  API().requestResponse(resource: resource)
     }
     
-    func createMeetingAgenda(datas:[Agenda], meetingId:String) -> Observable<Bool> {
+    func createMeetingAgenda(datas:[Agenda], meetingId:String) -> Observable<MeetingCreationAgendaResponses?> {
         var agendas:[Any] = []
         for i in 0..<datas.count {
             var issues:[[String:String]] = []
@@ -58,9 +50,13 @@ class MeetingCreationRepository {
         
         let parameter = ["agendas":agendas]
         print("아젠다",parameter)
-        let resource = Resource<Bool>(url: URLConstant.meetingCreation + "/" + meetingId + "/agendas", parameter: parameter, headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .post, encodingType: .JSONEncoding)
-        return  API().requestResponse(resource: resource)
+        let resource = Resource<MeetingCreationAgendaResponses>(url: URLConstant.meetingCreation + "/" + meetingId + "/agendas", parameter: parameter, headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .post, encodingType: .JSONEncoding)
+        return  API().requestData(resource: resource)
     }
     
-    
+    func createMeetingDocument(data:Data, agendaId:String) -> Observable<Bool> {
+        let resource = Resource<Bool>(url: "\(URLConstant.meetingAgenda)/\(agendaId)/files", parameter: [:], headers: ["Content-Type": "multipart/form-data", "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!], method: .post, encodingType: .URLEncoding)
+        
+        return API().upload(resource: resource, data: data)
+    }
 }

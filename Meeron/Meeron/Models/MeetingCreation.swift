@@ -21,8 +21,13 @@ struct MeetingCreation {
     var meetingId:String = ""
 }
 
-struct Agenda {
+struct Agenda:Equatable {
     var title:String = ""
     var issue:[String] = [""]
-    var document:[Data] = []
+    var document:[Document] = []
+}
+
+struct Document:Equatable {
+    var data:Data
+    var name:String
 }

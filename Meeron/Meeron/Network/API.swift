@@ -37,7 +37,7 @@ struct API {
     
     let protocolHost = "https://dev.meeron.net"
     
-    func load<T:Codable>(resource:Resource<T>) -> Observable<T?> {
+    func requestData<T:Codable>(resource:Resource<T>) -> Observable<T?> {
         
         return RxAlamofire.requestData(resource.method, resource.url, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
             .flatMap({ (response, data) -> Observable<T?> in
@@ -63,6 +63,46 @@ struct API {
                     return Observable.just(false)
                 }
         }
+    }
+    
+    func upload(resource: Resource<Bool>, data:Data) -> Observable<Bool> {
+        return Observable<Bool>.create({ observable in
+            
+            AF.upload(multipartFormData: { multipartFormData in
+                 for (key, value) in resource.parameter {
+                     multipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
+                 }
+                multipartFormData.append(data, withName: "files")
+            }, to: resource.url, method: resource.method, headers: resource.headers)
+                .uploadProgress(queue: .main) { progress in
+                    print("upload progress:",progress.fractionCompleted)
+                }.responseData { data in
+                    guard let statusCode = data.response?.statusCode else {
+                        observable.onNext(false)
+                        return
+                    }
+                    switch statusCode{
+                    case 200...299:
+                        observable.onNext(true)
+                    default:
+                        print("📍", data.response)
+                        observable.onNext(false)
+                    }
+                }
+            return Disposables.create()
+        })
+        
+        
+        /*RxAlamofire.upload(multipartFormData: { multipartFormData in
+            for (key, value) in resource.parameter {
+                multipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
+            }
+            multipartFormData.append(data, withName: "files")
+        }, to: resource.url, method: resource.method, headers: resource.headers).
+        }
+          */
+        
+        
     }
     
     func login(email:String, nickname:String, profileImageUrl:String, provider:String) {

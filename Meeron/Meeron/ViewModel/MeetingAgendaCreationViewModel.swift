@@ -20,7 +20,7 @@ class MeetingAgendaCreationViewModel {
     var nowIssueIndex = 0
     
     var agendaIssueSubject = PublishSubject<[String]>()
-    var agendaDocumentSubject = PublishSubject<[Data]>()
+    var agendaDocumentSubject = PublishSubject<[Document]>()
     
     var meetingCreationData:MeetingCreation?
     let meetingDateSubject = BehaviorSubject<String>(value: "")
@@ -82,8 +82,8 @@ class MeetingAgendaCreationViewModel {
         agendaIssueSubject.onNext(agendas[nowAgendaIndex].issue)
     }
     
-    func addDocument() {
-        agendas[nowAgendaIndex].document.append(Data())
+    func addDocument(data:Data, name:String) {
+        agendas[nowAgendaIndex].document.append(Document(data: data, name: name))
         agendasSubject.onNext(agendas)
         agendaDocumentSubject.onNext(agendas[nowAgendaIndex].document)
     }
@@ -108,6 +108,12 @@ class MeetingAgendaCreationViewModel {
         agendas[nowAgendaIndex].issue.remove(at: index)
         agendasSubject.onNext(agendas)
         agendaIssueSubject.onNext(agendas[nowAgendaIndex].issue)
+    }
+    
+    func deleteDocument(index:Int) {
+        agendas[nowAgendaIndex].document.remove(at: index)
+        agendasSubject.onNext(agendas)
+        agendaDocumentSubject.onNext(agendas[nowAgendaIndex].document)
     }
     
     func setMeetingCreationData(data: MeetingCreation) {

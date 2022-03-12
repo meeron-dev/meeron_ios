@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import UniformTypeIdentifiers
 
 class MeetingAgendaCreationViewController: UIViewController {
     @IBOutlet weak var prevButton:UIButton!
@@ -35,6 +36,8 @@ class MeetingAgendaCreationViewController: UIViewController {
     @IBOutlet weak var agendaIssueTableView: UITableView!
     @IBOutlet weak var agendaDocumentTableView: UITableView!
     @IBOutlet weak var agendaIssueTableViewHeight: NSLayoutConstraint!
+    
+    
     @IBOutlet weak var agendaDocumentTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var addDocumentButton: UIButton!
     
@@ -56,7 +59,7 @@ class MeetingAgendaCreationViewController: UIViewController {
         configureUI()
         setupCollectionView()
         setupTableView()
-        saveContent()
+        saveAgendaTitle()
         
         setupKeyboardNoti()
         setMeetingCreationData()
@@ -83,17 +86,20 @@ class MeetingAgendaCreationViewController: UIViewController {
     
     private func setupTableView() {
         
-        meetingAgendaCreationVM.agendaIssueSubject.bind(to: agendaIssueTableView.rx.items) { tableView, row, element in
+        meetingAgendaCreationVM.agendaIssueSubject.bind(to: agendaIssueTableView.rx.items) { [weak self] tableView, row, element in
             let indexPath = IndexPath(row: row, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: "AgendaIssueCell", for: indexPath) as! AgendaIssueCell
             cell.agendaIssueTextField.text = element
+            guard let self = self else {return cell}
             cell.setCellInfo(vm: self.meetingAgendaCreationVM, index: row)
             return cell
         }.disposed(by: disposeBag)
         
-        meetingAgendaCreationVM.agendaDocumentSubject.bind(to: agendaDocumentTableView.rx.items) {tableView, row, element in
+        meetingAgendaCreationVM.agendaDocumentSubject.bind(to: agendaDocumentTableView.rx.items) {[weak self] tableView, row, element in
             let indexPath = IndexPath(row: row, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: "AgendaDocumentCell", for: indexPath) as! AgendaDocumentCell
+            guard let self = self else {return cell}
+            cell.setData(name: element.name, index: row, vm: self.meetingAgendaCreationVM)
             return cell
         }.disposed(by: disposeBag)
         
@@ -204,9 +210,18 @@ class MeetingAgendaCreationViewController: UIViewController {
         }).disposed(by: disposeBag)
         
         addDocumentButton.rx.tap.subscribe(onNext: {
-            self.meetingAgendaCreationVM.addDocument()
+            self.showFileView()
+            
         }).disposed(by: disposeBag)
         
+    }
+    
+    func showFileView() {
+        let supportedTypes: [UTType] = [UTType.pdf, UTType.text, UTType.png]
+        let documentPickerVC = UIDocumentPickerViewController(forOpeningContentTypes: supportedTypes, asCopy: true)
+        
+        documentPickerVC.delegate = self
+        present(documentPickerVC, animated: true, completion: nil)
     }
     
     func setMeetingCreationData() {
@@ -221,10 +236,17 @@ class MeetingAgendaCreationViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    func saveContent() {
-        agendaTitleTextField.rx.text.subscribe(onNext: {
-            self.meetingAgendaCreationVM.saveAgendaTitle(title: $0 ?? "")
-        }).disposed(by: disposeBag)
+    func saveAgendaTitle() {
+        agendaTitleTextField.rx.text
+            .withUnretained(self)
+            .subscribe(onNext: { owner, text in
+                if text != "" {
+                    owner.agendaTitleTextLimitLabelWidth.constant = 0
+                }else {
+                    owner.agendaTitleTextLimitLabelWidth.constant = 80
+                }
+                owner.meetingAgendaCreationVM.saveAgendaTitle(title: text ?? "")
+            }).disposed(by: disposeBag)
     }
     
     func setAgendaContent(data:Agenda) {
@@ -254,4 +276,21 @@ class MeetingAgendaCreationViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+}
+
+
+extension MeetingAgendaCreationViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let url = urls.first else {return}
+        
+        do{
+            let data = try Data.init(contentsOf: url)
+            meetingAgendaCreationVM.addDocument(data: data, name: url.lastPathComponent)
+        } catch {
+            print("no data")
+        }
+        
+    }
+    
+    
 }

@@ -16,19 +16,13 @@ extension Date {
     
     func changeMeetingCreationTimeToAString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mma"
+        dateFormatter.dateFormat = "hh:mm a"
         return dateFormatter.string(from: self)
     }
     
-    func changeMeetingCreationDateToDashString() -> String {
+    func changeMeetingCreationDateToSlashString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: self)
-    }
-    
-    func changeMeetingCreationTimeToString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy/MM/dd"
         return dateFormatter.string(from: self)
     }
     

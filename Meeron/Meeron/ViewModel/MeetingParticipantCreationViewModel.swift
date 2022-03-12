@@ -30,7 +30,9 @@ class MeetingParticipantCreationViewModel {
     let teamRepository = TeamRepository()
     let meetingCreationRepository = MeetingCreationRepository()
     
-    let sucessMeetingAgendaCreationSubject = BehaviorSubject<Bool>(value: false)
+    let sucessMeetingDocumentCreationSubject = PublishSubject<Bool>()
+    var sucessMeetingDocumentsCreationCount = 0
+    let sucessMeetingDocumentsCreationSubject = BehaviorSubject<Bool>(value: false)
     let sucessMeetingParticipantCreationSubject = BehaviorSubject<Bool>(value: false)
     
     let disposeBag = DisposeBag()
@@ -189,14 +191,58 @@ class MeetingParticipantCreationViewModel {
     
     func createMeetingAgenda() {
         if meetingCreationData!.agendas.count == 0 {
-            sucessMeetingAgendaCreationSubject.onNext(true)
-        }else {
-            meetingCreationRepository.createMeetingAgenda(datas: meetingCreationData!.agendas, meetingId: meetingCreationData!.meetingId)
-                .withUnretained(self)
-                .subscribe(onNext: { owner, success in
-                    print("아젠다 생성", success)
-                    owner.sucessMeetingAgendaCreationSubject.onNext(success)
-                }).disposed(by: disposeBag)
+            sucessMeetingDocumentsCreationSubject.onNext(true)
+            return
+        }else if meetingCreationData!.agendas.count == 1 {
+            if meetingCreationData!.agendas[0] == Agenda() {
+                sucessMeetingDocumentsCreationSubject.onNext(true)
+                return
+            }
         }
+        
+        meetingCreationRepository.createMeetingAgenda(datas: meetingCreationData!.agendas, meetingId: meetingCreationData!.meetingId)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, response in
+                if let response = response {
+                    print("아젠다 생성 성공")
+                    owner.createMeetingDocuments(agendaResponses: response.agendaResponses)
+                }
+                
+            }).disposed(by: disposeBag)
+        
+    }
+    
+    func createMeetingDocuments(agendaResponses:[AgendaResponse]) {
+        var totalDocumentCount = 0
+        for i in 0..<meetingCreationData!.agendas.count {
+            totalDocumentCount += meetingCreationData!.agendas[i].document.count
+        }
+        
+        sucessMeetingDocumentCreationSubject
+            .withUnretained(self)
+            .subscribe(onNext: { owner, sucess in
+                if sucess {
+                    owner.sucessMeetingDocumentsCreationCount += 1
+                    if owner.sucessMeetingDocumentsCreationCount == totalDocumentCount {
+                        owner.sucessMeetingDocumentsCreationSubject.onNext(true)
+                    }
+                }
+            }).disposed(by: disposeBag)
+        
+        for i in 0..<agendaResponses.count {
+            let id = agendaResponses[i].createdAgendaId
+            for j in 0..<meetingCreationData!.agendas[i].document.count {
+                createMeetingDocument(data: meetingCreationData!.agendas[i].document[j].data, agendaId: id)
+            }
+        }
+    }
+    
+    func createMeetingDocument(data:Data, agendaId:Int) {
+        meetingCreationRepository.createMeetingDocument(data:data, agendaId: String(agendaId))
+            .withUnretained(self)
+            .subscribe(onNext: { owner, success in
+                print("문서생성",success)
+                owner.sucessMeetingDocumentCreationSubject.onNext(success)
+            }).disposed(by: disposeBag)
     }
 }
