@@ -12,7 +12,7 @@ struct MeetingDays:Codable {
 }
 
 struct CalendarMeetings:Codable {
-    let meetings:[CalendarMeeting]
+    let meetings:[CalendarMeeting]?
 }
 
 struct CalendarMeeting:Codable {

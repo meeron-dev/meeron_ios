@@ -51,7 +51,7 @@
 		FC7B37C827DF8E2F005C3D23 /* CalendarMeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7B37C727DF8E2F005C3D23 /* CalendarMeetingCell.swift */; };
 		FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */; };
 		FC7CA8F027C27C3800110D24 /* kakao_login_medium_wide.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7CA8EF27C27C3800110D24 /* kakao_login_medium_wide.png */; };
-		FC8393A427C66F6400981622 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8393A327C66F6400981622 /* DateCell.swift */; };
+		FC8393A427C66F6400981622 /* CalendarDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8393A327C66F6400981622 /* CalendarDateCell.swift */; };
 		FC9A803F27D9D49300C3B836 /* MeetingCreationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A803E27D9D49300C3B836 /* MeetingCreationRepository.swift */; };
 		FC9A804127D9D53400C3B836 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A804027D9D53400C3B836 /* Meeting.swift */; };
 		FC9FC1F827D5E8A800340283 /* MeetingProfileSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */; };
@@ -152,7 +152,7 @@
 		FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		FC7CA8EE27C2255400110D24 /* Meeron.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meeron.entitlements; sourceTree = "<group>"; };
 		FC7CA8EF27C27C3800110D24 /* kakao_login_medium_wide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kakao_login_medium_wide.png; path = ../../../Downloads/kakao_login/ko/kakao_login_medium_wide.png; sourceTree = "<group>"; };
-		FC8393A327C66F6400981622 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		FC8393A327C66F6400981622 /* CalendarDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateCell.swift; sourceTree = "<group>"; };
 		FC9A803E27D9D49300C3B836 /* MeetingCreationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCreationRepository.swift; sourceTree = "<group>"; };
 		FC9A804027D9D53400C3B836 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingProfileSelectViewModel.swift; sourceTree = "<group>"; };
@@ -322,7 +322,7 @@
 				FC06E98527C3DC2A004065E3 /* Util */,
 				FC6AB50D27C1345F00797C44 /* ViewModel */,
 				FC9FD92B27C4BF48009DE526 /* Cell */,
-				FC6AB50C27C1344B00797C44 /* VC */,
+				FC6AB50C27C1344B00797C44 /* ViewController */,
 				FC6AB50B27C1343200797C44 /* Network */,
 				FC06E98A27C3E120004065E3 /* Resource */,
 				FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */,
@@ -361,30 +361,25 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		FC6AB50C27C1344B00797C44 /* VC */ = {
+		FC6AB50C27C1344B00797C44 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				FC7B37C927DF96E5005C3D23 /* CalendarViewControllers */,
 				FCEFFD6D27CF07C100D54CD4 /* MeetingCreationViewControllers */,
 				FC6AB4D927C0C4D700797C44 /* LoginViewController.swift */,
 				FC06E98227C3ABFF004065E3 /* HomeViewController.swift */,
 				FC06E98B27C3F02C004065E3 /* TabBarController.swift */,
-				FC23A9FB27C547B9009565B2 /* CalendarViewController.swift */,
-				FCB70BA127C92CD4008831F7 /* AllCalendarViewController.swift */,
 			);
-			path = VC;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		FC6AB50D27C1345F00797C44 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FC7B37CD27DF9760005C3D23 /* MeetingCreationViewModels */,
+				FC7B37CC27DF9750005C3D23 /* CalendarViewModels */,
 				FC6AB50F27C13B1900797C44 /* LoginViewModel.swift */,
-				FC19AAF727C75933000B5119 /* CalendarViewModel.swift */,
 				FCA1AF7C27CBBB0600152F53 /* HomeViewModel.swift */,
-				FC9FC1F927D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift */,
-				FC0A6B9B27D1EB2300DBC745 /* MeetingAgendaCreationViewModel.swift */,
-				FCAE0D4027D4FFC600B05D94 /* MeetingParticipantCreationViewModel.swift */,
-				FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */,
-				FC39DFD027D76E49002465EB /* MeetingTeamSelectViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -405,12 +400,27 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		FC9FD92B27C4BF48009DE526 /* Cell */ = {
+		FC7B37C927DF96E5005C3D23 /* CalendarViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				FCAE0D3727D4A45000B05D94 /* Xib */,
-				FC9FD92C27C4BF60009DE526 /* MeetingCardCell.swift */,
-				FC8393A327C66F6400981622 /* DateCell.swift */,
+				FC23A9FB27C547B9009565B2 /* CalendarViewController.swift */,
+				FCB70BA127C92CD4008831F7 /* AllCalendarViewController.swift */,
+			);
+			path = CalendarViewControllers;
+			sourceTree = "<group>";
+		};
+		FC7B37CA27DF9705005C3D23 /* CalendarCells */ = {
+			isa = PBXGroup;
+			children = (
+				FC7B37C727DF8E2F005C3D23 /* CalendarMeetingCell.swift */,
+				FC8393A327C66F6400981622 /* CalendarDateCell.swift */,
+			);
+			path = CalendarCells;
+			sourceTree = "<group>";
+		};
+		FC7B37CB27DF971E005C3D23 /* MeetingCreationCells */ = {
+			isa = PBXGroup;
+			children = (
 				FC3808A327D0CF2F0023D713 /* AgendaIssueCell.swift */,
 				FC3808A527D0CFA30023D713 /* AgendaDocumentCell.swift */,
 				FC651A8727D256C800A64D8A /* AgendaSelectBarCell.swift */,
@@ -418,7 +428,37 @@
 				FC3262EB27D8C20500D5AA13 /* MeetingParticipantProfileCell.swift */,
 				FCAE0D3827D4A48800B05D94 /* MeetingProfileSelectCell.swift */,
 				FCAE0D3C27D4EFA500B05D94 /* MeetingTeamSelectCell.swift */,
-				FC7B37C727DF8E2F005C3D23 /* CalendarMeetingCell.swift */,
+			);
+			path = MeetingCreationCells;
+			sourceTree = "<group>";
+		};
+		FC7B37CC27DF9750005C3D23 /* CalendarViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FC19AAF727C75933000B5119 /* CalendarViewModel.swift */,
+			);
+			path = CalendarViewModels;
+			sourceTree = "<group>";
+		};
+		FC7B37CD27DF9760005C3D23 /* MeetingCreationViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FC9FC1F927D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift */,
+				FC0A6B9B27D1EB2300DBC745 /* MeetingAgendaCreationViewModel.swift */,
+				FCAE0D4027D4FFC600B05D94 /* MeetingParticipantCreationViewModel.swift */,
+				FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */,
+				FC39DFD027D76E49002465EB /* MeetingTeamSelectViewModel.swift */,
+			);
+			path = MeetingCreationViewModels;
+			sourceTree = "<group>";
+		};
+		FC9FD92B27C4BF48009DE526 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FCAE0D3727D4A45000B05D94 /* Xib */,
+				FC7B37CB27DF971E005C3D23 /* MeetingCreationCells */,
+				FC7B37CA27DF9705005C3D23 /* CalendarCells */,
+				FC9FD92C27C4BF60009DE526 /* MeetingCardCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -742,7 +782,7 @@
 				FC23A9FC27C547B9009565B2 /* CalendarViewController.swift in Sources */,
 				FC19AAF827C75933000B5119 /* CalendarViewModel.swift in Sources */,
 				FCEFFD7727CF342A00D54CD4 /* MeetingTimeCreationViewController.swift in Sources */,
-				FC8393A427C66F6400981622 /* DateCell.swift in Sources */,
+				FC8393A427C66F6400981622 /* CalendarDateCell.swift in Sources */,
 				FC6AB50827C10CC300797C44 /* API.swift in Sources */,
 				FCAE0D3F27D4FCC700B05D94 /* MeetingParticipantTeamCell.swift in Sources */,
 				FC47215A27C9D23900F7A035 /* KeychainManager.swift in Sources */,

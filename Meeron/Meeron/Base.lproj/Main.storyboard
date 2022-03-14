@@ -753,7 +753,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="DateCell" reuseIdentifier="DateCell" id="w5m-T0-5Dq" customClass="DateCell" customModule="Meeron" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CalendarDateCell" reuseIdentifier="CalendarDateCell" id="w5m-T0-5Dq" customClass="CalendarDateCell" customModule="Meeron" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5cT-SD-jWF">
@@ -810,7 +810,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="n개의 회의가 존재합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgY-CF-IvJ">
-                                                <rect key="frame" x="30" y="54" width="131" height="20"/>
+                                                <rect key="frame" x="30" y="54" width="330" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="P2E-33-ndo"/>
                                                 </constraints>
@@ -818,9 +818,10 @@
                                                 <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cnZ-6o-mH2">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cnZ-6o-mH2">
                                                 <rect key="frame" x="0.0" y="81" width="390" height="622"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CalendarMeetingCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarMeetingCell" rowHeight="122" id="1st-17-iCT" customClass="CalendarMeetingCell" customModule="Meeron" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="122"/>
@@ -848,7 +849,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8g-gX-2XD">
-                                                                    <rect key="frame" x="71" y="29" width="55.666666666666657" height="21"/>
+                                                                    <rect key="frame" x="71" y="29" width="252" height="21"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="d7w-S2-gOQ"/>
                                                                     </constraints>
@@ -857,7 +858,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFp-E0-j1p">
-                                                                    <rect key="frame" x="71" y="65" width="45" height="35"/>
+                                                                    <rect key="frame" x="71" y="65" width="252" height="35"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="21" id="YSC-Sb-Uxx"/>
                                                                     </constraints>
@@ -866,28 +867,36 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aI4-wg-sR9">
-                                                                    <rect key="frame" x="344" y="47" width="22" height="22"/>
+                                                                    <rect key="frame" x="333" y="35" width="44" height="44"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="22" id="Ahd-qh-ToH"/>
-                                                                        <constraint firstAttribute="width" constant="22" id="Lav-zY-wZF"/>
+                                                                        <constraint firstAttribute="height" constant="44" id="Ahd-qh-ToH"/>
+                                                                        <constraint firstAttribute="width" constant="44" id="Lav-zY-wZF"/>
                                                                     </constraints>
                                                                     <state key="normal" title="Button"/>
-                                                                    <buttonConfiguration key="configuration" style="plain" image="calendarMeetingRightArrow"/>
+                                                                    <buttonConfiguration key="configuration" style="plain" image="calendarMeetingRightArrow" title=""/>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="Suv-zx-sXa" firstAttribute="top" secondItem="86Y-ww-Rls" secondAttribute="top" constant="29" id="0OK-LV-hVf"/>
                                                                 <constraint firstItem="mFp-E0-j1p" firstAttribute="top" secondItem="h8g-gX-2XD" secondAttribute="bottom" constant="15" id="1a4-Uo-iZf"/>
                                                                 <constraint firstItem="h8g-gX-2XD" firstAttribute="leading" secondItem="Suv-zx-sXa" secondAttribute="trailing" constant="18" id="8bc-e9-HWo"/>
+                                                                <constraint firstItem="aI4-wg-sR9" firstAttribute="leading" secondItem="h8g-gX-2XD" secondAttribute="trailing" constant="10" id="FjI-an-m1J"/>
                                                                 <constraint firstItem="mFp-E0-j1p" firstAttribute="leading" secondItem="h8g-gX-2XD" secondAttribute="leading" id="Fw3-W4-Y2m"/>
+                                                                <constraint firstItem="aI4-wg-sR9" firstAttribute="leading" secondItem="mFp-E0-j1p" secondAttribute="trailing" constant="10" id="WD3-Cr-csx"/>
                                                                 <constraint firstAttribute="bottomMargin" secondItem="mFp-E0-j1p" secondAttribute="bottom" constant="11" id="cAE-w0-c10"/>
-                                                                <constraint firstItem="aI4-wg-sR9" firstAttribute="top" secondItem="h8g-gX-2XD" secondAttribute="top" constant="18" id="dej-Q1-LvG"/>
+                                                                <constraint firstItem="aI4-wg-sR9" firstAttribute="top" secondItem="h8g-gX-2XD" secondAttribute="top" constant="6" id="dej-Q1-LvG"/>
                                                                 <constraint firstItem="h8g-gX-2XD" firstAttribute="top" secondItem="86Y-ww-Rls" secondAttribute="top" constant="29" id="gCx-FG-AaM"/>
-                                                                <constraint firstAttribute="trailing" secondItem="aI4-wg-sR9" secondAttribute="trailing" constant="24" id="mn8-Ev-hx0"/>
+                                                                <constraint firstAttribute="trailing" secondItem="aI4-wg-sR9" secondAttribute="trailing" constant="13" id="mn8-Ev-hx0"/>
                                                                 <constraint firstItem="Suv-zx-sXa" firstAttribute="leading" secondItem="86Y-ww-Rls" secondAttribute="leading" constant="30" id="qk0-b4-bEg"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <connections>
+                                                            <outlet property="meetingNameLabel" destination="h8g-gX-2XD" id="8ro-pf-kSg"/>
+                                                            <outlet property="meetingNumberLabel" destination="CKV-JF-yHA" id="7nA-6w-Sy5"/>
+                                                            <outlet property="meetingNumberView" destination="Suv-zx-sXa" id="GsX-0Y-3li"/>
+                                                            <outlet property="meetingTimeLabel" destination="mFp-E0-j1p" id="fEj-q2-G2L"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
@@ -903,6 +912,7 @@
                                             <constraint firstItem="cnZ-6o-mH2" firstAttribute="leading" secondItem="EPN-Tx-9ly" secondAttribute="leading" id="dL2-e9-FZv"/>
                                             <constraint firstItem="cnZ-6o-mH2" firstAttribute="top" secondItem="rUF-R4-0Lf" secondAttribute="bottom" id="fNk-SC-Z92"/>
                                             <constraint firstAttribute="trailing" secondItem="rUF-R4-0Lf" secondAttribute="trailing" id="h87-yE-c72"/>
+                                            <constraint firstAttribute="trailing" secondItem="hgY-CF-IvJ" secondAttribute="trailing" constant="30" id="ixf-iN-dId"/>
                                             <constraint firstAttribute="trailing" secondItem="cnZ-6o-mH2" secondAttribute="trailing" id="lFm-69-M5Y"/>
                                             <constraint firstItem="hgY-CF-IvJ" firstAttribute="top" secondItem="0oI-rm-Zms" secondAttribute="bottom" constant="5" id="rAN-Vg-w9f"/>
                                             <constraint firstAttribute="bottom" secondItem="cnZ-6o-mH2" secondAttribute="bottom" id="y2b-gy-TXT"/>
@@ -981,6 +991,7 @@
                         <outlet property="nextMonthBtn" destination="UCI-Mn-juc" id="t86-JI-MlH"/>
                         <outlet property="prevMonthBtn" destination="6eT-VA-giZ" id="FJG-vX-G10"/>
                         <outlet property="selectedDateLabel" destination="0oI-rm-Zms" id="YLC-Sl-Ve4"/>
+                        <outlet property="selectedMeetingCountLabel" destination="hgY-CF-IvJ" id="d73-4z-DwX"/>
                         <outlet property="workspaceNameLabel" destination="NEr-Vv-ftp" id="laP-YS-PVg"/>
                         <outlet property="yearLabel" destination="Z9o-QX-eSN" id="xFM-Ms-jHe"/>
                     </connections>
