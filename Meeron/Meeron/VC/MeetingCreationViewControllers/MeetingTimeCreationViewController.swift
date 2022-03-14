@@ -53,7 +53,7 @@ class MeetingTimeCreationViewController:UIViewController {
     }
     
     func setMeetingCreationData() {
-        meetingDateLabel.text = meetingCreationData.date.changeMeetingCreationDateToKoreanString()
+        meetingDateLabel.text = meetingCreationData.date.toKoreanDateString()
     }
     
     func addDateLabelTap() {

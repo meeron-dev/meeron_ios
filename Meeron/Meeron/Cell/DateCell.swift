@@ -18,16 +18,33 @@ class DateCell:UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        meetingInfoCircleView.layer.cornerRadius = meetingInfoCircleView.frame.height/2
     }
     
-    func setData(date:String?) {
-        guard let date = date else {
+    func setData(data:MeetingDate?) {
+        guard let data = data else {
+            meetingInfoCircleView.backgroundColor = nil
             self.dateLabel.text = ""
             return
         }
         
-        self.dateString = date
-        dateLabel.text = date.getDay()
+        dateString = data.date
+        dateLabel.text = data.date.getDay()
+        
+        if data.date == Date().toSlashDateString() {
+            dateLabel.textColor = .mrBlue
+            dateLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+        }else {
+            dateLabel.textColor = .darkGray
+            dateLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+        }
+        
+        
+        if data.hasMeeting {
+            meetingInfoCircleView.backgroundColor = .mrBlue
+        }else {
+            meetingInfoCircleView.backgroundColor = nil
+        }
         
     }
 }

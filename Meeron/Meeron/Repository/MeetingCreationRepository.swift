@@ -15,9 +15,9 @@ class MeetingCreationRepository {
     func createMeeting(data:MeetingCreation) -> Observable<Meeting?> {
         var meetingAdminIds = data.managers.map{ $0.workspaceUserId }
         meetingAdminIds.append(Int(UserDefaults.standard.string(forKey: "workspaceUserId")!)!)
-        let parameter:[String:Any] = ["meetingDate": data.date.changeMeetingCreationDateToSlashString(),
-                         "startTime":data.startTime.changeMeetingCreationTimeToAString(),
-                         "endTime":data.endTime.changeMeetingCreationTimeToAString(),
+        let parameter:[String:Any] = ["meetingDate": data.date.toSlashDateString(),
+                         "startTime":data.startTime.toATimeString(),
+                         "endTime":data.endTime.toATimeString(),
                          "meetingName": data.title,
                          "meetingPurpose":data.purpose,
                          "operationTeamId": data.team!.teamId,
@@ -55,7 +55,7 @@ class MeetingCreationRepository {
     }
     
     func createMeetingDocument(data:Data, agendaId:String) -> Observable<Bool> {
-        let resource = Resource<Bool>(url: "\(URLConstant.meetingAgenda)/\(agendaId)/files", parameter: [:], headers: ["Content-Type": "multipart/form-data", "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!], method: .post, encodingType: .URLEncoding)
+        let resource = Resource<Bool>(url: "\(URLConstant.meetingAgenda)/\(agendaId)/files", parameter: [:], headers: ["Content-Type": "multipart/form", "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!], method: .post, encodingType: .URLEncoding)
         
         return API().upload(resource: resource, data: data)
     }

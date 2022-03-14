@@ -73,8 +73,8 @@ class MeetingBaiscInfoCreationViewModel {
     
     func setMeetingCreationData(data: MeetingCreation) {
         meetingCreationData = data
-        meetingDateSubject.onNext(data.date.changeMeetingCreationDateToKoreanString())
-        meetingTimeSubject.onNext(data.startTime.changeMeetingCreationTimeToAString() + " ~ " + data.endTime.changeMeetingCreationTimeToAString())
+        meetingDateSubject.onNext(data.date.toKoreanDateString())
+        meetingTimeSubject.onNext(data.startTime.toATimeString() + " ~ " + data.endTime.toATimeString())
         
     }
     

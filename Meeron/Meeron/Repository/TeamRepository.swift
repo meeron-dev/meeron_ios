@@ -11,7 +11,8 @@ import RxSwift
 class TeamRepository {
     
     func loadTeamInWorkspace() -> Observable<Teams?> {
-        guard let workspaceId = UserDefaults.standard.string(forKey: "workspaceId") else {return Observable.of(nil)}
+        let workspaceId = UserDefaults.standard.string(forKey: "workspaceId")!
+                
         let urlString = URLConstant.teamInWorkspace+"?workspaceId="+workspaceId
         let resource = Resource<Teams>(url:urlString, parameter: [:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
         

@@ -39,7 +39,7 @@ class MeetingCreationResultViewController:UIViewController {
         }
 
         meetingTitleLabel.text = meetingCreationData.title
-        meetingDateLabel.text = meetingCreationData.date.changeMeetingCreationDateToKoreanString()
+        meetingDateLabel.text = meetingCreationData.date.toKoreanDateString()
         meetingPurposeLabel.text = meetingCreationData.purpose
         if meetingCreationData.managers.count == 1 {
             meetingManagersLabel.text = meetingCreationData.managers[0].nickname
@@ -51,7 +51,7 @@ class MeetingCreationResultViewController:UIViewController {
     
     func setMeetingCreationData(data:MeetingCreation) {
         meetingTitleLabel.text = data.title
-        meetingDateLabel.text = data.date.changeMeetingCreationDateToKoreanString()
+        meetingDateLabel.text = data.date.toKoreanDateString()
         meetingPurposeLabel.text = data.purpose
         if data.managers.count == 1 {
             meetingManagersLabel.text = data.managers[0].nickname

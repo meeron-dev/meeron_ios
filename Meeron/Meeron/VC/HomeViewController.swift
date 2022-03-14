@@ -40,7 +40,7 @@ class HomeViewController:UIViewController {
     func configureUI() {
         uncheckUpdatesDoneMeetingDotView.layer.cornerRadius = uncheckUpdatesDoneMeetingDotView.frame.width/2
         
-        todayDateLabel.text = Date().toMonthDateKoreanString()
+        todayDateLabel.text = Date().toMonthDayKoreanString()
         
         homeVM.todayMeetingCountSubject
             .observe(on: MainScheduler.instance)
@@ -63,6 +63,9 @@ class HomeViewController:UIViewController {
     func initTapAction() {
         calendarButton.rx.tap.bind {
             let calendarVC = self.storyboard?.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
+            calendarVC.calendarVM = CalendarViewModel(type: .workspace)
+            calendarVC.calendarType = .workspace
+            
             calendarVC.modalPresentationStyle = .fullScreen
             self.present(calendarVC, animated: true, completion: nil)
             calendarVC.workspaceNameLabel.text = self.navigationItem.title
@@ -75,8 +78,6 @@ class HomeViewController:UIViewController {
     }
     
     func setupMeetingCollectionView() {
-        //meetingCollectionView.delegate = self
-        //meetingCollectionView.dataSource = self
         
         homeVM.todayMeetingsSubject.bind(to: meetingCollectionView.rx.items) { collectionView, row, element in
             if row < 10 {

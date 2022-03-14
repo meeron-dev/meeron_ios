@@ -9,6 +9,7 @@ import Foundation
 import RxAlamofire
 import RxSwift
 import Alamofire
+import UIKit
 
 enum EncodingType {
     case JSONEncoding
@@ -33,12 +34,7 @@ struct Resource<T:Codable> {
 
 struct API {
     
-    let disposeBag = DisposeBag()
-    
-    let protocolHost = "https://dev.meeron.net"
-    
     func requestData<T:Codable>(resource:Resource<T>) -> Observable<T?> {
-        
         return RxAlamofire.requestData(resource.method, resource.url, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
             .flatMap({ (response, data) -> Observable<T?> in
                 switch response.statusCode {
@@ -46,7 +42,7 @@ struct API {
                     let decodedData = try JSONDecoder().decode(T.self, from: data)
                     return Observable.just(decodedData)
                 default:
-                    print("📍",response)
+                    print("📍",response.debugDescription)
                     return Observable.just(nil)
                 }
             })
@@ -59,60 +55,37 @@ struct API {
                 case 200...299:
                     return Observable.just(true)
                 default:
-                    print("📍",response)
+                    print("📍",response.debugDescription)
                     return Observable.just(false)
                 }
         }
     }
     
     func upload(resource: Resource<Bool>, data:Data) -> Observable<Bool> {
-        return Observable<Bool>.create({ observable in
-            
+        
+        return Observable.create({ observable in
             AF.upload(multipartFormData: { multipartFormData in
-                 for (key, value) in resource.parameter {
-                     multipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
-                 }
-                multipartFormData.append(data, withName: "files")
-            }, to: resource.url, method: resource.method, headers: resource.headers)
-                .uploadProgress(queue: .main) { progress in
-                    print("upload progress:",progress.fractionCompleted)
-                }.responseData { data in
-                    guard let statusCode = data.response?.statusCode else {
-                        observable.onNext(false)
-                        return
-                    }
-                    switch statusCode{
-                    case 200...299:
-                        observable.onNext(true)
-                    default:
-                        print("📍", data.response)
-                        observable.onNext(false)
-                    }
+                for (key, value) in resource.parameter {
+                    multipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
                 }
+                multipartFormData.append(data, withName: "files", fileName: ".png", mimeType: "mine/png")
+            }, to: resource.url, usingThreshold: UInt64.init(), method: .post, headers: ["Content-Type": "multipart/form", "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!])
+                .response { response in
+                    print("✔️",response.debugDescription)
+                    guard let statusCode = response.response?.statusCode else {
+                        return observable.onNext(false)
+                    }
+                    
+                    switch statusCode {
+                    case 200...299:
+                        return observable.onNext(true)
+                    default:
+                        return observable.onNext(false)
+                    }
+                    
+                }
+            
             return Disposables.create()
         })
-        
-        
-        /*RxAlamofire.upload(multipartFormData: { multipartFormData in
-            for (key, value) in resource.parameter {
-                multipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
-            }
-            multipartFormData.append(data, withName: "files")
-        }, to: resource.url, method: resource.method, headers: resource.headers).
-        }
-          */
-        
-        
-    }
-    
-    func login(email:String, nickname:String, profileImageUrl:String, provider:String) {
-        let url = protocolHost + "/api/login"
-        let parameters = ["email":email, "nickname":nickname,"profileImageUrl":profileImageUrl,"provider":provider]
-        RxAlamofire.requestJSON(.post, url, parameters: parameters, encoding: JSONEncoding.default,headers: ["Content-Type": "application/json"])
-            .subscribe(onNext: { response, json in
-                print("Login network:", response, json)
-            }, onError: { error in
-                print("login network error:",error)
-            }).disposed(by: disposeBag)
     }
 }

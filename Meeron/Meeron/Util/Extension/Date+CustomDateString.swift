@@ -8,25 +8,25 @@
 import Foundation
 
 extension Date {
-    func changeMeetingCreationDateToKoreanString() -> String {
+    func toKoreanDateString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy년 M월 d일"
         return dateFormatter.string(from: self)
     }
     
-    func changeMeetingCreationTimeToAString() -> String {
+    func toATimeString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm a"
         return dateFormatter.string(from: self)
     }
     
-    func changeMeetingCreationDateToSlashString() -> String {
+    func toSlashDateString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
         return dateFormatter.string(from: self)
     }
     
-    func toMonthDateKoreanString() -> String {
+    func toMonthDayKoreanString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M월 d일"
         return dateFormatter.string(from: self)

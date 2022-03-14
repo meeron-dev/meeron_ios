@@ -10,7 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-
 class CalendarViewController:UIViewController {
     
     @IBOutlet weak var calendarCollectionView: UICollectionView!
@@ -25,9 +24,11 @@ class CalendarViewController:UIViewController {
     
     @IBOutlet weak var meetingTableView: UITableView!
     
+    @IBOutlet weak var selectedDateLabel: UILabel!
     @IBOutlet weak var calendarHeight: NSLayoutConstraint!
     
-    let calendarVM = CalendarViewModel()
+    var calendarVM: CalendarViewModel!
+    var calendarType: CalendarType!
     
     let disposeBag = DisposeBag()
     
@@ -46,9 +47,27 @@ class CalendarViewController:UIViewController {
         
         
     }
+    
     func configureUI() {
+        
+        calendarVM.selectedDateSubject
+            .observe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, date in
+                owner.selectedDateLabel.text = date.toKoreanMonthDayString()
+            }).disposed(by: disposeBag)
+        
+        
         configureCollectionViewLayout()
         configureAllCalendarLabel()
+        configureTableView()
+    }
+    
+    func configureTableView() {
+        calendarVM.selectedDateMeetingsSubject.bind(to: meetingTableView.rx.items) { tableView, row, element in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarMeetingCell", for: IndexPath(row: row, section: 0)) as! CalendarMeetingCell
+            return cell
+        }.disposed(by: disposeBag)
     }
     
     @IBAction func close(_ sender: UIButton) {
@@ -82,9 +101,22 @@ class CalendarViewController:UIViewController {
             
         }.disposed(by: disposeBag)
         
+        
+        
         calendarVM.daysSubject.bind(to: calendarCollectionView.rx.items(cellIdentifier: "DateCell", cellType: DateCell.self)) { index, element, cell in
-            cell.setData(date: element)
+            cell.setData(data: element)
         }.disposed(by: disposeBag)
+        
+        
+        calendarCollectionView.rx.itemSelected
+            .withUnretained(self)
+            .subscribe(onNext: { owner, indexPath in
+                let cell = owner.calendarCollectionView.cellForItem(at: indexPath) as! DateCell
+                if let date = cell.dateString {
+                    owner.calendarVM.selectedDateSubject.onNext(date)
+                }
+            }).disposed(by: disposeBag)
+        
         
         calendarVM.monthSubject.bind(to: monthLabel.rx.text).disposed(by: disposeBag)
         calendarVM.yearSubject.bind(to: yearLabel.rx.text).disposed(by: disposeBag)
@@ -112,7 +144,7 @@ class CalendarViewController:UIViewController {
     }
     
 }
-
+/*
 extension CalendarViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 15
@@ -133,4 +165,4 @@ extension CalendarViewController:UITableViewDelegate,UITableViewDataSource {
     }
 }
 
-
+*/
