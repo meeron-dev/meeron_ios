@@ -12,6 +12,7 @@ import RxCocoa
 
 class CalendarViewController:UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var calendarCollectionView: UICollectionView!
     
     @IBOutlet weak var yearLabel: UILabel!
@@ -40,7 +41,7 @@ class CalendarViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //scrollView.delegate = self
         meetingTableView.frame.size.height = view.frame.height/2
         
         configureUI()
@@ -89,26 +90,33 @@ class CalendarViewController:UIViewController {
     
     
     func bindViewModel() {
-        prevMonthBtn.rx.tap.bind {
-            self.calendarVM.prevMonth()
-        }.disposed(by: disposeBag)
+        prevMonthBtn.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.calendarVM.prevMonth()
+            }).disposed(by: disposeBag)
         
-        nextMonthBtn.rx.tap.bind {
-            self.calendarVM.nextMonth()
-        }.disposed(by: disposeBag)
+        nextMonthBtn.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.calendarVM.nextMonth()
+            }).disposed(by: disposeBag)
         
         let allCalendarTapGesture = UITapGestureRecognizer()
         allCalendarView.addGestureRecognizer(allCalendarTapGesture)
-        allCalendarTapGesture.rx.event.bind {_ in
-            let allCalendarVC = self.storyboard?.instantiateViewController(withIdentifier: "AllCalendarViewController") as! AllCalendarViewController
-            allCalendarVC.modalPresentationStyle = .fullScreen
-            self.present(allCalendarVC, animated: false, completion: nil)
+        allCalendarTapGesture.rx.event
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                let allCalendarVC = owner.storyboard?.instantiateViewController(withIdentifier: "AllCalendarViewController") as! AllCalendarViewController
             
-            allCalendarVC.nowDate.subscribe(onNext: {
-                print($0, "월 선택")
-            }).disposed(by: self.disposeBag)
+                allCalendarVC.allCalendarVM = AllCalendarViewModel(type: owner.calendarType, nowYear: owner.calendarVM.nowYear, nowMonth: owner.calendarVM.nowMonth)
+                
+                allCalendarVC.delegate = owner
+                print(owner.calendarVM.nowMonth, owner.calendarVM.nowYear)
+                allCalendarVC.modalPresentationStyle = .fullScreen
+                owner.present(allCalendarVC, animated: false, completion: nil)
             
-        }.disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
         
         
         
@@ -158,26 +166,28 @@ class CalendarViewController:UIViewController {
         allCalendarLabel.attributedText = attributedString
     }
     
-}
-/*
-extension CalendarViewController:UITableViewDelegate,UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingInfoCell")!
-        return cell
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offset:CGFloat = 600
-        if scrollView.contentOffset.y > offset {
-            scrollView.contentInset = UIEdgeInsets(top: self.meetingTableView.frame.height, left: 0, bottom: 0, right: 0)
-        }else{
-            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        }
-    }
 }
 
+extension CalendarViewController: AllCalendarViewControllerDelegate {
+    func passSelectedYearMonth(month: String, year: String) {
+        calendarVM.changeDate(newMonth: month, newYear: year)
+    }
+}
+/*
+extension CalendarViewController: UIScrollViewDelegate {
+    
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        let offset:CGFloat = calendarHeight.constant + 200
+        if targetContentOffset.pointee.y < offset {
+            targetContentOffset.pointee = CGPoint(x: 0, y: 0)
+        }else{
+            targetContentOffset.pointee = CGPoint(x: 0, y: self.view.frame.height)
+        }
+       
+    }
+}
 */
+

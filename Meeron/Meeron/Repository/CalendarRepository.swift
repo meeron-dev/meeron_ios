@@ -28,7 +28,7 @@ class CalendarRepository {
     
     func loadMeetingDatesInMonth(date:String, type:CalendarType) -> Observable<MeetingDays?> {
     
-        let resource = Resource<MeetingDays>(url: "\(URLConstant.calendarMeeting)?date=\(date)&type=\(type)&id=\(getId(type: type))", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
+        let resource = Resource<MeetingDays>(url: "\(URLConstant.calendarMeetingDays)?date=\(date)&type=\(type)&id=\(getId(type: type))", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         
         return api.requestData(resource: resource)
     }

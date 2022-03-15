@@ -32,4 +32,21 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    func toYearString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        return dateFormatter.string(from: self)
+    }
+    
+    func toMonthString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M"
+        return dateFormatter.string(from: self)
+    }
+    
+    func toYearMonthSlashString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM"
+        return dateFormatter.string(from: self)
+    }
 }

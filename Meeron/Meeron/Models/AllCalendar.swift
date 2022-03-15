@@ -8,19 +8,19 @@
 import Foundation
 
 struct AllCalendarYearMeetingCount:Codable {
-    let yearCounts:[yearCount]
+    let yearCounts:[YearMeetingCount]
 }
 
-struct yearCount:Codable {
+struct YearMeetingCount:Codable {
     let year:Int
     let count:Int
 }
 
 struct AllCalendarMonthMeetingCount:Codable {
-    let monthCounts:[MonthCount]
+    let monthCounts:[MonthMeetingCount]
 }
 
-struct MonthCount:Codable {
+struct MonthMeetingCount:Codable {
     let month:Int
     let count:Int
 }

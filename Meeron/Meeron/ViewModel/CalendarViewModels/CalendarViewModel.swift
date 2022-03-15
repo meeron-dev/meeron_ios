@@ -15,8 +15,6 @@ enum CalendarType:String {
 }
 
 class CalendarViewModel {
-    
-    let dateFormatter = DateFormatter()
     var calendar = Calendar.current
     var dateComponents = DateComponents()
     
@@ -32,6 +30,8 @@ class CalendarViewModel {
     var selectedDate = Date().toSlashDateString()
     
     var nowMonthMeetingDates:[Int] = []
+    var nowMonth:String = Date().toMonthString()
+    var nowYear:String = Date().toYearString()
     
     let yearMonthSubject = PublishSubject<String>()
     
@@ -56,7 +56,6 @@ class CalendarViewModel {
         calendarRepository.loadMeetingOnDate(date: selectedDate, type: calendarType)
             .withUnretained(self)
             .subscribe(onNext: { owner, calendarMeetings in
-                print(calendarMeetings)
                 if let calendarMeetings = calendarMeetings?.meetings {
                     owner.selectedDateMeetingsSubject.onNext(calendarMeetings)
                     owner.selectedDateMeetingCountSubject.onNext(calendarMeetings.count)
@@ -70,7 +69,6 @@ class CalendarViewModel {
   
     func initDate() {
         let now = Date()
-        dateFormatter.dateFormat = "yyyyMMdd"
         dateComponents.year = calendar.component(.year, from: now)
         dateComponents.month = calendar.component(.month, from: now)
         dateComponents.day = 1
@@ -78,21 +76,19 @@ class CalendarViewModel {
     }
     
     private func calculateDate(){
-        let firstDayOfMonth = calendar.date(from: dateComponents)
-        let firstWeekday = calendar.component(.weekday, from: firstDayOfMonth!)
-        let daysCountInMonth = calendar.range(of: .day, in: .month, for: firstDayOfMonth!)!.count
+        let firstDayOfMonth = calendar.date(from: dateComponents)!
+        let firstWeekday = calendar.component(.weekday, from: firstDayOfMonth)
+        let daysCountInMonth = calendar.range(of: .day, in: .month, for: firstDayOfMonth)!.count
         let weekdayAdding = 2-firstWeekday
         
-        dateFormatter.dateFormat = "yyyy"
-        yearSubject.onNext(dateFormatter.string(from: firstDayOfMonth!))
-        dateFormatter.dateFormat = "M월"
-        monthSubject.onNext(dateFormatter.string(from: firstDayOfMonth!))
+        yearSubject.onNext(firstDayOfMonth.toYearString())
+        monthSubject.onNext(firstDayOfMonth.toMonthString() + "월")
+        nowYear = firstDayOfMonth.toYearString()
+        nowMonth = firstDayOfMonth.toMonthString()
         
-        dateFormatter.dateFormat = "yyyy/MM"
-        let yearMonth = dateFormatter.string(from: firstDayOfMonth!)
+        let yearMonth = firstDayOfMonth.toYearMonthSlashString()
         
-        
-        calendarRepository.loadMeetingDatesInMonth(date: dateFormatter.string(from: firstDayOfMonth!), type: calendarType)
+        calendarRepository.loadMeetingDatesInMonth(date: firstDayOfMonth.toYearMonthSlashString(), type: calendarType)
             .withUnretained(self)
             .subscribe(onNext: { owner, dates in
                 if let dates = dates {
@@ -102,7 +98,7 @@ class CalendarViewModel {
     
     }
     
-    func calulateDays(weekdayAdding:Int, daysCountInMonth:Int, yearMonth:String, meetingDates:[Int]) {
+    private func calulateDays(weekdayAdding:Int, daysCountInMonth:Int, yearMonth:String, meetingDates:[Int]) {
         days = []
         for day in weekdayAdding...daysCountInMonth{
             if day < 1{
@@ -120,10 +116,19 @@ class CalendarViewModel {
     func prevMonth() {
         dateComponents.month = dateComponents.month! - 1
         calculateDate()
+        selectedDateSubject.onNext(calendar.date(from: dateComponents)!.toSlashDateString())
     }
     
     func nextMonth() {
         dateComponents.month = dateComponents.month! + 1
         calculateDate()
+        selectedDateSubject.onNext(calendar.date(from: dateComponents)!.toSlashDateString())
+    }
+    
+    func changeDate(newMonth:String, newYear:String) {
+        dateComponents.month = Int(newMonth)
+        dateComponents.year = Int(newYear)
+        calculateDate()
+        selectedDateSubject.onNext(calendar.date(from: dateComponents)!.toSlashDateString())
     }
 }

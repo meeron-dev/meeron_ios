@@ -35,6 +35,10 @@
 		FC4D5A0D27DE18D80000AE18 /* AllCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D5A0C27DE18D80000AE18 /* AllCalendar.swift */; };
 		FC56F55327DCA80E00E54DFE /* MeetingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56F55227DCA80E00E54DFE /* MeetingRepository.swift */; };
 		FC56F55527DCAA5D00E54DFE /* TodayMeeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56F55427DCAA5D00E54DFE /* TodayMeeting.swift */; };
+		FC5D5ABF27E02486000A4FB5 /* AllCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D5ABE27E02486000A4FB5 /* AllCalendarViewModel.swift */; };
+		FC5D5AC127E02E61000A4FB5 /* AllCalendarYearCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D5AC027E02E61000A4FB5 /* AllCalendarYearCell.swift */; };
+		FC5D5AC327E02E70000A4FB5 /* AllCalendarMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D5AC227E02E70000A4FB5 /* AllCalendarMonthCell.swift */; };
+		FC5D5AC727E0345C000A4FB5 /* FontNameConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D5AC627E0345C000A4FB5 /* FontNameConstant.swift */; };
 		FC651A8827D256C800A64D8A /* AgendaSelectBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC651A8727D256C800A64D8A /* AgendaSelectBarCell.swift */; };
 		FC6AB4D627C0C4D700797C44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */; };
 		FC6AB4D827C0C4D700797C44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */; };
@@ -131,6 +135,10 @@
 		FC4D5A0C27DE18D80000AE18 /* AllCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCalendar.swift; sourceTree = "<group>"; };
 		FC56F55227DCA80E00E54DFE /* MeetingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingRepository.swift; sourceTree = "<group>"; };
 		FC56F55427DCAA5D00E54DFE /* TodayMeeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMeeting.swift; sourceTree = "<group>"; };
+		FC5D5ABE27E02486000A4FB5 /* AllCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCalendarViewModel.swift; sourceTree = "<group>"; };
+		FC5D5AC027E02E61000A4FB5 /* AllCalendarYearCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCalendarYearCell.swift; sourceTree = "<group>"; };
+		FC5D5AC227E02E70000A4FB5 /* AllCalendarMonthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCalendarMonthCell.swift; sourceTree = "<group>"; };
+		FC5D5AC627E0345C000A4FB5 /* FontNameConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontNameConstant.swift; sourceTree = "<group>"; };
 		FC651A8727D256C800A64D8A /* AgendaSelectBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaSelectBarCell.swift; sourceTree = "<group>"; };
 		FC6AB4D227C0C4D700797C44 /* Meeron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meeron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -266,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				FC06E98E27C3F63E004065E3 /* SizeValueConstant.swift */,
+				FC5D5AC627E0345C000A4FB5 /* FontNameConstant.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -414,6 +423,8 @@
 			children = (
 				FC7B37C727DF8E2F005C3D23 /* CalendarMeetingCell.swift */,
 				FC8393A327C66F6400981622 /* CalendarDateCell.swift */,
+				FC5D5AC027E02E61000A4FB5 /* AllCalendarYearCell.swift */,
+				FC5D5AC227E02E70000A4FB5 /* AllCalendarMonthCell.swift */,
 			);
 			path = CalendarCells;
 			sourceTree = "<group>";
@@ -436,6 +447,7 @@
 			isa = PBXGroup;
 			children = (
 				FC19AAF727C75933000B5119 /* CalendarViewModel.swift */,
+				FC5D5ABE27E02486000A4FB5 /* AllCalendarViewModel.swift */,
 			);
 			path = CalendarViewModels;
 			sourceTree = "<group>";
@@ -745,6 +757,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC9A803F27D9D49300C3B836 /* MeetingCreationRepository.swift in Sources */,
+				FC5D5AC127E02E61000A4FB5 /* AllCalendarYearCell.swift in Sources */,
 				FC6AB4DA27C0C4D700797C44 /* LoginViewController.swift in Sources */,
 				FC06E98927C3DC71004065E3 /* UIColor+CustomColor.swift in Sources */,
 				FC4D5A0B27DE188A0000AE18 /* AllCalendarRepository.swift in Sources */,
@@ -779,7 +792,10 @@
 				FC9FD92D27C4BF60009DE526 /* MeetingCardCell.swift in Sources */,
 				FCB36CF727CCF5A000ACF591 /* MeetingDateCreationViewController.swift in Sources */,
 				FC0A6B9C27D1EB2300DBC745 /* MeetingAgendaCreationViewModel.swift in Sources */,
+				FC5D5AC327E02E70000A4FB5 /* AllCalendarMonthCell.swift in Sources */,
 				FC23A9FC27C547B9009565B2 /* CalendarViewController.swift in Sources */,
+				FC5D5AC727E0345C000A4FB5 /* FontNameConstant.swift in Sources */,
+				FC5D5ABF27E02486000A4FB5 /* AllCalendarViewModel.swift in Sources */,
 				FC19AAF827C75933000B5119 /* CalendarViewModel.swift in Sources */,
 				FCEFFD7727CF342A00D54CD4 /* MeetingTimeCreationViewController.swift in Sources */,
 				FC8393A427C66F6400981622 /* CalendarDateCell.swift in Sources */,

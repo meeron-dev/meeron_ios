@@ -18,7 +18,8 @@ struct URLConstant {
     static let meetingCreation = protocolHost + "/api/meetings"
     static let meetingAgenda = protocolHost + "/api/agendas"
     static let todayMeeting = protocolHost + "/api/meetings/today"
-    static let calendarMeeting = protocolHost + "/api/meetings/days"
+    static let calendarMeetingDays = protocolHost + "/api/meetings/days"
+    static let calendarMeeting = protocolHost + "/api/meetings/day"
     static let allCalendarYearMeeting = protocolHost + "/api/meetings/years"
     static let allCalendarMonthMeeting = protocolHost + "/api/meetings/months"
     

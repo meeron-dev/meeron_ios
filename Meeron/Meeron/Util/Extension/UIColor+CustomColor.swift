@@ -17,6 +17,10 @@ extension UIColor {
         return UIColor(red: 1/255, green: 110/255, blue: 141/255, alpha: 1)
     }
     
+    static var grayBlue: UIColor {
+        return UIColor(red:114/255, green: 159/255, blue: 174/255, alpha: 1)
+    }
+    
     static var tabBarBackGroundGray: UIColor {
         return UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
     }
