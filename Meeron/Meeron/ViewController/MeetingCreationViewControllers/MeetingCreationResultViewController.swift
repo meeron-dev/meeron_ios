@@ -34,30 +34,26 @@ class MeetingCreationResultViewController:UIViewController {
         okButton.addShadow()
         meetingCreationResultButton.addShadow()
         
-        guard let meetingCreationData = meetingCreationData else {
-            return
+        meetingTitleLabel.text = meetingCreationData?.title
+        meetingDateLabel.text = meetingCreationData?.date.toKoreanDateString()
+        meetingPurposeLabel.text = meetingCreationData?.purpose
+        if meetingCreationData?.managers.count == 0 {
+            meetingManagersLabel.text = (UserDefaults.standard.string(forKey: "workspaceNickname") ?? "회의 생성자")
+        }else {
+            meetingManagersLabel.text = (UserDefaults.standard.string(forKey: "workspaceNickname") ?? "회의 생성자") + " 외 \(meetingCreationData?.managers.count ?? 0)명"
         }
-
-        meetingTitleLabel.text = meetingCreationData.title
-        meetingDateLabel.text = meetingCreationData.date.toKoreanDateString()
-        meetingPurposeLabel.text = meetingCreationData.purpose
-        if meetingCreationData.managers.count == 1 {
-            meetingManagersLabel.text = meetingCreationData.managers[0].nickname
-        }else if meetingCreationData.managers.count > 1 {
-            meetingManagersLabel.text = meetingCreationData.managers[0].nickname + "외 \(meetingCreationData.managers.count - 1)명"
+        meetingParticipantCountLabel.text = "\((meetingCreationData?.participants.count ?? 0) + (meetingCreationData?.managers.count ?? 0) + 1)명"
+        meetingTeamLabel.text = meetingCreationData?.team?.teamName
+        if meetingCreationData?.agendas.count ?? -1 > 0 {
+            meetingAgendaLabel.text = meetingCreationData?.agendas[0].title
         }
-        meetingParticipantCountLabel.text = "\(meetingCreationData.participants.count)명"
+        
+        
     }
     
     func setMeetingCreationData(data:MeetingCreation) {
-        meetingTitleLabel.text = data.title
-        meetingDateLabel.text = data.date.toKoreanDateString()
-        meetingPurposeLabel.text = data.purpose
-        if data.managers.count == 1 {
-            meetingManagersLabel.text = data.managers[0].nickname
-        }else if data.managers.count > 1 {
-            meetingManagersLabel.text = data.managers[0].nickname + "외 \(data.managers.count - 1)명"
-        }
+        
+        
         
     }
     

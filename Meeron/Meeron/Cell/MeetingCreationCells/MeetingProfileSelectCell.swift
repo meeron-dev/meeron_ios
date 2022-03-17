@@ -49,8 +49,8 @@ class MeetingProfileSelectCell: UICollectionViewCell {
         selectedView.backgroundColor = nil
         profileNameLabel.textColor = .black
         profilePositionLabel.textColor = .textBalck
-        profileNameLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 13)
-        profilePositionLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 12)
+        profileNameLabel.font = UIFont(name: FontNameConstant.medium, size: 13)
+        profilePositionLabel.font = UIFont(name: FontNameConstant.medium, size: 12)
     }
 
     
@@ -58,8 +58,8 @@ class MeetingProfileSelectCell: UICollectionViewCell {
         selectedView.backgroundColor = .selectedProfileBlue
         profileNameLabel.textColor = .mrBlue
         profilePositionLabel.textColor = .mrBlue
-        profileNameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 13)
-        profilePositionLabel.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 12)
+        profileNameLabel.font = UIFont(name: FontNameConstant.bold, size: 13)
+        profilePositionLabel.font = UIFont(name: FontNameConstant.semiBold, size: 12)
         
     }
     
@@ -92,9 +92,9 @@ class MeetingProfileSelectCell: UICollectionViewCell {
             deselectProfile()
         }
         
-        if vm.isManager(data: data) {
+        if vm.isManager(data: data) || String(data.workspaceUserId) == UserDefaults.standard.string(forKey: "workspaceUserId")! {
             selectProfile()
-            managerLabel.text = "공동 관리자"
+            managerLabel.text = "관리자"
             entireProfileView.isUserInteractionEnabled = false
         }else {
             managerLabel.text = ""

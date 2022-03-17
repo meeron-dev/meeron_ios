@@ -104,8 +104,7 @@ class CalendarViewModel {
             if day < 1{
                 days.append(nil)
             }else{
-                day > 9 ? days.append(MeetingDate(date: yearMonth+"/"+String(day), hasMeeting: meetingDates.contains(day))) : days.append(MeetingDate(date: yearMonth+"/"+"0"+String(day), hasMeeting: meetingDates.contains(day)))
-                
+                days.append(MeetingDate(date: yearMonth+"/"+String(day), hasMeeting: meetingDates.contains(day)))
             }
         }
         

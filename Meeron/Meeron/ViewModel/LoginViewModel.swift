@@ -64,9 +64,9 @@ class LoginViewModel {
         let resource:Resource<Token>
         
         if let nickname = nickname, let profileImageUrl = profileImageUrl{
-            resource = Resource<Token>(url: URLConstant.login, parameter:["email":email, "nickname":nickname, "profileImageUrl":profileImageUrl,"provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
+            resource = Resource<Token>(url: URLConstant.login, parameter:["email":"test4@test.com", "nickname":nickname, "profileImageUrl":profileImageUrl,"provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
         }else{
-            resource = Resource<Token>(url: URLConstant.login, parameter:["email":email,"provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
+            resource = Resource<Token>(url: URLConstant.login, parameter:["email":"test4@test.com","provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
         }
         
 
@@ -93,17 +93,18 @@ class LoginViewModel {
             .subscribe(onNext: { user in
                 guard let user = user else {return}
                 self.saveUserId(id: user.userId)
-                self.loadUserWorkspace()
+                self.loadUserWorkspace(id: user.userId)
             }).disposed(by: disposeBag)
     }
     
-    func loadUserWorkspace() {
-        let resource = Resource<UserWorkspace>(url: URLConstant.userWorkspace, parameter: ["userId":UserDefaults.standard.string(forKey: "userId")!], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
+    func loadUserWorkspace(id:Int) {
+        print("USER ID:,",id)
+        let resource = Resource<UserWorkspace>(url: URLConstant.userWorkspace+"/\(id)/workspace-users", parameter: ["userId":String(id)], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
         
         API().requestData(resource: resource)
             .subscribe(onNext: { userWorkspace in
                 self.loginSuccess.onNext(true)
-                
+                print("USER WORKSPACE", userWorkspace)
                 print(userWorkspace)
                 guard let userWorkspace  = userWorkspace else  {return}
                 if userWorkspace.myWorkspaceUsers.count > 0 {
@@ -122,6 +123,7 @@ class LoginViewModel {
     func saveUserWorkspace(data:[MyWorkspaceUser]) {
         UserDefaults.standard.set(String(data[0].workspaceId), forKey:"workspaceId")
         UserDefaults.standard.set(String(data[0].workspaceUserId), forKey: "workspaceUserId")
+        UserDefaults.standard.set(data[0].nickname, forKey: "workspaceNickname")
         
     }
 }

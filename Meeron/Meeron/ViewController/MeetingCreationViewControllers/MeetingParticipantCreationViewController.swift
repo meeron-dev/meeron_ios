@@ -60,7 +60,7 @@ class MeetingParticipantCreationViewController:UIViewController {
                 
                 if self.meetingParticipantCreationVM.isManager(data: element) {
                     cell.selectProfile()
-                    cell.managerLabel.text = "공동 관리자"
+                    cell.managerLabel.text = "관리자"
                 }
                 
                 return cell
@@ -70,7 +70,7 @@ class MeetingParticipantCreationViewController:UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
                 let cell = owner.participantProfileCollectionView.cellForItem(at: indexPath) as! MeetingParticipantProfileCell
-                if cell.managerLabel.text != "공동 관리자" {
+                if cell.managerLabel.text != "관리자" {
                     owner.meetingParticipantCreationVM.selectUserProfile(data: cell.profileData!)
                 }
             }).disposed(by: disposeBag)
@@ -136,11 +136,11 @@ class MeetingParticipantCreationViewController:UIViewController {
     
     func closeTeamTableView() {
         teamTableViewHeight.constant = 0
-        teamTableVIewOpenCloseButton.setImage(UIImage(named: "expand_more"), for: .normal)
+        teamTableVIewOpenCloseButton.setImage(UIImage(named: ImageNameConstant.openTeamTableViewButtonImage), for: .normal)
     }
     
     func openTeamTalbeView() {
-        teamTableVIewOpenCloseButton.setImage(UIImage(named: "expand_more-1"), for: .normal)
+        teamTableVIewOpenCloseButton.setImage(UIImage(named: ImageNameConstant.closeTeamTableViewButtonImage), for: .normal)
         if meetingParticipantCreationVM.teams.count > 5 {
             teamTableViewHeight.constant = 240
         }else {

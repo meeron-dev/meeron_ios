@@ -13,10 +13,6 @@ struct Meeting: Codable{
 
 
 struct MeetingCreationAgendaResponses:Codable {
-    let agendaResponses:[AgendaResponse]
+    let createdAgendaIds:[Int]
 }
 
-struct AgendaResponse:Codable {
-    let agendaNumber:Int
-    let createdAgendaId:Int
-}

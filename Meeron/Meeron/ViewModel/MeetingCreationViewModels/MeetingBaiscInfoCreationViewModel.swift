@@ -27,13 +27,9 @@ class MeetingBaiscInfoCreationViewModel {
     
     func setTitle(title:String) {
         self.title = title
-        if title != "" {
+        if title.trimmingCharacters(in: .whitespaces) != ""{
             self.meetingCreationData?.title = title
-            if title.count < 3 {
-                validTitleSubject.onNext(false)
-            }else {
-                validTitleSubject.onNext(true)
-            }
+            validTitleSubject.onNext(true)
         }else {
             validTitleSubject.onNext(false)
         }

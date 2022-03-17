@@ -22,7 +22,7 @@ extension Date {
     
     func toSlashDateString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd"
+        dateFormatter.dateFormat = "yyyy/M/d"
         return dateFormatter.string(from: self)
     }
     

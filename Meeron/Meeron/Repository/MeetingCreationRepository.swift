@@ -11,30 +11,34 @@ import Alamofire
 
 class MeetingCreationRepository {
     
+    let headers:HTTPHeaders = [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)]
+    let api = API()
+    
     
     func createMeeting(data:MeetingCreation) -> Observable<Meeting?> {
         var meetingAdminIds = data.managers.map{ $0.workspaceUserId }
-        meetingAdminIds.append(Int(UserDefaults.standard.string(forKey: "workspaceUserId")!)!)
-        let parameter:[String:Any] = ["meetingDate": data.date.toSlashDateString(),
-                         "startTime":data.startTime.toATimeString(),
-                         "endTime":data.endTime.toATimeString(),
-                         "meetingName": data.title,
-                         "meetingPurpose":data.purpose,
-                         "operationTeamId": data.team!.teamId,
-                         "meetingAdminIds":meetingAdminIds]
+         
+        let parameter:[String:Any] = ["workspaceId": Int(UserDefaults.standard.string(forKey: "workspaceId")!)!,
+                                      "meetingDate": data.date.toSlashDateString(),
+                                      "startTime":data.startTime.toATimeString(),
+                                      "endTime":data.endTime.toATimeString(),
+                                      "meetingName": data.title,
+                                      "meetingPurpose":data.purpose,
+                                      "operationTeamId": data.team!.teamId,
+                                      "meetingAdminIds":meetingAdminIds]
         
         print("회의 생성 파라미터",parameter)
-        let resource = Resource<Meeting>(url: URLConstant.meetingCreation, parameter: parameter, headers: ["Content-Type": "application/json","Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!], method: .post, encodingType: .JSONEncoding)
+        let resource = Resource<Meeting>(url: URLConstant.meetingCreation, parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
         
-        return  API().requestData(resource: resource)
+        return  api.requestData(resource: resource)
     }
     
     func createMeetingParticipant(data:MeetingCreation, meetingId:String) -> Observable<Bool> {
         
         let parameter = ["workspaceUserIds":data.participants.map{$0.workspaceUserId}]
-        let resource = Resource<Bool>(url: URLConstant.meetingCreation + "/" + meetingId + "/attendees" , parameter: parameter, headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .post, encodingType: .JSONEncoding)
+        let resource = Resource<Bool>(url: URLConstant.meetingCreation + "/" + meetingId + "/attendees" , parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
         print("참가자 생성", parameter)
-        return  API().requestResponse(resource: resource)
+        return  api.requestResponse(resource: resource)
     }
     
     func createMeetingAgenda(datas:[Agenda], meetingId:String) -> Observable<MeetingCreationAgendaResponses?> {
@@ -50,13 +54,13 @@ class MeetingCreationRepository {
         
         let parameter = ["agendas":agendas]
         print("아젠다",parameter)
-        let resource = Resource<MeetingCreationAgendaResponses>(url: URLConstant.meetingCreation + "/" + meetingId + "/agendas", parameter: parameter, headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .post, encodingType: .JSONEncoding)
-        return  API().requestData(resource: resource)
+        let resource = Resource<MeetingCreationAgendaResponses>(url: URLConstant.meetingCreation + "/" + meetingId + "/agendas", parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
+        return  api.requestData(resource: resource)
     }
     
     func createMeetingDocument(data:Data, agendaId:String) -> Observable<Bool> {
         let resource = Resource<Bool>(url: "\(URLConstant.meetingAgenda)/\(agendaId)/files", parameter: [:], headers: ["Content-Type": "multipart/form", "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!], method: .post, encodingType: .URLEncoding)
         
-        return API().upload(resource: resource, data: data)
+        return api.upload(resource: resource, data: data)
     }
 }

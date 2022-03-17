@@ -57,7 +57,8 @@ class MeetingParticipantCreationViewModel {
             return false
         }
 
-        if meetingCreationData.managers.contains(data) {
+        if meetingCreationData.managers.contains(data) ||
+            UserDefaults.standard.string(forKey: "workspaceNickname") == data.nickname {
             return true
         }else {
             return false
@@ -88,13 +89,13 @@ class MeetingParticipantCreationViewModel {
     func addSelectedUserProfile(data:WorkspaceUser) {
         selectedUserProfiles.append(data)
         selectedUserProfilesSubject.onNext(selectedUserProfiles)
-        selectedUserProfilesCountSubject.onNext(selectedUserProfiles.count + meetingCreationData!.managers.count)
+        selectedUserProfilesCountSubject.onNext(selectedUserProfiles.count + meetingCreationData!.managers.count+1)
     }
     
     func updateSelectedUserProfiles(data:[WorkspaceUser]) {
         selectedUserProfiles = data
         selectedUserProfilesSubject.onNext(selectedUserProfiles)
-        selectedUserProfilesCountSubject.onNext(selectedUserProfiles.count + meetingCreationData!.managers.count)
+        selectedUserProfilesCountSubject.onNext(selectedUserProfiles.count + meetingCreationData!.managers.count+1)
         userProfilesSubejct.onNext(userProfiles)
     }
     
@@ -102,7 +103,7 @@ class MeetingParticipantCreationViewModel {
         if let index = selectedUserProfiles.firstIndex(of: data) {
             selectedUserProfiles.remove(at: index)
             selectedUserProfilesSubject.onNext(selectedUserProfiles)
-            selectedUserProfilesCountSubject.onNext(selectedUserProfiles.count + meetingCreationData!.managers.count)
+            selectedUserProfilesCountSubject.onNext(selectedUserProfiles.count + meetingCreationData!.managers.count+1)
         }
     }
     
@@ -152,7 +153,7 @@ class MeetingParticipantCreationViewModel {
         meetingDateSubject.onNext(data.date.toKoreanDateString())
         meetingTimeSubject.onNext(data.startTime.toATimeString() + " ~ " + data.endTime.toATimeString())
         meetingTitleSubject.onNext(data.title)
-        selectedUserProfilesCountSubject.onNext(meetingCreationData!.managers.count)
+        selectedUserProfilesCountSubject.onNext(meetingCreationData!.managers.count+1)  //1은 회의 생성자
         loadTeamInWorkspace()
     }
     
@@ -205,14 +206,14 @@ class MeetingParticipantCreationViewModel {
             .subscribe(onNext: { owner, response in
                 if let response = response {
                     print("아젠다 생성 성공")
-                    owner.createMeetingDocuments(agendaResponses: response.agendaResponses)
+                    owner.createMeetingDocuments(agendaId: response.createdAgendaIds)
                 }
                 
             }).disposed(by: disposeBag)
         
     }
     
-    func createMeetingDocuments(agendaResponses:[AgendaResponse]) {
+    func createMeetingDocuments(agendaId:[Int]) {
         var totalDocumentCount = 0
         for i in 0..<meetingCreationData!.agendas.count {
             totalDocumentCount += meetingCreationData!.agendas[i].document.count
@@ -233,8 +234,8 @@ class MeetingParticipantCreationViewModel {
                 }
             }).disposed(by: disposeBag)
         
-        for i in 0..<agendaResponses.count {
-            let id = agendaResponses[i].createdAgendaId
+        for i in 0..<agendaId.count {
+            let id = agendaId[i]
             for j in 0..<meetingCreationData!.agendas[i].document.count {
                 createMeetingDocument(data: meetingCreationData!.agendas[i].document[j].data, agendaId: id)
             }

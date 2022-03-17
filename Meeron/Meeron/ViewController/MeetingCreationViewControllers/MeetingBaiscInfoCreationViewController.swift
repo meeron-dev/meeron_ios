@@ -23,6 +23,9 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     @IBOutlet weak var meetingPurposeTextField:UITextField!
     
     @IBOutlet weak var meetingManagersLabel:UILabel!
+    @IBOutlet weak var meetingCreationManagerLabel: UILabel!
+    
+    
     @IBOutlet weak var meetingTeamLabel:UILabel!
     
     @IBOutlet weak var basicInfoContentView:UIView!
@@ -44,7 +47,7 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     
     private func configureUI() {
         self.navigationItem.titleView = UILabel.meetingCreationNavigationItemTitleLabel
-        
+        meetingCreationManagerLabel.text = UserDefaults.standard.string(forKey: "workspaceNickname")
         
         configureButton()
         addTapGesture()
@@ -134,10 +137,6 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     }
     
     func addTapGesture() {
-        let managersTapGesture = UITapGestureRecognizer()
-        managersTapGesture.addTarget(self, action: #selector(showManagerSelectView))
-        meetingManagersLabel.isUserInteractionEnabled = true
-        meetingManagersLabel.addGestureRecognizer(managersTapGesture)
         
         let teamTapGesture = UITapGestureRecognizer()
         teamTapGesture.addTarget(self, action: #selector(showTeamSelectView))
@@ -149,16 +148,16 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
         view.addGestureRecognizer(tapper)
     }
     
-    @objc func showManagerSelectView() {
+    @IBAction func showProfileSelectView(_ sender: Any) {
         let managerSelectVC = self.storyboard?.instantiateViewController(withIdentifier: "MeetingProfileSelectViewController") as! MeetingProfileSelectViewController
         managerSelectVC.delegate = self
         
         managerSelectVC.modalPresentationStyle = .custom
         managerSelectVC.transitioningDelegate = self
         present(managerSelectVC, animated: true, completion: nil)
-        
     }
     
+
     @objc func showTeamSelectView() {
         let teamSelectVC = self.storyboard?.instantiateViewController(withIdentifier: "MeetingTeamSelectViewController") as! MeetingTeamSelectViewController
         teamSelectVC.delegate = self
@@ -167,6 +166,7 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
         teamSelectVC.transitioningDelegate = self
         present(teamSelectVC, animated: true, completion: nil)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let meetingAgendaCreationVC = segue.destination as? MeetingAgendaCreationViewController else { return}
         guard let data = meetingBaiscInfoCreationVM.meetingCreationData else {return}
@@ -201,6 +201,7 @@ extension MeetingBaiscInfoCreationViewController:MeetingProfileSelectViewControl
     func passSelectedProfiles(selectedProfiles: [WorkspaceUser]) {
         meetingBaiscInfoCreationVM.setManagers(managers: selectedProfiles)
         let managerNames = meetingBaiscInfoCreationVM.getManagerNames(datas: selectedProfiles)
+        meetingCreationManagerLabel.text =  (UserDefaults.standard.string(forKey: "workspaceNickname") ?? "회의 생성자") + ", "
         meetingManagersLabel.text = managerNames.joined(separator: ", ")
     }
     
