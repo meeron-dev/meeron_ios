@@ -109,7 +109,7 @@ class CalendarViewModel {
         }
         
         daysSubject.onNext(days)
-        calendarHeightSubject.onNext(CGFloat(ceil(Double(days.count)/7.0)*44))
+        calendarHeightSubject.onNext(CGFloat(ceil(Double(days.count)/7.0)*45))
     }
     
     func prevMonth() {

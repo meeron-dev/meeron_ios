@@ -79,6 +79,8 @@ class HomeViewController:UIViewController {
     
     func setupMeetingCollectionView() {
         
+        meetingCollectionView.delegate = self
+        
         homeVM.todayMeetingsSubject.bind(to: meetingCollectionView.rx.items) { collectionView, row, element in
             if row < 10 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MeetingCardCell", for: IndexPath(row: row, section: 0)) as! MeetingCardCell

@@ -30,13 +30,13 @@ class CalendarDateCell:UICollectionViewCell {
         
         dateString = data.date
         dateLabel.text = data.date.getDay()
-        
+        print(data.date, selectedDate)
         if data.date == selectedDate {
             dateLabel.textColor = .mrBlue
-            dateLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 15)
+            dateLabel.font = UIFont(name: FontNameConstant.bold, size: 17)
         }else {
             dateLabel.textColor = .darkGray
-            dateLabel.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 15)
+            dateLabel.font = UIFont(name: FontNameConstant.regular, size: 15)
         }
         
         

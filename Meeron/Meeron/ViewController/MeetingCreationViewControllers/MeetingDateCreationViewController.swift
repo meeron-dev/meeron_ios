@@ -30,6 +30,10 @@ class MeetingDateCreationViewController:UIViewController {
     private func configureUI() {
         nextButton.addShadow()
         self.navigationItem.titleView = UILabel.meetingCreationNavigationItemTitleLabel
+        
+        dateLabel.font = UIFont(name: FontNameConstant.medium, size: 25)
+        dateLabel.textColor = .black
+        
         setupDate()
     }
     
@@ -62,8 +66,6 @@ class MeetingDateCreationViewController:UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
-        dateLabel.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 25)
-        dateLabel.textColor = .black
         dateLabel.text = dateFormatter.string(from: date)
     }
     

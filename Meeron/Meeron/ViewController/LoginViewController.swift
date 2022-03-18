@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     let disposeBag = DisposeBag()
     let loginVM = LoginViewModel()
     
+    @IBOutlet weak var appleLoginStackVIew: UIStackView!
     @IBOutlet weak var appleLoginView: UIView!
     
     override func viewDidLoad() {
@@ -32,7 +33,7 @@ class LoginViewController: UIViewController {
         }
         let button = ASAuthorizationAppleIDButton()
         button.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
-        appleLoginView.addSubview(button)
+        appleLoginStackVIew.addArrangedSubview(button)
     }
     
     @objc func handleAuthorizationAppleIDButtonPress() {

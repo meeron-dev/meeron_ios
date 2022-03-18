@@ -48,6 +48,7 @@ class MeetingTimeCreationViewController:UIViewController {
         meetingEndTimeLabel.text = dateFormatter.string(from: now)
         
         dateFormatter.dateFormat = "a"
+        dateFormatter.locale = Locale(identifier: "en")
         meetingStartTimeALabel.text = dateFormatter.string(from: now)
         meetingEndTimeALabel.text = dateFormatter.string(from: now)
     }
@@ -100,6 +101,7 @@ class MeetingTimeCreationViewController:UIViewController {
         meetingStartTimeLabel.text = dateFormatter.string(from: time)
         
         dateFormatter.dateFormat = "a"
+        dateFormatter.locale = Locale(identifier: "en")
         meetingStartTimeALabel.text = dateFormatter.string(from: time)
         
     }
@@ -112,6 +114,7 @@ class MeetingTimeCreationViewController:UIViewController {
         meetingEndTimeLabel.text = dateFormatter.string(from: time)
         
         dateFormatter.dateFormat = "a"
+        dateFormatter.locale = Locale(identifier: "en")
         meetingEndTimeALabel.text = dateFormatter.string(from: time)
     }
     

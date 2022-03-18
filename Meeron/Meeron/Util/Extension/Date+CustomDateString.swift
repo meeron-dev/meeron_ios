@@ -17,6 +17,7 @@ extension Date {
     func toATimeString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm a"
+        dateFormatter.locale = Locale(identifier: "en")
         return dateFormatter.string(from: self)
     }
     
@@ -46,7 +47,7 @@ extension Date {
     
     func toYearMonthSlashString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM"
+        dateFormatter.dateFormat = "yyyy/M"
         return dateFormatter.string(from: self)
     }
 }

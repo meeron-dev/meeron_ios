@@ -171,12 +171,12 @@ class MeetingAgendaCreationViewController: UIViewController {
     private func changeAgendaButtonWidth(index:Int) {
         if index == 0 {
             deleteAgendaButton.setImage(UIImage(), for: .disabled)
-            addAgendaButton.setImage(UIImage(named: ImageNameConstant.addAgendaButtonImage), for: .normal)
+            addAgendaButton.setImage(UIImage(named: ImageNameConstant.addAgenda), for: .normal)
             deleteAgendaButtonWidth.constant = 0
             deleteAgendaButton.isEnabled = false
         }else if index == 4 {
             addAgendaButton.setImage(UIImage(), for: .disabled)
-            deleteAgendaButton.setImage(UIImage(named: ImageNameConstant.deleteAgendaButtonImage), for: .normal)
+            deleteAgendaButton.setImage(UIImage(named: ImageNameConstant.deleteAgenda), for: .normal)
             addAgendaButtonWidth.constant = 0
             addAgendaButton.isEnabled = false
         }else {
@@ -184,8 +184,8 @@ class MeetingAgendaCreationViewController: UIViewController {
             addAgendaButtonWidth.constant = 46
             addAgendaButton.isEnabled = true
             deleteAgendaButton.isEnabled = true
-            addAgendaButton.setImage(UIImage(named: ImageNameConstant.addAgendaButtonImage), for: .normal)
-            deleteAgendaButton.setImage(UIImage(named: ImageNameConstant.deleteAgendaButtonImage), for: .normal)
+            addAgendaButton.setImage(UIImage(named: ImageNameConstant.addAgenda), for: .normal)
+            deleteAgendaButton.setImage(UIImage(named: ImageNameConstant.deleteAgenda), for: .normal)
         }
     }
     
@@ -291,6 +291,5 @@ extension MeetingAgendaCreationViewController: UIDocumentPickerDelegate {
         }
         
     }
-    
     
 }

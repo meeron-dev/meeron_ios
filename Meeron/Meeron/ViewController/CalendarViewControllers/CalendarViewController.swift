@@ -67,7 +67,7 @@ class CalendarViewController:UIViewController {
             }).disposed(by: disposeBag)
         
         
-        configureCollectionViewLayout()
+        
         configureAllCalendarLabel()
         configureTableView()
     }
@@ -101,6 +101,8 @@ class CalendarViewController:UIViewController {
             .subscribe(onNext: { owner, _ in
                 owner.calendarVM.nextMonth()
             }).disposed(by: disposeBag)
+        
+        configureCollectionViewLayout()
         
         let allCalendarTapGesture = UITapGestureRecognizer()
         allCalendarView.addGestureRecognizer(allCalendarTapGesture)
@@ -152,7 +154,7 @@ class CalendarViewController:UIViewController {
     
     func configureCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/7, height: 44)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/7, height: 45)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         

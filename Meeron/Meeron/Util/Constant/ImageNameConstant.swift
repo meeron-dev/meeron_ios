@@ -8,8 +8,14 @@
 import Foundation
 
 struct ImageNameConstant {
-    static let openTeamTableViewButtonImage = "expand_more"
-    static let closeTeamTableViewButtonImage = "expand_more-1"
-    static let addAgendaButtonImage = "ic_create a meeting_agenda plus"
-    static let deleteAgendaButtonImage = "ic_create a meeting_agenda delete"
+    
+    static let checkTerms = "ic_terms and conditions _check"
+    static let uncheckTerms = "ic_terms and conditions _check_disable"
+    
+    
+    static let openTeamTableView = "expand_more"
+    static let closeTeamTableView = "expand_more-1"
+    static let addAgenda = "ic_create a meeting_agenda plus"
+    static let deleteAgenda = "ic_create a meeting_agenda delete"
+
 }

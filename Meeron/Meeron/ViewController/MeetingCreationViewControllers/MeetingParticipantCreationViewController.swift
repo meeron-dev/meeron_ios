@@ -136,11 +136,11 @@ class MeetingParticipantCreationViewController:UIViewController {
     
     func closeTeamTableView() {
         teamTableViewHeight.constant = 0
-        teamTableVIewOpenCloseButton.setImage(UIImage(named: ImageNameConstant.openTeamTableViewButtonImage), for: .normal)
+        teamTableVIewOpenCloseButton.setImage(UIImage(named: ImageNameConstant.openTeamTableView), for: .normal)
     }
     
     func openTeamTalbeView() {
-        teamTableVIewOpenCloseButton.setImage(UIImage(named: ImageNameConstant.closeTeamTableViewButtonImage), for: .normal)
+        teamTableVIewOpenCloseButton.setImage(UIImage(named: ImageNameConstant.closeTeamTableView), for: .normal)
         if meetingParticipantCreationVM.teams.count > 5 {
             teamTableViewHeight.constant = 240
         }else {
