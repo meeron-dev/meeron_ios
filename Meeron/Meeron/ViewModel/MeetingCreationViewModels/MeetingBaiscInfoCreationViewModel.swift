@@ -37,7 +37,7 @@ class MeetingBaiscInfoCreationViewModel {
     
     func setPurpose(purpose:String) {
         self.purpose = purpose
-        if purpose != "" {
+        if purpose.trimmingCharacters(in: .whitespaces) != "" {
             validPurposeSubject.onNext(true)
             self.meetingCreationData?.purpose = purpose
         }else {

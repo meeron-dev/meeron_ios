@@ -20,6 +20,7 @@ class IntroductionCell:UICollectionViewCell {
     @IBOutlet weak var description1Label: UILabel!
     @IBOutlet weak var description2Label: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var backgroundImageView:UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -33,5 +34,12 @@ class IntroductionCell:UICollectionViewCell {
         description1Label.text = data.description1
         description2Label.text = data.description2
         imageView.image = UIImage(named: data.imageName)
+        
+        if data.backGroundImageName != "" {
+            backgroundImageView.image = UIImage(named: data.backGroundImageName)
+        }else {
+            backgroundImageView.image = nil
+        }
+        
     }
 }

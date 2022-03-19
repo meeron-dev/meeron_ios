@@ -57,7 +57,6 @@
 		FC6AB51027C13B1900797C44 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB50F27C13B1900797C44 /* LoginViewModel.swift */; };
 		FC7B37C827DF8E2F005C3D23 /* CalendarMeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7B37C727DF8E2F005C3D23 /* CalendarMeetingCell.swift */; };
 		FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */; };
-		FC7CA8F027C27C3800110D24 /* kakao_login_medium_wide.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7CA8EF27C27C3800110D24 /* kakao_login_medium_wide.png */; };
 		FC8393A427C66F6400981622 /* CalendarDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8393A327C66F6400981622 /* CalendarDateCell.swift */; };
 		FC9A803F27D9D49300C3B836 /* MeetingCreationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A803E27D9D49300C3B836 /* MeetingCreationRepository.swift */; };
 		FC9A804127D9D53400C3B836 /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A804027D9D53400C3B836 /* Meeting.swift */; };
@@ -74,6 +73,9 @@
 		FCB36CF727CCF5A000ACF591 /* MeetingDateCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB36CF627CCF5A000ACF591 /* MeetingDateCreationViewController.swift */; };
 		FCB36CF927CD1BB700ACF591 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB36CF827CD1BB700ACF591 /* PickerViewController.swift */; };
 		FCB70BA227C92CD4008831F7 /* AllCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB70BA127C92CD4008831F7 /* AllCalendarViewController.swift */; };
+		FCBC2BE727E5F12300C376F1 /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBC2BE627E5F12300C376F1 /* UserNameViewController.swift */; };
+		FCBC2BE927E5FAC500C376F1 /* UserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBC2BE827E5FAC500C376F1 /* UserNameViewModel.swift */; };
+		FCBC2BEB27E5FC8100C376F1 /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBC2BEA27E5FC8100C376F1 /* SignUpRepository.swift */; };
 		FCD75C1E27CFD6B100D0FDD4 /* MeetingBaiscInfoCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD75C1D27CFD6B100D0FDD4 /* MeetingBaiscInfoCreationViewController.swift */; };
 		FCD75C2027CFD76800D0FDD4 /* MeetingAgendaCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD75C1F27CFD76800D0FDD4 /* MeetingAgendaCreationViewController.swift */; };
 		FCD75C2227CFD7BC00D0FDD4 /* MeetingParticipantCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD75C2127CFD7BC00D0FDD4 /* MeetingParticipantCreationViewController.swift */; };
@@ -166,7 +168,6 @@
 		FC7B37C727DF8E2F005C3D23 /* CalendarMeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMeetingCell.swift; sourceTree = "<group>"; };
 		FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		FC7CA8EE27C2255400110D24 /* Meeron.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meeron.entitlements; sourceTree = "<group>"; };
-		FC7CA8EF27C27C3800110D24 /* kakao_login_medium_wide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kakao_login_medium_wide.png; path = ../../../Downloads/kakao_login/ko/kakao_login_medium_wide.png; sourceTree = "<group>"; };
 		FC8393A327C66F6400981622 /* CalendarDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateCell.swift; sourceTree = "<group>"; };
 		FC9A803E27D9D49300C3B836 /* MeetingCreationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCreationRepository.swift; sourceTree = "<group>"; };
 		FC9A804027D9D53400C3B836 /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
@@ -183,6 +184,9 @@
 		FCB36CF627CCF5A000ACF591 /* MeetingDateCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingDateCreationViewController.swift; sourceTree = "<group>"; };
 		FCB36CF827CD1BB700ACF591 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		FCB70BA127C92CD4008831F7 /* AllCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCalendarViewController.swift; sourceTree = "<group>"; };
+		FCBC2BE627E5F12300C376F1 /* UserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewController.swift; sourceTree = "<group>"; };
+		FCBC2BE827E5FAC500C376F1 /* UserNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewModel.swift; sourceTree = "<group>"; };
+		FCBC2BEA27E5FC8100C376F1 /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
 		FCD75C1D27CFD6B100D0FDD4 /* MeetingBaiscInfoCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingBaiscInfoCreationViewController.swift; sourceTree = "<group>"; };
 		FCD75C1F27CFD76800D0FDD4 /* MeetingAgendaCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAgendaCreationViewController.swift; sourceTree = "<group>"; };
 		FCD75C2127CFD7BC00D0FDD4 /* MeetingParticipantCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingParticipantCreationViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +300,7 @@
 				FC56F55227DCA80E00E54DFE /* MeetingRepository.swift */,
 				FC4D5A0627DE11480000AE18 /* CalendarRepository.swift */,
 				FC4D5A0A27DE188A0000AE18 /* AllCalendarRepository.swift */,
+				FCBC2BEA27E5FC8100C376F1 /* SignUpRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -308,13 +313,14 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		FC4CDF0927E388490011B622 /* OnBoardingViewControllers */ = {
+		FC4CDF0927E388490011B622 /* SignUpViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				FC4CDF0527E3872A0011B622 /* IntroductionViewController.swift */,
 				FCF956DD27E4BAEE00625B71 /* TermsViewController.swift */,
+				FCBC2BE627E5F12300C376F1 /* UserNameViewController.swift */,
+				FC4CDF0527E3872A0011B622 /* IntroductionViewController.swift */,
 			);
-			path = OnBoardingViewControllers;
+			path = SignUpViewControllers;
 			sourceTree = "<group>";
 		};
 		FC6AB4C927C0C4D700797C44 = {
@@ -355,7 +361,6 @@
 				FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */,
 				FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */,
 				FC6AB4DB27C0C4D700797C44 /* Main.storyboard */,
-				FC7CA8EF27C27C3800110D24 /* kakao_login_medium_wide.png */,
 				FC6AB4E027C0C4D800797C44 /* LaunchScreen.storyboard */,
 				FC28912927CFCBAE00E8DFA7 /* DatePickerModalPresentationController.swift */,
 			);
@@ -391,10 +396,10 @@
 		FC6AB50C27C1344B00797C44 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				FC4CDF0927E388490011B622 /* OnBoardingViewControllers */,
+				FC6AB4D927C0C4D700797C44 /* LoginViewController.swift */,
+				FC4CDF0927E388490011B622 /* SignUpViewControllers */,
 				FC7B37C927DF96E5005C3D23 /* CalendarViewControllers */,
 				FCEFFD6D27CF07C100D54CD4 /* MeetingCreationViewControllers */,
-				FC6AB4D927C0C4D700797C44 /* LoginViewController.swift */,
 				FC06E98227C3ABFF004065E3 /* HomeViewController.swift */,
 				FC06E98B27C3F02C004065E3 /* TabBarController.swift */,
 			);
@@ -408,6 +413,7 @@
 				FC7B37CC27DF9750005C3D23 /* CalendarViewModels */,
 				FC6AB50F27C13B1900797C44 /* LoginViewModel.swift */,
 				FCA1AF7C27CBBB0600152F53 /* HomeViewModel.swift */,
+				FCBC2BE827E5FAC500C376F1 /* UserNameViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -646,7 +652,6 @@
 			files = (
 				FC6AB4E227C0C4D800797C44 /* LaunchScreen.storyboard in Resources */,
 				FC6AB4DF27C0C4D800797C44 /* Assets.xcassets in Resources */,
-				FC7CA8F027C27C3800110D24 /* kakao_login_medium_wide.png in Resources */,
 				FC6AB4DD27C0C4D700797C44 /* Main.storyboard in Resources */,
 				FCAE0D3B27D4A48800B05D94 /* MeetingProfileSelectCell.xib in Resources */,
 			);
@@ -807,10 +812,12 @@
 				FC3808A627D0CFA30023D713 /* AgendaDocumentCell.swift in Sources */,
 				FC38089627D09DBA0023D713 /* MeetingTeamSelectViewController.swift in Sources */,
 				FC9FC1FA27D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift in Sources */,
+				FCBC2BEB27E5FC8100C376F1 /* SignUpRepository.swift in Sources */,
 				FC4D5A0D27DE18D80000AE18 /* AllCalendar.swift in Sources */,
 				FC6AB4D627C0C4D700797C44 /* AppDelegate.swift in Sources */,
 				FCAE0D3A27D4A48800B05D94 /* MeetingProfileSelectCell.swift in Sources */,
 				FC4CDF0427E2F9380011B622 /* ImageNameConstant.swift in Sources */,
+				FCBC2BE927E5FAC500C376F1 /* UserNameViewModel.swift in Sources */,
 				FC6AB4D827C0C4D700797C44 /* SceneDelegate.swift in Sources */,
 				FC9FD92D27C4BF60009DE526 /* MeetingCardCell.swift in Sources */,
 				FCB36CF727CCF5A000ACF591 /* MeetingDateCreationViewController.swift in Sources */,
@@ -826,6 +833,7 @@
 				FC6AB50827C10CC300797C44 /* API.swift in Sources */,
 				FCAE0D3F27D4FCC700B05D94 /* MeetingParticipantTeamCell.swift in Sources */,
 				FC47215A27C9D23900F7A035 /* KeychainManager.swift in Sources */,
+				FCBC2BE727E5F12300C376F1 /* UserNameViewController.swift in Sources */,
 				FC56F55527DCAA5D00E54DFE /* TodayMeeting.swift in Sources */,
 				FC3262EC27D8C20500D5AA13 /* MeetingParticipantProfileCell.swift in Sources */,
 				FC3262EA27D8954D00D5AA13 /* TeamRepository.swift in Sources */,

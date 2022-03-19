@@ -18,25 +18,23 @@ class LoginViewController: UIViewController {
     let disposeBag = DisposeBag()
     let loginVM = LoginViewModel()
     
-    @IBOutlet weak var appleLoginStackVIew: UIStackView!
-    @IBOutlet weak var appleLoginView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setUpAppleLoginView()
+        //setUpAppleLoginView()
     }
     
-    func setUpAppleLoginView() {
+    /*func setUpAppleLoginView() {
         if #available(iOS 13.0, *) {} else {
             return
         }
         let button = ASAuthorizationAppleIDButton()
         button.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
         appleLoginStackVIew.addArrangedSubview(button)
-    }
+    }*/
     
-    @objc func handleAuthorizationAppleIDButtonPress() {
+    @IBAction func appleLogin() {
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
         let controller = ASAuthorizationController(authorizationRequests: [request])
@@ -53,14 +51,18 @@ class LoginViewController: UIViewController {
     }
     
     func goMeeting() {
-        guard let meetingVC = self.storyboard?.instantiateViewController(withIdentifier:"TabBarController") else {
+        /*guard let meetingVC = self.storyboard?.instantiateViewController(withIdentifier:"TabBarController") else {
             return
             
         }
                 
         meetingVC.modalPresentationStyle = .fullScreen
         meetingVC.modalTransitionStyle = .crossDissolve
-        self.present(meetingVC, animated: true, completion: nil)
+        self.present(meetingVC, animated: true, completion: nil)*/
+        
+        let termsVC = self.storyboard?.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+        termsVC.modalPresentationStyle = .fullScreen
+        present(termsVC, animated: true, completion: nil)
     }
 }
 
