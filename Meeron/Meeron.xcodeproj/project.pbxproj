@@ -76,6 +76,7 @@
 		FCBC2BE727E5F12300C376F1 /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBC2BE627E5F12300C376F1 /* UserNameViewController.swift */; };
 		FCBC2BE927E5FAC500C376F1 /* UserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBC2BE827E5FAC500C376F1 /* UserNameViewModel.swift */; };
 		FCBC2BEB27E5FC8100C376F1 /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBC2BEA27E5FC8100C376F1 /* SignUpRepository.swift */; };
+		FCBC2BED27E6140900C376F1 /* PickCreationParticipationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBC2BEC27E6140900C376F1 /* PickCreationParticipationViewController.swift */; };
 		FCD75C1E27CFD6B100D0FDD4 /* MeetingBaiscInfoCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD75C1D27CFD6B100D0FDD4 /* MeetingBaiscInfoCreationViewController.swift */; };
 		FCD75C2027CFD76800D0FDD4 /* MeetingAgendaCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD75C1F27CFD76800D0FDD4 /* MeetingAgendaCreationViewController.swift */; };
 		FCD75C2227CFD7BC00D0FDD4 /* MeetingParticipantCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD75C2127CFD7BC00D0FDD4 /* MeetingParticipantCreationViewController.swift */; };
@@ -187,6 +188,7 @@
 		FCBC2BE627E5F12300C376F1 /* UserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewController.swift; sourceTree = "<group>"; };
 		FCBC2BE827E5FAC500C376F1 /* UserNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewModel.swift; sourceTree = "<group>"; };
 		FCBC2BEA27E5FC8100C376F1 /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
+		FCBC2BEC27E6140900C376F1 /* PickCreationParticipationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickCreationParticipationViewController.swift; sourceTree = "<group>"; };
 		FCD75C1D27CFD6B100D0FDD4 /* MeetingBaiscInfoCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingBaiscInfoCreationViewController.swift; sourceTree = "<group>"; };
 		FCD75C1F27CFD76800D0FDD4 /* MeetingAgendaCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAgendaCreationViewController.swift; sourceTree = "<group>"; };
 		FCD75C2127CFD7BC00D0FDD4 /* MeetingParticipantCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingParticipantCreationViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				FCF956DD27E4BAEE00625B71 /* TermsViewController.swift */,
 				FCBC2BE627E5F12300C376F1 /* UserNameViewController.swift */,
 				FC4CDF0527E3872A0011B622 /* IntroductionViewController.swift */,
+				FCBC2BEC27E6140900C376F1 /* PickCreationParticipationViewController.swift */,
 			);
 			path = SignUpViewControllers;
 			sourceTree = "<group>";
@@ -840,6 +843,7 @@
 				FC7B37C827DF8E2F005C3D23 /* CalendarMeetingCell.swift in Sources */,
 				FC56F55327DCA80E00E54DFE /* MeetingRepository.swift in Sources */,
 				FC38089427D0779C0023D713 /* MeetingProfileSelectViewController.swift in Sources */,
+				FCBC2BED27E6140900C376F1 /* PickCreationParticipationViewController.swift in Sources */,
 				FC9A804127D9D53400C3B836 /* Meeting.swift in Sources */,
 				FCB36CF927CD1BB700ACF591 /* PickerViewController.swift in Sources */,
 				FC651A8827D256C800A64D8A /* AgendaSelectBarCell.swift in Sources */,
