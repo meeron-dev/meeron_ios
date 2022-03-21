@@ -12,9 +12,11 @@ import RxSwift
 class SignUpRepository {
     let headers:HTTPHeaders = [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)]
     let api = API()
-    func patchName(name:String) -> Observable<Bool>{
+    
+    func patchUserName(name:String) -> Observable<Bool>{
         let resource = Resource<Bool>(url: URLConstant.userName, parameter: ["name":name], headers: headers, method: .patch, encodingType: .JSONEncoding)
         return api.requestResponse(resource: resource)
     }
+    
     
 }

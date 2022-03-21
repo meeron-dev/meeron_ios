@@ -71,6 +71,11 @@ class UserNameViewController:UIViewController {
     }
     
     func goIntroductionView() {
+        let pickCreationParticipationVC = self.storyboard?.instantiateViewController(withIdentifier: "PickCreationParticipationViewController") as! PickCreationParticipationViewController
+        
+        present(pickCreationParticipationVC, animated: true, completion: nil)
+        
+        /*
         let introductionVC = self.storyboard?.instantiateViewController(withIdentifier: "IntroductionViewController") as! IntroductionViewController
         
         introductionVC.modalPresentationStyle = .fullScreen
@@ -81,7 +86,7 @@ class UserNameViewController:UIViewController {
             Introduction(title1: "", title2: "실속 없는", title3: "회의는", title4:" 그만", subTitle: "모두에게 명확한 회의", description1: "회의 전에 정보를 숙지하고,", description2: "본인의 상태를 공유할 수 있어요", imageName: "illustration_onboarding_3", backGroundImageName: "circle+triangle+X"),
             Introduction(title1: "", title2: "마무리까지", title3: "", title4: "완벽하게", subTitle: "이번 회의도 문제없이", description1: "회의 결과를 확인하고", description2: "부담없이 피드백을 남겨보아요", imageName: "illustration_onboarding_4", backGroundImageName: "")]
         
-        present(introductionVC, animated: true, completion: nil)
+        present(introductionVC, animated: true, completion: nil)*/
     }
     
     @IBAction func done(_ sender:Any) {

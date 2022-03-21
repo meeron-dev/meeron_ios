@@ -35,6 +35,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let initialViewController = mainStroyboard.instantiateViewController(withIdentifier: "LoginViewController")
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()*/
+        
+        guard let _ = (scene as? UIWindowScene) else {return}
+        if let url = connectionOptions.urlContexts.first?.url {
+            schemeHandlerURL(url: url)
+        }
+    }
+    
+    func schemeHandlerURL(url: URL) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        guard let rootVC = storyboard.instantiateViewController(withIdentifier: "IntroductionViewController") as? IntroductionViewController else {return}
+        self.window?.rootViewController = rootVC
+        self.window?.makeKeyAndVisible()
+        
+        let urlStr = url.absoluteString //스키마 주소값
+        let components = URLComponents(string: urlStr)
+        let schemeData = components?.scheme ?? "" //스키마
+        let parameter = components?.query ?? "" //파라미터
+        
+        print("urlStr : ", urlStr)
+        print("scheme : ", schemeData)
+        print("query : ", parameter)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

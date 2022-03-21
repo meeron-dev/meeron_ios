@@ -31,3 +31,13 @@ struct Document:Equatable {
     var data:Data
     var name:String
 }
+
+
+struct Meeting: Codable{
+    let meetingId:Int
+}
+
+
+struct MeetingCreationAgendaResponses:Codable {
+    let createdAgendaIds:[Int]
+}
