@@ -109,7 +109,7 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
                     owner.meetingTitleTextField.text = String(text.prefix(35))
                     owner.meetingTitleTextField.resignFirstResponder()
                 }
-                owner.meetingBaiscInfoCreationVM.setTitle(title: owner.meetingTitleTextField.text!)
+                owner.meetingBaiscInfoCreationVM.setTitle(title: text)
             }else{
                 owner.meetingTitleTextLimitLabelWidth.constant = 80
                 owner.meetingBaiscInfoCreationVM.setTitle(title: "")

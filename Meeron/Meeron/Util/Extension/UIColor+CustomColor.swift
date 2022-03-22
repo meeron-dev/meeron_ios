@@ -40,4 +40,8 @@ extension UIColor {
     static var lightGray:UIColor {
         return UIColor(red: 196/255, green: 196/255, blue: 196/255, alpha: 1)
     }
+    
+    static var buttonGray:UIColor {
+        return UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1)
+    }
 }

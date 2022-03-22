@@ -72,7 +72,7 @@ class UserNameViewController:UIViewController {
     
     func goIntroductionView() {
         let pickCreationParticipationVC = self.storyboard?.instantiateViewController(withIdentifier: "PickCreationParticipationViewController") as! PickCreationParticipationViewController
-        
+        pickCreationParticipationVC.modalPresentationStyle = .fullScreen
         present(pickCreationParticipationVC, animated: true, completion: nil)
         
         /*

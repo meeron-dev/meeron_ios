@@ -16,11 +16,9 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.fourtune.Meeron</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>Meeron</string>
-			</array>
+			<array/>
 		</dict>
 	</array>
 	<key>LSApplicationQueriesSchemes</key>

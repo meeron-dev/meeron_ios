@@ -58,6 +58,8 @@
 		FC7B37C827DF8E2F005C3D23 /* CalendarMeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7B37C727DF8E2F005C3D23 /* CalendarMeetingCell.swift */; };
 		FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */; };
 		FC8393A427C66F6400981622 /* CalendarDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8393A327C66F6400981622 /* CalendarDateCell.swift */; };
+		FC8DE8FC27E9A870008648A7 /* TextFieldLimitNumberConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DE8FB27E9A870008648A7 /* TextFieldLimitNumberConstant.swift */; };
+		FC8DE8FE27E9D04D008648A7 /* WorkspaceParticipationSolutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DE8FD27E9D04D008648A7 /* WorkspaceParticipationSolutionViewController.swift */; };
 		FC9A803F27D9D49300C3B836 /* MeetingCreationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A803E27D9D49300C3B836 /* MeetingCreationRepository.swift */; };
 		FC9FC1F827D5E8A800340283 /* MeetingProfileSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */; };
 		FC9FC1FA27D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9FC1F927D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift */; };
@@ -178,6 +180,8 @@
 		FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		FC7CA8EE27C2255400110D24 /* Meeron.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meeron.entitlements; sourceTree = "<group>"; };
 		FC8393A327C66F6400981622 /* CalendarDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateCell.swift; sourceTree = "<group>"; };
+		FC8DE8FB27E9A870008648A7 /* TextFieldLimitNumberConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLimitNumberConstant.swift; sourceTree = "<group>"; };
+		FC8DE8FD27E9D04D008648A7 /* WorkspaceParticipationSolutionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceParticipationSolutionViewController.swift; sourceTree = "<group>"; };
 		FC9A803E27D9D49300C3B836 /* MeetingCreationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCreationRepository.swift; sourceTree = "<group>"; };
 		FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingProfileSelectViewModel.swift; sourceTree = "<group>"; };
 		FC9FC1F927D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingBaiscInfoCreationViewModel.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				FC06E98E27C3F63E004065E3 /* SizeValueConstant.swift */,
 				FC5D5AC627E0345C000A4FB5 /* FontNameConstant.swift */,
 				FC4CDF0327E2F9380011B622 /* ImageNameConstant.swift */,
+				FC8DE8FB27E9A870008648A7 /* TextFieldLimitNumberConstant.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				FCBC2BE627E5F12300C376F1 /* UserNameViewController.swift */,
 				FC4CDF0527E3872A0011B622 /* IntroductionViewController.swift */,
 				FCBC2BEC27E6140900C376F1 /* PickCreationParticipationViewController.swift */,
+				FC8DE8FD27E9D04D008648A7 /* WorkspaceParticipationSolutionViewController.swift */,
 			);
 			path = SignUpViewControllers;
 			sourceTree = "<group>";
@@ -865,6 +871,7 @@
 				FC9FC1F827D5E8A800340283 /* MeetingProfileSelectViewModel.swift in Sources */,
 				FCAE0D3D27D4EFA500B05D94 /* MeetingTeamSelectCell.swift in Sources */,
 				FC3808A627D0CFA30023D713 /* AgendaDocumentCell.swift in Sources */,
+				FC8DE8FC27E9A870008648A7 /* TextFieldLimitNumberConstant.swift in Sources */,
 				FCA73F1727E890E800295247 /* TeamNameViewController.swift in Sources */,
 				FC38089627D09DBA0023D713 /* MeetingTeamSelectViewController.swift in Sources */,
 				FC9FC1FA27D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift in Sources */,
@@ -895,6 +902,7 @@
 				FCBC2BE727E5F12300C376F1 /* UserNameViewController.swift in Sources */,
 				FC56F55527DCAA5D00E54DFE /* TodayMeeting.swift in Sources */,
 				FC3262EC27D8C20500D5AA13 /* MeetingParticipantProfileCell.swift in Sources */,
+				FC8DE8FE27E9D04D008648A7 /* WorkspaceParticipationSolutionViewController.swift in Sources */,
 				FC3262EA27D8954D00D5AA13 /* TeamRepository.swift in Sources */,
 				FC7B37C827DF8E2F005C3D23 /* CalendarMeetingCell.swift in Sources */,
 				FC56F55327DCA80E00E54DFE /* MeetingRepository.swift in Sources */,

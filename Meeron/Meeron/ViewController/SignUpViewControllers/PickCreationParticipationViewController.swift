@@ -64,8 +64,15 @@ class PickCreationParticipationViewController:UIViewController {
     }
     
     @IBAction func next() {
-        
-        
+        if creationButton.isEnabled {
+            guard let WorkspaceCreationNaviC = self.storyboard?.instantiateViewController(withIdentifier: "WorkspaceCreationNavigationController") else {return}
+            WorkspaceCreationNaviC.modalPresentationStyle = .fullScreen
+            present(WorkspaceCreationNaviC, animated: true, completion: nil)
+        }else {
+            let WorkspaceParticipationSolutionVC = self.storyboard?.instantiateViewController(withIdentifier: "WorkspaceParticipationSolutionViewController") as! WorkspaceParticipationSolutionViewController
+            WorkspaceParticipationSolutionVC.modalPresentationStyle = .fullScreen
+            present(WorkspaceParticipationSolutionVC, animated: true, completion: nil)
+        }
         
     }
 }

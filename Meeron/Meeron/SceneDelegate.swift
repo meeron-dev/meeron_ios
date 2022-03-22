@@ -8,6 +8,8 @@
 import UIKit
 import RxKakaoSDKAuth
 import KakaoSDKAuth
+import FirebaseDynamicLinks
+
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -26,7 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        window?.tintColor = UIColor.mrBlue
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         /*
@@ -36,28 +37,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.rootViewController = initialViewController
         self.window?.makeKeyAndVisible()*/
         
-        guard let _ = (scene as? UIWindowScene) else {return}
-        if let url = connectionOptions.urlContexts.first?.url {
-            schemeHandlerURL(url: url)
+        
+    }
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        if let incomingURL = userActivity.webpageURL {
+            let linkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { dynamicLink, error in
+                print("Dynamic Link!! :", dynamicLink)
+            }
         }
     }
     
-    func schemeHandlerURL(url: URL) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        guard let rootVC = storyboard.instantiateViewController(withIdentifier: "IntroductionViewController") as? IntroductionViewController else {return}
-        self.window?.rootViewController = rootVC
-        self.window?.makeKeyAndVisible()
-        
-        let urlStr = url.absoluteString //스키마 주소값
-        let components = URLComponents(string: urlStr)
-        let schemeData = components?.scheme ?? "" //스키마
-        let parameter = components?.query ?? "" //파라미터
-        
-        print("urlStr : ", urlStr)
-        print("scheme : ", schemeData)
-        print("query : ", parameter)
-    }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

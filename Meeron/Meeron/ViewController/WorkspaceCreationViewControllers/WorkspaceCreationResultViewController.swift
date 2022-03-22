@@ -16,7 +16,12 @@ class WorkspaceCreationResultViewController:UIViewController {
     @IBOutlet weak var workspaceLinkLabel:UILabel!
     @IBOutlet weak var copyLabel:UILabel!
     
+    var workspaceLink:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        workspaceLinkLabel.text = workspaceLink
     }
+    
 }

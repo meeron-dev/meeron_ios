@@ -21,4 +21,9 @@ class WorkspaceCreationRepository {
         
         return api.requestData(resource: resource)
     }
+    
+    func postWorkspaceTeamName(name:String, workspaceId:Int) -> Observable<Bool> {
+        let resource = Resource<Bool>(url: URLConstant.teamInWorkspace, parameter: ["workspaceId":workspaceId, "teamName":name], headers: headers, method: .post, encodingType: .JSONEncoding)
+        return api.requestResponse(resource: resource)
+    }
 }
