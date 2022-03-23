@@ -113,13 +113,13 @@ class TermsViewController:UIViewController {
     }
     
     @IBAction func goTermAgreeView(_ sender: Any) {
-        let url = URL(string: "https://test.com")!
+        let url = URL(string: URLConstant.terms)!
         let termAgreeSafariView = SFSafariViewController(url: url)
         present(termAgreeSafariView, animated: true, completion: nil)
     }
     
     @IBAction func goPersonalInformationCollectionAgreeView(_ sender: Any) {
-        let url = URL(string: "https://test.com")!
+        let url = URL(string: URLConstant.personalInformationCollection)!
         let personalInformationCollectionAgreeSafariView = SFSafariViewController(url: url)
         present(personalInformationCollectionAgreeSafariView, animated: true, completion: nil)
     }
@@ -128,6 +128,7 @@ class TermsViewController:UIViewController {
         let userNameVC = self.storyboard?.instantiateViewController(withIdentifier: "UserNameViewController") as! UserNameViewController
         userNameVC.modalPresentationStyle = .fullScreen
         present(userNameVC, animated: true, completion: nil)
+        UserDefaults.standard.set(true, forKey: "termsAgree")
     }
     
     

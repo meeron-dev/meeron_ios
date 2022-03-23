@@ -69,7 +69,7 @@ class PickCreationParticipationViewController:UIViewController {
             WorkspaceCreationNaviC.modalPresentationStyle = .fullScreen
             present(WorkspaceCreationNaviC, animated: true, completion: nil)
         }else {
-            let WorkspaceParticipationSolutionVC = self.storyboard?.instantiateViewController(withIdentifier: "WorkspaceParticipationSolutionViewController") as! WorkspaceParticipationSolutionViewController
+            let WorkspaceParticipationSolutionVC = WorkspaceParticipationSolutionViewController(nibName: "WorkspaceParticipationSolutionViewController", bundle: nil)
             WorkspaceParticipationSolutionVC.modalPresentationStyle = .fullScreen
             present(WorkspaceParticipationSolutionVC, animated: true, completion: nil)
         }

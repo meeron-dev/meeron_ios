@@ -21,18 +21,13 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //setUpAppleLoginView()
+        
+        loginVM.loginTypeSubject
+            .withUnretained(self)
+            .subscribe(onNext: { owner, type in
+                owner.goNextView(type: type)
+            }).disposed(by: disposeBag)
     }
-    
-    /*func setUpAppleLoginView() {
-        if #available(iOS 13.0, *) {} else {
-            return
-        }
-        let button = ASAuthorizationAppleIDButton()
-        button.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
-        appleLoginStackVIew.addArrangedSubview(button)
-    }*/
     
     @IBAction func appleLogin() {
         let request = ASAuthorizationAppleIDProvider().createRequest()
@@ -45,24 +40,28 @@ class LoginViewController: UIViewController {
     
     @IBAction func kakaoLogin(_ sender: Any) {
         loginVM.loginByKakao()
-        loginVM.loginSuccess.subscribe(onNext: {
-            $0 ? self.goMeeting() : nil
-        }).disposed(by: disposeBag)
     }
     
-    func goMeeting() {
-        /*guard let meetingVC = self.storyboard?.instantiateViewController(withIdentifier:"TabBarController") else {
-            return
-            
-        }
-                
-        meetingVC.modalPresentationStyle = .fullScreen
-        meetingVC.modalTransitionStyle = .crossDissolve
-        self.present(meetingVC, animated: true, completion: nil)*/
+    func goNextView(type:LoginType) {
         
-        let termsVC = self.storyboard?.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
-        termsVC.modalPresentationStyle = .fullScreen
-        present(termsVC, animated: true, completion: nil)
+        if type == .terms {
+            let termsVC = self.storyboard?.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+            
+            termsVC.modalPresentationStyle = .fullScreen
+            present(termsVC, animated: true, completion: nil)
+        }else if type == .userName {
+            let userNameVC = self.storyboard?.instantiateViewController(withIdentifier: "UserNameViewController") as! TermsViewController
+            
+            userNameVC.modalPresentationStyle = .fullScreen
+            present(userNameVC, animated: true, completion: nil)
+        }else if type == .home {
+            let homeVC = self.storyboard?.instantiateViewController(withIdentifier:"TabBarController") as! TabBarController
+                    
+            homeVC.modalPresentationStyle = .fullScreen
+            homeVC.modalTransitionStyle = .crossDissolve
+            present(homeVC, animated: true, completion: nil)
+        }
+        
     }
 }
 
@@ -84,9 +83,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
             }
             
             loginVM.loginByApple(email: email, name: name, jwt: String.init(data: identityToken!, encoding: .utf8)!)
-            loginVM.loginSuccess.subscribe(onNext:{
-                $0 ? self.goMeeting() : nil
-            }).disposed(by: disposeBag)
         }
     }
     

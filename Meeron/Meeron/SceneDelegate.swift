@@ -28,8 +28,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
+        window?.tintColor = .mrBlue
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        /*if hasToken() {
+            if let _ = UserDefaults.standard.string(forKey: "userName") {
+                if isVaildToken() {
+                    
+                }
+            }
+        }
+        */
         /*
         self.window = UIWindow(windowScene: windowScene)
         let mainStroyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -39,15 +49,57 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
     }
-    
-    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-        if let incomingURL = userActivity.webpageURL {
-            let linkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { dynamicLink, error in
-                print("Dynamic Link!! :", dynamicLink)
-            }
+    /*
+    func hasToken() -> Bool {
+        if let token = KeychainManager().read(service: "Meeron", account: "accessToken") {
+            return true
         }
+        return false
     }
     
+    func isVaildToken() -> Bool {
+        
+    }
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        self.window = UIWindow(windowScene: windowScene)
+        
+        if let incomingURL = userActivity.webpageURL {
+            print(incomingURL.query)
+            print(incomingURL.path)
+            
+            let linkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { [weak self] dynamicLinks, error in
+                if let dynamicLinks = dynamicLinks {
+                    print("🥳",dynamicLinks.url)
+                    if let id = dynamicLinks.url?.query?.split(separator: "=")[1] {
+                        self?.setInitialViewByWorkspaceParticipant(workspaceId: String(id))
+                    }
+                }
+            }
+            
+                /*
+            if incomingURL.path == "/invite" {
+                if let query = incomingURL.query {
+                    if query.contains("workspaceId=") {
+                        let workspaceId = query.split(separator: "=")[1]
+                        self.setInitialViewByWorkspaceParticipant(workspaceId: String(workspaceId))
+                    }
+                }
+            }
+            */
+        }
+    }*/
+    
+    func setInitialViewByWorkspaceParticipant(workspaceId:String) {
+        
+        if let _ = UserDefaults.standard.string(forKey: "userName") {
+            let workspaceParicipationProfileCreationVC = WorkspaceParicipationProfileCreationViewController(nibName: "WorkspaceParicipationProfileCreationViewController", bundle: nil)
+            workspaceParicipationProfileCreationVC.workspaceId = workspaceId
+            self.window?.rootViewController = workspaceParicipationProfileCreationVC
+            self.window?.makeKeyAndVisible()
+        }
+    }
     
 
     func sceneDidDisconnect(_ scene: UIScene) {

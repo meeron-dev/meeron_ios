@@ -12,14 +12,24 @@ import RxSwift
 import JWTDecode
 
 
+enum LoginType {
+    case loginFail
+    case terms
+    case userName
+    case home
+}
+
+
 class LoginViewModel {
     
     let disposeBag = DisposeBag()
     
-    let loginSuccess = PublishSubject<Bool>()
+    let loginTypeSubject = PublishSubject<LoginType>()
     
     let keychainManager = KeychainManager()
     let realmStorage = RealmStorage()
+    
+    let signUpRepository = SignUpRepository()
     
     func loginByKakao() {
         if (UserApi.isKakaoTalkLoginAvailable()) {
@@ -52,8 +62,8 @@ class LoginViewModel {
     
     func getKakaoUserInfo() {
         UserApi.shared.rx.me()
-            .subscribe(onSuccess: { user in
-                self.loadToken(email: user.kakaoAccount!.email!, nickname: user.kakaoAccount!.profile!.nickname!, profileImageUrl: "\(user.kakaoAccount!.profile!.profileImageUrl!)",provider: "KAKAO")
+            .subscribe(onSuccess: { [weak self] user in
+                self?.loadToken(email: user.kakaoAccount!.email!, nickname: user.kakaoAccount!.profile!.nickname!, profileImageUrl: "\(user.kakaoAccount!.profile!.profileImageUrl!)",provider: "KAKAO")
 
             }, onFailure: { error in
                 print(error)
@@ -61,54 +71,76 @@ class LoginViewModel {
     }
     
     func loadToken(email:String, nickname:String?, profileImageUrl:String?, provider:String) {
-        let resource:Resource<Token>
         
-        if let nickname = nickname, let profileImageUrl = profileImageUrl{
-            resource = Resource<Token>(url: URLConstant.login, parameter:["email":"test4@test.com", "nickname":nickname, "profileImageUrl":profileImageUrl,"provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
-        }else{
-            resource = Resource<Token>(url: URLConstant.login, parameter:["email":"test4@test.com","provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
-        }
-        
-
-        API().requestData(resource: resource)
-            .subscribe(onNext: {
-                if $0 != nil {
-                    self.saveToken(token: $0!)
+        signUpRepository.loadLoginToken(email: "test4@test.com", nickname: nickname, profileImageUrl: profileImageUrl, provider: provider)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, token in
+                if let token = token {
+                    owner.saveToken(token: token)
                 }else {
-                    self.loginSuccess.onNext(false)
+                    owner.loginTypeSubject.onNext(.loginFail)
                 }
-            }).disposed(by: self.disposeBag)
+            }).disposed(by: disposeBag)
         
     }
     
+    
     func saveToken(token:Token) {
-        keychainManager.saveLoginToken(accessToken: token.accessToken, refreshToken: token.refreshToken) ? loadUser() : loginSuccess.onNext(false)
+        if keychainManager.saveLoginToken(accessToken: token.accessToken, refreshToken: token.refreshToken) {
+            if let _ = UserDefaults.standard.string(forKey: "userName") {
+                loadUser()
+            }else {
+                if UserDefaults.standard.bool(forKey: "termsAgree") {
+                    loginTypeSubject.onNext(.userName)
+                }
+                else {
+                    loginTypeSubject.onNext(.terms)
+                }
+            }
+        }else {
+            loginTypeSubject.onNext(.loginFail)
+        }
         
     }
     
     func loadUser() {
-        let resource = Resource<User>(url: URLConstant.user, parameter:[:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
         
-        API().requestData(resource: resource)
-            .subscribe(onNext: { user in
-                guard let user = user else {return}
-                self.saveUserId(id: user.userId)
-                self.loadUserWorkspace(id: user.userId)
+        signUpRepository.loadUser()
+            .withUnretained(self)
+            .subscribe(onNext: { owner, user in
+                if let user = user {
+                    owner.saveUserId(id: user.userId)
+                    owner.loadUserWorkspace(id: user.userId)
+                }else {
+                    owner.reissueToken()
+                }
+            }).disposed(by: disposeBag)
+        
+    }
+    
+    func reissueToken() {
+        signUpRepository.reissueToken()
+            .withUnretained(self)
+            .subscribe(onNext: { owner, token in
+                if let token = token {
+                    owner.saveToken(token: token)
+                }else {
+                    owner.loginTypeSubject.onNext(.loginFail)
+                }
+                
             }).disposed(by: disposeBag)
     }
     
     func loadUserWorkspace(id:Int) {
-        print("USER ID:,",id)
-        let resource = Resource<UserWorkspace>(url: URLConstant.userWorkspace+"/\(id)/workspace-users", parameter: ["userId":String(id)], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
         
-        API().requestData(resource: resource)
-            .subscribe(onNext: { userWorkspace in
-                self.loginSuccess.onNext(true)
-                print("USER WORKSPACE", userWorkspace)
-                print(userWorkspace)
-                guard let userWorkspace  = userWorkspace else  {return}
-                if userWorkspace.myWorkspaceUsers.count > 0 {
-                    self.saveUserWorkspace(data: userWorkspace.myWorkspaceUsers)
+        signUpRepository.loadUserWorkspace(id: id)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, userWorkspace in
+                if let userWorkspace = userWorkspace {
+                    if userWorkspace.myWorkspaceUsers.count > 0 {
+                        owner.saveUserWorkspace(data: userWorkspace.myWorkspaceUsers)
+                    }
+                    owner.loginTypeSubject.onNext(.home)
                 }
                 
             }).disposed(by: disposeBag)

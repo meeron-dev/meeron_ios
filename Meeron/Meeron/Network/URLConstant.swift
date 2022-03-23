@@ -10,6 +10,7 @@ import Foundation
 struct URLConstant {
     static let protocolHost = "https://dev.meeron.net"
     
+    static let reissue = protocolHost + "/api/reissue"
     static let login = protocolHost + "/api/login"
     static let user = protocolHost + "/api/users/me"
     static let userName = protocolHost + "/api/users/name"
@@ -31,7 +32,9 @@ struct URLConstant {
     
     static let workspace = protocolHost + "/api/workspaces"
     
-   
+    
+    static let terms = "https://ryuyxxn.notion.site/29115494f9324509ba21416bbb1c7ef1"
+    static let personalInformationCollection = "https://ryuyxxn.notion.site/502b6e5487664faab875f7b4e5383a7b"
     
     
     

@@ -20,7 +20,10 @@ class UserNameViewModel {
         signUpRepository.patchUserName(name: name)
             .withUnretained(self)
             .subscribe(onNext: { owner, success in
-                owner.successPatchNameSubject.onNext(success)
+                if success {
+                    UserDefaults.standard.set(name, forKey: "userName")
+                    owner.successPatchNameSubject.onNext(success)
+                }
             }).disposed(by: disposeBag)
     }
 }

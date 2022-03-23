@@ -50,7 +50,7 @@ class TeamNameViewModel {
     }
     
     func createWorkspaceDynamicLink() {
-        let link = URL(string: "https://ronmee.page.link/invite?workspaceId=\(workspaceId!)")!
+        let link = URL(string: "https://ronmee.page.link?id=\(workspaceId!)")!
         let domainURIPrefix = "https://ronmee.page.link"
         let referralLink = DynamicLinkComponents(link: link, domainURIPrefix: domainURIPrefix)
         
@@ -59,7 +59,7 @@ class TeamNameViewModel {
         referralLink?.iOSParameters?.appStoreID = "0"
         
         referralLink?.androidParameters = DynamicLinkAndroidParameters(packageName: "fourtune.meeron")
-        referralLink?.androidParameters?.minimumVersion = 123
+        
         
         referralLink?.shorten(completion: {  shortURL, warnings, error in
             guard let url = shortURL else {return}
