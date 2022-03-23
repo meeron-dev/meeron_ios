@@ -9,12 +9,15 @@ import UIKit
 import RxKakaoSDKAuth
 import KakaoSDKAuth
 import FirebaseDynamicLinks
+import RxSwift
 
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    let disposeBag = DisposeBag()
+    
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if let url = URLContexts.first?.url {
             if (AuthApi.isKakaoTalkLoginUrl(url)) {
@@ -28,48 +31,69 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        window?.tintColor = .mrBlue
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        self.window = UIWindow(windowScene: windowScene)
+        window?.tintColor = .mrBlue
         
-        /*if hasToken() {
+        setInitialView(type: getUserSignUpState())
+
+    }
+    
+    func getUserSignUpState() -> UserSignUpState {
+        if hasToken() {
             if let _ = UserDefaults.standard.string(forKey: "userName") {
-                if isVaildToken() {
-                    
+                return .home
+            }else {
+                if UserDefaults.standard.bool(forKey: "termsAgree") {
+                    return .userName
+                }
+                else {
+                    return .terms
                 }
             }
+        }else {
+            return .login
         }
-        */
-        /*
-        self.window = UIWindow(windowScene: windowScene)
-        let mainStroyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = mainStroyboard.instantiateViewController(withIdentifier: "LoginViewController")
-        self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()*/
-        
         
     }
-    /*
+    
+    func setInitialView(type:UserSignUpState) {
+        
+        let mainStroyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        switch type {
+        case .login:
+            let loginVC = mainStroyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            self.window?.rootViewController = loginVC
+        case .terms:
+            let termsVC = mainStroyboard.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+            self.window?.rootViewController = termsVC
+        case .userName:
+            let userNameVC = mainStroyboard.instantiateViewController(withIdentifier: "UserNameViewController") as! UserNameViewController
+            self.window?.rootViewController = userNameVC
+        case .home:
+            let homeVC = mainStroyboard.instantiateViewController(withIdentifier:"TabBarController") as! TabBarController
+            self.window?.rootViewController = homeVC
+        }
+        
+        self.window?.makeKeyAndVisible()
+    }
+    
     func hasToken() -> Bool {
-        if let token = KeychainManager().read(service: "Meeron", account: "accessToken") {
+        if let _ = KeychainManager().read(service: "Meeron", account: "accessToken") {
             return true
         }
         return false
     }
-    
-    func isVaildToken() -> Bool {
-        
-    }
+   
     
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         
         if let incomingURL = userActivity.webpageURL {
-            print(incomingURL.query)
-            print(incomingURL.path)
-            
-            let linkHandled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { [weak self] dynamicLinks, error in
+            let _ = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { [weak self] dynamicLinks, error in
                 if let dynamicLinks = dynamicLinks {
                     print("🥳",dynamicLinks.url)
                     if let id = dynamicLinks.url?.query?.split(separator: "=")[1] {
@@ -77,28 +101,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     }
                 }
             }
-            
-                /*
-            if incomingURL.path == "/invite" {
-                if let query = incomingURL.query {
-                    if query.contains("workspaceId=") {
-                        let workspaceId = query.split(separator: "=")[1]
-                        self.setInitialViewByWorkspaceParticipant(workspaceId: String(workspaceId))
-                    }
-                }
-            }
-            */
+          
         }
-    }*/
+    }
     
     func setInitialViewByWorkspaceParticipant(workspaceId:String) {
+        let userSignUpState = getUserSignUpState()
         
-        if let _ = UserDefaults.standard.string(forKey: "userName") {
+        if userSignUpState == .terms || userSignUpState == .userName || userSignUpState == .login {
+            let userErrorVC = UserErrorViewController(nibName: "UserErrorViewController", bundle: nil)
+            userErrorVC.userSignUpState = userSignUpState
+            self.window?.rootViewController = userErrorVC
+        }else {
             let workspaceParicipationProfileCreationVC = WorkspaceParicipationProfileCreationViewController(nibName: "WorkspaceParicipationProfileCreationViewController", bundle: nil)
             workspaceParicipationProfileCreationVC.workspaceId = workspaceId
             self.window?.rootViewController = workspaceParicipationProfileCreationVC
-            self.window?.makeKeyAndVisible()
         }
+        
+        self.window?.makeKeyAndVisible()
+        
     }
     
 

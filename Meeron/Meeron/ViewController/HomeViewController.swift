@@ -29,12 +29,24 @@ class HomeViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        homeVM.failTokenSubject
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.goLoginView()
+            }).disposed(by: disposeBag)
+        
         self.navigationItem.title = "워크스페이스"
         configureUI()
         setupCellPaging()
         setupMeetingCollectionView()
         initTapAction()
         
+    }
+    
+    func goLoginView() {
+        let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        loginVC.modalPresentationStyle = .fullScreen
+        present(loginVC, animated: false, completion: nil)
     }
     
     func configureUI() {
@@ -100,7 +112,7 @@ class HomeViewController:UIViewController {
         layout.itemSize = CGSize(width: 253, height: 451)
         meetingCollectionView.collectionViewLayout = layout
         
-        homeVM.loadTodayMeeting()
+        homeVM.loadUser()
     }
     
     @IBAction func createMeeting(_ sender: UIBarButtonItem) {

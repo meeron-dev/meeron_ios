@@ -8,7 +8,10 @@
 import UIKit
 
 class UserErrorViewController: UIViewController {
-
+    
+    var userSignUpState:UserSignUpState!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,6 +19,24 @@ class UserErrorViewController: UIViewController {
     }
 
 
+    @IBAction func goNextView(_ sender: Any) {
+        let mainStroyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if userSignUpState == .login {
+            let loginVC = mainStroyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            loginVC.modalPresentationStyle = .fullScreen
+            present(loginVC, animated: true, completion: nil)
+        }else if userSignUpState == .terms {
+            let termsVC = mainStroyboard.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+            termsVC.modalPresentationStyle = .fullScreen
+            present(termsVC, animated: true, completion: nil)
+            
+        }else if userSignUpState == .userName {
+            let userNameVC = mainStroyboard.instantiateViewController(withIdentifier: "UserNameViewController") as! UserNameViewController
+            userNameVC.modalPresentationStyle = .fullScreen
+            present(userNameVC, animated: true, completion: nil)
+        }
+    }
     /*
     // MARK: - Navigation
 

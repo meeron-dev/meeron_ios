@@ -12,8 +12,8 @@ import RxSwift
 import JWTDecode
 
 
-enum LoginType {
-    case loginFail
+enum UserSignUpState {
+    case login
     case terms
     case userName
     case home
@@ -24,7 +24,7 @@ class LoginViewModel {
     
     let disposeBag = DisposeBag()
     
-    let loginTypeSubject = PublishSubject<LoginType>()
+    let userSignUpStateSubject = PublishSubject<UserSignUpState>()
     
     let keychainManager = KeychainManager()
     let realmStorage = RealmStorage()
@@ -78,7 +78,7 @@ class LoginViewModel {
                 if let token = token {
                     owner.saveToken(token: token)
                 }else {
-                    owner.loginTypeSubject.onNext(.loginFail)
+                    owner.userSignUpStateSubject.onNext(.login)
                 }
             }).disposed(by: disposeBag)
         
@@ -87,27 +87,31 @@ class LoginViewModel {
     
     func saveToken(token:Token) {
         if keychainManager.saveLoginToken(accessToken: token.accessToken, refreshToken: token.refreshToken) {
-            if let _ = UserDefaults.standard.string(forKey: "userName") {
-                loadUser()
-            }else {
-                if UserDefaults.standard.bool(forKey: "termsAgree") {
-                    loginTypeSubject.onNext(.userName)
-                }
-                else {
-                    loginTypeSubject.onNext(.terms)
-                }
-            }
+            checkUserSignUpState()
         }else {
-            loginTypeSubject.onNext(.loginFail)
+            userSignUpStateSubject.onNext(.login)
         }
         
     }
     
-    func loadUser() {
-        
+    func checkUserSignUpState() {
+        if let _ = UserDefaults.standard.string(forKey: "userName") {
+            userSignUpStateSubject.onNext(.home)
+        }else {
+            if UserDefaults.standard.bool(forKey: "termsAgree") {
+                userSignUpStateSubject.onNext(.userName)
+            }
+            else {
+                userSignUpStateSubject.onNext(.terms)
+            }
+        }
+    }
+    
+    /*func loadUser() {
         signUpRepository.loadUser()
             .withUnretained(self)
             .subscribe(onNext: { owner, user in
+                print("???",user)
                 if let user = user {
                     owner.saveUserId(id: user.userId)
                     owner.loadUserWorkspace(id: user.userId)
@@ -157,5 +161,5 @@ class LoginViewModel {
         UserDefaults.standard.set(String(data[0].workspaceUserId), forKey: "workspaceUserId")
         UserDefaults.standard.set(data[0].nickname, forKey: "workspaceNickname")
         
-    }
+    }*/
 }

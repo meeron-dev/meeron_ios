@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginVM.loginTypeSubject
+        loginVM.userSignUpStateSubject
             .withUnretained(self)
             .subscribe(onNext: { owner, type in
                 owner.goNextView(type: type)
@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
         loginVM.loginByKakao()
     }
     
-    func goNextView(type:LoginType) {
+    func goNextView(type:UserSignUpState) {
         
         if type == .terms {
             let termsVC = self.storyboard?.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController

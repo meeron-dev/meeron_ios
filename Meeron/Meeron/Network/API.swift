@@ -37,6 +37,7 @@ struct API {
     func requestData<T:Codable>(resource:Resource<T>) -> Observable<T?> {
         return RxAlamofire.requestData(resource.method, resource.url, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
             .flatMap({ (response, data) -> Observable<T?> in
+                print("✅", response)
                 switch response.statusCode {
                 case 200...299 :
                     let decodedData = try JSONDecoder().decode(T.self, from: data)

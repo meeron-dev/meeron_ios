@@ -28,25 +28,6 @@ class SignUpRepository {
         
     }
     
-    func loadUser() -> Observable<User?> {
-        let resource = Resource<User>(url: URLConstant.user, parameter:[:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
-        
-        return api.requestData(resource: resource)
-    }
-    
-    func reissueToken() -> Observable<Token?> {
-        let resource = Resource<Token>(url: URLConstant.reissue, parameter: [:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .post, encodingType: .URLEncoding)
-        
-        return api.requestData(resource: resource)
-        
-    }
-    
-    func loadUserWorkspace(id:Int) -> Observable<UserWorkspace?> {
-        let resource = Resource<UserWorkspace>(url: URLConstant.userWorkspace+"/\(id)/workspace-users", parameter: ["userId":String(id)], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
-        
-        return api.requestData(resource: resource)
-    }
-    
     
     func patchUserName(name:String) -> Observable<Bool>{
         let resource = Resource<Bool>(url: URLConstant.userName, parameter: ["name":name], headers: headers, method: .patch, encodingType: .JSONEncoding)
