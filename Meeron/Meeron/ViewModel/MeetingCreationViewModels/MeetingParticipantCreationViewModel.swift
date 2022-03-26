@@ -23,6 +23,7 @@ class MeetingParticipantCreationViewModel {
     var selectedUserProfilesCountSubject = BehaviorSubject<Int>(value: 0)
     
     var meetingCreationData:MeetingCreation?
+    
     let meetingDateSubject = BehaviorSubject<String>(value: "")
     let meetingTimeSubject = BehaviorSubject<String>(value: "")
     let meetingTitleSubject = BehaviorSubject<String>(value: "")

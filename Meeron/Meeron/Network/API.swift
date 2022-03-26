@@ -32,6 +32,7 @@ struct Resource<T:Codable> {
 }
 
 
+
 struct API {
     
     func requestData<T:Codable>(resource:Resource<T>) -> Observable<T?> {
@@ -62,14 +63,20 @@ struct API {
         }
     }
     
-    func upload(resource: Resource<Bool>, data:Data) -> Observable<Bool> {
-        
+    func upload(resource: Resource<Bool>, data:Data?) -> Observable<Bool> {
+        print(resource)
         return Observable.create({ observable in
             AF.upload(multipartFormData: { multipartFormData in
+                
                 for (key, value) in resource.parameter {
-                    multipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
+                    multipartFormData.append(Data((value as! String).utf8), withName: key, mimeType: "application/json")
                 }
-                multipartFormData.append(data, withName: "files", fileName: ".png", mimeType: "mine/png")
+                
+                if let data = data {
+                    multipartFormData.append(data, withName: "files", fileName: ".png", mimeType: "mine/png")
+                }
+                
+            
             }, to: resource.url, usingThreshold: UInt64.init(), method: .post, headers: ["Content-Type": "multipart/form", "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!])
                 .response { response in
                     print("✔️",response.debugDescription)

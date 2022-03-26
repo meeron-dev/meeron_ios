@@ -9,16 +9,33 @@ import Foundation
 
 struct WorkspaceCreation {
     var workspaceName:String = ""
-    /*
-     var workspaceUserName:String
-     var position:String
-     var email:String
-     var phoneNumber:String
-     */
+    var workspaceProfile = WorkspaceProfile()
     var teamName:String = ""
+}
+
+struct WorkspaceProfile {
+    var image:Data?
+    var nickname:String = ""
+    var position:String = ""
+    var email:String = ""
+    var phoneNumber:String = ""
+}
+
+struct WorkspaceProfileCreation {
+    var workspaceUserId : Int
+    var nickname : String
+    var position: String
+    var profileImageUrl: String
+    var email: String
+    var phone : String
+    var workspaceAdmin: Bool
 }
 
 
 struct WorkspaceCreationResponse: Codable {
     var workspaceId: Int
+}
+
+struct WorkspaceProfileNicknameCheckResponse: Codable {
+    var duplicate: Bool
 }

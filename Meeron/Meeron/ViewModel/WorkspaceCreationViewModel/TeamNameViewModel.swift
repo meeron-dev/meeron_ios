@@ -12,17 +12,22 @@ import FirebaseDynamicLinks
 class TeamNameViewModel {
     let workspaceCreationRepository = WorkspaceCreationRepository()
     
-    var workspaceCreationData:WorkspaceCreation!
-    
     let successWorkspaceNamePostSubject = BehaviorSubject<Bool>(value: false)
     let successTeamNamePostSubject = BehaviorSubject<Bool>(value: false)
     let successWorksapceInviteLinkSubject = BehaviorSubject<Bool>(value: false)
+    let successWorkspaceProfileSubject = BehaviorSubject<Bool>(value: false)
+
     
     let disposeBag = DisposeBag()
     
     var workspaceId:Int!
     var workspaceInviteUrlString:String!
 
+    var workspaceCreationData:WorkspaceCreation!
+    
+    init(workspaceCreationData:WorkspaceCreation) {
+        self.workspaceCreationData = workspaceCreationData
+    }
     
     func postWorkspaceName() {
         workspaceCreationRepository.postWorkspaceName(name: workspaceCreationData.workspaceName)
@@ -32,8 +37,17 @@ class TeamNameViewModel {
                     owner.workspaceId = response.workspaceId
                     owner.postTeamName()
                     owner.createWorkspaceDynamicLink()
+                    owner.postWorkspaceProfile()
                     owner.successWorkspaceNamePostSubject.onNext(true)
                 }
+            }).disposed(by: disposeBag)
+    }
+    
+    func postWorkspaceProfile() {
+        workspaceCreationRepository.postProfile(workspaceProfile: workspaceCreationData.workspaceProfile, workspaceId: String(workspaceId))
+            .withUnretained(self)
+            .subscribe(onNext: { owner, success in
+                owner.successWorkspaceProfileSubject.onNext(success)
             }).disposed(by: disposeBag)
     }
     

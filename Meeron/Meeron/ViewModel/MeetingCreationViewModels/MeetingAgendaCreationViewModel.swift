@@ -23,6 +23,7 @@ class MeetingAgendaCreationViewModel {
     var agendaDocumentSubject = PublishSubject<[Document]>()
     
     var meetingCreationData:MeetingCreation?
+    
     let meetingDateSubject = BehaviorSubject<String>(value: "")
     let meetingTimeSubject = BehaviorSubject<String>(value: "")
     let meetingTitleSubject = BehaviorSubject<String>(value: "")

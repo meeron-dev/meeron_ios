@@ -25,7 +25,7 @@ class MeetingBaiscInfoCreationViewModel {
     var meetingDateSubject = BehaviorSubject<String>(value: "")
     var meetingTimeSubject = BehaviorSubject<String>(value: "")
     
-    func setTitle(title:String) {
+    func saveTitle(title:String) {
         self.title = title
         if title.trimmingCharacters(in: .whitespaces) != ""{
             self.meetingCreationData?.title = title
@@ -35,7 +35,7 @@ class MeetingBaiscInfoCreationViewModel {
         }
     }
     
-    func setPurpose(purpose:String) {
+    func savePurpose(purpose:String) {
         self.purpose = purpose
         if purpose.trimmingCharacters(in: .whitespaces) != "" {
             validPurposeSubject.onNext(true)

@@ -33,10 +33,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        self.window = UIWindow(windowScene: windowScene)
+        /*self.window = UIWindow(windowScene: windowScene)
         window?.tintColor = .mrBlue
         
-        setInitialView(type: getUserSignUpState())
+        if let userActivity = connectionOptions.userActivities.first {
+            self.scene(scene, continue: userActivity)
+        }else {
+            setInitialView(type: getUserSignUpState())
+        }*/
 
     }
     
@@ -95,7 +99,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let incomingURL = userActivity.webpageURL {
             let _ = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { [weak self] dynamicLinks, error in
                 if let dynamicLinks = dynamicLinks {
-                    print("🥳",dynamicLinks.url)
                     if let id = dynamicLinks.url?.query?.split(separator: "=")[1] {
                         self?.setInitialViewByWorkspaceParticipant(workspaceId: String(id))
                     }
@@ -114,7 +117,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window?.rootViewController = userErrorVC
         }else {
             let workspaceParicipationProfileCreationVC = WorkspaceParicipationProfileCreationViewController(nibName: "WorkspaceParicipationProfileCreationViewController", bundle: nil)
-            workspaceParicipationProfileCreationVC.workspaceId = workspaceId
+            workspaceParicipationProfileCreationVC.workspaceParicipationProfileCreationVM = WorkspaceParicipationProfileCreationViewModel(workspaceId: workspaceId)
+            
             self.window?.rootViewController = workspaceParicipationProfileCreationVC
         }
         

@@ -8,11 +8,18 @@
 import Foundation
 
 struct TextFieldLimitNumberConstant {
+    //Sign Up
+    static let userName = 5
+    
     //Workspace Creation
     static let workspaceName = 10
     static let workspaceProfileNickname = 5
     static let workspaceProfilePosition = 5
     static let workspaceTeamName = 10
     
+    //Meeting Creation
+    static let meetingTitle = 35
+    static let meetingPurpose = 10
+    static let meetingAgenda = 45
     
 }

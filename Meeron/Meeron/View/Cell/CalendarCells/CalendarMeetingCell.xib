@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarMeetingCell" customModule="Meeron" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CalendarMeetingCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarMeetingCell" rowHeight="122" id="ikR-0x-mtu" customClass="CalendarMeetingCell" customModule="Meeron" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="122"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ikR-0x-mtu" id="90Q-AS-kVj">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="122"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfZ-8u-VtU">
+                        <rect key="frame" x="30" y="29" width="23" height="23"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="n" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwx-6r-oya">
+                                <rect key="frame" x="7.5" y="3.5" width="8" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="23" id="5b7-sq-gM3"/>
+                            <constraint firstItem="iwx-6r-oya" firstAttribute="centerX" secondItem="mfZ-8u-VtU" secondAttribute="centerX" id="9M9-97-70a"/>
+                            <constraint firstItem="iwx-6r-oya" firstAttribute="centerY" secondItem="mfZ-8u-VtU" secondAttribute="centerY" id="WJF-dY-dth"/>
+                            <constraint firstAttribute="height" constant="23" id="l43-1e-Grc"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keg-d7-gBo">
+                        <rect key="frame" x="71" y="29" width="276" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="vd4-Xd-elT"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                        <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aY6-pQ-1gI">
+                        <rect key="frame" x="71" y="65" width="276" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="iPq-9Q-1B7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDM-vp-a7b">
+                        <rect key="frame" x="357" y="35" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="fAv-jq-1ki"/>
+                            <constraint firstAttribute="height" constant="44" id="thK-fw-0nQ"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="calendarMeetingRightArrow" title=""/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="aY6-pQ-1gI" secondAttribute="bottom" constant="11" id="DQa-y7-4Bo"/>
+                    <constraint firstItem="aY6-pQ-1gI" firstAttribute="leading" secondItem="keg-d7-gBo" secondAttribute="leading" id="aHU-6O-MsR"/>
+                    <constraint firstItem="jDM-vp-a7b" firstAttribute="leading" secondItem="keg-d7-gBo" secondAttribute="trailing" constant="10" id="e6d-h4-n7I"/>
+                    <constraint firstItem="jDM-vp-a7b" firstAttribute="leading" secondItem="aY6-pQ-1gI" secondAttribute="trailing" constant="10" id="ehc-fC-qFt"/>
+                    <constraint firstItem="mfZ-8u-VtU" firstAttribute="top" secondItem="90Q-AS-kVj" secondAttribute="top" constant="29" id="gVl-5H-fQC"/>
+                    <constraint firstAttribute="trailing" secondItem="jDM-vp-a7b" secondAttribute="trailing" constant="13" id="gcf-MX-YA0"/>
+                    <constraint firstItem="keg-d7-gBo" firstAttribute="leading" secondItem="mfZ-8u-VtU" secondAttribute="trailing" constant="18" id="jRx-o3-R2H"/>
+                    <constraint firstItem="jDM-vp-a7b" firstAttribute="top" secondItem="keg-d7-gBo" secondAttribute="top" constant="6" id="nzX-3a-Pbh"/>
+                    <constraint firstItem="aY6-pQ-1gI" firstAttribute="top" secondItem="keg-d7-gBo" secondAttribute="bottom" constant="15" id="oZD-X4-7tW"/>
+                    <constraint firstItem="keg-d7-gBo" firstAttribute="top" secondItem="90Q-AS-kVj" secondAttribute="top" constant="29" id="qxI-7i-4Oi"/>
+                    <constraint firstItem="mfZ-8u-VtU" firstAttribute="leading" secondItem="90Q-AS-kVj" secondAttribute="leading" constant="30" id="tCe-dK-GJ7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="meetingNameLabel" destination="keg-d7-gBo" id="HwT-jO-Nm6"/>
+                <outlet property="meetingNumberLabel" destination="iwx-6r-oya" id="gK2-7h-uJH"/>
+                <outlet property="meetingNumberView" destination="mfZ-8u-VtU" id="IGv-hs-IKS"/>
+                <outlet property="meetingTimeLabel" destination="aY6-pQ-1gI" id="ZzM-Iv-QRM"/>
+            </connections>
+            <point key="canvasLocation" x="58" y="61"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="calendarMeetingRightArrow" width="22" height="22"/>
+    </resources>
+</document>
