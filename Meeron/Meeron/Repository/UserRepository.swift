@@ -39,5 +39,7 @@ class UserRepository {
         UserDefaults.standard.set(String(data[0].workspaceId), forKey:"workspaceId")
         UserDefaults.standard.set(String(data[0].workspaceUserId), forKey: "workspaceUserId")
         UserDefaults.standard.set(data[0].nickname, forKey: "workspaceNickname")
+        UserDefaults.standard.set(data[0].workspaceAdmin, forKey: "workspaceAdmin")
+        
     }
 }

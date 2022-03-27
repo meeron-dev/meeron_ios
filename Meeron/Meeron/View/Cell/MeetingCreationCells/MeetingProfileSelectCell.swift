@@ -74,7 +74,7 @@ class MeetingProfileSelectCell: UICollectionViewCell {
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         selectedView.layer.cornerRadius = profileImageView.frame.height/2
         
-        profileImageView.image = UIImage(systemName: "person")
+        profileImageView.image = UIImage(named: ImageNameConstant.profile)
         managerLabel.text = ""
         
         selectedView.backgroundColor = nil
@@ -114,5 +114,25 @@ class MeetingProfileSelectCell: UICollectionViewCell {
             }
         }*/
         
+    }
+    
+    
+    func setProfileData(data:WorkspaceUser) {
+        profilePositionLabel.text = data.position
+        profileNameLabel.text = data.nickname
+        profileData = data
+        managerLabel.text = ""
+        /*
+        if data.profileImageUrl != nil {
+            let imgURL = URL(string: data.profileImageUrl!)!
+            DispatchQueue.global().async {
+                let imgData = try? Data(contentsOf: imgURL)
+                if imgData != nil {
+                    DispatchQueue.main.async {
+                        self.profileImageView.image = UIImage(data: imgData!)
+                    }
+                }
+            }
+        }*/
     }
 }

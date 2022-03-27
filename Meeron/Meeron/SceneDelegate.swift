@@ -32,8 +32,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        /*self.window = UIWindow(windowScene: windowScene)
+        /*guard let windowScene = (scene as? UIWindowScene) else { return }
+        self.window = UIWindow(windowScene: windowScene)
         window?.tintColor = .mrBlue
         
         if let userActivity = connectionOptions.userActivities.first {
@@ -116,6 +116,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             userErrorVC.userSignUpState = userSignUpState
             self.window?.rootViewController = userErrorVC
         }else {
+            if let userWorkspaceId = UserDefaults.standard.string(forKey: "workspaceId") {
+                if userWorkspaceId == workspaceId {
+                    let workspaceErrorVC = WorkspaceErrorViewController(nibName: "WorkspaceErrorViewController", bundle: nil)
+                    self.window?.rootViewController = workspaceErrorVC
+                    self.window?.makeKeyAndVisible()
+                    return
+                }
+            }
+            
             let workspaceParicipationProfileCreationVC = WorkspaceParicipationProfileCreationViewController(nibName: "WorkspaceParicipationProfileCreationViewController", bundle: nil)
             workspaceParicipationProfileCreationVC.workspaceParicipationProfileCreationVM = WorkspaceParicipationProfileCreationViewModel(workspaceId: workspaceId)
             

@@ -76,7 +76,7 @@ class MeetingParticipantProfileCell:UICollectionViewCell {
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         selectedView.layer.cornerRadius = profileImageView.frame.height/2
         
-        profileImageView.image = UIImage(systemName: "person")
+        profileImageView.image = UIImage(named: ImageNameConstant.profile)
         managerLabel.text = ""
         
         selectedView.backgroundColor = nil

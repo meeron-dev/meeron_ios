@@ -7,8 +7,11 @@
 
 import Foundation
 import RxSwift
+import Alamofire
 
 class TeamRepository {
+    //let headers = [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)]
+    let api = API()
     
     func loadTeamInWorkspace() -> Observable<Teams?> {
         let workspaceId = UserDefaults.standard.string(forKey: "workspaceId")!
@@ -16,7 +19,7 @@ class TeamRepository {
         let urlString = URLConstant.teamInWorkspace+"?workspaceId="+workspaceId
         let resource = Resource<Teams>(url:urlString, parameter: [:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
         
-        return API().requestData(resource: resource)
+        return api.requestData(resource: resource)
     }
     
     func loadUsersInWorkspaceTeam(teamId:String) -> Observable<WorkspaceUserProfiles?> {

@@ -15,6 +15,7 @@ class WorkspaceParicipationProfileCreationViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nicknameCheckLabelHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var positionTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -31,6 +32,8 @@ class WorkspaceParicipationProfileCreationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        workspaceParicipationProfileCreationVM.checkWorkspace()
         
         configureUI()
         setupButton()
@@ -142,15 +145,30 @@ class WorkspaceParicipationProfileCreationViewController: UIViewController {
                 owner.workspaceParicipationProfileCreationVM.saveEmail(email: text)
             }).disposed(by: disposeBag)
     }
+    func goErrorView() {
+        let workspaceErrorVC = WorkspaceErrorViewController(nibName: "WorkspaceErrorViewController", bundle: nil)
+        workspaceErrorVC.modalPresentationStyle = .fullScreen
+        present(workspaceErrorVC, animated: true, completion: nil)
+    }
     
     private func configureUI() {
+        
+        workspaceParicipationProfileCreationVM.vaildWorkspaceSubject
+            .withUnretained(self)
+            .subscribe(onNext: { owner, vaild in
+                if !vaild {
+                    owner.goErrorView()
+                }
+            }).disposed(by: disposeBag)
+        
+        
         doneButton.addShadow()
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
         
         profileImageView.contentMode = .scaleAspectFill
         
         let imagePickerTapper = UITapGestureRecognizer()
-        imagePickerTapper.addTarget(self, action: #selector(showImagePickerView))
+        imagePickerTapper.addTarget(self, action: #selector(checkPhotoPermission))
         profileImageView.isUserInteractionEnabled = true
         profileImageView.addGestureRecognizer(imagePickerTapper)
         
@@ -168,7 +186,38 @@ class WorkspaceParicipationProfileCreationViewController: UIViewController {
         
     }
     
-    @objc func showImagePickerView() {
+    @objc func checkPhotoPermission() {
+        
+        let status = PHPhotoLibrary.authorizationStatus()
+        
+        if status == .authorized || status == .limited {
+            showImagePickerView()
+        }else if status == .denied {
+            showAuthorizationDeniedAlert()
+        }else if status == .notDetermined{
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+                DispatchQueue.main.async {
+                    self.checkPhotoPermission()
+                }
+            }
+        }
+    }
+    
+    func showAuthorizationDeniedAlert(){
+        let alert = UIAlertController(title: "사진첩 접근 권한을 활성화 해주세요.", message: "프로필 사진을 위해 필요합니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "닫기", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "설정으로 가기", style: .default, handler: { action in
+            guard let url = URL(string: UIApplication.openSettingsURLString) else {return}
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
+    func showImagePickerView() {
         var configuartion = PHPickerConfiguration()
         configuartion.filter = .images
         configuartion.selectionLimit = 1

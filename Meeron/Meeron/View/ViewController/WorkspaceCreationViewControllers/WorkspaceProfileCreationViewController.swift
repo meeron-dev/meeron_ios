@@ -73,24 +73,42 @@ class WorkspaceProfileCreationViewController: UIViewController {
         profileImageView.contentMode = .scaleAspectFill
         
         let imagePickerTapper = UITapGestureRecognizer()
-        imagePickerTapper.addTarget(self, action: #selector(showImagePickerView))
+        imagePickerTapper.addTarget(self, action: #selector(checkPhotoPermission))
         profileImageView.isUserInteractionEnabled = true
         profileImageView.addGestureRecognizer(imagePickerTapper)
         
-        let requiredAccessLevel: PHAccessLevel = .readWrite
-        PHPhotoLibrary.requestAuthorization(for: requiredAccessLevel) { authorizationStatus in
-            switch authorizationStatus {
-            case .limited:
-                print("limited authorization granted")
-            case .authorized:
-                print("authorization granted")
-            default:
-                print("Unimplemented")
+    }
+    
+    @objc func checkPhotoPermission() {
+        
+        let status = PHPhotoLibrary.authorizationStatus()
+        
+        if status == .authorized || status == .limited {
+            showImagePickerView()
+        }else if status == .denied {
+            showAuthorizationDeniedAlert()
+        }else if status == .notDetermined{
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+                DispatchQueue.main.async {
+                    self.checkPhotoPermission()
+                }
             }
         }
     }
     
-    @objc func showImagePickerView() {
+    func showAuthorizationDeniedAlert(){
+        let alert = UIAlertController(title: "사진첩 접근 권한을 활성화 해주세요.", message: "프로필 사진을 위해 필요합니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "닫기", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "설정으로 가기", style: .default, handler: { action in
+            guard let url = URL(string: UIApplication.openSettingsURLString) else {return}
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showImagePickerView() {
         var configuartion = PHPickerConfiguration()
         configuartion.filter = .images
         configuartion.selectionLimit = 1

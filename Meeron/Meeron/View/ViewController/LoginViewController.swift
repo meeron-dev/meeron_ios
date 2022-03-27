@@ -43,11 +43,11 @@ class LoginViewController: UIViewController {
     }
     
     func goNextView(type:UserSignUpState) {
-        let termsVC = self.storyboard?.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+        /*let termsVC = self.storyboard?.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
         
         termsVC.modalPresentationStyle = .fullScreen
-        present(termsVC, animated: true, completion: nil)
-        /*if type == .terms {
+        present(termsVC, animated: true, completion: nil)*/
+        if type == .terms {
             let termsVC = self.storyboard?.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
             
             termsVC.modalPresentationStyle = .fullScreen
@@ -64,7 +64,6 @@ class LoginViewController: UIViewController {
             homeVC.modalTransitionStyle = .crossDissolve
             present(homeVC, animated: true, completion: nil)
         }
-        */
     }
 }
 

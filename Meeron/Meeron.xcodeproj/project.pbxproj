@@ -59,6 +59,16 @@
 		FC6AB50827C10CC300797C44 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB50727C10CC300797C44 /* API.swift */; };
 		FC6AB50A27C112F000797C44 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB50927C112F000797C44 /* Token.swift */; };
 		FC6AB51027C13B1900797C44 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB50F27C13B1900797C44 /* LoginViewModel.swift */; };
+		FC721FBA27F03B2F0086CE91 /* UIColor+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC721FB927F03B2F0086CE91 /* UIColor+UIImage.swift */; };
+		FC721FC227F04C2B0086CE91 /* TwoButtonPopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC721FC127F04C2B0086CE91 /* TwoButtonPopUpViewController.xib */; };
+		FC721FC427F051840086CE91 /* UIViewController+PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC721FC327F051840086CE91 /* UIViewController+PopUp.swift */; };
+		FC721FC627F0555E0086CE91 /* TeamManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC721FC527F0555E0086CE91 /* TeamManagementViewModel.swift */; };
+		FC721FCB27F056E90086CE91 /* MeetingProfileDeleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC721FC927F056E90086CE91 /* MeetingProfileDeleteCell.swift */; };
+		FC721FCC27F056E90086CE91 /* MeetingProfileDeleteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC721FCA27F056E90086CE91 /* MeetingProfileDeleteCell.xib */; };
+		FC721FCE27F0672C0086CE91 /* OneButtonPopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC721FCD27F0672C0086CE91 /* OneButtonPopUpViewController.xib */; };
+		FC721FD027F06AD80086CE91 /* TeamParticipantAdditionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC721FCF27F06AD80086CE91 /* TeamParticipantAdditionalViewController.swift */; };
+		FC721FD227F0B7FD0086CE91 /* TeamParticipantAdditionalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC721FD127F0B7FD0086CE91 /* TeamParticipantAdditionalViewModel.swift */; };
+		FC721FD527F0BB130086CE91 /* TeamNameCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC721FD427F0BB130086CE91 /* TeamNameCreationViewController.swift */; };
 		FC7B37C827DF8E2F005C3D23 /* CalendarMeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7B37C727DF8E2F005C3D23 /* CalendarMeetingCell.swift */; };
 		FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */; };
 		FC8393A427C66F6400981622 /* CalendarDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8393A327C66F6400981622 /* CalendarDateCell.swift */; };
@@ -112,6 +122,11 @@
 		FCEFFD7727CF342A00D54CD4 /* MeetingTimeCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEFFD7627CF342A00D54CD4 /* MeetingTimeCreationViewController.swift */; };
 		FCEFFD7927CF3CE200D54CD4 /* Date+CustomDateString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEFFD7827CF3CE200D54CD4 /* Date+CustomDateString.swift */; };
 		FCF46BD527EEEF82009D89AF /* ButtonConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF46BD427EEEF82009D89AF /* ButtonConstant.swift */; };
+		FCF46BD727EF4B05009D89AF /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF46BD627EF4B05009D89AF /* TeamViewController.swift */; };
+		FCF46BDA27EF4D43009D89AF /* TeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF46BD927EF4D43009D89AF /* TeamViewModel.swift */; };
+		FCF46BDC27EF5279009D89AF /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF46BDB27EF5279009D89AF /* TeamCell.swift */; };
+		FCF46BDF27EF7F4B009D89AF /* OneButtonPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF46BDE27EF7F4B009D89AF /* OneButtonPopUpViewController.swift */; };
+		FCF46BE127EF7F84009D89AF /* TwoButtonPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF46BE027EF7F84009D89AF /* TwoButtonPopUpViewController.swift */; };
 		FCF956DE27E4BAEE00625B71 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF956DD27E4BAEE00625B71 /* TermsViewController.swift */; };
 		FCFB414C27EDCC8600700381 /* CalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFB414B27EDCC8600700381 /* CalendarViewController.xib */; };
 		FCFB414E27EDCC9D00700381 /* AllCalendarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCFB414D27EDCC9D00700381 /* AllCalendarViewController.xib */; };
@@ -202,6 +217,16 @@
 		FC6AB50727C10CC300797C44 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		FC6AB50927C112F000797C44 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		FC6AB50F27C13B1900797C44 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		FC721FB927F03B2F0086CE91 /* UIColor+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+UIImage.swift"; sourceTree = "<group>"; };
+		FC721FC127F04C2B0086CE91 /* TwoButtonPopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoButtonPopUpViewController.xib; sourceTree = "<group>"; };
+		FC721FC327F051840086CE91 /* UIViewController+PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+PopUp.swift"; sourceTree = "<group>"; };
+		FC721FC527F0555E0086CE91 /* TeamManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManagementViewModel.swift; sourceTree = "<group>"; };
+		FC721FC927F056E90086CE91 /* MeetingProfileDeleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingProfileDeleteCell.swift; sourceTree = "<group>"; };
+		FC721FCA27F056E90086CE91 /* MeetingProfileDeleteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeetingProfileDeleteCell.xib; sourceTree = "<group>"; };
+		FC721FCD27F0672C0086CE91 /* OneButtonPopUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OneButtonPopUpViewController.xib; sourceTree = "<group>"; };
+		FC721FCF27F06AD80086CE91 /* TeamParticipantAdditionalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamParticipantAdditionalViewController.swift; sourceTree = "<group>"; };
+		FC721FD127F0B7FD0086CE91 /* TeamParticipantAdditionalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamParticipantAdditionalViewModel.swift; sourceTree = "<group>"; };
+		FC721FD427F0BB130086CE91 /* TeamNameCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamNameCreationViewController.swift; sourceTree = "<group>"; };
 		FC7B37C727DF8E2F005C3D23 /* CalendarMeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMeetingCell.swift; sourceTree = "<group>"; };
 		FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		FC7CA8EE27C2255400110D24 /* Meeron.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meeron.entitlements; sourceTree = "<group>"; };
@@ -256,6 +281,11 @@
 		FCEFFD7627CF342A00D54CD4 /* MeetingTimeCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingTimeCreationViewController.swift; sourceTree = "<group>"; };
 		FCEFFD7827CF3CE200D54CD4 /* Date+CustomDateString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+CustomDateString.swift"; sourceTree = "<group>"; };
 		FCF46BD427EEEF82009D89AF /* ButtonConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonConstant.swift; sourceTree = "<group>"; };
+		FCF46BD627EF4B05009D89AF /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
+		FCF46BD927EF4D43009D89AF /* TeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewModel.swift; sourceTree = "<group>"; };
+		FCF46BDB27EF5279009D89AF /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
+		FCF46BDE27EF7F4B009D89AF /* OneButtonPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneButtonPopUpViewController.swift; sourceTree = "<group>"; };
+		FCF46BE027EF7F84009D89AF /* TwoButtonPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoButtonPopUpViewController.swift; sourceTree = "<group>"; };
 		FCF956DD27E4BAEE00625B71 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		FCFB414B27EDCC8600700381 /* CalendarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarViewController.xib; sourceTree = "<group>"; };
 		FCFB414D27EDCC9D00700381 /* AllCalendarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllCalendarViewController.xib; sourceTree = "<group>"; };
@@ -336,6 +366,8 @@
 				FCEFFD7227CF2B0100D54CD4 /* UILabel+CustomLabel.swift */,
 				FCEFFD7827CF3CE200D54CD4 /* Date+CustomDateString.swift */,
 				FC2ABF4A27ECC885001B3F33 /* UIViewController+DismissKeyboard.swift */,
+				FC721FB927F03B2F0086CE91 /* UIColor+UIImage.swift */,
+				FC721FC327F051840086CE91 /* UIViewController+PopUp.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -429,15 +461,13 @@
 				FCA1AF7E27CBCFFD00152F53 /* PersistentStorages */,
 				FC7CA8EE27C2255400110D24 /* Meeron.entitlements */,
 				FC6AB50E27C13B0600797C44 /* Models */,
+				FC6AB50B27C1343200797C44 /* Network */,
 				FC06E98527C3DC2A004065E3 /* Util */,
 				FC6AB50D27C1345F00797C44 /* ViewModel */,
 				FCA7217027EEB6F4000A7DC5 /* View */,
-				FC6AB50B27C1343200797C44 /* Network */,
 				FC06E98A27C3E120004065E3 /* Resource */,
 				FC6AB4D527C0C4D700797C44 /* AppDelegate.swift */,
 				FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */,
-				FC6AB4DB27C0C4D700797C44 /* Main.storyboard */,
-				FC6AB4E027C0C4D800797C44 /* LaunchScreen.storyboard */,
 				FC28912927CFCBAE00E8DFA7 /* DatePickerModalPresentationController.swift */,
 			);
 			path = Meeron;
@@ -472,15 +502,19 @@
 		FC6AB50C27C1344B00797C44 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				FCA7217727EEBBA5000A7DC5 /* TeamViewControllers */,
+				FC6AB4DB27C0C4D700797C44 /* Main.storyboard */,
+				FC721FD327F0BAE80086CE91 /* TeamCreationViewControllers */,
 				FC6AB4D927C0C4D700797C44 /* LoginViewController.swift */,
+				FCA7217727EEBBA5000A7DC5 /* TeamViewControllers */,
 				FC4CDF0927E388490011B622 /* SignUpViewControllers */,
 				FCA73F2227E8977500295247 /* WorkspaceCreationViewControllers */,
 				FC7B37C927DF96E5005C3D23 /* CalendarViewControllers */,
 				FCEFFD6D27CF07C100D54CD4 /* MeetingCreationViewControllers */,
 				FC06E98227C3ABFF004065E3 /* HomeViewController.swift */,
 				FC06E98B27C3F02C004065E3 /* TabBarController.swift */,
+				FCF46BDD27EF7F2D009D89AF /* PopUpViewControllers */,
 				FC8DE90927E9F0D5008648A7 /* ErrorViewControllers */,
+				FC6AB4E027C0C4D800797C44 /* LaunchScreen.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -488,13 +522,13 @@
 		FC6AB50D27C1345F00797C44 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FCF46BD827EF4D2E009D89AF /* TeamViewModels */,
 				FCA73F2527E8A4CD00295247 /* WorkspaceCreationViewModel */,
 				FCA73F1A27E8933A00295247 /* SignUpViewModels */,
 				FC7B37CD27DF9760005C3D23 /* MeetingCreationViewModels */,
 				FC7B37CC27DF9750005C3D23 /* CalendarViewModels */,
 				FC6AB50F27C13B1900797C44 /* LoginViewModel.swift */,
 				FCA1AF7C27CBBB0600152F53 /* HomeViewModel.swift */,
-				FCEDA9FB27EB7EC00012D876 /* WorkspaceParicipationProfileCreationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -513,6 +547,14 @@
 				FCA73F1F27E8943500295247 /* WorkspaceCreation.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FC721FD327F0BAE80086CE91 /* TeamCreationViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FC721FD427F0BB130086CE91 /* TeamNameCreationViewController.swift */,
+			);
+			path = TeamCreationViewControllers;
 			sourceTree = "<group>";
 		};
 		FC7B37C927DF96E5005C3D23 /* CalendarViewControllers */ = {
@@ -596,6 +638,9 @@
 				FC9FD92C27C4BF60009DE526 /* MeetingCardCell.swift */,
 				FC484DA627E38CFC00F15151 /* IntroductionCell.swift */,
 				FCFB415727EE2D6000700381 /* IntroductionCell.xib */,
+				FCF46BDB27EF5279009D89AF /* TeamCell.swift */,
+				FC721FC927F056E90086CE91 /* MeetingProfileDeleteCell.swift */,
+				FC721FCA27F056E90086CE91 /* MeetingProfileDeleteCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -629,7 +674,9 @@
 		FCA7217727EEBBA5000A7DC5 /* TeamViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FCF46BD627EF4B05009D89AF /* TeamViewController.swift */,
 				FCA7217827EEBBD6000A7DC5 /* TeamManagementViewController.swift */,
+				FC721FCF27F06AD80086CE91 /* TeamParticipantAdditionalViewController.swift */,
 			);
 			path = TeamViewControllers;
 			sourceTree = "<group>";
@@ -660,6 +707,7 @@
 			children = (
 				FC3788DB27ED42C5009948E2 /* WorkspaceProfileCreationViewModel.swift */,
 				FCA73F1D27E8942400295247 /* TeamNameViewModel.swift */,
+				FCEDA9FB27EB7EC00012D876 /* WorkspaceParicipationProfileCreationViewModel.swift */,
 			);
 			path = WorkspaceCreationViewModel;
 			sourceTree = "<group>";
@@ -686,6 +734,27 @@
 				FC38089527D09DBA0023D713 /* MeetingTeamSelectViewController.swift */,
 			);
 			path = MeetingCreationViewControllers;
+			sourceTree = "<group>";
+		};
+		FCF46BD827EF4D2E009D89AF /* TeamViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FCF46BD927EF4D43009D89AF /* TeamViewModel.swift */,
+				FC721FC527F0555E0086CE91 /* TeamManagementViewModel.swift */,
+				FC721FD127F0B7FD0086CE91 /* TeamParticipantAdditionalViewModel.swift */,
+			);
+			path = TeamViewModels;
+			sourceTree = "<group>";
+		};
+		FCF46BDD27EF7F2D009D89AF /* PopUpViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FCF46BDE27EF7F4B009D89AF /* OneButtonPopUpViewController.swift */,
+				FC721FCD27F0672C0086CE91 /* OneButtonPopUpViewController.xib */,
+				FCF46BE027EF7F84009D89AF /* TwoButtonPopUpViewController.swift */,
+				FC721FC127F04C2B0086CE91 /* TwoButtonPopUpViewController.xib */,
+			);
+			path = PopUpViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -805,8 +874,11 @@
 				FC8DE90B27E9F27A008648A7 /* WorkspaceParticipationSolutionViewController.xib in Resources */,
 				FCFB415827EE2D6000700381 /* IntroductionCell.xib in Resources */,
 				FCFB414C27EDCC8600700381 /* CalendarViewController.xib in Resources */,
+				FC721FCC27F056E90086CE91 /* MeetingProfileDeleteCell.xib in Resources */,
+				FC721FC227F04C2B0086CE91 /* TwoButtonPopUpViewController.xib in Resources */,
 				FCFB415227EDEF7100700381 /* AllCalendarMonthCell.xib in Resources */,
 				FCC19A5E27E7671600270906 /* GoogleService-Info.plist in Resources */,
+				FC721FCE27F0672C0086CE91 /* OneButtonPopUpViewController.xib in Resources */,
 				FC8DE90D27E9F396008648A7 /* WorkspaceParicipationProfileCreationViewController.xib in Resources */,
 				FCFB415027EDEEDE00700381 /* AllCalendarYearCell.xib in Resources */,
 				FCFB415627EDF05100700381 /* CalendarMeetingCell.xib in Resources */,
@@ -943,6 +1015,7 @@
 			files = (
 				FC9A803F27D9D49300C3B836 /* MeetingCreationRepository.swift in Sources */,
 				FC5D5AC127E02E61000A4FB5 /* AllCalendarYearCell.swift in Sources */,
+				FC721FC427F051840086CE91 /* UIViewController+PopUp.swift in Sources */,
 				FC3788DC27ED42C5009948E2 /* WorkspaceProfileCreationViewModel.swift in Sources */,
 				FC6AB4DA27C0C4D700797C44 /* LoginViewController.swift in Sources */,
 				FC06E98927C3DC71004065E3 /* UIColor+CustomColor.swift in Sources */,
@@ -965,6 +1038,7 @@
 				FCA7217927EEBBD6000A7DC5 /* TeamManagementViewController.swift in Sources */,
 				FC4CDF0627E3872A0011B622 /* IntroductionViewController.swift in Sources */,
 				FCEFFD7927CF3CE200D54CD4 /* Date+CustomDateString.swift in Sources */,
+				FCF46BDF27EF7F4B009D89AF /* OneButtonPopUpViewController.swift in Sources */,
 				FC6AB51027C13B1900797C44 /* LoginViewModel.swift in Sources */,
 				FCD75C1E27CFD6B100D0FDD4 /* MeetingBaiscInfoCreationViewController.swift in Sources */,
 				FCA73F2727E8A52300295247 /* WorkspaceProfileCreationViewController.swift in Sources */,
@@ -978,10 +1052,12 @@
 				FC8DE8FC27E9A870008648A7 /* TextFieldLimitNumberConstant.swift in Sources */,
 				FCA73F1727E890E800295247 /* TeamNameViewController.swift in Sources */,
 				FC38089627D09DBA0023D713 /* MeetingTeamSelectViewController.swift in Sources */,
+				FC721FD527F0BB130086CE91 /* TeamNameCreationViewController.swift in Sources */,
 				FC9FC1FA27D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift in Sources */,
 				FCBC2BEB27E5FC8100C376F1 /* SignUpRepository.swift in Sources */,
 				FCEDA9FA27EB6C2E0012D876 /* UserRepository.swift in Sources */,
 				FC4D5A0D27DE18D80000AE18 /* AllCalendar.swift in Sources */,
+				FCF46BD727EF4B05009D89AF /* TeamViewController.swift in Sources */,
 				FCA73F1527E8901800295247 /* WorkspaceNameViewController.swift in Sources */,
 				FC6AB4D627C0C4D700797C44 /* AppDelegate.swift in Sources */,
 				FCAE0D3A27D4A48800B05D94 /* MeetingProfileSelectCell.swift in Sources */,
@@ -990,10 +1066,13 @@
 				FC6AB4D827C0C4D700797C44 /* SceneDelegate.swift in Sources */,
 				FC2ABF4B27ECC885001B3F33 /* UIViewController+DismissKeyboard.swift in Sources */,
 				FCEDA9FC27EB7EC00012D876 /* WorkspaceParicipationProfileCreationViewModel.swift in Sources */,
+				FC721FCB27F056E90086CE91 /* MeetingProfileDeleteCell.swift in Sources */,
 				FCA73F1927E8922700295247 /* WorkspaceCreationResultViewController.swift in Sources */,
 				FC9FD92D27C4BF60009DE526 /* MeetingCardCell.swift in Sources */,
 				FCB36CF727CCF5A000ACF591 /* MeetingDateCreationViewController.swift in Sources */,
 				FC0A6B9C27D1EB2300DBC745 /* MeetingAgendaCreationViewModel.swift in Sources */,
+				FC721FC627F0555E0086CE91 /* TeamManagementViewModel.swift in Sources */,
+				FC721FD027F06AD80086CE91 /* TeamParticipantAdditionalViewController.swift in Sources */,
 				FC5D5AC327E02E70000A4FB5 /* AllCalendarMonthCell.swift in Sources */,
 				FC23A9FC27C547B9009565B2 /* CalendarViewController.swift in Sources */,
 				FC5D5AC727E0345C000A4FB5 /* FontNameConstant.swift in Sources */,
@@ -1002,6 +1081,7 @@
 				FC484DA727E38CFC00F15151 /* IntroductionCell.swift in Sources */,
 				FCEFFD7727CF342A00D54CD4 /* MeetingTimeCreationViewController.swift in Sources */,
 				FC8393A427C66F6400981622 /* CalendarDateCell.swift in Sources */,
+				FC721FD227F0B7FD0086CE91 /* TeamParticipantAdditionalViewModel.swift in Sources */,
 				FC6AB50827C10CC300797C44 /* API.swift in Sources */,
 				FCA73F1E27E8942400295247 /* TeamNameViewModel.swift in Sources */,
 				FCAE0D3F27D4FCC700B05D94 /* MeetingParticipantTeamCell.swift in Sources */,
@@ -1017,6 +1097,8 @@
 				FCF46BD527EEEF82009D89AF /* ButtonConstant.swift in Sources */,
 				FC7B37C827DF8E2F005C3D23 /* CalendarMeetingCell.swift in Sources */,
 				FC56F55327DCA80E00E54DFE /* MeetingRepository.swift in Sources */,
+				FCF46BE127EF7F84009D89AF /* TwoButtonPopUpViewController.swift in Sources */,
+				FCF46BDA27EF4D43009D89AF /* TeamViewModel.swift in Sources */,
 				FC38089427D0779C0023D713 /* MeetingProfileSelectViewController.swift in Sources */,
 				FCBC2BED27E6140900C376F1 /* PickCreationParticipationViewController.swift in Sources */,
 				FC8DE90527E9E66F008648A7 /* UserErrorViewController.swift in Sources */,
@@ -1026,8 +1108,10 @@
 				FCEFFD7527CF304300D54CD4 /* MeetingCreation.swift in Sources */,
 				FC19AAFA27C782A6000B5119 /* String+CustomDate.swift in Sources */,
 				FC06E98F27C3F63E004065E3 /* SizeValueConstant.swift in Sources */,
+				FC721FBA27F03B2F0086CE91 /* UIColor+UIImage.swift in Sources */,
 				FCAE0D4127D4FFC600B05D94 /* MeetingParticipantCreationViewModel.swift in Sources */,
 				FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */,
+				FCF46BDC27EF5279009D89AF /* TeamCell.swift in Sources */,
 				FC39DFD127D76E49002465EB /* MeetingTeamSelectViewModel.swift in Sources */,
 				FC47215C27CA14E700F7A035 /* User.swift in Sources */,
 				FCA73F2027E8943500295247 /* WorkspaceCreation.swift in Sources */,

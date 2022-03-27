@@ -16,6 +16,8 @@ class TeamNameViewModel {
     let successTeamNamePostSubject = BehaviorSubject<Bool>(value: false)
     let successWorksapceInviteLinkSubject = BehaviorSubject<Bool>(value: false)
     let successWorkspaceProfileSubject = BehaviorSubject<Bool>(value: false)
+    
+    
 
     
     let disposeBag = DisposeBag()

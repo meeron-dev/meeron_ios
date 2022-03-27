@@ -21,5 +21,8 @@ struct ImageNameConstant {
     static let closeTeamTableView = "expand_more-1"
     static let addAgenda = "ic_create a meeting_agenda plus"
     static let deleteAgenda = "ic_create a meeting_agenda delete"
+    
+    
+    static let profile = "ic_profile_non"
 
 }

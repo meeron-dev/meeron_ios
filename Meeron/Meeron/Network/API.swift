@@ -36,6 +36,7 @@ struct Resource<T:Codable> {
 struct API {
     
     func requestData<T:Codable>(resource:Resource<T>) -> Observable<T?> {
+        print(resource)
         return RxAlamofire.requestData(resource.method, resource.url, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
             .flatMap({ (response, data) -> Observable<T?> in
                 print("✅", response)
@@ -51,6 +52,7 @@ struct API {
     }
     
     func requestResponse(resource:Resource<Bool>) -> Observable<Bool> {
+        print(resource)
         return RxAlamofire.requestResponse(resource.method, resource.url, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
             .flatMap { response -> Observable<Bool> in
                 switch response.statusCode{

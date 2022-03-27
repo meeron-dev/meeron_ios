@@ -70,7 +70,13 @@ class TeamNameViewController:UIViewController {
                 owner.goWorkspaceCreationResultVC()
             }
         }).disposed(by: disposeBag)
+        
+        backButton.rx.tap
+            .subscribe(onNext: {_ in
+                self.navigationController?.popViewController(animated: true)
+            }).disposed(by: disposeBag)
     }
+    
     
     func setData(data: WorkspaceCreation) {
         teamNameVM.workspaceCreationData = data

@@ -14,8 +14,22 @@ class WorkspaceParicipationProfileCreationRepository {
     
     let api = API()
     
+    func checkWorkspace(workspaceId:String) -> Observable<Bool>{
+        let resource = Resource<Bool>(url: (URLConstant.workspace+"/\(workspaceId)"), parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
+        return api.requestResponse(resource: resource)
+        
+    }
+    
     func checkNickname(nickname:String, workspaceId:String) ->Observable<WorkspaceProfileNicknameCheckResponse?> {
-        let resource = Resource<WorkspaceProfileNicknameCheckResponse>(url: URLConstant.workspaceUsers+"\(nickname)?workspaceId=\(workspaceId)&nickname=test", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
+        let urlString = URLConstant.workspaceUsers+"/nickname?workspaceId=\(workspaceId)&nickname=\(nickname)"
+        
+        let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters:.urlQueryAllowed)
+        
+        guard let encodedURLString = encodedURLString else {
+            return Observable.just(nil)
+        }
+        
+        let resource = Resource<WorkspaceProfileNicknameCheckResponse>(url: encodedURLString, parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         return api.requestData(resource: resource)
         
     }
