@@ -44,4 +44,8 @@ extension UIColor {
     static var buttonGray:UIColor {
         return UIColor(red: 238/255, green: 238/255, blue: 238/255, alpha: 1)
     }
+    
+    static var statusBarGray:UIColor {
+        return UIColor(red: 245/255, green: 247/255, blue: 250/255, alpha: 1)
+    }
 }

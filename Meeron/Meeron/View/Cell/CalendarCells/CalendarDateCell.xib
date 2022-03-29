@@ -16,14 +16,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="128" height="44"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIE-AE-juM">
-                        <rect key="frame" x="62" y="27" width="4" height="4"/>
-                        <color key="backgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="4" id="MAl-vB-LcK"/>
-                            <constraint firstAttribute="height" constant="4" id="xa6-6g-3T0"/>
-                        </constraints>
-                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvN-PI-x23">
                         <rect key="frame" x="54.5" y="0.0" width="19.5" height="18"/>
                         <constraints>
@@ -36,15 +28,11 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="dvN-PI-x23" firstAttribute="top" secondItem="Wpl-su-jgv" secondAttribute="top" id="BHS-IQ-OC7"/>
-                    <constraint firstAttribute="bottom" secondItem="CIE-AE-juM" secondAttribute="bottom" constant="13" id="DSY-SU-JMA"/>
                     <constraint firstItem="dvN-PI-x23" firstAttribute="centerX" secondItem="Wpl-su-jgv" secondAttribute="centerX" id="Tsi-MU-vfq"/>
-                    <constraint firstItem="CIE-AE-juM" firstAttribute="centerX" secondItem="Wpl-su-jgv" secondAttribute="centerX" id="ZFB-2N-N2c"/>
-                    <constraint firstItem="CIE-AE-juM" firstAttribute="top" secondItem="dvN-PI-x23" secondAttribute="bottom" constant="9" id="jcR-cb-uxN"/>
                 </constraints>
             </collectionViewCellContentView>
             <connections>
                 <outlet property="dateLabel" destination="dvN-PI-x23" id="r9p-hs-Vjv"/>
-                <outlet property="meetingInfoCircleView" destination="CIE-AE-juM" id="3BT-Ib-McN"/>
             </connections>
             <point key="canvasLocation" x="57.971014492753625" y="60.9375"/>
         </collectionViewCell>

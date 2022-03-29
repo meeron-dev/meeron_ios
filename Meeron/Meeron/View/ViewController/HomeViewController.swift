@@ -14,10 +14,9 @@ class HomeViewController:UIViewController {
     
     @IBOutlet weak var meetingCollectionView: UICollectionView!
     @IBOutlet weak var calendarButton: UIButton!
-    @IBOutlet weak var uncheckUpdatesDoneMeetingDotView: UIView!
     
     @IBOutlet weak var todayDateLabel: UILabel!
-    @IBOutlet weak var expectMeetingCountLabel: UILabel!
+    @IBOutlet weak var todayMeetingCountLabel: UILabel!
     
     @IBOutlet weak var noExpectMeetingLabelWidth: NSLayoutConstraint!
     @IBOutlet weak var meetingCreationBarButtonItem: UIBarButtonItem!
@@ -50,7 +49,6 @@ class HomeViewController:UIViewController {
     }
     
     func configureUI() {
-        uncheckUpdatesDoneMeetingDotView.layer.cornerRadius = uncheckUpdatesDoneMeetingDotView.frame.width/2
         
         todayDateLabel.text = Date().toMonthDayKoreanString()
         
@@ -59,10 +57,10 @@ class HomeViewController:UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, count in
                 if count > 10 {
-                    owner.expectMeetingCountLabel.text = "진행 예정 10+"
+                    owner.todayMeetingCountLabel.text = "10+"
                     owner.noExpectMeetingLabelWidth.constant = 0
                 }else {
-                    owner.expectMeetingCountLabel.text = "진행 예정 \(count)"
+                    owner.todayMeetingCountLabel.text = "\(count)"
                     owner.noExpectMeetingLabelWidth.constant = 0
                     if count == 0 {
                         owner.noExpectMeetingLabelWidth.constant = 152

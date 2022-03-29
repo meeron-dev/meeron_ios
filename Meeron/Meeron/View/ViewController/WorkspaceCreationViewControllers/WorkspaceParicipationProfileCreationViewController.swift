@@ -224,18 +224,6 @@ class WorkspaceParicipationProfileCreationViewController: UIViewController {
         let picker = PHPickerViewController(configuration: configuartion)
         picker.delegate = self
         
-        let requiredAccessLevel: PHAccessLevel = .readWrite
-        PHPhotoLibrary.requestAuthorization(for: requiredAccessLevel) { authorizationStatus in
-            switch authorizationStatus {
-            case .limited:
-                print("limited authorization granted")
-            case .authorized:
-                print("authorization granted")
-            default:
-                print("Unimplemented")
-            }
-        }
-        
         present(picker, animated: true, completion: nil)
     }
 }

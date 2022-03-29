@@ -27,6 +27,7 @@ class TeamViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         
         configureUI()
         addTapper()
@@ -65,7 +66,7 @@ class TeamViewController:UIViewController {
     }
     
     private func configureUI() {
-        //setStausBarColor()
+        setStausBarColor()
         teamVM.nowTeamSubject
             .observe(on: MainScheduler.instance)
             .withUnretained(self)
@@ -81,13 +82,20 @@ class TeamViewController:UIViewController {
             }).disposed(by: disposeBag)
     }
     
-    /*private func setStausBarColor() {
-        if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle =
-            setNeedsStatusBarAppearanceUpdate()
+    private func setStausBarColor() {
+        if #available(iOS 13, *) {
+            let keyWindow = UIApplication.shared.connectedScenes
+                .filter({$0.activationState == .foregroundActive})
+                .map({$0 as? UIWindowScene})
+                .compactMap({$0})
+                .first?.windows
+                .filter({$0.isKeyWindow}).first
+            let statusBar = UIView(frame: (keyWindow?.windowScene?.statusBarManager?.statusBarFrame)!)
+            statusBar.backgroundColor = .statusBarGray
+            view.addSubview(statusBar)
         }
 
-    }*/
+    }
     
     private func setupCollectionView() {
         setupCollectionViewLayout()

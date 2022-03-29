@@ -12,11 +12,10 @@ class AllCalendarMonthCell:UICollectionViewCell {
     
     @IBOutlet weak var monthLabel:UILabel!
     @IBOutlet weak var meetingCountLabel:UILabel!
-    @IBOutlet weak var meetingInfoDotView:UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        meetingInfoDotView.layer.cornerRadius = meetingInfoDotView.frame.height/2
+        
     }
     
     func setData(data:MonthMeetingCount, nowMonth:String) {

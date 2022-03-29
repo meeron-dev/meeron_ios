@@ -19,14 +19,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mo8-id-y0U">
                         <rect key="frame" x="18" y="18" width="52" height="59.5"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HEl-fx-xqa">
-                                <rect key="frame" x="26.5" y="0.0" width="6" height="6"/>
-                                <color key="backgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="6" id="VLR-jz-sXG"/>
-                                    <constraint firstAttribute="width" constant="6" id="rLz-jw-d9l"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="n월" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9O-An-zSd">
                                 <rect key="frame" x="0.0" y="6" width="26.5" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
@@ -45,10 +37,8 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="W9O-An-zSd" firstAttribute="top" secondItem="Mo8-id-y0U" secondAttribute="top" constant="6" id="6VN-FM-SHw"/>
-                            <constraint firstItem="HEl-fx-xqa" firstAttribute="leading" secondItem="W9O-An-zSd" secondAttribute="trailing" id="NM7-39-k5d"/>
                             <constraint firstItem="3md-JX-MFt" firstAttribute="leading" secondItem="Mo8-id-y0U" secondAttribute="leading" id="PT6-OW-skh"/>
                             <constraint firstItem="3md-JX-MFt" firstAttribute="top" secondItem="W9O-An-zSd" secondAttribute="bottom" constant="17" id="UO9-gj-TkM"/>
-                            <constraint firstItem="HEl-fx-xqa" firstAttribute="top" secondItem="Mo8-id-y0U" secondAttribute="top" id="VgR-qt-cWv"/>
                             <constraint firstItem="W9O-An-zSd" firstAttribute="leading" secondItem="Mo8-id-y0U" secondAttribute="leading" id="blS-j5-BUT"/>
                             <constraint firstAttribute="trailing" secondItem="3md-JX-MFt" secondAttribute="trailing" id="eLy-GR-29G"/>
                             <constraint firstAttribute="bottom" secondItem="3md-JX-MFt" secondAttribute="bottom" id="zrU-79-Fpv"/>
@@ -63,7 +53,6 @@
             </collectionViewCellContentView>
             <connections>
                 <outlet property="meetingCountLabel" destination="3md-JX-MFt" id="Nb2-Ro-4a6"/>
-                <outlet property="meetingInfoDotView" destination="HEl-fx-xqa" id="M0P-MK-Pge"/>
                 <outlet property="monthLabel" destination="W9O-An-zSd" id="PXg-L0-Nij"/>
             </connections>
             <point key="canvasLocation" x="-72" y="-66"/>

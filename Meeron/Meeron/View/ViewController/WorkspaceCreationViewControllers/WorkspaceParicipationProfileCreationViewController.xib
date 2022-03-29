@@ -249,26 +249,38 @@
                         <constraint firstItem="AfW-j2-fwF" firstAttribute="top" secondItem="I8C-Qe-vOI" secondAttribute="top" id="z4j-xS-Vjx"/>
                     </constraints>
                 </scrollView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGL-sJ-CXE">
-                    <rect key="frame" x="45" y="781" width="324" height="57"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hey-7g-4ol">
+                    <rect key="frame" x="45" y="780" width="324" height="57"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGL-sJ-CXE">
+                            <rect key="frame" x="0.0" y="0.0" width="324" height="57"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="57" id="VMV-Ad-10c"/>
+                            </constraints>
+                            <color key="tintColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled">
+                                <attributedString key="attributedTitle">
+                                    <fragment content="완료">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="AppleSDGothicNeo-SemiBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="baseBackgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </buttonConfiguration>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="57" id="VMV-Ad-10c"/>
+                        <constraint firstAttribute="trailing" secondItem="PGL-sJ-CXE" secondAttribute="trailing" id="Gkb-Qu-iLC"/>
+                        <constraint firstItem="PGL-sJ-CXE" firstAttribute="leading" secondItem="Hey-7g-4ol" secondAttribute="leading" id="KcD-AN-cM3"/>
+                        <constraint firstAttribute="bottom" secondItem="PGL-sJ-CXE" secondAttribute="bottom" id="U4K-7e-c8c"/>
+                        <constraint firstItem="PGL-sJ-CXE" firstAttribute="top" secondItem="Hey-7g-4ol" secondAttribute="top" id="hK0-vl-cXS"/>
                     </constraints>
-                    <color key="tintColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled">
-                        <attributedString key="attributedTitle">
-                            <fragment content="완료">
-                                <attributes>
-                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <font key="NSFont" size="18" name="AppleSDGothicNeo-SemiBold"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                        <color key="baseBackgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </buttonConfiguration>
-                </button>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로필 작성" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Cf-da-zIH">
                     <rect key="frame" x="0.0" y="54" width="414" height="21"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
@@ -282,17 +294,17 @@
                 <constraint firstItem="koe-y6-rnL" firstAttribute="top" secondItem="fTQ-HS-TMz" secondAttribute="bottom" constant="5" id="5g7-aj-I0z"/>
                 <constraint firstItem="koe-y6-rnL" firstAttribute="leading" secondItem="TvH-0F-aFh" secondAttribute="leading" constant="30" id="A2v-rV-wuC"/>
                 <constraint firstItem="AfW-j2-fwF" firstAttribute="width" secondItem="TvH-0F-aFh" secondAttribute="width" id="Boc-VL-Ak8"/>
+                <constraint firstItem="TvH-0F-aFh" firstAttribute="bottom" secondItem="Hey-7g-4ol" secondAttribute="bottom" constant="25" id="Jl7-vY-haM"/>
                 <constraint firstItem="TvH-0F-aFh" firstAttribute="bottom" secondItem="I8C-Qe-vOI" secondAttribute="bottom" id="OfF-t6-0kN"/>
                 <constraint firstItem="I8C-Qe-vOI" firstAttribute="top" secondItem="koe-y6-rnL" secondAttribute="bottom" constant="30" id="RhZ-mr-4gm"/>
+                <constraint firstItem="Hey-7g-4ol" firstAttribute="leading" secondItem="TvH-0F-aFh" secondAttribute="leading" constant="45" id="S4h-iF-LiG"/>
                 <constraint firstItem="TvH-0F-aFh" firstAttribute="trailing" secondItem="koe-y6-rnL" secondAttribute="trailing" constant="30" id="Ttv-x1-MyY"/>
                 <constraint firstItem="5Cf-da-zIH" firstAttribute="centerX" secondItem="bfc-I0-XE0" secondAttribute="centerX" id="XcG-ya-Ayt"/>
                 <constraint firstItem="I8C-Qe-vOI" firstAttribute="leading" secondItem="TvH-0F-aFh" secondAttribute="leading" id="ZuQ-NP-lQK"/>
-                <constraint firstItem="TvH-0F-aFh" firstAttribute="bottom" secondItem="PGL-sJ-CXE" secondAttribute="bottom" constant="24" id="de8-BS-o45"/>
                 <constraint firstItem="fTQ-HS-TMz" firstAttribute="top" secondItem="5Cf-da-zIH" secondAttribute="bottom" constant="60" id="eGB-fB-XUF"/>
                 <constraint firstItem="5Cf-da-zIH" firstAttribute="leading" secondItem="TvH-0F-aFh" secondAttribute="leading" id="ehZ-F4-fZK"/>
+                <constraint firstItem="TvH-0F-aFh" firstAttribute="trailing" secondItem="Hey-7g-4ol" secondAttribute="trailing" constant="45" id="eiW-Yx-k1Z"/>
                 <constraint firstItem="TvH-0F-aFh" firstAttribute="trailing" secondItem="5Cf-da-zIH" secondAttribute="trailing" id="hmH-3e-MHl"/>
-                <constraint firstItem="PGL-sJ-CXE" firstAttribute="leading" secondItem="TvH-0F-aFh" secondAttribute="leading" constant="45" id="ije-jq-3B1"/>
-                <constraint firstItem="TvH-0F-aFh" firstAttribute="trailing" secondItem="PGL-sJ-CXE" secondAttribute="trailing" constant="45" id="lmo-l4-kny"/>
                 <constraint firstItem="fTQ-HS-TMz" firstAttribute="leading" secondItem="TvH-0F-aFh" secondAttribute="leading" constant="30" id="wBk-mW-ADa"/>
                 <constraint firstItem="TvH-0F-aFh" firstAttribute="trailing" secondItem="fTQ-HS-TMz" secondAttribute="trailing" constant="30" id="wVc-QD-RhR"/>
                 <constraint firstItem="5Cf-da-zIH" firstAttribute="top" secondItem="TvH-0F-aFh" secondAttribute="top" constant="10" id="xG3-Xl-d3P"/>

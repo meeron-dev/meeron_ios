@@ -11,19 +11,16 @@ import UIKit
 class CalendarDateCell:UICollectionViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var meetingInfoCircleView: UIView!
     
     
     var dateString:String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        meetingInfoCircleView.layer.cornerRadius = meetingInfoCircleView.frame.height/2
     }
     
     func setData(data:MeetingDate?, selectedDate:String) {
         guard let data = data else {
-            meetingInfoCircleView.backgroundColor = nil
             self.dateLabel.text = ""
             return
         }
