@@ -36,12 +36,5 @@ class CalendarDateCell:UICollectionViewCell {
             dateLabel.font = UIFont(name: FontNameConstant.regular, size: 15)
         }
         
-        
-        if data.hasMeeting {
-            meetingInfoCircleView.backgroundColor = .mrBlue
-        }else {
-            meetingInfoCircleView.backgroundColor = nil
-        }
-        
     }
 }

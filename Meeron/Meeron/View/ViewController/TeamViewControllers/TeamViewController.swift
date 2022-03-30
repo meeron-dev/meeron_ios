@@ -71,7 +71,11 @@ class TeamViewController:UIViewController {
             .observe(on: MainScheduler.instance)
             .withUnretained(self)
             .subscribe(onNext: { owner, nowTeam in
-                owner.teamNameLabel.text = nowTeam.teamName
+                if nowTeam == nil {
+                    owner.teamNameLabel.text = "NONE"
+                }else {
+                    owner.teamNameLabel.text = nowTeam!.teamName
+                }
             }).disposed(by: disposeBag)
         
         
@@ -102,7 +106,11 @@ class TeamViewController:UIViewController {
         
         teamVM.teamsSubject.bind(to: teamCollectionView.rx.items) { collectionView, row, element in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: IndexPath(row: row, section: 0)) as! TeamCell
-            cell.setData(data: element, index: row+1)
+            if row > 0 && element == nil {
+                cell.setData(data: nil, index: 6)
+            }else {
+                cell.setData(data: element, index: row)
+            }
             
             return cell
         }.disposed(by: disposeBag)
@@ -122,9 +130,17 @@ class TeamViewController:UIViewController {
                 let cell = owner.teamCollectionView.cellForItem(at: indexPath) as! TeamCell
                 if cell.index > 0 && cell.index < 6 {
                     owner.teamVM.nowTeamSubject.onNext(cell.teamData!)
+                }else if cell.index == 0 {
+                    owner.goCreationTeamView()
                 }
                 
             }).disposed(by: disposeBag)
+    }
+    
+    func goCreationTeamView() {
+        let teamCreationNaviC = self.storyboard?.instantiateViewController(withIdentifier: "TeamCreationNavigationController")
+        teamCreationNaviC?.modalPresentationStyle = .fullScreen
+        present(teamCreationNaviC!, animated: true, completion: nil)
     }
     
     func setupCollectionViewLayout(){

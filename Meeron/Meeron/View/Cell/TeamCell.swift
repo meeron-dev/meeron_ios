@@ -24,8 +24,10 @@ class TeamCell:UICollectionViewCell {
         if index == 0 || index == 6 {
             teamNameLabel.text = ""
         }else {
-            teamNameLabel.text = String(data!.teamName.prefix(2))
-            teamData = data
+            if let data = data{
+                teamNameLabel.text = String(data.teamName.prefix(2))
+                teamData = data
+            }
         }
         backgroundImageView.image = UIImage(named: "ic_team_\(index)")
     }

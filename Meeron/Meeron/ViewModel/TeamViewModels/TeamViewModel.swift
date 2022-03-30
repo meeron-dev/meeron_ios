@@ -12,12 +12,14 @@ import Alamofire
 class TeamViewModel {
     
     var nowTeam:Team?
-    let nowTeamSubject = BehaviorSubject<Team>(value:Team(teamId: -1, teamName: "팀 이름"))
+    let nowTeamSubject = BehaviorSubject<Team?>(value:nil)
     
-    var teams: [Team] = []
+    var teams: [Team?] = []
     var particiapnt:[WorkspaceUser] = []
-    let teamsSubject = BehaviorSubject<[Team]>(value: [])
+    let teamsSubject = BehaviorSubject<[Team?]>(value: [])
     let teamParticipantSubject = BehaviorSubject<[WorkspaceUser]>(value: [])
+    
+    var hasNoneTeam = false
     
     let participantCountLabelHeightSubject = BehaviorSubject<CGFloat>(value: 20)
     
@@ -33,7 +35,12 @@ class TeamViewModel {
             .withUnretained(self)
             .subscribe(onNext: { owner, nowTeam in
                 owner.nowTeam = nowTeam
-                owner.loadParticipant()
+                if nowTeam == nil {
+                    owner.loadParticipantInNoneTeam()
+                }else {
+                    owner.loadParticipant()
+                }
+                
             }).disposed(by: disposeBag)
     }
     
@@ -42,18 +49,59 @@ class TeamViewModel {
             .withUnretained(self)
             .subscribe(onNext: { owner, teams in
                 if let teams = teams {
-                    owner.teams = teams.teams
-                    owner.teamsSubject.onNext(teams.teams)
+                    if owner.isAdmin {
+                        owner.teams = [nil]+teams.teams
+                    }else {
+                        owner.teams = teams.teams
+                    }
+                    
+                    owner.loadNoneTeam()
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    func loadNoneTeam() {
+        teamRepository.loadUsersWithoutTeam()
+            .withUnretained(self)
+            .subscribe(onNext: { owner, users in
+                if let users = users {
+                    if users.workspaceUsers.count > 0 {
+                        owner.hasNoneTeam = true
+                        owner.teams.append(nil)
+                        
+                    }else {
+                        owner.hasNoneTeam = false
+                    }
+                    owner.teamsSubject.onNext(owner.teams)
                     owner.setNowTeam()
                 }
             }).disposed(by: disposeBag)
     }
     
     func setNowTeam() {
-        if teams.count > 0 {
-            loadParticipant()
-            nowTeamSubject.onNext(teams[0])
+        if isAdmin {
+            if teams.count > 1 {    //+제외
+                loadParticipant()
+                nowTeamSubject.onNext(teams[1])
+            }
+        }else {
+            if teams.count > 0 {
+                loadParticipant()
+                nowTeamSubject.onNext(teams[0])
+            }
         }
+        
+    }
+    
+    func loadParticipantInNoneTeam() {
+            teamRepository.loadUsersWithoutTeam()
+                .withUnretained(self)
+                .subscribe(onNext: { owner, users in
+                    if let users = users {
+                        owner.saveParticipant(users: users.workspaceUsers)
+                    }
+                }).disposed(by: disposeBag)
+        
     }
     
     func loadParticipant() {
@@ -66,15 +114,20 @@ class TeamViewModel {
             .withUnretained(self)
             .subscribe(onNext: { owner, users in
                 if let users = users {
-                    owner.particiapnt = users.workspaceUsers
-                    owner.teamParticipantSubject.onNext(users.workspaceUsers)
-                    if users.workspaceUsers.count > 0 {
-                        owner.participantCountLabelHeightSubject.onNext(0)
-                    }else {
-                        owner.participantCountLabelHeightSubject.onNext(20)
-                    }
+                    owner.saveParticipant(users: users.workspaceUsers)
                 }
                 
             }).disposed(by: disposeBag)
+    }
+    
+    func saveParticipant(users:[WorkspaceUser]) {
+        particiapnt = users
+        teamParticipantSubject.onNext(users)
+        if users.count > 0 {
+            participantCountLabelHeightSubject.onNext(0)
+        }else {
+            participantCountLabelHeightSubject.onNext(20)
+        }
+    
     }
 }

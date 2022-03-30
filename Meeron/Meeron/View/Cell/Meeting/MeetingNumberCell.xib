@@ -41,6 +41,9 @@
                 <constraint firstItem="RZ0-cx-fCQ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="awx-B7-aWM"/>
                 <constraint firstItem="RZ0-cx-fCQ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="lJn-14-uLY"/>
             </constraints>
+            <connections>
+                <outlet property="numberLabel" destination="YJV-60-qpH" id="fwT-Z7-XCI"/>
+            </connections>
             <point key="canvasLocation" x="135" y="86"/>
         </collectionViewCell>
     </objects>
