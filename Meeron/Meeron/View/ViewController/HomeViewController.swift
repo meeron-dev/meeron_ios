@@ -34,7 +34,7 @@ class HomeViewController:UIViewController {
                 owner.goLoginView()
             }).disposed(by: disposeBag)
         
-        self.navigationItem.title = "워크스페이스"
+        
         configureUI()
         setupCellPaging()
         setupMeetingCollectionView()
@@ -49,6 +49,13 @@ class HomeViewController:UIViewController {
     }
     
     func configureUI() {
+        
+        homeVM.workspaceNameSubject
+            .withUnretained(self)
+            .subscribe(onNext: { owner, text in
+                owner.navigationItem.title = text
+            }).disposed(by: disposeBag)
+
         
         todayDateLabel.text = Date().toMonthDayKoreanString()
         

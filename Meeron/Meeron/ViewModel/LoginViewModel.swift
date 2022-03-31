@@ -72,7 +72,7 @@ class LoginViewModel {
     
     func loadToken(email:String, nickname:String?, profileImageUrl:String?, provider:String) {
         
-        signUpRepository.loadLoginToken(email: "test4@test.com", nickname: nickname, profileImageUrl: profileImageUrl, provider: provider)
+        signUpRepository.loadLoginToken(email: email, nickname: nickname, profileImageUrl: profileImageUrl, provider: provider)
             .withUnretained(self)
             .subscribe(onNext: { owner, token in
                 if let token = token {

@@ -27,7 +27,10 @@ class TeamNameCreationViewController:UIViewController {
     
     private func configureUI() {
         nextButton.addShadow()
+        workspaceNameLabel.text = UserDefaults.standard.string(forKey: "workspaceName")
     }
+    
+    
     
     private func setupTextField() {
         teamNameTextField.rx.text.orEmpty

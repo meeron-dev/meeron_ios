@@ -27,9 +27,10 @@ class TeamViewModel {
     
     let disposeBag = DisposeBag()
     
-    let isAdmin = true //UserDefaults.standard.bool(forKey: "workspaceAdmin")
+    let isAdmin =  UserDefaults.standard.bool(forKey: "workspaceAdmin")
     
     init() {
+        
         loadTeam()
         nowTeamSubject
             .withUnretained(self)
@@ -51,10 +52,11 @@ class TeamViewModel {
                 if let teams = teams {
                     if owner.isAdmin {
                         owner.teams = [nil]+teams.teams
+                        print(owner.teams,"📍")
                     }else {
                         owner.teams = teams.teams
                     }
-                    
+                    print("📍",owner.teams)
                     owner.loadNoneTeam()
                 }
             }).disposed(by: disposeBag)
@@ -83,6 +85,7 @@ class TeamViewModel {
             if teams.count > 1 {    //+제외
                 loadParticipant()
                 nowTeamSubject.onNext(teams[1])
+                print(teams)
             }
         }else {
             if teams.count > 0 {

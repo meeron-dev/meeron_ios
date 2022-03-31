@@ -41,5 +41,18 @@ class UserRepository {
         UserDefaults.standard.set(data[0].nickname, forKey: "workspaceNickname")
         UserDefaults.standard.set(data[0].workspaceAdmin, forKey: "workspaceAdmin")
         
+        print("ADMIN",UserDefaults.standard.bool(forKey: "workspaceAdmin"))
+    }
+    
+    func loadWorkspaceInfo() -> Observable<Workspace?> {
+        
+        guard let workspaceId = UserDefaults.standard.string(forKey: "workspaceId") else {return Observable.just(nil)}
+        
+        let resource = Resource<Workspace>(url: URLConstant.workspace+"/\(workspaceId)", parameter: [:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
+        return api.requestData(resource: resource)
+    }
+    
+    func saveWorkspace(data:Workspace) {
+        UserDefaults.standard.set(data.workspaceName, forKey: "workspaceName")
     }
 }

@@ -35,6 +35,10 @@ class TeamViewController:UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        teamVM.loadTeam()
+    }
+    
     private func addTapper() {
         calendarImageView.isUserInteractionEnabled = true
         let calendarTapper = UITapGestureRecognizer()
@@ -76,6 +80,7 @@ class TeamViewController:UIViewController {
                 }else {
                     owner.teamNameLabel.text = nowTeam!.teamName
                 }
+                print("???",nowTeam?.teamName)
             }).disposed(by: disposeBag)
         
         
@@ -88,15 +93,7 @@ class TeamViewController:UIViewController {
     
     private func setStausBarColor() {
         if #available(iOS 13, *) {
-            let keyWindow = UIApplication.shared.connectedScenes
-                .filter({$0.activationState == .foregroundActive})
-                .map({$0 as? UIWindowScene})
-                .compactMap({$0})
-                .first?.windows
-                .filter({$0.isKeyWindow}).first
-            let statusBar = UIView(frame: (keyWindow?.windowScene?.statusBarManager?.statusBarFrame)!)
-            statusBar.backgroundColor = .statusBarGray
-            view.addSubview(statusBar)
+            view.addSubview(UIView.statusBar)
         }
 
     }
@@ -132,6 +129,8 @@ class TeamViewController:UIViewController {
                     owner.teamVM.nowTeamSubject.onNext(cell.teamData!)
                 }else if cell.index == 0 {
                     owner.goCreationTeamView()
+                }else {
+                    owner.teamVM.nowTeamSubject.onNext(nil)
                 }
                 
             }).disposed(by: disposeBag)
@@ -141,6 +140,7 @@ class TeamViewController:UIViewController {
         let teamCreationNaviC = self.storyboard?.instantiateViewController(withIdentifier: "TeamCreationNavigationController")
         teamCreationNaviC?.modalPresentationStyle = .fullScreen
         present(teamCreationNaviC!, animated: true, completion: nil)
+        
     }
     
     func setupCollectionViewLayout(){

@@ -16,6 +16,9 @@ class TeamCreationResultViewController:UIViewController {
     @IBOutlet weak var doneButton:UIButton!
     let disposeBag = DisposeBag()
     
+    var teamName:String!
+    var participantCount:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +27,9 @@ class TeamCreationResultViewController:UIViewController {
             .subscribe(onNext: { owner, _ in
                 owner.dismissView()
             }).disposed(by: disposeBag)
+        
+        teamNameLabel.text = teamName
+        participantCountLabel.text = participantCount
     }
     
     func dismissView() {
@@ -31,7 +37,7 @@ class TeamCreationResultViewController:UIViewController {
     }
     
     func setData(teamName:String, participantCount:Int) {
-        teamNameLabel.text = teamName
-        participantCountLabel.text = "\(participantCount)명"
+        self.teamName = teamName
+        self.participantCount = "\(participantCount)명"
     }
 }

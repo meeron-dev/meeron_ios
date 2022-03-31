@@ -65,6 +65,7 @@ class TeamParticipantCreationViewController:UIViewController {
     private func configureUI() {
         prevButton.addShadow()
         nextButton.addShadow()
+        workspaceNameLabel.text = UserDefaults.standard.string(forKey: "workspaceName")
         
         teamCreationVM.noParticipantLabelWidthSubejct
             .withUnretained(self)

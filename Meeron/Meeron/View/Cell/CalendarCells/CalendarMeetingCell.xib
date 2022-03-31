@@ -59,6 +59,9 @@
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="calendarMeetingRightArrow" title=""/>
+                        <connections>
+                            <action selector="goMeeting:" destination="ikR-0x-mtu" eventType="touchUpInside" id="L0f-Ph-MWc"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

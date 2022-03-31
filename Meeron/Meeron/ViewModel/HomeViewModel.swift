@@ -12,6 +12,8 @@ class HomeViewModel {
     
     let failTokenSubject = PublishSubject<Bool>()
     
+    let workspaceNameSubject = BehaviorSubject<String>(value: "워크스페이스")
+    
     var todayMeetings:[TodayMeeting] = []
     let todayMeetingsSubject = PublishSubject<[TodayMeeting]>()
     
@@ -63,7 +65,7 @@ class HomeViewModel {
                 if let userWorkspace = userWorkspace {
                     if userWorkspace.myWorkspaceUsers.count > 0 {
                         owner.saveUserWorkspace(data: userWorkspace.myWorkspaceUsers)
-                        owner.loadTodayMeeting()
+                        owner.loadWorkspaceInfo()
                     }
                 }
                 
@@ -77,6 +79,22 @@ class HomeViewModel {
     func saveUserWorkspace(data:[MyWorkspaceUser]) {
         userRepository.saveUserWorkspace(data: data)
         
+    }
+    
+    func loadWorkspaceInfo()  {
+        userRepository.loadWorkspaceInfo()
+            .withUnretained(self)
+            .subscribe(onNext: { owner, workspace in
+                if let workspace = workspace {
+                    owner.workspaceNameSubject.onNext(workspace.workspaceName)
+                    owner.saveWorksapce(data: workspace)
+                    owner.loadTodayMeeting()
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    func saveWorksapce(data:Workspace) {
+        userRepository.saveWorkspace(data: data)
     }
     
     func loadTodayMeeting() {

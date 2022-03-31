@@ -75,11 +75,22 @@ class CalendarViewController:UIViewController {
     func configureTableView() {
         meetingTableView.register(UINib(nibName: "CalendarMeetingCell", bundle: nil), forCellReuseIdentifier: "CalendarMeetingCell")
         
-        calendarVM.selectedDateMeetingsSubject.bind(to: meetingTableView.rx.items) { tableView, row, element in
+        calendarVM.selectedDateMeetingsSubject.bind(to: meetingTableView.rx.items) {[weak self] tableView, row, element in
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarMeetingCell", for: IndexPath(row: row, section: 0)) as! CalendarMeetingCell
-            cell.setData(data: element, number: row+1)
+            cell.setData(data: element, number: row+1) {
+                self?.goMeetingView()
+            }
             return cell
         }.disposed(by: disposeBag)
+        
+    }
+    
+    func goMeetingView() {
+        let mainStroyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let meetingNaviC = mainStroyboard.instantiateViewController(withIdentifier: "MeetingNavigationController")
+        meetingNaviC.modalPresentationStyle = .fullScreen
+        present(meetingNaviC, animated: true, completion: nil)
     }
     
     @IBAction func close(_ sender: UIButton) {

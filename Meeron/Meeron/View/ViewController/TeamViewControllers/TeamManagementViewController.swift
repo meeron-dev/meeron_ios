@@ -24,8 +24,11 @@ class TeamManagementViewController:UIViewController {
         setupButton()
         setupCollectionView()
         setupTextField()
-        
-        
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        teamManagementVM.loadParticipant()
     }
     
     private func setupTextField() {
@@ -93,7 +96,9 @@ class TeamManagementViewController:UIViewController {
     }
     
     func showSuccessDeleteTeamPopUp() {
-        showOneButtonPopUpView(message: "해당 팀이 삭제되었습니다.", doneButtonTitle: "확인", doneCompletion: nil)
+        showOneButtonPopUpView(message: "해당 팀이 삭제되었습니다.", doneButtonTitle: "확인") {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     func showDeleteTeamPopUp(){
@@ -109,6 +114,8 @@ class TeamManagementViewController:UIViewController {
     @IBAction func goParticipantAdditionView(_ sender: Any) {
         let teamParticipantAdditionalVC = self.storyboard?.instantiateViewController(withIdentifier: "TeamParticipantAdditionalViewController") as! TeamParticipantAdditionalViewController
         teamParticipantAdditionalVC.modalPresentationStyle = .fullScreen
+        teamParticipantAdditionalVC.teamParticipantAdditionalVM = TeamParticipantAdditionalViewModel(teamId:teamManagementVM.nowTeam.teamId)
+        
         present(teamParticipantAdditionalVC, animated: true, completion: nil)
         
     }
@@ -116,6 +123,7 @@ class TeamManagementViewController:UIViewController {
     
     @IBAction func back(_ sender: Any) {
         //팀 변경 사항 반영 후 dismiss
+        teamManagementVM.patchNewTeamName()
         dismiss(animated: true, completion: nil)
     }
     
