@@ -81,11 +81,16 @@ class TeamCreationViewModel {
     }
     
     func createParticipant(teamId:Int) {
-        teamRepository.createParticipant(teamId: teamId, datas: selectedParticipants)
-            .withUnretained(self)
-            .subscribe(onNext: { owner, result in
-                owner.successTeamCreation.onNext(result)
-                
-            }).disposed(by: disposeBag)
+        if selectedParticipants.count == 0 {
+            successTeamCreation.onNext(true)
+        }else {
+            teamRepository.createParticipant(teamId: teamId, datas: selectedParticipants)
+                .withUnretained(self)
+                .subscribe(onNext: { owner, result in
+                    owner.successTeamCreation.onNext(result)
+                    
+                }).disposed(by: disposeBag)
+        }
+        
     }
 }

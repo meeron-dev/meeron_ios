@@ -125,13 +125,16 @@ class TeamViewController:UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
                 let cell = owner.teamCollectionView.cellForItem(at: indexPath) as! TeamCell
-                if cell.index > 0 && cell.index < 6 {
-                    owner.teamVM.nowTeamSubject.onNext(cell.teamData!)
-                }else if cell.index == 0 {
-                    owner.goCreationTeamView()
+                if let data = cell.teamData {
+                    owner.teamVM.nowTeamSubject.onNext(data)
                 }else {
-                    owner.teamVM.nowTeamSubject.onNext(nil)
+                    if cell.index == 0 {
+                        owner.goCreationTeamView()
+                    }else if cell.index == 6 {
+                        owner.teamVM.nowTeamSubject.onNext(nil) //NONE
+                    }
                 }
+                print(cell.teamData, cell.index)
                 
             }).disposed(by: disposeBag)
     }

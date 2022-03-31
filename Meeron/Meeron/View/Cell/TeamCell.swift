@@ -20,15 +20,17 @@ class TeamCell:UICollectionViewCell {
     }
     
     func setData(data:Team?, index:Int) {
+        teamData = nil
         self.index = index
-        if index == 0 || index == 6 {
-            teamNameLabel.text = ""
+        if let data = data {
+            teamNameLabel.text = String(data.teamName.prefix(2))
+            teamData = data
+            backgroundImageView.image = UIImage(named: "ic_team_\(data.teamOrder!)")
         }else {
-            if let data = data{
-                teamNameLabel.text = String(data.teamName.prefix(2))
-                teamData = data
+            if index == 0 || index == 6 {
+                teamNameLabel.text = ""
+                backgroundImageView.image = UIImage(named: "ic_team_\(index)")
             }
         }
-        backgroundImageView.image = UIImage(named: "ic_team_\(index)")
     }
 }

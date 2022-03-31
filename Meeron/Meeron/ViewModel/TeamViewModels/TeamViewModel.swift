@@ -49,9 +49,17 @@ class TeamViewModel {
         teamRepository.loadTeamInWorkspace()
             .withUnretained(self)
             .subscribe(onNext: { owner, teams in
-                if let teams = teams {
+                if var teams = teams {
+                    for i in 0..<teams.teams.count {
+                        teams.teams[i].teamOrder = i+1
+                    }
+                    
                     if owner.isAdmin {
-                        owner.teams = [nil]+teams.teams
+                        if teams.teams.count >= 5 {
+                            owner.teams = teams.teams
+                        }else {
+                            owner.teams = [nil]+teams.teams
+                        }
                         print(owner.teams,"📍")
                     }else {
                         owner.teams = teams.teams
@@ -83,14 +91,22 @@ class TeamViewModel {
     func setNowTeam() {
         if isAdmin {
             if teams.count > 1 {    //+제외
+                if teams[0] != nil {
+                    nowTeamSubject.onNext(teams[0]) //  팀이 5개여서 +가 없을 때
+                }else {
+                    nowTeamSubject.onNext(teams[1])
+                }
                 loadParticipant()
-                nowTeamSubject.onNext(teams[1])
                 print(teams)
+            }else {
+                nowTeamSubject.onNext(nil)
             }
         }else {
             if teams.count > 0 {
-                loadParticipant()
                 nowTeamSubject.onNext(teams[0])
+                loadParticipant()
+            }else {
+                nowTeamSubject.onNext(nil)
             }
         }
         

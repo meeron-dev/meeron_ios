@@ -14,6 +14,7 @@ struct Teams:Codable {
 struct Team:Codable, Equatable {
     var teamId: Int
     var teamName: String
+    var teamOrder:Int?
 }
 
 struct TeamCreationResponse:Codable {
