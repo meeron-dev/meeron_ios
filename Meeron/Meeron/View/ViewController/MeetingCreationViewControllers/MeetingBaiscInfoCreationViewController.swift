@@ -17,8 +17,6 @@ class MeetingBaiscInfoCreationViewController: UIViewController {
     @IBOutlet weak var meetingDateLabel:UILabel!
     @IBOutlet weak var meetingTimeLabel:UILabel!
     
-    @IBOutlet weak var bringMeetingInfoButton:UIButton!
-    
     @IBOutlet weak var meetingTitleTextField:UITextField!
     @IBOutlet weak var meetingPurposeTextField:UITextField!
     

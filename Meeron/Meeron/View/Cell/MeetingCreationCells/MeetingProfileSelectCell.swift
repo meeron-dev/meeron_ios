@@ -47,8 +47,8 @@ class MeetingProfileSelectCell: UICollectionViewCell {
     
     func deselectProfile() {
         selectedView.backgroundColor = nil
-        profileNameLabel.textColor = .black
-        profilePositionLabel.textColor = .textBalck
+        profileNameLabel.textColor = .textBalck
+        profilePositionLabel.textColor = .lightGray
         profileNameLabel.font = UIFont(name: FontNameConstant.medium, size: 13)
         profilePositionLabel.font = UIFont(name: FontNameConstant.medium, size: 12)
     }

@@ -42,6 +42,10 @@ class HomeViewController:UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        homeVM.loadTodayMeeting()
+    }
+    
     func goLoginView() {
         let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         loginVC.modalPresentationStyle = .fullScreen
@@ -116,14 +120,35 @@ class HomeViewController:UIViewController {
             
         }.disposed(by: disposeBag)
         
+        
+        meetingCollectionView.rx.itemSelected
+            .withUnretained(self)
+            .subscribe(onNext: { owner, indexPath in
+                if indexPath.row < 10 {
+                    let cell = owner.meetingCollectionView.cellForItem(at: indexPath) as! MeetingCardCell
+                    owner.goMeetingView(meetingId: cell.meetingId)
+                }
+                
+            }).disposed(by: disposeBag)
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 12
         layout.sectionInset = UIEdgeInsets(top: 0, left: 31, bottom: 0, right: 31)
-        layout.itemSize = CGSize(width: 253, height: 451)
+        layout.itemSize = CGSize(width: 253, height: meetingCollectionView.frame.height-25)
         meetingCollectionView.collectionViewLayout = layout
         
         homeVM.loadUser()
+    }
+    
+    func goMeetingView(meetingId:Int) {
+        let meetingNaviC = self.storyboard?.instantiateViewController(withIdentifier: "MeetingNavigationController") as! UINavigationController
+        meetingNaviC.modalPresentationStyle = .fullScreen
+        let meetingVC = meetingNaviC.viewControllers.first as! MeetingViewController
+        meetingVC.meetingVM = MeetingViewModel(meetingId: meetingId)
+        
+        
+        present(meetingNaviC, animated: true, completion: nil)
     }
     
     @IBAction func createMeeting(_ sender: UIBarButtonItem) {
@@ -133,25 +158,7 @@ class HomeViewController:UIViewController {
     }
     
 }
-/*
-extension HomeViewController:UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = meetingCollectionView.dequeueReusableCell(withReuseIdentifier: "MeetingCardCell", for: indexPath)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath)
-    }
-}*/
+
 
 extension HomeViewController:UICollectionViewDelegateFlowLayout {
     

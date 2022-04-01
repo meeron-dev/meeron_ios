@@ -18,6 +18,14 @@ class MeetingCardCell:UICollectionViewCell {
     
     @IBOutlet weak var meetingAgendaLabel: UILabel!
     
+    
+    @IBOutlet weak var attendsLabel:UILabel!
+    @IBOutlet weak var absentsLabel:UILabel!
+    @IBOutlet weak var unknownsLabel:UILabel!
+    
+    
+    var meetingId:Int!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -39,5 +47,11 @@ class MeetingCardCell:UICollectionViewCell {
         meetingNameLabel.text = data.meetingName
         meetingTeamLabel.text = data.operationTeamName
         meetingTimeLabel.text = data.startTime + "~" + data.endTime
+        
+        attendsLabel.text = String(data.attends)
+        absentsLabel.text = String(data.absents)
+        unknownsLabel.text = String(data.unknowns)
+        
+        meetingId = data.meetingId
     }
 }

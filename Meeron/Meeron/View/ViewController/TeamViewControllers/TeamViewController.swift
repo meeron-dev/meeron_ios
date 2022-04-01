@@ -15,11 +15,11 @@ class TeamViewController:UIViewController {
     @IBOutlet weak var teamParticipantCollectionView:UICollectionView!
     @IBOutlet weak var calendarImageView:UIImageView!
     @IBOutlet weak var manageImageView:UIImageView!
+    @IBOutlet weak var manageImageViewWidth: NSLayoutConstraint!
     
     @IBOutlet weak var teamNameLabel:UILabel!
     
     @IBOutlet weak var participantCountLabelHeight:NSLayoutConstraint!
-    
     
     let teamVM = TeamViewModel()
     
@@ -45,10 +45,12 @@ class TeamViewController:UIViewController {
         calendarTapper.addTarget(self, action: #selector(goCalendarView))
         calendarImageView.addGestureRecognizer(calendarTapper)
         
-        manageImageView.isUserInteractionEnabled = true
-        let teamManageTapper = UITapGestureRecognizer()
-        teamManageTapper.addTarget(self, action: #selector(goTeamManagementView))
-        manageImageView.addGestureRecognizer(teamManageTapper)
+        if teamVM.isAdmin {
+            manageImageView.isUserInteractionEnabled = true
+            let teamManageTapper = UITapGestureRecognizer()
+            teamManageTapper.addTarget(self, action: #selector(goTeamManagementView))
+            manageImageView.addGestureRecognizer(teamManageTapper)
+        }
     }
     
     @objc func goTeamManagementView() {
@@ -61,8 +63,8 @@ class TeamViewController:UIViewController {
     
     @objc func goCalendarView() {
         let calendarVC = CalendarViewController(nibName: "CalendarViewController", bundle: nil)
-        calendarVC.calendarVM = CalendarViewModel(type: .workspace)
-        calendarVC.calendarType = .workspace
+        calendarVC.calendarVM = CalendarViewModel(type: .team)
+        calendarVC.calendarType = .team
         
         calendarVC.modalPresentationStyle = .fullScreen
         present(calendarVC, animated: true, completion: nil)
@@ -71,6 +73,12 @@ class TeamViewController:UIViewController {
     
     private func configureUI() {
         setStausBarColor()
+        
+        if !teamVM.isAdmin {
+            manageImageView.image = nil
+            manageImageViewWidth.constant = 0
+        }
+        
         teamVM.nowTeamSubject
             .observe(on: MainScheduler.instance)
             .withUnretained(self)
@@ -134,7 +142,6 @@ class TeamViewController:UIViewController {
                         owner.teamVM.nowTeamSubject.onNext(nil) //NONE
                     }
                 }
-                print(cell.teamData, cell.index)
                 
             }).disposed(by: disposeBag)
     }

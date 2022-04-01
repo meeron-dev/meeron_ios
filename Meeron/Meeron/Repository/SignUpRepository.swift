@@ -18,9 +18,9 @@ class SignUpRepository {
         let resource:Resource<Token>
         
         if let nickname = nickname, let profileImageUrl = profileImageUrl{
-            resource = Resource<Token>(url: URLConstant.login, parameter:["email":"test2@test.com", "nickname":nickname, "profileImageUrl":profileImageUrl,"provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
+            resource = Resource<Token>(url: URLConstant.login, parameter:["email":"test4@test.com", "nickname":nickname, "profileImageUrl":profileImageUrl,"provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
         }else{
-            resource = Resource<Token>(url: URLConstant.login, parameter:["email":"test2@test.com","provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
+            resource = Resource<Token>(url: URLConstant.login, parameter:["email":"test4@test.com","provider":provider], headers: ["Content-Type": "application/json"], method: .post, encodingType: .JSONEncoding)
         }
         
 

@@ -24,7 +24,9 @@ class MeetingViewController:UIViewController {
     
     @IBOutlet weak var participantsCountLabel:UILabel!
     
+    var meetingVM:MeetingViewModel!
     
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,17 +37,29 @@ class MeetingViewController:UIViewController {
         if #available(iOS 13, *) {
             view.addSubview(UIView.statusBar)
         }
+        setBasicInfo()
+    }
+    
+    func setBasicInfo() {
+        meetingVM.meetingBasicInfoSubject
+            .withUnretained(self)
+            .observe(on: )
+            .subscribe(onNext: {
+            
+        }).disposed(by: disposeBag)
     }
     
     @IBAction func goUserStatusCrationView(_ sender: Any) {
         let userStatusCreationVC = UserStatusCreationViewController(nibName: "UserStatusCreationViewController", bundle: nil)
         userStatusCreationVC.modalPresentationStyle = .fullScreen
-        userStatusCreationVC.present(userStatusCreationVC, animated: true, completion: nil)
+        present(userStatusCreationVC, animated: true, completion: nil)
     }
     
     
     @IBAction func back(_ sender:Any) {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
+    
+    
     
 }

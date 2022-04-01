@@ -22,6 +22,10 @@ struct ImageNameConstant {
     static let addAgenda = "ic_create a meeting_agenda plus"
     static let deleteAgenda = "ic_create a meeting_agenda delete"
     
+    static let activationOfAttendance = "ic_condition_circle_able"
+    static let inactivationOfAttendance = "ic_condition_circle_disable"
+    static let activationOfAbsence = "ic_condition_X_able"
+    static let inactivationOfAbsence = "ic_condition_X_disable"
     
     static let profile = "ic_profile_non"
 

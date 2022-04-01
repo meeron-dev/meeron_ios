@@ -51,11 +51,15 @@ class MeetingCreationResultViewController:UIViewController {
         
     }
     
-    func setMeetingCreationData(data:MeetingCreation) {
+    @IBAction func goMeetingView(_ sender: Any) {
+        let meetingNaviC = self.storyboard?.instantiateViewController(withIdentifier: "MeetingNavigationController") as! UINavigationController
+        meetingNaviC.modalPresentationStyle = .fullScreen
+        let meetingVC = meetingNaviC.viewControllers.first as! MeetingViewController
         
         
-        
+        present(meetingNaviC, animated: true, completion: nil)
     }
+    
     
     @IBAction func done(_ sender: Any) {
         self.navigationController?.dismiss(animated: true, completion: nil)

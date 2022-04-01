@@ -28,7 +28,7 @@ class MeetingCreationRepository {
                                       "meetingAdminIds":meetingAdminIds]
         
         print("회의 생성 파라미터",parameter)
-        let resource = Resource<Meeting>(url: URLConstant.meetingCreation, parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
+        let resource = Resource<Meeting>(url: URLConstant.meetings, parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
         
         return  api.requestData(resource: resource)
     }
@@ -36,7 +36,7 @@ class MeetingCreationRepository {
     func createMeetingParticipant(data:MeetingCreation, meetingId:String) -> Observable<Bool> {
         
         let parameter = ["workspaceUserIds":data.participants.map{$0.workspaceUserId}]
-        let resource = Resource<Bool>(url: URLConstant.meetingCreation + "/" + meetingId + "/attendees" , parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
+        let resource = Resource<Bool>(url: URLConstant.meetings + "/" + meetingId + "/attendees" , parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
         print("참가자 생성", parameter)
         return  api.requestResponse(resource: resource)
     }
@@ -54,7 +54,7 @@ class MeetingCreationRepository {
         
         let parameter = ["agendas":agendas]
         print("아젠다",parameter)
-        let resource = Resource<MeetingCreationAgendaResponses>(url: URLConstant.meetingCreation + "/" + meetingId + "/agendas", parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
+        let resource = Resource<MeetingCreationAgendaResponses>(url: URLConstant.meetings + "/" + meetingId + "/agendas", parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
         return  api.requestData(resource: resource)
     }
     

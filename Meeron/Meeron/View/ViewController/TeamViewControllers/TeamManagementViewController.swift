@@ -97,7 +97,7 @@ class TeamManagementViewController:UIViewController {
     
     func showSuccessDeleteTeamPopUp() {
         showOneButtonPopUpView(message: "해당 팀이 삭제되었습니다.", doneButtonTitle: "확인") {
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: false, completion: nil)
         }
     }
     
@@ -120,11 +120,14 @@ class TeamManagementViewController:UIViewController {
         
     }
     
+    func dismissView() {
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func back(_ sender: Any) {
         //팀 변경 사항 반영 후 dismiss
         teamManagementVM.patchNewTeamName()
-        dismiss(animated: true, completion: nil)
+        dismissView()
     }
     
 }
