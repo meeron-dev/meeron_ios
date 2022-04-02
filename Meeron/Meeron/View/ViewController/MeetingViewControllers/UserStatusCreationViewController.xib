@@ -13,6 +13,7 @@
                 <outlet property="absenceButton" destination="uHU-hZ-XJV" id="E76-Mk-y1V"/>
                 <outlet property="attendanceButton" destination="ULA-Tz-Avn" id="t2I-0T-Qjc"/>
                 <outlet property="doneButton" destination="A3x-Fw-g7g" id="xaF-Qg-oPm"/>
+                <outlet property="meetingTitleLabel" destination="muG-C8-sr5" id="kBg-y2-uzH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="workspaceNameLabel" destination="NaX-G8-i3g" id="Fch-8c-UnB"/>
             </connections>
@@ -23,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의 참여 여부" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qzh-sb-Ka9">
-                    <rect key="frame" x="30" y="308" width="354" height="23"/>
+                    <rect key="frame" x="30" y="287.5" width="354" height="23"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -34,8 +35,8 @@
                     <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muG-C8-sr5">
-                    <rect key="frame" x="30" y="187" width="269" height="41"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muG-C8-sr5">
+                    <rect key="frame" x="30" y="187" width="269" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                     <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -50,7 +51,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULA-Tz-Avn">
-                    <rect key="frame" x="95" y="413" width="70" height="70"/>
+                    <rect key="frame" x="95" y="392.5" width="70" height="70"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="71M-W0-4oQ"/>
                         <constraint firstAttribute="width" constant="70" id="kNG-lI-uzf"/>
@@ -59,7 +60,7 @@
                     <buttonConfiguration key="configuration" style="plain" image="ic_condition_circle_disable" title=""/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHU-hZ-XJV">
-                    <rect key="frame" x="249" y="413" width="70" height="70"/>
+                    <rect key="frame" x="249" y="392.5" width="70" height="70"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="6Ls-HN-GXP"/>
                         <constraint firstAttribute="height" constant="70" id="onE-o9-Qcb"/>

@@ -43,6 +43,7 @@ class MeetingViewController:UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.backgroundColor = .statusBarGray
+        meetingVM.loadParticipantsCountInfo()
     }
     
     func configureUI() {
@@ -155,7 +156,7 @@ class MeetingViewController:UIViewController {
     @IBAction func goUserStatusCrationView(_ sender: Any) {
         let userStatusCreationVC = UserStatusCreationViewController(nibName: "UserStatusCreationViewController", bundle: nil)
         userStatusCreationVC.modalPresentationStyle = .fullScreen
-        
+        userStatusCreationVC.userStatusCreationVM = UserStatusCreationViewModel(meetingId: meetingVM.meetingId, meetingTitle: meetingTitle.text!)
         present(userStatusCreationVC, animated: true, completion: nil)
     }
     

@@ -24,6 +24,14 @@ class ParticipantRepository {
         
         return api.requestData(resource: resource)
     }
+    
+    func patchParicipantStatus(meetingId:Int, status:ParicipantStatusType) -> Observable<Bool> {
+        
+        guard let workspaceUserId = UserDefaults.standard.string(forKey: "workspaceUserId") else {return Observable.just(false)}
+        
+        let resource = Resource<Bool>(url: URLConstant.attendees+"/\(workspaceUserId)", parameter: ["meetingId":meetingId, "status":status.rawValue], headers: headers, method: .patch, encodingType: .JSONEncoding)
+        return api.requestResponse(resource: resource)
+    }
 
 
 }

@@ -52,11 +52,11 @@ struct API {
     }
     
     func requestResponse(resource:Resource<Bool>) -> Observable<Bool> {
-        print(resource)
         return RxAlamofire.requestResponse(resource.method, resource.url, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
             .flatMap { response -> Observable<Bool> in
                 switch response.statusCode{
                 case 200...299:
+                    print("✅",response.debugDescription)
                     return Observable.just(true)
                 default:
                     print("📍",response.debugDescription)

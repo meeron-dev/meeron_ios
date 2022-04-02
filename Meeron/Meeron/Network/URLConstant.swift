@@ -33,6 +33,8 @@ struct URLConstant {
     static let workspace = protocolHost + "/api/workspaces"
     static let workspaceUsers = protocolHost + "/api/workspace-users"
     
+    static let attendees = protocolHost + "/api/attendees"
+    
     static let terms = "https://ryuyxxn.notion.site/29115494f9324509ba21416bbb1c7ef1"
     static let personalInformationCollection = "https://ryuyxxn.notion.site/502b6e5487664faab875f7b4e5383a7b"
     

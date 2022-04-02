@@ -24,3 +24,10 @@ struct ParticipantCount:Codable {
     let absents:[WorkspaceUser]
     let unknowns:[WorkspaceUser]
 }
+
+enum ParicipantStatusType:String {
+    case attend
+    case absent
+}
+
+

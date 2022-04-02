@@ -12,17 +12,19 @@ class UserStatusCreationViewController: UIViewController {
 
     @IBOutlet weak var workspaceNameLabel: UILabel!
     
+    @IBOutlet weak var meetingTitleLabel: UILabel!
     @IBOutlet weak var attendanceButton: UIButton!
     @IBOutlet weak var absenceButton: UIButton!
     
     @IBOutlet weak var doneButton: UIButton!
+    
+    var userStatusCreationVM:UserStatusCreationViewModel!
     
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        // Do any additional setup after loading the view.
         setupButton()
     }
     
@@ -68,9 +70,25 @@ class UserStatusCreationViewController: UIViewController {
     func configureUI() {
         
         workspaceNameLabel.text = UserDefaults.standard.string(forKey: "workspaceName")
+        meetingTitleLabel.text = userStatusCreationVM.meetingTitle
         
         doneButton.addShadow()
         doneButton.isEnabled = false
+        
+        doneButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { owner, _ in
+                owner.patchUserStatus()
+            }).disposed(by: disposeBag)
+    }
+    
+    func patchUserStatus() {
+        if absenceButton.imageView?.image == UIImage(named: ImageNameConstant.activationOfAbsence) {
+            userStatusCreationVM.patchUserStatus(status: .absent)
+        }else {
+            userStatusCreationVM.patchUserStatus(status: .attend)
+        }
+        dismiss(animated: true)
     }
 
     @IBAction func close(_ sender: Any) {
