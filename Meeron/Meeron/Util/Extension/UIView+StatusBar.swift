@@ -18,7 +18,6 @@ extension UIView {
         let statusBar = UIView(frame: (keyWindow?.windowScene?.statusBarManager?.statusBarFrame)!)
         statusBar.backgroundColor = .statusBarGray
         return statusBar
-        
     }
 }
 

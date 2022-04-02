@@ -16,7 +16,10 @@ class MeetingRepository {
     let api = API()
     
     func loadTodayMeeting() -> Observable<TodayMeetings?> {
-        let url = "\(URLConstant.todayMeeting)?workspaceId=\(UserDefaults.standard.string(forKey: "workspaceId")!)&workspaceUserId=\(UserDefaults.standard.string(forKey: "workspaceUserId")!)"
+        
+        guard let worksapceId = UserDefaults.standard.string(forKey: "workspaceId"), let workspaceUserId = UserDefaults.standard.string(forKey: "workspaceUserId") else {return Observable.just(nil)}
+        
+        let url = "\(URLConstant.todayMeeting)?workspaceId=\(worksapceId)&workspaceUserId=\(workspaceUserId)"
         
         let resource = Resource<TodayMeetings>(url: url, parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         

@@ -27,7 +27,6 @@ class TeamViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         
         configureUI()
         addTapper()
@@ -77,6 +76,9 @@ class TeamViewController:UIViewController {
         if !teamVM.isAdmin {
             manageImageView.image = nil
             manageImageViewWidth.constant = 0
+        }else {
+            manageImageView.image = UIImage(named: "ic_team_Setting")
+            manageImageViewWidth.constant = 41
         }
         
         teamVM.nowTeamSubject
@@ -88,7 +90,6 @@ class TeamViewController:UIViewController {
                 }else {
                     owner.teamNameLabel.text = nowTeam!.teamName
                 }
-                print("???",nowTeam?.teamName)
             }).disposed(by: disposeBag)
         
         
@@ -154,12 +155,9 @@ class TeamViewController:UIViewController {
     }
     
     func setupCollectionViewLayout(){
-        let participantProfileCollectionViewLayout = UICollectionViewFlowLayout()
-        participantProfileCollectionViewLayout.itemSize = CGSize(width: 70, height: 100)
-        participantProfileCollectionViewLayout.minimumInteritemSpacing = 10
-        participantProfileCollectionViewLayout.minimumLineSpacing = 20
         
-        teamParticipantCollectionView.collectionViewLayout = participantProfileCollectionViewLayout
+        
+        teamParticipantCollectionView.collectionViewLayout = UICollectionViewFlowLayout.profileCollectionViewLayout
         
         let teamCollectionViewLayout = UICollectionViewFlowLayout()
         teamCollectionViewLayout.scrollDirection = .horizontal

@@ -78,18 +78,21 @@ class CalendarViewController:UIViewController {
         calendarVM.selectedDateMeetingsSubject.bind(to: meetingTableView.rx.items) {[weak self] tableView, row, element in
             let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarMeetingCell", for: IndexPath(row: row, section: 0)) as! CalendarMeetingCell
             cell.setData(data: element, number: row+1) {
-                self?.goMeetingView()
+                self?.goMeetingView(meetingId: cell.meetingId)
             }
             return cell
         }.disposed(by: disposeBag)
         
     }
     
-    func goMeetingView() {
-        let mainStroyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let meetingNaviC = mainStroyboard.instantiateViewController(withIdentifier: "MeetingNavigationController")
+    func goMeetingView(meetingId:Int) {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let meetingNaviC = mainStoryboard.instantiateViewController(withIdentifier: "MeetingNavigationController") as! UINavigationController
         meetingNaviC.modalPresentationStyle = .fullScreen
+        let meetingVC = meetingNaviC.viewControllers.first as! MeetingViewController
+        meetingVC.meetingVM = MeetingViewModel(meetingId: meetingId)
+        
+        
         present(meetingNaviC, animated: true, completion: nil)
     }
     

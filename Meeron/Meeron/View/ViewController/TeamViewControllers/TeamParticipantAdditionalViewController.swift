@@ -110,12 +110,7 @@ class TeamParticipantAdditionalViewController:UIViewController {
     
     
     func setupCollectionViewLayout() {
-        let participantProfileCollectionViewLayout = UICollectionViewFlowLayout()
-        participantProfileCollectionViewLayout.itemSize = CGSize(width: 70, height: 100)
-        participantProfileCollectionViewLayout.minimumInteritemSpacing = 10
-        participantProfileCollectionViewLayout.minimumLineSpacing = 20
-        
-        profileCollectionView.collectionViewLayout = participantProfileCollectionViewLayout
+        profileCollectionView.collectionViewLayout = UICollectionViewFlowLayout.profileCollectionViewLayout
     }
     
     @IBAction func close(_ sender: Any) {

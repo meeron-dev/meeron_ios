@@ -10,8 +10,8 @@ import UIKit
 
 class MeetingAgendaDocumentCell:UITableViewCell {
     
-    
     @IBOutlet weak var documentLabel:UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

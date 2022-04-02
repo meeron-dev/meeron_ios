@@ -27,6 +27,7 @@ struct TodayMeeting:Codable {
 struct MeetingBasicInfo:Codable {
     let meetingId:Int
     let meetingName:String
+    let meetingPurpose:String
     let meetingDate:String
     let startTime:String
     let endTime:String

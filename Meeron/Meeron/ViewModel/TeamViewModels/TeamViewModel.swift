@@ -30,7 +30,7 @@ class TeamViewModel {
     let isAdmin =  UserDefaults.standard.bool(forKey: "workspaceAdmin")
     
     init() {
-        
+        print("관리자",isAdmin,"✔️")
         loadTeam()
         nowTeamSubject
             .withUnretained(self)

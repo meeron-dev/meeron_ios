@@ -24,11 +24,14 @@ class AgendaViewController:UIViewController {
         setupCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.backgroundColor = .statusBarGray
+    }
+    
     func configureUI() {
         if #available(iOS 13, *) {
             view.addSubview(UIView.statusBar)
         }
-        
         
     }
     
