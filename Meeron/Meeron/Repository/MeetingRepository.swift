@@ -32,4 +32,9 @@ class MeetingRepository {
         return api.requestData(resource: resource)
     }
     
+    
+    func loadMeetingAgendaCountInfo(meetingId:Int) -> Observable<AgendaCountInfo?> {
+        let resource = Resource<AgendaCountInfo>(url: URLConstant.meetings+"/\(meetingId)/agendas/count", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
+        return api.requestData(resource: resource)
+    }
 }

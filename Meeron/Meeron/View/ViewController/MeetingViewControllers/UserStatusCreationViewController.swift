@@ -22,7 +22,6 @@ class UserStatusCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        setupButton()
         // Do any additional setup after loading the view.
         setupButton()
     }

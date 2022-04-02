@@ -196,7 +196,7 @@ class MeetingParticipantCreationViewModel {
             sucessMeetingDocumentsCreationSubject.onNext(true)
             return
         }else if meetingCreationData!.agendas.count == 1 {
-            if meetingCreationData!.agendas[0] == Agenda() {
+            if meetingCreationData!.agendas[0] == AgendaCreation() {
                 sucessMeetingDocumentsCreationSubject.onNext(true)
                 return
             }

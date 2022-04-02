@@ -55,7 +55,7 @@ class MeetingCreationResultViewController:UIViewController {
         let meetingNaviC = self.storyboard?.instantiateViewController(withIdentifier: "MeetingNavigationController") as! UINavigationController
         meetingNaviC.modalPresentationStyle = .fullScreen
         let meetingVC = meetingNaviC.viewControllers.first as! MeetingViewController
-        
+        meetingVC.meetingVM = MeetingViewModel(meetingId: Int(meetingCreationData!.meetingId)!)
         
         present(meetingNaviC, animated: true, completion: nil)
     }

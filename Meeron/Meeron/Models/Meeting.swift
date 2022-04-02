@@ -40,3 +40,9 @@ struct Admin:Codable {
     let workspaceUserId: Int
     let nickname: String
 }
+
+struct AgendaCountInfo:Codable {
+    let agendas: Int
+    let checks: Int
+    let files: Int
+}

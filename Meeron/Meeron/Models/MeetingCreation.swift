@@ -15,13 +15,13 @@ struct MeetingCreation {
     var purpose:String = ""
     var managers:[WorkspaceUser] = []
     var team:Team?
-    var agendas:[Agenda] = []
+    var agendas:[AgendaCreation] = []
     var participants:[WorkspaceUser] = []
     
     var meetingId:String = ""
 }
 
-struct Agenda:Equatable {
+struct AgendaCreation:Equatable {
     var title:String = ""
     var issue:[String] = [""]
     var document:[Document] = []

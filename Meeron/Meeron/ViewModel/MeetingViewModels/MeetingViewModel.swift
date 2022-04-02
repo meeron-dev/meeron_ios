@@ -11,10 +11,11 @@ import RxSwift
 class MeetingViewModel {
     
     let meetingId:Int
+    var agendaCount = 0
     
     let meetingBasicInfoSubject = BehaviorSubject<MeetingBasicInfo?>(value:nil)
     let participantCountsByTeamSubject = BehaviorSubject<[ParticipantCountByTeam]>(value: [])
-    let participantCountTotalSubject = BehaviorSubject<Int>(value: 0)
+    let agendaCountInfoSubject = BehaviorSubject<AgendaCountInfo>(value: AgendaCountInfo(agendas: 0, checks: 0, files: 0))
     
     let meetingRepository = MeetingRepository()
     let participantRepository = ParticipantRepository()
@@ -24,6 +25,7 @@ class MeetingViewModel {
         self.meetingId = meetingId
         loadMeetingBasicInfo()
         loadParticipantsCountInfo()
+        loadAgendaCountInfo()
     }
     
     func loadMeetingBasicInfo() {
@@ -40,11 +42,17 @@ class MeetingViewModel {
             .subscribe(onNext: { owner, data in
                 if let data = data {
                     owner.participantCountsByTeamSubject.onNext(data.attendees)
-                    var participantTotalCount = 0
-                    for i in 0..<data.attendees.count {
-                        participantTotalCount += data.attendees[i].attends
-                    }
-                    owner.participantCountTotalSubject.onNext(participantTotalCount)
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    func loadAgendaCountInfo() {
+        meetingRepository.loadMeetingAgendaCountInfo(meetingId: meetingId)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, data in
+                if let data = data {
+                    owner.agendaCountInfoSubject.onNext(data)
+                    owner.agendaCount = data.agendas
                 }
             }).disposed(by: disposeBag)
     }

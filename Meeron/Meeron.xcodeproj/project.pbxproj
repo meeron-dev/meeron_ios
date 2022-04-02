@@ -34,6 +34,10 @@
 		FC3262EA27D8954D00D5AA13 /* TeamRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3262E927D8954D00D5AA13 /* TeamRepository.swift */; };
 		FC3262EC27D8C20500D5AA13 /* MeetingParticipantProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3262EB27D8C20500D5AA13 /* MeetingParticipantProfileCell.swift */; };
 		FC33307E27F8150E0088CF8E /* UICollectionViewFlowLayout+CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33307D27F8150E0088CF8E /* UICollectionViewFlowLayout+CustomLayout.swift */; };
+		FC33308027F848730088CF8E /* AgendaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33307F27F848730088CF8E /* AgendaViewModel.swift */; };
+		FC33308227F849C70088CF8E /* AgendaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33308127F849C70088CF8E /* AgendaRepository.swift */; };
+		FC33308427F86C180088CF8E /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33308327F86C180088CF8E /* Agenda.swift */; };
+		FC33308627F8A4410088CF8E /* UserStatusCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33308527F8A4410088CF8E /* UserStatusCreationViewModel.swift */; };
 		FC3788DC27ED42C5009948E2 /* WorkspaceProfileCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3788DB27ED42C5009948E2 /* WorkspaceProfileCreationViewModel.swift */; };
 		FC38089427D0779C0023D713 /* MeetingProfileSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38089327D0779C0023D713 /* MeetingProfileSelectViewController.swift */; };
 		FC38089627D09DBA0023D713 /* MeetingTeamSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38089527D09DBA0023D713 /* MeetingTeamSelectViewController.swift */; };
@@ -213,6 +217,10 @@
 		FC3262E927D8954D00D5AA13 /* TeamRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRepository.swift; sourceTree = "<group>"; };
 		FC3262EB27D8C20500D5AA13 /* MeetingParticipantProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingParticipantProfileCell.swift; sourceTree = "<group>"; };
 		FC33307D27F8150E0088CF8E /* UICollectionViewFlowLayout+CustomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+CustomLayout.swift"; sourceTree = "<group>"; };
+		FC33307F27F848730088CF8E /* AgendaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaViewModel.swift; sourceTree = "<group>"; };
+		FC33308127F849C70088CF8E /* AgendaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaRepository.swift; sourceTree = "<group>"; };
+		FC33308327F86C180088CF8E /* Agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
+		FC33308527F8A4410088CF8E /* UserStatusCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatusCreationViewModel.swift; sourceTree = "<group>"; };
 		FC3788DB27ED42C5009948E2 /* WorkspaceProfileCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceProfileCreationViewModel.swift; sourceTree = "<group>"; };
 		FC38089327D0779C0023D713 /* MeetingProfileSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingProfileSelectViewController.swift; sourceTree = "<group>"; };
 		FC38089527D09DBA0023D713 /* MeetingTeamSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingTeamSelectViewController.swift; sourceTree = "<group>"; };
@@ -450,6 +458,8 @@
 			children = (
 				FC0D0F1427F7282E0047C0D9 /* MeetingViewModel.swift */,
 				FC0D0F1E27F767360047C0D9 /* MeetingParticipantCountViewModel.swift */,
+				FC33307F27F848730088CF8E /* AgendaViewModel.swift */,
+				FC33308527F8A4410088CF8E /* UserStatusCreationViewModel.swift */,
 			);
 			path = MeetingViewModels;
 			sourceTree = "<group>";
@@ -467,6 +477,7 @@
 				FCEDA9F927EB6C2E0012D876 /* UserRepository.swift */,
 				FC2ABF4827ECB41F001B3F33 /* WorkspaceParicipationProfileCreationRepository.swift */,
 				FC0D0F1627F751560047C0D9 /* ParticipantRepository.swift */,
+				FC33308127F849C70088CF8E /* AgendaRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -611,6 +622,7 @@
 				FCA73F1F27E8943500295247 /* WorkspaceCreation.swift */,
 				FCFABB2A27F5A8860005D9D0 /* Workspace.swift */,
 				FC0D0F1827F751B90047C0D9 /* Participant.swift */,
+				FC33308327F86C180088CF8E /* Agenda.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1123,9 +1135,11 @@
 				FCD75C2027CFD76800D0FDD4 /* MeetingAgendaCreationViewController.swift in Sources */,
 				FCFABB2B27F5A8860005D9D0 /* Workspace.swift in Sources */,
 				FC6AB50A27C112F000797C44 /* Token.swift in Sources */,
+				FC33308227F849C70088CF8E /* AgendaRepository.swift in Sources */,
 				FCA1AF7D27CBBB0600152F53 /* HomeViewModel.swift in Sources */,
 				FCEFFD6F27CF1E2300D54CD4 /* UIButton+CustomButton.swift in Sources */,
 				FC0D0F1927F751B90047C0D9 /* Participant.swift in Sources */,
+				FC33308427F86C180088CF8E /* Agenda.swift in Sources */,
 				FC39DFD327D777CF002465EB /* Team.swift in Sources */,
 				FC28912A27CFCBAE00E8DFA7 /* DatePickerModalPresentationController.swift in Sources */,
 				FCD75C2227CFD7BC00D0FDD4 /* MeetingParticipantCreationViewController.swift in Sources */,
@@ -1145,6 +1159,7 @@
 				FC9B23CB27F20D9800C8C8A3 /* UserStatusCreationViewController.swift in Sources */,
 				FC8DE90127E9E338008648A7 /* WorkspaceErrorViewController.swift in Sources */,
 				FCFABB2427F580330005D9D0 /* MeetingWhiteBackgroundNumberCell.swift in Sources */,
+				FC33308627F8A4410088CF8E /* UserStatusCreationViewModel.swift in Sources */,
 				FC3808A427D0CF2F0023D713 /* AgendaIssueCell.swift in Sources */,
 				FCFABB1F27F578D10005D9D0 /* MeetingAgendaDocumentCell.swift in Sources */,
 				FC0D0F1527F7282E0047C0D9 /* MeetingViewModel.swift in Sources */,
@@ -1160,6 +1175,7 @@
 				FCBC2BEB27E5FC8100C376F1 /* SignUpRepository.swift in Sources */,
 				FCEDA9FA27EB6C2E0012D876 /* UserRepository.swift in Sources */,
 				FC33307E27F8150E0088CF8E /* UICollectionViewFlowLayout+CustomLayout.swift in Sources */,
+				FC33308027F848730088CF8E /* AgendaViewModel.swift in Sources */,
 				FC4D5A0D27DE18D80000AE18 /* AllCalendar.swift in Sources */,
 				FCF46BD727EF4B05009D89AF /* TeamViewController.swift in Sources */,
 				FCA73F1527E8901800295247 /* WorkspaceNameViewController.swift in Sources */,

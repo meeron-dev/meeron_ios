@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ic_meeting_clip.png",
+      "filename" : "ic_meeting_right middle arrow.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "ic_meeting_clip@2x.png",
+      "filename" : "ic_meeting_right middle arrow@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "ic_meeting_clip@3x.png",
+      "filename" : "ic_meeting_right middle arrow@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -19,9 +19,11 @@ class MeetingViewController:UIViewController {
     @IBOutlet weak var meetingDateLabel:UILabel!
     @IBOutlet weak var meetingTimeLabel:UILabel!
     
-    @IBOutlet weak var agendaCheckCountLabel:UILabel!
+    @IBOutlet weak var agendaLabel: UILabel!
+    @IBOutlet weak var agendaArrowButton: UIButton!
+    @IBOutlet weak var agendaDocumentImage: UIImageView!
     @IBOutlet weak var documentCountLabel:UILabel!
-    @IBOutlet weak var meetingResultCheckCountLabel:UILabel!
+
     
     @IBOutlet weak var participantsCountLabel:UILabel!
     @IBOutlet weak var participantCountByTeamTableView: UITableView!
@@ -47,8 +49,46 @@ class MeetingViewController:UIViewController {
         if #available(iOS 13, *) {
             view.addSubview(UIView.statusBar)
         }
-        setBasicInfo()
+        setMeetingBasicInfo()
+        setTotalParticipantCountInfo()
+        setAgendaCountInfo()
         
+        
+    }
+    
+    private func setAgendaCountInfo() {
+        meetingVM.agendaCountInfoSubject
+            .withUnretained(self)
+            .subscribe(onNext :{ owner, data in
+                print(data,"✔️")
+                if data.agendas == 0 {
+                    owner.inactiviateAgendaTap()
+                }else {
+                    owner.activiateAgendaTap()
+                }
+                owner.documentCountLabel.text = "\(data.files)"
+            }).disposed(by: disposeBag)
+    }
+    
+    private func inactiviateAgendaTap() {
+        agendaArrowButton.isEnabled = false
+        
+        agendaLabel.textColor = .darkGray
+        agendaArrowButton.tintColor = .lightGray
+        agendaDocumentImage.tintColor = .lightGray
+        documentCountLabel.textColor = .lightGray
+    }
+    
+    private func activiateAgendaTap() {
+        agendaArrowButton.isEnabled = true
+        
+        agendaLabel.textColor = .black
+        agendaArrowButton.tintColor = .darkGray
+        agendaDocumentImage.tintColor = .grayBlue
+        documentCountLabel.tintColor = .darkGray
+    }
+    
+    private func setTotalParticipantCountInfo() {
         meetingVM.participantCountsByTeamSubject
             .withUnretained(self)
             .subscribe(onNext: { owner, data in
@@ -56,11 +96,10 @@ class MeetingViewController:UIViewController {
                 owner.setParticipantsCountLabel(data: data)
                 
             }).disposed(by: disposeBag)
-        
-        
     }
     
-    func setParticipantsCountLabel(data:[ParticipantCountByTeam]) {
+    
+    private func setParticipantsCountLabel(data:[ParticipantCountByTeam]) {
         var count = 0
         _ = data.map{count += ($0.attends + $0.absents + $0.unknowns)}
         
@@ -68,7 +107,7 @@ class MeetingViewController:UIViewController {
     }
     
     func setScrollViewContentViewHeight(dataCount:Int) {
-        let newHeight = CGFloat(dataCount*150 + 325)
+        let newHeight = CGFloat(dataCount*150 + 220)
         let oldHeight = view.safeAreaLayoutGuide.layoutFrame.height - 190
         
         scrollViewContentViewHeight.constant = max(newHeight,oldHeight)
@@ -89,7 +128,7 @@ class MeetingViewController:UIViewController {
     }
     
     
-    private func setBasicInfo() {
+    private func setMeetingBasicInfo() {
         
         workspaceLabel.text = UserDefaults.standard.string(forKey: "workspaceName")
         meetingVM.meetingBasicInfoSubject
@@ -116,9 +155,18 @@ class MeetingViewController:UIViewController {
     @IBAction func goUserStatusCrationView(_ sender: Any) {
         let userStatusCreationVC = UserStatusCreationViewController(nibName: "UserStatusCreationViewController", bundle: nil)
         userStatusCreationVC.modalPresentationStyle = .fullScreen
+        
         present(userStatusCreationVC, animated: true, completion: nil)
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goAgendaViewSegue" {
+            let agendVC = segue.destination as! AgendaViewController
+            
+            agendVC.agendaVM = AgendaViewModel(meetingId: meetingVM.meetingId, agendaCount: meetingVM.agendaCount)
+        }
+    }
     
     @IBAction func back(_ sender:Any) {
         self.navigationController?.dismiss(animated: true, completion: nil)

@@ -10,12 +10,12 @@ import RxSwift
 import RxRelay
 
 class MeetingAgendaCreationViewModel {
-    let agendasSubject = PublishSubject<[Agenda]>()
-    var agendas:[Agenda] = [Agenda()]
+    let agendasSubject = PublishSubject<[AgendaCreation]>()
+    var agendas:[AgendaCreation] = [AgendaCreation()]
     
     var nowAgendaIndex = 0
     var nowAgendaIndexSubject = BehaviorSubject<Int>(value: 0)
-    var nowAgendaSubject = PublishSubject<Agenda>()
+    var nowAgendaSubject = PublishSubject<AgendaCreation>()
     
     var nowIssueIndex = 0
     
@@ -55,7 +55,7 @@ class MeetingAgendaCreationViewModel {
     
     func addAgenda() -> Bool {
         if agendas.count < 5 {
-            agendas.append(Agenda())
+            agendas.append(AgendaCreation())
             agendasSubject.onNext(agendas)
             nowAgendaIndex = agendas.count-1
             nowAgendaIndexSubject.onNext(nowAgendaIndex)
@@ -89,7 +89,7 @@ class MeetingAgendaCreationViewModel {
         agendaDocumentSubject.onNext(agendas[nowAgendaIndex].document)
     }
     
-    func getAgenda() -> Agenda {
+    func getAgenda() -> AgendaCreation {
         return agendas[nowAgendaIndex]
     }
     

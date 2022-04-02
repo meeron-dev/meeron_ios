@@ -8,11 +8,31 @@
 import Foundation
 import UIKit
 
+protocol MeetingAgendaDocumentCellProtocol {
+    func showDocument(url:String)
+}
+
 class MeetingAgendaDocumentCell:UITableViewCell {
     
     @IBOutlet weak var documentLabel:UILabel!
     
+    var documentUrl:String!
+    
+    var delegate:MeetingAgendaDocumentCellProtocol?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        addTapper()
+    }
+    
+    func addTapper() {
+        documentLabel.isUserInteractionEnabled = true
+        let documentTapper = UITapGestureRecognizer()
+        documentTapper.addTarget(self, action: #selector(showDocument))
+        documentLabel.addGestureRecognizer(documentTapper)
+    }
+    
+    @objc func showDocument() {
+        delegate?.showDocument(url: documentUrl)
     }
 }

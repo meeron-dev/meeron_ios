@@ -41,7 +41,7 @@ class MeetingCreationRepository {
         return  api.requestResponse(resource: resource)
     }
     
-    func createMeetingAgenda(datas:[Agenda], meetingId:String) -> Observable<MeetingCreationAgendaResponses?> {
+    func createMeetingAgenda(datas:[AgendaCreation], meetingId:String) -> Observable<MeetingCreationAgendaResponses?> {
         var agendas:[Any] = []
         for i in 0..<datas.count {
             var issues:[[String:String]] = []

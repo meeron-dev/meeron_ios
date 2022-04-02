@@ -14,5 +14,18 @@ class MeetingNumberCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func setData(number:Int, nowNumber:Int) {
+        numberLabel.text = "\(number)"
+        if number != nowNumber {
+            numberLabel.font = .systemFont(ofSize: 24, weight: .thin)
+            numberLabel.textColor = .darkGray
+        }else {
+            numberLabel.font = .systemFont(ofSize: 24, weight: .bold)
+            numberLabel.textColor = .mrDarkBlue
+        }
+    }
+    
+    
 
 }

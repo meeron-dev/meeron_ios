@@ -135,13 +135,8 @@ class MeetingAgendaCreationViewController: UIViewController {
     }
     
     private func setupCollectionViewLayout() {
-        let agendaSelectBarCollectionViewlayout = UICollectionViewFlowLayout()
-        agendaSelectBarCollectionViewlayout.itemSize = CGSize(width: 44, height: 44)
-        agendaSelectBarCollectionViewlayout.scrollDirection = .horizontal
-        agendaSelectBarCollectionViewlayout.minimumLineSpacing = 0
-        agendaSelectBarCollectionViewlayout.minimumInteritemSpacing = 0
         
-        agendaSelectBarCollectionView.collectionViewLayout = agendaSelectBarCollectionViewlayout
+        agendaSelectBarCollectionView.collectionViewLayout = UICollectionViewFlowLayout.numberCollectionViewlayout
     }
     
     private func configureUI() {
@@ -249,7 +244,7 @@ class MeetingAgendaCreationViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
     
-    func setAgendaContent(data:Agenda) {
+    func setAgendaContent(data:AgendaCreation) {
         agendaTitleTextField.text = data.title
     }
     
