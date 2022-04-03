@@ -65,7 +65,9 @@ struct API {
         }
     }
     
-    func upload(resource: Resource<Bool>, data:Data?) -> Observable<Bool> {
+    
+    
+    func upload(resource: Resource<Bool>, data:Data?, fileName:String?, mimeType:String?) -> Observable<Bool> {
         print(resource)
         return Observable.create({ observable in
             AF.upload(multipartFormData: { multipartFormData in
@@ -74,8 +76,8 @@ struct API {
                     multipartFormData.append(Data((value as! String).utf8), withName: key, mimeType: "application/json")
                 }
                 
-                if let data = data {
-                    multipartFormData.append(data, withName: "files", fileName: ".png", mimeType: "mine/png")
+                if let data = data, let fileName = fileName, let mimeType = mimeType {
+                    multipartFormData.append(data, withName: "files", fileName: fileName, mimeType: mimeType)
                 }
                 
             

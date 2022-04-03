@@ -18,7 +18,6 @@ class MeetingCardCell:UICollectionViewCell {
     
     @IBOutlet weak var meetingAgendaLabel: UILabel!
     
-    
     @IBOutlet weak var attendsLabel:UILabel!
     @IBOutlet weak var absentsLabel:UILabel!
     @IBOutlet weak var unknownsLabel:UILabel!
@@ -51,6 +50,8 @@ class MeetingCardCell:UICollectionViewCell {
         attendsLabel.text = String(data.attends)
         absentsLabel.text = String(data.absents)
         unknownsLabel.text = String(data.unknowns)
+        
+        meetingAgendaLabel.text = data.mainAgenda ?? ""
         
         meetingId = data.meetingId
     }

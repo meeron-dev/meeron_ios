@@ -19,6 +19,7 @@ struct TodayMeeting:Codable {
     let endTime: String
     let operationTeamId: Int
     let operationTeamName: String
+    let mainAgenda:String?
     let attends:Int
     let absents:Int
     let unknowns:Int

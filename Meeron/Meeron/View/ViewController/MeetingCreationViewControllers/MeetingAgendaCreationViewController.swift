@@ -213,6 +213,7 @@ class MeetingAgendaCreationViewController: UIViewController {
     
     func showFileView() {
         let supportedTypes: [UTType] = [UTType.pdf, UTType.text, UTType.png]
+        
         let documentPickerVC = UIDocumentPickerViewController(forOpeningContentTypes: supportedTypes, asCopy: true)
         
         documentPickerVC.delegate = self
@@ -276,15 +277,21 @@ class MeetingAgendaCreationViewController: UIViewController {
 
 extension MeetingAgendaCreationViewController: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        
+        
         guard let url = urls.first else {return}
         
         do{
             let data = try Data.init(contentsOf: url)
+            
             meetingAgendaCreationVM.addDocument(data: data, name: url.lastPathComponent)
         } catch {
             print("no data")
         }
         
     }
+    
+
+    
     
 }

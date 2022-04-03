@@ -238,13 +238,13 @@ class MeetingParticipantCreationViewModel {
         for i in 0..<agendaId.count {
             let id = agendaId[i]
             for j in 0..<meetingCreationData!.agendas[i].document.count {
-                createMeetingDocument(data: meetingCreationData!.agendas[i].document[j].data, agendaId: id)
+                createMeetingDocument(data: meetingCreationData!.agendas[i].document[j].data, fileName: meetingCreationData!.agendas[i].document[j].name, agendaId: id)
             }
         }
     }
     
-    func createMeetingDocument(data:Data, agendaId:Int) {
-        meetingCreationRepository.createMeetingDocument(data:data, agendaId: String(agendaId))
+    func createMeetingDocument(data:Data, fileName:String, agendaId:Int) {
+        meetingCreationRepository.createMeetingDocument(data: data, fileName: fileName, agendaId: "\(agendaId)")
             .withUnretained(self)
             .subscribe(onNext: { owner, success in
                 print("문서생성",success)

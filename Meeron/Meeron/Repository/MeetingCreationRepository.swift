@@ -58,9 +58,17 @@ class MeetingCreationRepository {
         return  api.requestData(resource: resource)
     }
     
-    func createMeetingDocument(data:Data, agendaId:String) -> Observable<Bool> {
+    func createMeetingDocument(data:Data, fileName:String, agendaId:String) -> Observable<Bool> {
         let resource = Resource<Bool>(url: "\(URLConstant.meetingAgenda)/\(agendaId)/files", parameter: [:], headers: ["Content-Type": "multipart/form", "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!], method: .post, encodingType: .URLEncoding)
         
-        return api.upload(resource: resource, data: data)
+        var mimeType = ""
+        if fileName.split(separator: ".")[1] ==  "png" {
+            mimeType = "image/png"
+        }else if fileName.split(separator: ".")[1] == "pdf" {
+            mimeType = "application/pdf"
+        }else if fileName.split(separator: ".")[1] == "text" {
+            mimeType = "text/plain"
+        }
+        return api.upload(resource: resource, data: data, fileName: fileName, mimeType: mimeType)
     }
 }
