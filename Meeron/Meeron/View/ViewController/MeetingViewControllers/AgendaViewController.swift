@@ -19,7 +19,6 @@ class AgendaViewController:UIViewController {
     
     @IBOutlet weak var issueTableView:UITableView!
     @IBOutlet weak var issueTableViewHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var documentTableView:UITableView!
     @IBOutlet weak var documentTableViewHeight: NSLayoutConstraint!
     
@@ -43,27 +42,27 @@ class AgendaViewController:UIViewController {
             view.addSubview(UIView.statusBar)
         }
         setAgendaTitle()
-        setContentViewHeight()
+        setScrollViewHeight()
     }
     
-    func setContentViewHeight() {
+    func setScrollViewHeight() {
         
-        agendaVM.issuesSubject
-            .map{CGFloat(($0.count)*50)}
-            .bind(to: issueTableViewHeight.rx.constant)
-            .disposed(by: disposeBag)
+        /*Observable.combineLatest(agendaVM.issuesSubject, agendaVM.documentsSubject) {
+            ($0.count*50)+($1.count*40)+160
+        }
         
-        agendaVM.documentsSubject
-            .map{CGFloat(($0.count*40))}
-            .bind(to: documentTableViewHeight.rx.constant)
-            .disposed(by: disposeBag)
-        
-        agendaVM.newContentViewHeightSubject
-            .withUnretained(self)
-            .subscribe(onNext: { owner, newHeight in
-                owner.scrollContentViewHeight.constant = max(owner.view.safeAreaLayoutGuide.layoutFrame.height, newHeight)
-            }).disposed(by: disposeBag)
-            
+        Observable.combineLatest(agendaVM.issuesSubject, agendaVM.documentsSubject) {
+            ($0.count*50)+($1.count*40)+160
+        }.map{CGFloat(max($0, view.safeAreaLayoutGuide.layoutFrame.height-260))}
+        .bind(to: scrollContentViewHeight.rx.constant)
+        .disposed(by: disposeBag)*/
+
+        /*Observable.combineLatest(agendaVM.issuesSubject, agendaVM.documentsSubject) {
+            ($0.count*50)+($1.count*40)+160
+        }
+        .map{CGFloat(max($0, view.safeAreaLayoutGuide.layoutFrame.height - 260))}
+        .bind(to: scrollContentViewHeight.rx.constant)
+        .disposed(by: disposeBag)*/
     }
     
     func setAgendaTitle() {
