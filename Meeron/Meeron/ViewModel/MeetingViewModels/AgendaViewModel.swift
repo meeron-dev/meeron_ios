@@ -16,7 +16,7 @@ class AgendaViewModel {
     let agendaTitleSubject = BehaviorSubject<String>(value: "")
     let issuesSubject = BehaviorSubject<[Issue]>(value: [])
     let documentsSubject = BehaviorSubject<[File]>(value: [])
-    
+    let newContentViewHeightSubject = BehaviorSubject<CGFloat>(value: 600)
     
     let meetingId:Int
     let agendaCount:Int
@@ -53,7 +53,7 @@ class AgendaViewModel {
                     owner.agendaTitleSubject.onNext(agenda.agendaName)
                     owner.issuesSubject.onNext(agenda.issues)
                     owner.documentsSubject.onNext(agenda.files)
-                    
+                    owner.newContentViewHeightSubject.onNext(CGFloat(agenda.issues.count*50+agenda.files.count*40+160))
                 }
             }).disposed(by: disposeBag)
     }
