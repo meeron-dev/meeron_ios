@@ -5799,7 +5799,7 @@
                         <outlet property="documentTableView" destination="fFg-s3-6C4" id="FKB-G0-zdl"/>
                         <outlet property="documentTableViewHeight" destination="1Gv-Pe-D0k" id="sMU-iU-IGp"/>
                         <outlet property="issueTableView" destination="AD6-gY-7QD" id="JJ8-3N-oic"/>
-                        <outlet property="issueTableViewHeight" destination="OD6-ea-bUD" id="U8M-ko-Iil"/>
+                        <outlet property="issueTableViewHeight" destination="OD6-ea-bUD" id="cEL-4r-PBl"/>
                         <outlet property="scrollContentViewHeight" destination="FpI-T0-GeK" id="EEe-B2-FaJ"/>
                     </connections>
                 </viewController>
