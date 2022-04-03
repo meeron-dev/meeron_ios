@@ -11,6 +11,8 @@ import RxSwift
 import Alamofire
 import UIKit
 
+import Amplify
+
 enum EncodingType {
     case JSONEncoding
     case URLEncoding
@@ -37,6 +39,7 @@ struct API {
     
     func requestData<T:Codable>(resource:Resource<T>) -> Observable<T?> {
         print(resource)
+        
         return RxAlamofire.requestData(resource.method, resource.url, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
             .flatMap({ (response, data) -> Observable<T?> in
                 print("✅", response)
@@ -99,5 +102,58 @@ struct API {
             
             return Disposables.create()
         })
+    }
+    
+    func download(url:String) {
+        let fileManager = FileManager.default
+                // 앱 경로
+        let appURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                // 파일이름 url 의 맨 뒤 컴포넌트로 지정 (50MB.zip)
+        let fileName : String = URL(string: url)!.lastPathComponent
+                // 파일 경로 생성
+        let fileURL = appURL.appendingPathComponent(fileName)
+                // 파일 경로 지정 및 다운로드 옵션 설정 ( 이전 파일 삭제 , 디렉토리 생성 )
+        let destination: DownloadRequest.Destination = { _, _ in
+            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+        }
+        
+        
+        AF.download(url, to: destination)
+            .downloadProgress { progress in
+                print(progress.fractionCompleted,"✔️")
+            }.response {response in
+                if response.error != nil {
+                    print("파일다운로드 실패")
+                }else{
+                    if let path = response.fileURL?.path {
+                        if response.fileURL?.lastPathComponent.split(separator: ".")[1] == "png" {
+                            let image = UIImage(contentsOfFile: path)
+                            guard let image = image  else {return }
+                            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                        }
+                    }
+                    print(response.fileURL?.lastPathComponent)
+                    print("파일다운로드 완료")
+                }
+                
+            }
+        
+    }
+    
+    func downloadFile(url:String) {
+        
+        let downloadToFileName = FileManager.default.urls(for: .documentDirectory,
+                                                          in: .userDomainMask)[0]
+            .appendingPathComponent("myFile.txt")
+        let storageOperation = Amplify.Storage.downloadFile(key: String(url.split(separator: "/").last!), local: downloadToFileName)
+        let progressSink = storageOperation.progressPublisher.sink { progress in print("Progress: \(progress)") }
+        let resultSink = storageOperation.resultPublisher.sink {
+            if case let .failure(storageError) = $0 {
+                print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
+            }
+        }
+        receiveValue: {
+            print("Completed")
+        }
     }
 }
