@@ -16,7 +16,7 @@ class MeetingCreationRepository {
     
     
     func createMeeting(data:MeetingCreation) -> Observable<Meeting?> {
-        var meetingAdminIds = data.managers.map{ $0.workspaceUserId }
+        let meetingAdminIds = data.managers.map{ $0.workspaceUserId }
          
         let parameter:[String:Any] = ["workspaceId": Int(UserDefaults.standard.string(forKey: "workspaceId")!)!,
                                       "meetingDate": data.date.toSlashDateString(),

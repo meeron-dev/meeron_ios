@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WorkspaceParticipationSolutionViewController" customModule="Meeron" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="Zsy-hw-UWY" id="GUS-Kl-YLL"/>
                 <outlet property="view" destination="cje-gH-jXP" id="Nfx-NV-CxR"/>
             </connections>
         </placeholder>
@@ -131,6 +132,9 @@
                         <color key="baseForegroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="baseBackgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </buttonConfiguration>
+                    <connections>
+                        <action selector="close:" destination="-1" eventType="touchUpInside" id="Utp-BK-7GM"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로필 작성" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFJ-Tz-U57">
                     <rect key="frame" x="0.0" y="54" width="414" height="21"/>

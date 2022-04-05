@@ -55,6 +55,8 @@ struct MyWorkspaceUser:Codable {
     var nickname: String?
     var profileImageUrl: String?
     var position: String?
+    var email:String?
+    var phone:String?
     var workspaceAdmin: Bool
 }
 

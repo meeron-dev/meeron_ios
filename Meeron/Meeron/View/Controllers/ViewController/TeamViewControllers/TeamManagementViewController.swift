@@ -96,15 +96,17 @@ class TeamManagementViewController:UIViewController {
     }
     
     func showSuccessDeleteTeamPopUp() {
-        showOneButtonPopUpView(message: "해당 팀이 삭제되었습니다.", doneButtonTitle: "확인") {
+        showOneButtonPopUpView(message: "해당 팀이 삭제되었습니다.", hasWorkspaceLabel: false, doneButtonTitle: "확인") {
             self.dismiss(animated: false, completion: nil)
         }
     }
     
     func showDeleteTeamPopUp(){
-        showTwoButtonPopUpView(message: "해당 팀을 정말 삭제하시겠습니까?", leftButtonTitle: "닫기", rightButtonTitle: "삭제하기") {
+        
+        showTwoButtonPopUpView(message: "해당 팀을 정말 삭제하시겠습니까?", subMessage: "", hasWorksapceLabel: false, leftButtonTitle: "닫기", rightButtonTitle: "삭제하기", leftComletion: {}, rightCompletion: {
             self.deleteTeam()
-        }
+        })
+        
     }
     
     func deleteTeam() {

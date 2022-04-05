@@ -19,6 +19,10 @@ class KeychainManager {
         
     }
     
+    func deleteToken() -> Bool {
+        return delete(service:"Meeron", account:"accessToken") && delete(service:"Meeron", account:"refreshToken")
+    }
+    
     func create(service:String, account:String, value:String) -> Bool {
         let query:NSDictionary = [
             kSecClass: kSecClassGenericPassword,

@@ -14,7 +14,9 @@
                 <outlet property="leftButton" destination="f2H-T7-TzE" id="nOn-Sc-zRs"/>
                 <outlet property="messageLabel" destination="Ok0-S7-mjr" id="HY7-bu-aYd"/>
                 <outlet property="rightButton" destination="q2Z-2a-c6i" id="Jai-61-lsm"/>
+                <outlet property="subMessageLabel" destination="aUu-ok-UqA" id="LBF-Qa-6Zj"/>
                 <outlet property="view" destination="iN0-l3-epB" id="YS5-Jd-DbF"/>
+                <outlet property="worksapceLabel" destination="WGA-Qo-QAC" id="ITV-hq-qer"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -58,27 +60,45 @@
                                 <constraint firstAttribute="height" constant="50" id="lB3-5A-hJg"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ok0-S7-mjr">
-                            <rect key="frame" x="142" y="84.5" width="42" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ok0-S7-mjr">
+                            <rect key="frame" x="30" y="85" width="266" height="20.5"/>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                             <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="워크스페이스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGA-Qo-QAC">
+                            <rect key="frame" x="25" y="25" width="83.5" height="20"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUu-ok-UqA">
+                            <rect key="frame" x="147.5" y="115.5" width="31" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="aUu-ok-UqA" firstAttribute="top" secondItem="Ok0-S7-mjr" secondAttribute="bottom" constant="10" id="2Kn-BI-BEp"/>
                         <constraint firstItem="Ok0-S7-mjr" firstAttribute="centerY" secondItem="mqE-h1-Gb4" secondAttribute="centerY" constant="-30" id="APF-vH-n3Q"/>
                         <constraint firstItem="DE8-LC-n4W" firstAttribute="centerX" secondItem="mqE-h1-Gb4" secondAttribute="centerX" id="BMa-Pr-iad"/>
+                        <constraint firstAttribute="trailing" secondItem="Ok0-S7-mjr" secondAttribute="trailing" constant="30" id="BMh-AC-dLY"/>
                         <constraint firstItem="q2Z-2a-c6i" firstAttribute="width" secondItem="f2H-T7-TzE" secondAttribute="width" id="D9g-BW-kXY"/>
                         <constraint firstAttribute="height" constant="250" id="DgQ-yB-KMM"/>
                         <constraint firstItem="f2H-T7-TzE" firstAttribute="leading" secondItem="mqE-h1-Gb4" secondAttribute="leading" id="RRj-wi-SiG"/>
                         <constraint firstAttribute="bottom" secondItem="f2H-T7-TzE" secondAttribute="bottom" id="TZH-e8-Idr"/>
                         <constraint firstAttribute="trailing" secondItem="q2Z-2a-c6i" secondAttribute="trailing" id="Y8D-xn-7DW"/>
+                        <constraint firstItem="aUu-ok-UqA" firstAttribute="centerX" secondItem="mqE-h1-Gb4" secondAttribute="centerX" id="YSh-ah-Akw"/>
                         <constraint firstAttribute="bottom" secondItem="q2Z-2a-c6i" secondAttribute="bottom" id="ama-6r-uWs"/>
+                        <constraint firstItem="Ok0-S7-mjr" firstAttribute="leading" secondItem="mqE-h1-Gb4" secondAttribute="leading" constant="30" id="bZm-h5-5Qk"/>
                         <constraint firstAttribute="bottom" secondItem="DE8-LC-n4W" secondAttribute="bottom" constant="5" id="ceV-KN-pUP"/>
+                        <constraint firstItem="WGA-Qo-QAC" firstAttribute="leading" secondItem="mqE-h1-Gb4" secondAttribute="leading" constant="25" id="dWE-iB-BHF"/>
                         <constraint firstItem="Ok0-S7-mjr" firstAttribute="centerX" secondItem="mqE-h1-Gb4" secondAttribute="centerX" id="elz-VO-gsu"/>
                         <constraint firstItem="q2Z-2a-c6i" firstAttribute="height" secondItem="f2H-T7-TzE" secondAttribute="height" id="imf-rI-5eY"/>
                         <constraint firstItem="q2Z-2a-c6i" firstAttribute="leading" secondItem="f2H-T7-TzE" secondAttribute="trailing" id="qii-3I-kNv"/>
+                        <constraint firstItem="WGA-Qo-QAC" firstAttribute="top" secondItem="mqE-h1-Gb4" secondAttribute="top" constant="25" id="uPW-qI-oxu"/>
                     </constraints>
                 </view>
             </subviews>

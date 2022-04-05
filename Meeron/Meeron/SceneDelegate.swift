@@ -126,7 +126,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
             
             let workspaceParicipationProfileCreationVC = WorkspaceParicipationProfileCreationViewController(nibName: "WorkspaceParicipationProfileCreationViewController", bundle: nil)
-            workspaceParicipationProfileCreationVC.workspaceParicipationProfileCreationVM = WorkspaceParicipationProfileCreationViewModel(workspaceId: workspaceId)
+            workspaceParicipationProfileCreationVC.workspaceParicipationProfileCreationVM = WorkspaceParicipationProfileCreationViewModel(workspaceId: workspaceId, type: .participant)
             
             self.window?.rootViewController = workspaceParicipationProfileCreationVC
         }

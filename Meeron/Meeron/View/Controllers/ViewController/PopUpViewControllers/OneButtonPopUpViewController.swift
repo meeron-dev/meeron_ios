@@ -10,6 +10,7 @@ import UIKit
 
 class OneButtonPopUpViewController:UIViewController {
     
+    @IBOutlet weak var worksapceLabel: UILabel!
     @IBOutlet weak var messageLabel:UILabel!
     @IBOutlet weak var contentView:UIView!
     @IBOutlet weak var doneButton:UIButton!
@@ -29,9 +30,14 @@ class OneButtonPopUpViewController:UIViewController {
         doneCompletion?()
         dismissView()
     }
-    func setupData(message:String, doneButtonTitle:String, doneCompletion: (()->())?){
+    func setupData(message:String, hasWorkspaceLabel:Bool, doneButtonTitle:String, doneCompletion: (()->())?){
         messageLabel.text = message
         doneButton.setTitle(doneButtonTitle, for: .normal)
         self.doneCompletion = doneCompletion
+        if hasWorkspaceLabel {
+            worksapceLabel.text = UserDefaults.standard.string(forKey: "worksapceName")
+        }else {
+            worksapceLabel.text = ""
+        }
     }
 }

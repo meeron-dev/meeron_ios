@@ -12,6 +12,9 @@ struct URLConstant {
     
     static let reissue = protocolHost + "/api/reissue"
     static let login = protocolHost + "/api/login"
+    static let logout = protocolHost + "/api/logout"
+    static let withdraw = protocolHost + "/api/users/quit"
+    
     static let user = protocolHost + "/api/users/me"
     static let userName = protocolHost + "/api/users/name"
     

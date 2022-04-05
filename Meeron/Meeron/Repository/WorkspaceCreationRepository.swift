@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import RxSwift
+import FirebaseDynamicLinks
 
 class WorkspaceCreationRepository {
     
@@ -47,6 +48,29 @@ class WorkspaceCreationRepository {
         let resource = Resource<Bool>(url: URLConstant.workspaceUsers, parameter: param, headers: headers, method: .post, encodingType: .URLEncoding )
         
         return api.upload(resource: resource, data: workspaceProfile.image, fileName: "image", mimeType: "image/png")
+    }
+    
+    func createWorkspaceDynamicLink(workspaceId:Int, completion: @escaping (String?)->() ) {
+        
+        let link = URL(string: "https://ronmee.page.link?id=\(workspaceId)")!
+        let domainURIPrefix = "https://ronmee.page.link"
+        let referralLink = DynamicLinkComponents(link: link, domainURIPrefix: domainURIPrefix)
+        
+        referralLink?.iOSParameters = DynamicLinkIOSParameters(bundleID: "com.fourtune.Meeron")
+        referralLink?.iOSParameters?.minimumAppVersion = "1.0.1"
+        referralLink?.iOSParameters?.appStoreID = "0"
+        
+        referralLink?.androidParameters = DynamicLinkAndroidParameters(packageName: "fourtune.meeron")
+        
+        
+        referralLink?.shorten(completion: {  shortURL, warnings, error in
+            guard let url = shortURL else {return}
+            print("✔️:", url)
+            completion("\(url)")
+            return
+        })
+        completion(nil)
+        return
     }
     
 }

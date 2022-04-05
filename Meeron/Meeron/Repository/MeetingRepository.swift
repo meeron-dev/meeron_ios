@@ -37,4 +37,10 @@ class MeetingRepository {
         let resource = Resource<AgendaCountInfo>(url: URLConstant.meetings+"/\(meetingId)/agendas/count", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         return api.requestData(resource: resource)
     }
+    
+    func deleteMeeting(meetingId:Int, workspaceUserId:Int) -> Observable<Bool> {
+        let resource = Resource<Bool>(url: URLConstant.meetings+"/\(meetingId)/delete", parameter: ["attendeeWorkspaceUserId":workspaceUserId], headers: headers, method: .post, encodingType: .JSONEncoding)
+        print(resource)
+        return api.requestResponse(resource: resource)
+    }
 }

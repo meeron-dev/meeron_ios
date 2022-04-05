@@ -64,7 +64,7 @@ class PickCreationParticipationViewController:UIViewController {
     }
     
     @IBAction func next() {
-        if creationButton.isEnabled {
+        if creationButton.imageView?.image == UIImage(named: ImageNameConstant.selectCreation) {
             guard let WorkspaceCreationNaviC = self.storyboard?.instantiateViewController(withIdentifier: "WorkspaceCreationNavigationController") else {return}
             WorkspaceCreationNaviC.modalPresentationStyle = .fullScreen
             present(WorkspaceCreationNaviC, animated: true, completion: nil)

@@ -12,20 +12,28 @@ class UserRepository {
     let api = API()
     
     func reissueToken() -> Observable<Token?> {
-        let resource = Resource<Token>(url: URLConstant.reissue, parameter: [:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "refreshToken")!)], method: .post, encodingType: .URLEncoding)
+        guard let refreshToken = KeychainManager().read(service: "Meeron", account: "refreshToken") else {return Observable.just(nil)}
+        
+        let resource = Resource<Token>(url: URLConstant.reissue, parameter: [:], headers: [.authorization(bearerToken: refreshToken)], method: .post, encodingType: .URLEncoding)
         
         return api.requestData(resource: resource)
         
     }
     
     func loadUser() -> Observable<User?> {
-        let resource = Resource<User>(url: URLConstant.user, parameter:[:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
+        
+        guard let accessToken = KeychainManager().read(service: "Meeron", account: "accessToken") else {return Observable.just(nil)}
+        
+        let resource = Resource<User>(url: URLConstant.user, parameter:[:], headers: [.authorization(bearerToken: accessToken)], method: .get, encodingType: .URLEncoding)
         
         return api.requestData(resource: resource)
     }
     
     func loadUserWorkspace(id:Int) -> Observable<UserWorkspace?> {
+        
         let resource = Resource<UserWorkspace>(url: URLConstant.userWorkspace+"/\(id)/workspace-users", parameter: ["userId":String(id)], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
+        
+        print("🤭", resource)
         
         return api.requestData(resource: resource)
     }
@@ -45,7 +53,7 @@ class UserRepository {
     }
     
     func loadWorkspaceInfo() -> Observable<Workspace?> {
-        
+        print("🟡")
         guard let workspaceId = UserDefaults.standard.string(forKey: "workspaceId") else {return Observable.just(nil)}
         
         let resource = Resource<Workspace>(url: URLConstant.workspace+"/\(workspaceId)", parameter: [:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)

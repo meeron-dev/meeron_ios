@@ -27,7 +27,7 @@ class TeamViewModel {
     
     let disposeBag = DisposeBag()
     
-    let isAdmin =  UserDefaults.standard.bool(forKey: "workspaceAdmin")
+    let isAdmin = UserDefaults.standard.bool(forKey: "workspaceAdmin")
     
     init() {
         print("관리자",isAdmin,"✔️")

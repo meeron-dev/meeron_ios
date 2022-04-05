@@ -28,6 +28,6 @@ class MeetingResultViewController:UIViewController {
     }
     
     @IBAction func goFeedbackView(_ sender: Any) {
-        showOneButtonPopUpView(message: "추후 추가될 기능입니다.", doneButtonTitle: "확인", doneCompletion: nil)
+        
     }
 }

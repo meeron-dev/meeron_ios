@@ -53,8 +53,6 @@ class MeetingViewController:UIViewController {
         setMeetingBasicInfo()
         setTotalParticipantCountInfo()
         setAgendaCountInfo()
-        
-        
     }
     
     private func setAgendaCountInfo() {
@@ -141,6 +139,9 @@ class MeetingViewController:UIViewController {
                     owner.meetingDateLabel.text = data.startTime+"~"+data.endTime
                     owner.meetingTeamLabel.text = data.operationTeamName
                     owner.meetingPurposeLabel.text = data.meetingPurpose
+                    
+                    owner.checkManager(data: data.admins)
+                    
                     var managers:[String] = []
                     for manager in data.admins {
                         managers.append(manager.nickname)
@@ -152,6 +153,30 @@ class MeetingViewController:UIViewController {
         
         
     }
+    
+    func checkManager(data: [Admin]) {
+        guard let workspaceUserId = UserDefaults.standard.string(forKey: "workspaceUserId") else {return}
+        
+        if (data.filter{$0.workspaceUserId == Int(workspaceUserId)!}).count > 0 {
+            meetingVM.deleteWorkspaceSubject
+                .withUnretained(self)
+                .subscribe(onNext: { owner, success in
+                    if success {
+                        owner.showDoneMeetingDeletePopUp()
+                    }
+                }).disposed(by: disposeBag)
+        }else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
+        }
+    }
+    
+    func showDoneMeetingDeletePopUp() {
+        showOneButtonPopUpView(message: "해당 회의가 삭제되었습니다.", hasWorkspaceLabel: false, doneButtonTitle: "확인", doneCompletion: {
+            
+        })
+    }
+    
+    
     
     @IBAction func goUserStatusCrationView(_ sender: Any) {
         let userStatusCreationVC = UserStatusCreationViewController(nibName: "UserStatusCreationViewController", bundle: nil)
@@ -172,6 +197,14 @@ class MeetingViewController:UIViewController {
     @IBAction func back(_ sender:Any) {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func deleteMeeting(_ sender: Any) {
+        showTwoButtonPopUpView(message: "해당 회의를 정말 삭제하시겠습니까?", subMessage: "", hasWorksapceLabel: false, leftButtonTitle: "닫기", rightButtonTitle: "삭제하기") {} rightCompletion: {
+            self.meetingVM.deleteMeeting()
+        }
+
+    }
+    
     
 }
 

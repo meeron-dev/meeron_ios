@@ -17,9 +17,13 @@ class MeetingViewModel {
     let participantCountsByTeamSubject = BehaviorSubject<[ParticipantCountByTeam]>(value: [])
     let agendaCountInfoSubject = BehaviorSubject<AgendaCountInfo>(value: AgendaCountInfo(agendas: 0, checks: 0, files: 0))
     
+    let deleteWorkspaceSubject = PublishSubject<Bool>()
+    
     let meetingRepository = MeetingRepository()
     let participantRepository = ParticipantRepository()
     let disposeBag = DisposeBag()
+    
+    
     
     init(meetingId:Int) {
         self.meetingId = meetingId
@@ -35,6 +39,8 @@ class MeetingViewModel {
                 owner.meetingBasicInfoSubject.onNext(meetingBasicInfo)
             }).disposed(by: disposeBag)
     }
+    
+    
     
     func loadParticipantsCountInfo() {
         participantRepository.loadParticipantsCountByTeam(meetingId: meetingId)
@@ -54,6 +60,15 @@ class MeetingViewModel {
                     owner.agendaCountInfoSubject.onNext(data)
                     owner.agendaCount = data.agendas
                 }
+            }).disposed(by: disposeBag)
+    }
+    
+    func deleteMeeting() {
+        guard let workspaceUserId = UserDefaults.standard.string(forKey: "workspaceUserId") else {return}
+        meetingRepository.deleteMeeting(meetingId: meetingId, workspaceUserId: Int(workspaceUserId)!)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, success in
+                owner.deleteWorkspaceSubject.onNext(success)
             }).disposed(by: disposeBag)
     }
 }
