@@ -84,7 +84,7 @@ struct API {
                 }
                 
             
-            }, to: resource.url, usingThreshold: UInt64.init(), method: .post, headers: ["Content-Type": "multipart/form", "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!])
+            }, to: resource.url, usingThreshold: UInt64.init(), method: resource.method, headers: ["Content-Type": "multipart/form", "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!])
                 .response { response in
                     print("✔️",response.debugDescription)
                     guard let statusCode = response.response?.statusCode else {

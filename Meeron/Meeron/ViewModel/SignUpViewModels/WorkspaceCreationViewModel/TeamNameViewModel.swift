@@ -36,6 +36,7 @@ class TeamNameViewModel {
             .withUnretained(self)
             .subscribe(onNext: { owner, workspaceCreationResponse in
                 if let response = workspaceCreationResponse {
+                    print("워크스페이스 생성. 워크스페이스 id:", response.workspaceId)
                     owner.workspaceId = response.workspaceId
                     owner.postTeamName()
                     owner.createWorkspaceDynamicLink()
@@ -46,7 +47,7 @@ class TeamNameViewModel {
     }
     
     func postWorkspaceProfile() {
-        workspaceCreationRepository.postProfile(workspaceProfile: workspaceCreationData.workspaceProfile, workspaceId: String(workspaceId))
+        workspaceCreationRepository.postWorkspaceManagerProfile(workspaceProfile: workspaceCreationData.workspaceProfile, workspaceId: String(workspaceId))
             .withUnretained(self)
             .subscribe(onNext: { owner, success in
                 owner.successWorkspaceProfileSubject.onNext(success)

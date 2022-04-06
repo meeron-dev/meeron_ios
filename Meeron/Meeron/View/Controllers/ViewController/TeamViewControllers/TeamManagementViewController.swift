@@ -56,12 +56,8 @@ class TeamManagementViewController:UIViewController {
     }
     
     func setupCollectionViewLayout() {
-        let participantProfileCollectionViewLayout = UICollectionViewFlowLayout()
-        participantProfileCollectionViewLayout.itemSize = CGSize(width: 75, height: 105)
-        participantProfileCollectionViewLayout.minimumInteritemSpacing = 10
-        participantProfileCollectionViewLayout.minimumLineSpacing = 20
         
-        profileCollectionView.collectionViewLayout = participantProfileCollectionViewLayout
+        profileCollectionView.collectionViewLayout = UICollectionViewFlowLayout.profileCollectionViewLayout
     }
     
     private func deleteProfile(data: WorkspaceUser) {
@@ -69,22 +65,25 @@ class TeamManagementViewController:UIViewController {
     }
     
     private func setupButton(){
-        let doneButton = UIButton()
-        view.addSubview(doneButton)
         
-        doneButton.setupBottomButton(type: .long, state: .enableGray, title: "팀 삭제하기", view: view)
-        
-        doneButton.rx.tap
-            .withUnretained(self)
-            .subscribe(onNext: { owner, _ in
-                owner.showDeleteTeamPopUp()
-            }).disposed(by: disposeBag)
+        if teamManagementVM.nowTeam != nil {
+            let doneButton = UIButton()
+            view.addSubview(doneButton)
+            
+            doneButton.setupBottomButton(type: .long, state: .enableGray, title: "팀 삭제하기", view: view)
+            
+            doneButton.rx.tap
+                .withUnretained(self)
+                .subscribe(onNext: { owner, _ in
+                    owner.showDeleteTeamPopUp()
+                }).disposed(by: disposeBag)
+        }
     }
     
     private func configureUI() {
         addDismissKeyboardTapper()
         
-        teamNameTextField.text = teamManagementVM.nowTeam.teamName
+        teamNameTextField.text = teamManagementVM.nowTeam?.teamName ?? "NONE"
         
         teamManagementVM.successTeamDeleteSubejct
             .withUnretained(self)
@@ -114,9 +113,10 @@ class TeamManagementViewController:UIViewController {
     }
     
     @IBAction func goParticipantAdditionView(_ sender: Any) {
+        guard let nowTeam = teamManagementVM.nowTeam else {return}
         let teamParticipantAdditionalVC = self.storyboard?.instantiateViewController(withIdentifier: "TeamParticipantAdditionalViewController") as! TeamParticipantAdditionalViewController
         teamParticipantAdditionalVC.modalPresentationStyle = .fullScreen
-        teamParticipantAdditionalVC.teamParticipantAdditionalVM = TeamParticipantAdditionalViewModel(teamId:teamManagementVM.nowTeam.teamId)
+        teamParticipantAdditionalVC.teamParticipantAdditionalVM = TeamParticipantAdditionalViewModel(teamId:nowTeam.teamId)
         
         present(teamParticipantAdditionalVC, animated: true, completion: nil)
         

@@ -44,20 +44,43 @@ class TeamViewController:UIViewController {
         calendarTapper.addTarget(self, action: #selector(goCalendarView))
         calendarImageView.addGestureRecognizer(calendarTapper)
         
-        if teamVM.isAdmin {
-            manageImageView.isUserInteractionEnabled = true
-            let teamManageTapper = UITapGestureRecognizer()
-            teamManageTapper.addTarget(self, action: #selector(goTeamManagementView))
-            manageImageView.addGestureRecognizer(teamManageTapper)
-        }
+        
+        teamVM.nowTeamSubject
+            .withUnretained(self)
+            .subscribe(onNext: { owner, team in
+                if UserDefaults.standard.bool(forKey: "workspaceAdmin") && team != nil {
+                    owner.setManagerTapper()
+                }else {
+                    owner.deleteManagerTapper()
+                }
+            }).disposed(by: disposeBag)
     }
     
+    func deleteManagerTapper() {
+        manageImageView.image = nil
+        manageImageViewWidth.constant = 0
+    }
+    
+    func setManagerTapper() {
+        
+        manageImageView.image = UIImage(named: "ic_team_Setting")
+        manageImageViewWidth.constant = 41
+        
+        manageImageView.isUserInteractionEnabled = true
+        let teamManageTapper = UITapGestureRecognizer()
+        teamManageTapper.addTarget(self, action: #selector(goTeamManagementView))
+        manageImageView.addGestureRecognizer(teamManageTapper)
+    }
+    
+    
     @objc func goTeamManagementView() {
-        guard let nowTeam = teamVM.nowTeam else {return}
-        let teamManagementVC = self.storyboard?.instantiateViewController(withIdentifier: "TeamManagementViewController") as! TeamManagementViewController
-        teamManagementVC.teamManagementVM = TeamManagementViewModel(participants: teamVM.particiapnt, nowTeam: nowTeam)
-        teamManagementVC.modalPresentationStyle = .fullScreen
-        present(teamManagementVC, animated: true, completion: nil)
+        if teamVM.particiapnt.count > 0 || teamVM.nowTeam != nil {
+            let teamManagementVC = self.storyboard?.instantiateViewController(withIdentifier: "TeamManagementViewController") as! TeamManagementViewController
+            teamManagementVC.teamManagementVM = TeamManagementViewModel(participants: teamVM.particiapnt, nowTeam: teamVM.nowTeam)
+            teamManagementVC.modalPresentationStyle = .fullScreen
+            present(teamManagementVC, animated: true, completion: nil)
+        }
+        
     }
     
     @objc func goCalendarView() {
@@ -72,14 +95,6 @@ class TeamViewController:UIViewController {
     
     private func configureUI() {
         setStausBarColor()
-        
-        if !teamVM.isAdmin {
-            manageImageView.image = nil
-            manageImageViewWidth.constant = 0
-        }else {
-            manageImageView.image = UIImage(named: "ic_team_Setting")
-            manageImageViewWidth.constant = 41
-        }
         
         teamVM.nowTeamSubject
             .observe(on: MainScheduler.instance)
@@ -145,6 +160,25 @@ class TeamViewController:UIViewController {
                 }
                 
             }).disposed(by: disposeBag)
+        
+        
+        teamParticipantCollectionView.rx.itemSelected
+            .withUnretained(self)
+            .subscribe(onNext: { owner, indexPath in
+                let cell = owner.teamParticipantCollectionView.cellForItem(at: indexPath) as! MeetingProfileSelectCell
+                owner.showUserProfileView(data: cell.profileData)
+            }).disposed(by: disposeBag)
+    }
+    
+    func showUserProfileView(data: WorkspaceUser?) {
+        guard let data = data else {
+            return
+        }
+
+        let userProfileVC = UserProfileViewController(nibName: "UserProfileViewController", bundle: nil)
+        userProfileVC.modalPresentationStyle = .fullScreen
+        present(userProfileVC, animated: true, completion: nil)
+        userProfileVC.setProfileData(data: data, teamName: teamNameLabel.text ?? "NONE")
     }
     
     func goCreationTeamView() {

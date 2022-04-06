@@ -34,7 +34,7 @@ class WorkspaceParicipationProfileCreationRepository {
         
     }
     
-    func postProfile(workspaceProfile:WorkspaceProfile, workspaceId:String) -> Observable<Bool> {
+    func postWorkspaceParticipantProfile(workspaceProfile:WorkspaceProfile, workspaceId:String) -> Observable<Bool> {
         let jsonData:[String : Any] = ["workspaceId" : Int(workspaceId)!,
                          "nickname" : workspaceProfile.nickname,
                          "position" : workspaceProfile.position,

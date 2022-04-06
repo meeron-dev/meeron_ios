@@ -70,4 +70,6 @@ struct WorkspaceUser:Codable, Equatable {
     var profileImageUrl: String?
     var nickname: String
     var position: String
+    var email: String?
+    var phone: String?
 }

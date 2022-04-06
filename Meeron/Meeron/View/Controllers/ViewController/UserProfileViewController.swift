@@ -37,4 +37,13 @@ class UserProfileViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    func setProfileData(data: WorkspaceUser, teamName:String) {
+        //nameLabel.text = data.
+        nicknameLabel.text = data.nickname
+        positionLabel.text = data.position
+        phoneNumberLabel.text = data.phone
+        emailLabel.text = data.email
+        teamLabel.text = teamName
+    }
+    
 }

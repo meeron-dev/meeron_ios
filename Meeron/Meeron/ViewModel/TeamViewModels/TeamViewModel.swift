@@ -27,10 +27,10 @@ class TeamViewModel {
     
     let disposeBag = DisposeBag()
     
-    let isAdmin = UserDefaults.standard.bool(forKey: "workspaceAdmin")
+    //let isAdmin = UserDefaults.standard.bool(forKey: "workspaceAdmin")
     
     init() {
-        print("관리자",isAdmin,"✔️")
+        //print("관리자",isAdmin,"✔️")
         loadTeam()
         nowTeamSubject
             .withUnretained(self)
@@ -54,7 +54,7 @@ class TeamViewModel {
                         teams.teams[i].teamOrder = i+1
                     }
                     
-                    if owner.isAdmin {
+                    if UserDefaults.standard.bool(forKey: "workspaceAdmin") {
                         if teams.teams.count >= 5 {
                             owner.teams = teams.teams
                         }else {
@@ -89,7 +89,7 @@ class TeamViewModel {
     }
     
     func setNowTeam() {
-        if isAdmin {
+        if UserDefaults.standard.bool(forKey: "workspaceAdmin") {
             if teams.count > 1 {    //+제외
                 if teams[0] != nil {
                     nowTeamSubject.onNext(teams[0]) //  팀이 5개여서 +가 없을 때

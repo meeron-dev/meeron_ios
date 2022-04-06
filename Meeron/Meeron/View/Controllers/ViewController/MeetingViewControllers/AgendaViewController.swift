@@ -100,7 +100,7 @@ class AgendaViewController:UIViewController {
         agendaVM.documentsSubject.bind(to: documentTableView.rx.items) { [weak self] tableView, row, element in
             let cell = tableView.dequeueReusableCell(withIdentifier: "MeetingAgendaDocumentCell", for: IndexPath(row: row, section: 0)) as! MeetingAgendaDocumentCell
             
-            cell.documentLabel.text = element.fileUrl
+            cell.documentLabel.text = element.fileName
             cell.documentUrl = element.fileUrl
             cell.delegate = self
             

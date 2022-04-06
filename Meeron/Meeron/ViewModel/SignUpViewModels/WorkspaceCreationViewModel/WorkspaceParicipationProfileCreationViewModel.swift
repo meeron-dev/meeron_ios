@@ -27,6 +27,7 @@ class WorkspaceParicipationProfileCreationViewModel {
     var workspaceProfileData = WorkspaceProfile()
     
     let workspaceParicipationProfileCreationRepository = WorkspaceParicipationProfileCreationRepository()
+    let userRepository = UserRepository()
     
     let disposeBag = DisposeBag()
     
@@ -96,17 +97,27 @@ class WorkspaceParicipationProfileCreationViewModel {
     }
     
     func createWorkspaceProfile() {
-        workspaceParicipationProfileCreationRepository.postProfile(workspaceProfile: workspaceProfileData, workspaceId: workspaceId)
-            .withUnretained(self)
-            .subscribe(onNext: { owner, success in
-                owner.successProfileCreationSubject.onNext(success)
-            }).disposed(by: disposeBag)
+        
+        switch profileType {
+        case .participant:
+            workspaceParicipationProfileCreationRepository.postWorkspaceParticipantProfile(workspaceProfile: workspaceProfileData, workspaceId: workspaceId)
+                .withUnretained(self)
+                .subscribe(onNext: { owner, success in
+                    owner.successProfileCreationSubject.onNext(success)
+                }).disposed(by: disposeBag)
+        case .myMeeron:
+            userRepository.modifyUserProfile(data: workspaceProfileData)
+                .withUnretained(self)
+                .subscribe(onNext: { owner, success in
+                    owner.successProfileCreationSubject.onNext(success)
+                }).disposed(by: disposeBag)
+        }
     }
     
     
     func loadProfileData() {
         guard let userId = UserDefaults.standard.string(forKey: "userId") else {return}
-        UserRepository().loadUserWorkspace(id: Int(userId)!)
+        userRepository.loadUserWorkspace(id: Int(userId)!)
             .withUnretained(self)
             .subscribe(onNext: { owner, data in
                 if let data = data {

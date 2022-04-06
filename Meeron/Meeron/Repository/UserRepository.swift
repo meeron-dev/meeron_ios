@@ -44,6 +44,7 @@ class UserRepository {
     }
     
     func saveUserWorkspace(data:[MyWorkspaceUser]) {
+        print("📕워크스페이스", data)
         UserDefaults.standard.set(String(data[0].workspaceId), forKey:"workspaceId")
         UserDefaults.standard.set(String(data[0].workspaceUserId), forKey: "workspaceUserId")
         UserDefaults.standard.set(data[0].nickname, forKey: "workspaceNickname")
@@ -63,4 +64,24 @@ class UserRepository {
     func saveWorkspace(data:Workspace) {
         UserDefaults.standard.set(data.workspaceName, forKey: "workspaceName")
     }
+    
+    func modifyUserProfile(data: WorkspaceProfile) -> Observable<Bool> {
+        guard let workspaceUserId = UserDefaults.standard.string(forKey: "workspaceId") else {return Observable.just(false)}
+        let jsonData:[String : Any] = [ "nickname" : data.nickname, "position" : data.position, "email" : data.email, "phone":  data.phoneNumber]
+        
+        
+        var param : [String:Any] = [:]
+        if let theJSONData = try? JSONSerialization.data(
+                withJSONObject: jsonData,
+                options: []) {
+                let theJSONText = String(data: theJSONData,
+                                         encoding: .utf8)
+                
+                param = ["request" : theJSONText ?? ""]
+            }
+        let resource = Resource<Bool>(url: URLConstant.workspaceUsers+"/\(workspaceUserId)", parameter: param, headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .put, encodingType: .URLEncoding )
+        
+        return api.upload(resource: resource, data: data.image, fileName: "image", mimeType: "image/png")
+    }
+    
 }

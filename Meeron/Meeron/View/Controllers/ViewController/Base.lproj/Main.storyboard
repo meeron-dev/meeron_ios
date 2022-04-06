@@ -4523,7 +4523,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vbP-hk-hsf">
-                                <rect key="frame" x="30" y="339" width="330" height="505"/>
+                                <rect key="frame" x="0.0" y="339" width="390" height="505"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WXf-E7-dM2">
                                     <size key="itemSize" width="128" height="128"/>
@@ -4598,7 +4598,7 @@
                             <constraint firstItem="6YN-CO-EI2" firstAttribute="top" secondItem="LyT-PE-hnh" secondAttribute="bottom" constant="55" id="Wgy-k8-02Q"/>
                             <constraint firstItem="LRP-lc-Li8" firstAttribute="top" secondItem="kSe-xU-765" secondAttribute="bottom" constant="58" id="Wrd-gH-KGP"/>
                             <constraint firstItem="LyT-PE-hnh" firstAttribute="top" secondItem="LRP-lc-Li8" secondAttribute="bottom" constant="5" id="XIl-eT-UXw"/>
-                            <constraint firstItem="NmL-qg-VSw" firstAttribute="trailing" secondItem="vbP-hk-hsf" secondAttribute="trailing" constant="30" id="XKN-G1-otG"/>
+                            <constraint firstItem="NmL-qg-VSw" firstAttribute="trailing" secondItem="vbP-hk-hsf" secondAttribute="trailing" id="XKN-G1-otG"/>
                             <constraint firstItem="G5k-l9-gBW" firstAttribute="centerX" secondItem="zHa-CK-P2X" secondAttribute="centerX" id="aeF-La-0i7"/>
                             <constraint firstAttribute="bottom" secondItem="lzL-XC-1sO" secondAttribute="bottom" id="ekO-G8-sP7"/>
                             <constraint firstItem="lzL-XC-1sO" firstAttribute="leading" secondItem="NmL-qg-VSw" secondAttribute="leading" constant="30" id="faH-hs-9Im"/>
@@ -4609,7 +4609,7 @@
                             <constraint firstItem="NmL-qg-VSw" firstAttribute="trailing" secondItem="5Zr-Nf-8Oo" secondAttribute="trailing" constant="20" id="pX2-dv-X17"/>
                             <constraint firstItem="NmL-qg-VSw" firstAttribute="trailing" secondItem="LyT-PE-hnh" secondAttribute="trailing" constant="30" id="phG-pl-G31"/>
                             <constraint firstItem="5Zr-Nf-8Oo" firstAttribute="centerY" secondItem="kSe-xU-765" secondAttribute="centerY" id="pvj-Gn-2hv"/>
-                            <constraint firstItem="vbP-hk-hsf" firstAttribute="leading" secondItem="NmL-qg-VSw" secondAttribute="leading" constant="30" id="rES-Ws-0O4"/>
+                            <constraint firstItem="vbP-hk-hsf" firstAttribute="leading" secondItem="NmL-qg-VSw" secondAttribute="leading" id="rES-Ws-0O4"/>
                             <constraint firstItem="NmL-qg-VSw" firstAttribute="trailing" secondItem="lzL-XC-1sO" secondAttribute="trailing" constant="30" id="yGy-GC-4vg"/>
                         </constraints>
                     </view>
@@ -4622,7 +4622,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MUs-uT-gfl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2415" y="3176"/>
+            <point key="canvasLocation" x="2414" y="3197"/>
         </scene>
         <!--팀 생성하기-->
         <scene sceneID="xRg-15-N8e">

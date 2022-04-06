@@ -180,7 +180,7 @@
                                         <constraint firstAttribute="height" constant="0.90000000000000002" id="4C1-Sc-VNj"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 사용중인 별명입니다." textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDs-CX-fXP">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 사용중인 별명입니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDs-CX-fXP">
                                     <rect key="frame" x="30" y="336" width="354" height="0.0"/>
                                     <constraints>
                                         <constraint firstAttribute="height" id="071-r6-GCn"/>

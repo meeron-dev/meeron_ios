@@ -28,7 +28,7 @@ class WorkspaceCreationRepository {
         return api.requestResponse(resource: resource)
     }
     
-    func postProfile(workspaceProfile:WorkspaceProfile, workspaceId:String) -> Observable<Bool> {
+    func postWorkspaceManagerProfile(workspaceProfile:WorkspaceProfile, workspaceId:String) -> Observable<Bool> {
         let jsonData:[String : Any] = ["workspaceId" : Int(workspaceId)!,
                          "nickname" : workspaceProfile.nickname,
                          "position" : workspaceProfile.position,
@@ -45,7 +45,7 @@ class WorkspaceCreationRepository {
                 
                 param = ["request" : theJSONText ?? ""]
             }
-        let resource = Resource<Bool>(url: URLConstant.workspaceUsers, parameter: param, headers: headers, method: .post, encodingType: .URLEncoding )
+        let resource = Resource<Bool>(url: URLConstant.workspaceUsers+"/admin", parameter: param, headers: headers, method: .post, encodingType: .URLEncoding )
         
         return api.upload(resource: resource, data: workspaceProfile.image, fileName: "image", mimeType: "image/png")
     }
