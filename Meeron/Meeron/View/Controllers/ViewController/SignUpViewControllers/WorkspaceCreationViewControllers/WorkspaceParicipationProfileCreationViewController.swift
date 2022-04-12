@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import RxSwift
 import PhotosUI
+import Kingfisher
+import AWSS3
 
 class WorkspaceParicipationProfileCreationViewController: UIViewController {
     
@@ -16,6 +18,7 @@ class WorkspaceParicipationProfileCreationViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nicknameCheckLabelHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var nicknameTextFieldUnderLineView: UIView!
     @IBOutlet weak var nicknameTextField: UITextField!
     @IBOutlet weak var positionTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -48,8 +51,6 @@ class WorkspaceParicipationProfileCreationViewController: UIViewController {
             
         }
         
-        
-        
         configureUI()
         setupButton()
         setupTextField()
@@ -78,13 +79,29 @@ class WorkspaceParicipationProfileCreationViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
     
-    func setProfileData(data: MyWorkspaceUser) {
+    func setProfileData(data: WorkspaceUser) {
+        print("🖌")
         nicknameTextField.text = data.nickname
         positionTextField.text = data.position
         emailTextField.text = data.email
         phoneNumberTextField.text = data.phone
+        
+        if data.profileImageUrl == "" {
+            profileImageView.image = UIImage(named: ImageNameConstant.profile)
+            return
+        }
+        
         if let profileUrl = data.profileImageUrl {
-            
+           
+            API().getImageResource(url: profileUrl) { imageResource in
+                DispatchQueue.main.async {
+                    self.profileImageView.kf.indicatorType = .activity
+                    self.profileImageView.kf.setImage(with: imageResource)
+                }
+            }
+        }
+        if profileImageView.image == nil {
+            profileImageView.image = UIImage(named: ImageNameConstant.profile)
         }
     }
     
@@ -163,10 +180,10 @@ class WorkspaceParicipationProfileCreationViewController: UIViewController {
     
     private func setupTextField() {
         
-        nicknameTextField.rx.controlEvent([.editingDidEndOnExit])
-            .withUnretained(self)
-            .subscribe { owner, _ in
-                owner.workspaceParicipationProfileCreationVM.checkNickname(nickname: owner.nicknameTextField.text ?? "")
+        nicknameTextField.rx.text.asDriver()
+            .debounce(.milliseconds(500))
+            .drive { text in
+                self.workspaceParicipationProfileCreationVM.checkNickname(nickname: text ?? "")
             }.disposed(by: disposeBag)
         
         
@@ -245,8 +262,10 @@ class WorkspaceParicipationProfileCreationViewController: UIViewController {
             .subscribe(onNext: { owner, vaild in
                 if vaild || owner.nicknameTextField.text == "" {
                     owner.nicknameCheckLabelHeight.constant = 0
+                    owner.nicknameTextFieldUnderLineView.backgroundColor = .lightGray
                 }else {
                     owner.nicknameCheckLabelHeight.constant = 20
+                    owner.nicknameTextFieldUnderLineView.backgroundColor = .mrRed
                 }
                 
             }).disposed(by: disposeBag)
@@ -307,7 +326,7 @@ extension WorkspaceParicipationProfileCreationViewController:PHPickerViewControl
                 
                 let image = item as? UIImage
                 if let image = image {
-                    self.workspaceParicipationProfileCreationVM.saveProfileImage(image: image.pngData())
+                    self.workspaceParicipationProfileCreationVM.saveProfileImage(image: image.jpegData(compressionQuality: 0.7))
                     DispatchQueue.main.async {
                         self.profileImageView.image = image
                     }

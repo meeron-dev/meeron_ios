@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MeetingProfileDeleteCell: UICollectionViewCell {
     
@@ -33,6 +34,7 @@ class MeetingProfileDeleteCell: UICollectionViewCell {
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
        
         profileImageView.image = UIImage(named: ImageNameConstant.profile)
+        profileImageView.contentMode = .scaleAspectFill
     }
     
     @IBAction func deleteProfile(_ sender: Any) {
@@ -44,18 +46,26 @@ class MeetingProfileDeleteCell: UICollectionViewCell {
         nameLabel.text = data.nickname
         positionLabel.text = data.position
         profileData = data
-        /*
-        if data.profileImageUrl != nil {
-            let imgURL = URL(string: data.profileImageUrl!)!
-            DispatchQueue.global().async {
-                let imgData = try? Data(contentsOf: imgURL)
-                if imgData != nil {
-                    DispatchQueue.main.async {
-                        self.profileImageView.image = UIImage(data: imgData!)
-                    }
+        
+        if data.profileImageUrl == "" {
+            profileImageView.image = UIImage(named: ImageNameConstant.profile)
+            return
+        }
+        
+        if let profileUrl = data.profileImageUrl {
+            
+            API().getImageResource(url: profileUrl) { imageResource in
+                DispatchQueue.main.async {
+                    self.profileImageView.kf.indicatorType = .activity
+                    self.profileImageView.kf.setImage(with: imageResource)
                 }
             }
-        }*/
+            
+        }
+        
+        if profileImageView.image == nil {
+            profileImageView.image = UIImage(named: ImageNameConstant.profile)
+        }
     }
 
 }

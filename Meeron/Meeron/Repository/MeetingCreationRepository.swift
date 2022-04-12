@@ -15,7 +15,7 @@ class MeetingCreationRepository {
     let api = API()
     
     
-    func createMeeting(data:MeetingCreation) -> Observable<Meeting?> {
+    func createMeeting(data:MeetingCreation) -> Observable<MeetingId?> {
         let meetingAdminIds = data.managers.map{ $0.workspaceUserId }
          
         let parameter:[String:Any] = ["workspaceId": Int(UserDefaults.standard.string(forKey: "workspaceId")!)!,
@@ -28,7 +28,7 @@ class MeetingCreationRepository {
                                       "meetingAdminIds":meetingAdminIds]
         
         print("회의 생성 파라미터",parameter)
-        let resource = Resource<Meeting>(url: URLConstant.meetings, parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
+        let resource = Resource<MeetingId>(url: URLConstant.meetings, parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
         
         return  api.requestData(resource: resource)
     }
@@ -46,10 +46,16 @@ class MeetingCreationRepository {
         for i in 0..<datas.count {
             var issues:[[String:String]] = []
             for j in 0..<datas[i].issue.count {
-                issues.append(["issue":datas[i].issue[j]])
+                if datas[i].issue[j] != "" {
+                    issues.append(["issue":datas[i].issue[j]])
+                }
             }
-            let agenda:[String:Any] = ["order":i+1, "name":datas[i].title, "issues":issues]
-            agendas.append(agenda)
+            var agenda:[String:Any] = [:]
+            if datas[i].title != "" {
+                agenda = ["order":i+1, "name":datas[i].title, "issues":issues]
+                agendas.append(agenda)
+            }
+            
         }
         
         let parameter = ["agendas":agendas]

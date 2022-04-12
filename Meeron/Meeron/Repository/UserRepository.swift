@@ -65,8 +65,14 @@ class UserRepository {
         UserDefaults.standard.set(data.workspaceName, forKey: "workspaceName")
     }
     
+    func loadWorkspaceUser(workspaceUserId:String) -> Observable<WorkspaceUser?> {
+        let resource = Resource<WorkspaceUser>(url: URLConstant.workspaceUsers+"/\(workspaceUserId)", parameter:[:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding )
+        
+        return api.requestData(resource: resource)
+    }
+    
     func modifyUserProfile(data: WorkspaceProfile) -> Observable<Bool> {
-        guard let workspaceUserId = UserDefaults.standard.string(forKey: "workspaceId") else {return Observable.just(false)}
+        guard let workspaceUserId = UserDefaults.standard.string(forKey: "workspaceUserId") else {return Observable.just(false)}
         let jsonData:[String : Any] = [ "nickname" : data.nickname, "position" : data.position, "email" : data.email, "phone":  data.phoneNumber]
         
         
@@ -81,7 +87,7 @@ class UserRepository {
             }
         let resource = Resource<Bool>(url: URLConstant.workspaceUsers+"/\(workspaceUserId)", parameter: param, headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .put, encodingType: .URLEncoding )
         
-        return api.upload(resource: resource, data: data.image, fileName: "image", mimeType: "image/png")
+        return api.upload(resource: resource, data: data.image, fileName: "image.jpeg", mimeType: "image/jpeg")
     }
     
 }

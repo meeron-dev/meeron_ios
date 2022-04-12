@@ -136,7 +136,8 @@ class MeetingViewController:UIViewController {
             .subscribe(onNext: { owner, data in
                 if let data = data {
                     owner.meetingTitle.text = data.meetingName
-                    owner.meetingDateLabel.text = data.startTime+"~"+data.endTime
+                    owner.meetingDateLabel.text = data.meetingDate
+                    owner.meetingTimeLabel.text = data.startTime+"~"+data.endTime
                     owner.meetingTeamLabel.text = data.operationTeamName
                     owner.meetingPurposeLabel.text = data.meetingPurpose
                     

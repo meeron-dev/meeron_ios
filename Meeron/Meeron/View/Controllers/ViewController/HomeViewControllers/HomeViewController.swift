@@ -35,6 +35,14 @@ class HomeViewController:UIViewController {
             }).disposed(by: disposeBag)
         
         
+        homeVM.hasWorkspaceSubject
+            .withUnretained(self)
+            .subscribe(onNext: { owner, has in
+                if !has {
+                    owner.goPickCreationParticipationView()
+                }
+            }).disposed(by: disposeBag)
+        
         configureUI()
         setupCellPaging()
         setupMeetingCollectionView()
@@ -42,8 +50,16 @@ class HomeViewController:UIViewController {
         
     }
     
+    func goPickCreationParticipationView() {
+        let pickCreationParticipationVC = self.storyboard?.instantiateViewController(withIdentifier: "PickCreationParticipationViewController")
+        pickCreationParticipationVC?.modalPresentationStyle = .fullScreen
+        present(pickCreationParticipationVC!, animated: false, completion: nil)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
+        homeVM.loadUser()
         homeVM.loadTodayMeeting()
+        
     }
     
     func goLoginView() {
@@ -138,7 +154,7 @@ class HomeViewController:UIViewController {
         layout.itemSize = CGSize(width: 253, height: meetingCollectionView.frame.height-25)
         meetingCollectionView.collectionViewLayout = layout
         
-        homeVM.loadUser()
+        
     }
     
     func goMeetingView(meetingId:Int) {

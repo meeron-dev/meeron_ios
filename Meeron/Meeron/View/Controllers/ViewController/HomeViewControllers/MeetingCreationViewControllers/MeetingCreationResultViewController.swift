@@ -44,10 +44,8 @@ class MeetingCreationResultViewController:UIViewController {
         }
         meetingParticipantCountLabel.text = "\((meetingCreationData?.participants.count ?? 0) + (meetingCreationData?.managers.count ?? 0) + 1)명"
         meetingTeamLabel.text = meetingCreationData?.team?.teamName
-        if meetingCreationData?.agendas.count ?? -1 > 0 {
-            meetingAgendaLabel.text = meetingCreationData?.agendas[0].title
-        }
         
+        meetingAgendaLabel.text = "\((meetingCreationData?.agendas.count) ?? 0)개"
         
     }
     

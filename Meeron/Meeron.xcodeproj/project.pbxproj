@@ -61,6 +61,9 @@
 		FC4D5A0927DE13590000AE18 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D5A0827DE13590000AE18 /* Calendar.swift */; };
 		FC4D5A0B27DE188A0000AE18 /* AllCalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D5A0A27DE188A0000AE18 /* AllCalendarRepository.swift */; };
 		FC4D5A0D27DE18D80000AE18 /* AllCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D5A0C27DE18D80000AE18 /* AllCalendar.swift */; };
+		FC545B9727FF0C900039A67B /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC545B9627FF0C900039A67B /* UserProfileViewModel.swift */; };
+		FC545B9927FF0D5A0039A67B /* WorkspaceUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC545B9827FF0D5A0039A67B /* WorkspaceUserRepository.swift */; };
+		FC545B9B27FF0F040039A67B /* MyMeeronViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC545B9A27FF0F040039A67B /* MyMeeronViewModel.swift */; };
 		FC56F55327DCA80E00E54DFE /* MeetingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56F55227DCA80E00E54DFE /* MeetingRepository.swift */; };
 		FC56F55527DCAA5D00E54DFE /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56F55427DCAA5D00E54DFE /* Meeting.swift */; };
 		FC5D5ABF27E02486000A4FB5 /* AllCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D5ABE27E02486000A4FB5 /* AllCalendarViewModel.swift */; };
@@ -249,6 +252,9 @@
 		FC4D5A0827DE13590000AE18 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		FC4D5A0A27DE188A0000AE18 /* AllCalendarRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCalendarRepository.swift; sourceTree = "<group>"; };
 		FC4D5A0C27DE18D80000AE18 /* AllCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCalendar.swift; sourceTree = "<group>"; };
+		FC545B9627FF0C900039A67B /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		FC545B9827FF0D5A0039A67B /* WorkspaceUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceUserRepository.swift; sourceTree = "<group>"; };
+		FC545B9A27FF0F040039A67B /* MyMeeronViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeeronViewModel.swift; sourceTree = "<group>"; };
 		FC56F55227DCA80E00E54DFE /* MeetingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingRepository.swift; sourceTree = "<group>"; };
 		FC56F55427DCAA5D00E54DFE /* Meeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		FC5D5ABE27E02486000A4FB5 /* AllCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCalendarViewModel.swift; sourceTree = "<group>"; };
@@ -468,7 +474,6 @@
 			children = (
 				FC0D0F1427F7282E0047C0D9 /* MeetingViewModel.swift */,
 				FC0D0F1E27F767360047C0D9 /* MeetingParticipantCountViewModel.swift */,
-				FC33307F27F848730088CF8E /* AgendaViewModel.swift */,
 				FC33308527F8A4410088CF8E /* UserStatusCreationViewModel.swift */,
 			);
 			path = MeetingViewModels;
@@ -506,6 +511,7 @@
 				FC0D0F1627F751560047C0D9 /* ParticipantRepository.swift */,
 				FC33308127F849C70088CF8E /* AgendaRepository.swift */,
 				FC21795C27FB32A600313152 /* AuthRepository.swift */,
+				FC545B9827FF0D5A0039A67B /* WorkspaceUserRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -653,6 +659,7 @@
 			isa = PBXGroup;
 			children = (
 				FC6AB4DB27C0C4D700797C44 /* Main.storyboard */,
+				FC33307F27F848730088CF8E /* AgendaViewModel.swift */,
 				FC6AB4D927C0C4D700797C44 /* LoginViewController.swift */,
 				FC36BA4727F9DB48008014AB /* MyMeeronViewControllers */,
 				FC36BA4327F995AB008014AB /* HomeViewControllers */,
@@ -679,6 +686,8 @@
 				FCF46BD827EF4D2E009D89AF /* TeamViewModels */,
 				FC0D0F1327F728190047C0D9 /* MeetingViewModels */,
 				FC7B37CC27DF9750005C3D23 /* CalendarViewModels */,
+				FC545B9627FF0C900039A67B /* UserProfileViewModel.swift */,
+				FC545B9A27FF0F040039A67B /* MyMeeronViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1297,12 +1306,15 @@
 				FC3262EA27D8954D00D5AA13 /* TeamRepository.swift in Sources */,
 				FC2ABF4927ECB41F001B3F33 /* WorkspaceParicipationProfileCreationRepository.swift in Sources */,
 				FC21795B27FB324F00313152 /* UserAccountManagementViewModel.swift in Sources */,
+				FC545B9927FF0D5A0039A67B /* WorkspaceUserRepository.swift in Sources */,
 				FCF46BD527EEEF82009D89AF /* ButtonConstant.swift in Sources */,
 				FC7B37C827DF8E2F005C3D23 /* CalendarMeetingCell.swift in Sources */,
+				FC545B9727FF0C900039A67B /* UserProfileViewModel.swift in Sources */,
 				FC56F55327DCA80E00E54DFE /* MeetingRepository.swift in Sources */,
 				FCF46BE127EF7F84009D89AF /* TwoButtonPopUpViewController.swift in Sources */,
 				FCF46BDA27EF4D43009D89AF /* TeamViewModel.swift in Sources */,
 				FCFABB2827F595600005D9D0 /* UserProfileViewController.swift in Sources */,
+				FC545B9B27FF0F040039A67B /* MyMeeronViewModel.swift in Sources */,
 				FC21795527FB1CAD00313152 /* WorkspaceManagementViewController.swift in Sources */,
 				FC1CBF1227F48E44000BACEC /* TeamParticipantCreationViewController.swift in Sources */,
 				FCFABB1B27F54B2F0005D9D0 /* UIView+StatusBar.swift in Sources */,
@@ -1521,7 +1533,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1552,7 +1564,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

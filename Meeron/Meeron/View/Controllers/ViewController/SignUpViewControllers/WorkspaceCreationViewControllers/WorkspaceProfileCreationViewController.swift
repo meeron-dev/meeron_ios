@@ -196,7 +196,7 @@ extension WorkspaceProfileCreationViewController:PHPickerViewControllerDelegate 
                 
                 let image = item as? UIImage
                 if let image = image {
-                    self.workspaceProfileCreationVM.saveProfileImage(image: image.pngData())
+                    self.workspaceProfileCreationVM.saveProfileImage(image: image.jpegData(compressionQuality: 0.8))
                     DispatchQueue.main.async {
                         self.profileImageView.image = image
                     }

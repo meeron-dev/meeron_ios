@@ -20,7 +20,8 @@ class WorkspaceParicipationProfileCreationViewModel {
     let vaildWorkspaceSubject = PublishSubject<Bool>()
     let successProfileCreationSubject = BehaviorSubject<Bool>(value: false)
     
-    let profileDataSubject = BehaviorSubject<MyWorkspaceUser>(value: MyWorkspaceUser(workspaceUserId: 0, workspaceId: 0, nickname: "", profileImageUrl: nil, position: nil, workspaceAdmin: false))
+    //let profileDataSubject = BehaviorSubject<User>(value: User(userId: 0, loginEmail: "", contactEmail: "", name: "", profileImageUrl: "", phone: ""))
+    let profileDataSubject = BehaviorSubject<WorkspaceUser>(value: WorkspaceUser(workspaceUserId: 0, profileImageUrl: "", nickname: "", position: "", email: "", phone: ""))
     
     let workspaceId:String
     
@@ -116,16 +117,26 @@ class WorkspaceParicipationProfileCreationViewModel {
     
     
     func loadProfileData() {
-        guard let userId = UserDefaults.standard.string(forKey: "userId") else {return}
-        userRepository.loadUserWorkspace(id: Int(userId)!)
+        guard let workspaceUserId = UserDefaults.standard.string(forKey: "workspaceUserId") else {return}
+        /*userRepository.loadUser()
             .withUnretained(self)
             .subscribe(onNext: { owner, data in
                 if let data = data {
-                    if data.myWorkspaceUsers.count > 0 {
-                        owner.profileDataSubject.onNext(data.myWorkspaceUsers[0])
-                    }
+                    owner.profileDataSubject.onNext(data)
                 }
+            }).disposed(by: disposeBag)*/
+        
+        
+        userRepository.loadWorkspaceUser(workspaceUserId: workspaceUserId)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, data in
+                if let data = data{
+                    print("🟡", data)
+                    owner.profileDataSubject.onNext(data)
+                }
+                
             }).disposed(by: disposeBag)
+        
     }
     
 }

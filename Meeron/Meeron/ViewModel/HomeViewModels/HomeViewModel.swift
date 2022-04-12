@@ -15,7 +15,9 @@ class HomeViewModel {
     let workspaceNameSubject = BehaviorSubject<String>(value: "워크스페이스")
     
     var todayMeetings:[TodayMeeting] = []
-    let todayMeetingsSubject = PublishSubject<[TodayMeeting]>()
+    let todayMeetingsSubject = BehaviorSubject<[TodayMeeting]>(value: [])
+    
+    let hasWorkspaceSubject = BehaviorSubject<Bool>(value: true)
     
     let todayMeetingCountSubject = BehaviorSubject<Int>(value: 0)
     
@@ -67,6 +69,8 @@ class HomeViewModel {
                     if userWorkspace.myWorkspaceUsers.count > 0 {
                         owner.saveUserWorkspace(data: userWorkspace.myWorkspaceUsers)
                         owner.loadWorkspaceInfo()
+                    }else {
+                        owner.hasWorkspaceSubject.onNext(false)
                     }
                 }
                 

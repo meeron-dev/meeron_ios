@@ -6,21 +6,34 @@
 //
 
 import UIKit
+import RxSwift
 
 class UserProfileViewController: UIViewController {
     
     @IBOutlet weak var profileImageView: UIImageView!
+    
     @IBOutlet weak var nameLabel: UILabel!
+    
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var positionLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var teamLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
+    
+    let userProfileVM = UserProfileViewModel()
+    let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        profileImageView.contentMode = .scaleAspectFill
+        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
+        
         // Do any additional setup after loading the view.
+        userProfileVM.userInfoSubject
+            .withUnretained(self)
+            .subscribe(onNext: { owner, data in
+                owner.nameLabel.text = data.name
+            }).disposed(by: disposeBag)
     }
 
 
@@ -37,13 +50,17 @@ class UserProfileViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func setProfileData(data: WorkspaceUser, teamName:String) {
-        //nameLabel.text = data.
+    func setProfileData(data: WorkspaceUser, teamName:String, profileImage:UIImage) {
+        userProfileVM.loadWorkspaceUserInfo(id: data.workspaceUserId)
+        
+        
         nicknameLabel.text = data.nickname
         positionLabel.text = data.position
         phoneNumberLabel.text = data.phone
         emailLabel.text = data.email
         teamLabel.text = teamName
+        profileImageView.image = profileImage
+        
     }
     
 }

@@ -16,6 +16,7 @@
                 <outlet property="nicknameCheckLabelHeight" destination="071-r6-GCn" id="rUY-Pl-idE"/>
                 <outlet property="nicknameLimitLabelWidth" destination="uAf-pW-fdY" id="Wwc-tQ-ew9"/>
                 <outlet property="nicknameTextField" destination="RYG-cN-fKR" id="8t7-Yc-qbI"/>
+                <outlet property="nicknameTextFieldUnderLineView" destination="qtN-Ym-Dtf" id="hTr-b8-3cd"/>
                 <outlet property="phoneNumberTextField" destination="tt9-Id-VX1" id="BbK-v5-RdE"/>
                 <outlet property="positionLimitLabelWidth" destination="9al-Qw-wdZ" id="G90-BM-KQJ"/>
                 <outlet property="positionTextField" destination="OtN-Xu-rUW" id="xNI-cA-2Tw"/>

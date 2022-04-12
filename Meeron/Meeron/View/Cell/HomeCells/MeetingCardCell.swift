@@ -42,17 +42,23 @@ class MeetingCardCell:UICollectionViewCell {
     }
     
     func setData(data:TodayMeeting) {
-        meetingDateLabel.text = data.meetingDate.toKoreanDateString()
-        meetingNameLabel.text = data.meetingName
-        meetingTeamLabel.text = data.operationTeamName
-        meetingTimeLabel.text = data.startTime + "~" + data.endTime
+        meetingDateLabel.text = data.meeting.startDate.toKoreanDateString()
+        meetingNameLabel.text = data.meeting.meetingName
+        meetingTeamLabel.text = data.team.teamName
+        meetingTimeLabel.text = data.meeting.startTime + "~" + data.meeting.endTime
+        meetingPurposeLabel.text = data.meeting.purpose
         
-        attendsLabel.text = String(data.attends)
-        absentsLabel.text = String(data.absents)
-        unknownsLabel.text = String(data.unknowns)
+        attendsLabel.text = String(data.attendCount.attend)
+        absentsLabel.text = String(data.attendCount.absent)
+        unknownsLabel.text = String(data.attendCount.unknown)
         
-        meetingAgendaLabel.text = data.mainAgenda ?? ""
+        if data.agendas.count > 0{
+            meetingAgendaLabel.text = data.agendas[0].agendaName
+        }else {
+            meetingAgendaLabel.text = ""
+        }
         
-        meetingId = data.meetingId
+        
+        meetingId = data.meeting.meetingId
     }
 }

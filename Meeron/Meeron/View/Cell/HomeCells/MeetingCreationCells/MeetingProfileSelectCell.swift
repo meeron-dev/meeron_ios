@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MeetingProfileSelectCell: UICollectionViewCell {
 
@@ -67,20 +68,22 @@ class MeetingProfileSelectCell: UICollectionViewCell {
         shadowView.backgroundColor = .white
         shadowView.layer.cornerRadius = profileImageView.frame.height/2
         shadowView.layer.shadowRadius = 2
-        shadowView.layer.shadowOpacity = 0.5
+        shadowView.layer.shadowOpacity = 0.17
         shadowView.layer.shadowColor = UIColor.black.cgColor
-        shadowView.layer.shadowOffset = CGSize(width: 3, height: 3)
+        shadowView.layer.shadowOffset = CGSize(width: 2.1, height: 2.1)
         
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         selectedView.layer.cornerRadius = profileImageView.frame.height/2
         
         profileImageView.image = UIImage(named: ImageNameConstant.profile)
         managerLabel.text = ""
+        profileImageView.contentMode = .scaleAspectFill
         
         selectedView.backgroundColor = nil
     }
     
     func setData(data:WorkspaceUser, vm:MeetingProfileSelectViewModel) {
+        profileImageView.image = UIImage(named: ImageNameConstant.profile)
         profilePositionLabel.text = data.position
         profileNameLabel.text = data.nickname
         profileData = data
@@ -101,38 +104,53 @@ class MeetingProfileSelectCell: UICollectionViewCell {
             entireProfileView.isUserInteractionEnabled = true
             addTapGesture()
         }
-        /*
-        if data.profileImageUrl != nil {
-            let imgURL = URL(string: data.profileImageUrl!)!
-            DispatchQueue.global().async {
-                let imgData = try? Data(contentsOf: imgURL)
-                if imgData != nil {
-                    DispatchQueue.main.async {
-                        self.profileImageView.image = UIImage(data: imgData!)
-                    }
+        
+        if data.profileImageUrl == "" {
+            profileImageView.image = UIImage(named: ImageNameConstant.profile)
+            return
+        }
+        
+        if let profileUrl = data.profileImageUrl {
+            
+            API().getImageResource(url: profileUrl) { imageResource in
+                DispatchQueue.main.async {
+                    self.profileImageView.kf.indicatorType = .activity
+                    self.profileImageView.kf.setImage(with: imageResource)
                 }
             }
-        }*/
+            
+        }
+        if profileImageView.image == nil {
+            profileImageView.image = UIImage(named: ImageNameConstant.profile)
+        }
         
     }
     
     
     func setProfileData(data:WorkspaceUser) {
+        profileImageView.image = UIImage(named: ImageNameConstant.profile)
         profilePositionLabel.text = data.position
         profileNameLabel.text = data.nickname
         profileData = data
         managerLabel.text = ""
-        /*
-        if data.profileImageUrl != nil {
-            let imgURL = URL(string: data.profileImageUrl!)!
-            DispatchQueue.global().async {
-                let imgData = try? Data(contentsOf: imgURL)
-                if imgData != nil {
-                    DispatchQueue.main.async {
-                        self.profileImageView.image = UIImage(data: imgData!)
-                    }
+        
+        if data.profileImageUrl == "" {
+            profileImageView.image = UIImage(named: ImageNameConstant.profile)
+            return
+        }
+        
+        if let profileUrl = data.profileImageUrl {
+            API().getImageResource(url: profileUrl) { imageResource in
+                DispatchQueue.main.async {
+                    self.profileImageView.kf.indicatorType = .activity
+                    self.profileImageView.kf.setImage(with: imageResource)
                 }
             }
-        }*/
+            
+        }
+        
+        if profileImageView.image == nil {
+            profileImageView.image = UIImage(named: ImageNameConstant.profile)
+        }
     }
 }
