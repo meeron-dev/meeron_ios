@@ -612,13 +612,13 @@
 		FC6AB4D427C0C4D700797C44 /* Meeron */ = {
 			isa = PBXGroup;
 			children = (
+				FC9D7C38280F18E400602798 /* Data */,
+				FC914617280EAE3800AC3CF6 /* Domain */,
+				FC9D7C39280F195200602798 /* Presentation */,
 				FCC19A5D27E7671600270906 /* GoogleService-Info.plist */,
-				FC3262E827D8946600D5AA13 /* Repository */,
 				FCA1AF7E27CBCFFD00152F53 /* PersistentStorages */,
 				FC7CA8EE27C2255400110D24 /* Meeron.entitlements */,
 				FC6AB50E27C13B0600797C44 /* Models */,
-				FC6AB50B27C1343200797C44 /* Network */,
-				FC06E98527C3DC2A004065E3 /* Util */,
 				FC6AB50D27C1345F00797C44 /* ViewModel */,
 				FCA7217027EEB6F4000A7DC5 /* View */,
 				FC06E98A27C3E120004065E3 /* Resource */,
@@ -649,6 +649,7 @@
 		FC6AB50B27C1343200797C44 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				FC9D7C3A280F1C7800602798 /* DataMapping */,
 				FC6AB50727C10CC300797C44 /* API.swift */,
 				FCDF92DE27CCACD400126AE0 /* URLConstant.swift */,
 			);
@@ -794,6 +795,13 @@
 			path = ErrorViewControllers;
 			sourceTree = "<group>";
 		};
+		FC914617280EAE3800AC3CF6 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		FC9B23C827F20BE900C8C8A3 /* MeetingViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -805,6 +813,30 @@
 				FC9B23CA27F20D9800C8C8A3 /* UserStatusCreationViewController.xib */,
 			);
 			path = MeetingViewControllers;
+			sourceTree = "<group>";
+		};
+		FC9D7C38280F18E400602798 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FC3262E827D8946600D5AA13 /* Repository */,
+				FC6AB50B27C1343200797C44 /* Network */,
+				FC06E98527C3DC2A004065E3 /* Util */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FC9D7C39280F195200602798 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		FC9D7C3A280F1C7800602798 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataMapping;
 			sourceTree = "<group>";
 		};
 		FC9FD92B27C4BF48009DE526 /* Cell */ = {
