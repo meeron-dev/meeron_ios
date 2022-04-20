@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AllCalendarYearCell" customModule="Meeron" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="AllCalendarYearCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllCalendarYearCell" rowHeight="133" id="1bK-qg-geS" customClass="AllCalendarYearCell" customModule="Meeron" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="138" height="133"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1bK-qg-geS" id="INc-Re-BXe">
+                <rect key="frame" x="0.0" y="0.0" width="138" height="133"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="년도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWJ-ml-VDq">
+                        <rect key="frame" x="53" y="59" width="32" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="JzA-fd-YNB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                        <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="n개의 회의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7z-li-T61">
+                        <rect key="frame" x="43" y="82" width="52" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="VJv-We-XWA"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="xWJ-ml-VDq" firstAttribute="top" secondItem="INc-Re-BXe" secondAttribute="top" constant="59" id="1dF-A3-kVf"/>
+                    <constraint firstItem="xWJ-ml-VDq" firstAttribute="centerX" secondItem="INc-Re-BXe" secondAttribute="centerX" id="3ti-PI-Xtv"/>
+                    <constraint firstItem="v7z-li-T61" firstAttribute="top" secondItem="xWJ-ml-VDq" secondAttribute="bottom" constant="5" id="Zxf-nH-QfR"/>
+                    <constraint firstItem="v7z-li-T61" firstAttribute="centerX" secondItem="INc-Re-BXe" secondAttribute="centerX" id="nak-gL-mvB"/>
+                    <constraint firstAttribute="bottom" secondItem="v7z-li-T61" secondAttribute="bottom" constant="36" id="nuv-Ed-SR7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="meetingCountLabel" destination="v7z-li-T61" id="36A-C6-lzx"/>
+                <outlet property="yearLabel" destination="xWJ-ml-VDq" id="dDJ-kK-HZk"/>
+            </connections>
+            <point key="canvasLocation" x="-68" y="-206"/>
+        </tableViewCell>
+    </objects>
+</document>

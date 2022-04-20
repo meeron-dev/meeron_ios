@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CalendarDateCell" customModule="Meeron" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CalendarDateCell" reuseIdentifier="CalendarDateCell" id="uMs-gY-Lfv" customClass="CalendarDateCell" customModule="Meeron" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="128" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wpl-su-jgv">
+                <rect key="frame" x="0.0" y="0.0" width="128" height="44"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="26" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvN-PI-x23">
+                        <rect key="frame" x="54.5" y="0.0" width="19.5" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="Buz-S0-0xN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4Q-CF-FoC">
+                        <rect key="frame" x="61.5" y="28" width="5" height="5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="5" id="HnN-kT-Ocz"/>
+                            <constraint firstAttribute="height" constant="5" id="v5M-7n-2uh"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dvN-PI-x23" firstAttribute="top" secondItem="Wpl-su-jgv" secondAttribute="top" id="BHS-IQ-OC7"/>
+                    <constraint firstItem="v4Q-CF-FoC" firstAttribute="centerX" secondItem="Wpl-su-jgv" secondAttribute="centerX" id="P7o-iz-Xi2"/>
+                    <constraint firstItem="dvN-PI-x23" firstAttribute="centerX" secondItem="Wpl-su-jgv" secondAttribute="centerX" id="Tsi-MU-vfq"/>
+                    <constraint firstItem="v4Q-CF-FoC" firstAttribute="top" secondItem="dvN-PI-x23" secondAttribute="bottom" constant="10" id="fad-3l-iAX"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <connections>
+                <outlet property="dateLabel" destination="dvN-PI-x23" id="r9p-hs-Vjv"/>
+                <outlet property="hasMeetingView" destination="v4Q-CF-FoC" id="7CB-3t-7HN"/>
+            </connections>
+            <point key="canvasLocation" x="57.971014492753625" y="60.9375"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
