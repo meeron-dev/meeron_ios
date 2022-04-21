@@ -43,6 +43,8 @@
 		FC2ABF4927ECB41F001B3F33 /* WorkspaceParicipationProfileCreationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2ABF4827ECB41F001B3F33 /* WorkspaceParicipationProfileCreationRepository.swift */; };
 		FC2ABF4B27ECC885001B3F33 /* UIViewController+DismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2ABF4A27ECC885001B3F33 /* UIViewController+DismissKeyboard.swift */; };
 		FC2ABF4D27ECCC5C001B3F33 /* IntroductionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC2ABF4C27ECCC5C001B3F33 /* IntroductionViewController.xib */; };
+		FC2C0D9828118C53002B3DC0 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC2C0D9728118C53002B3DC0 /* Keys.plist */; };
+		FC2C0D9A28118D10002B3DC0 /* Meeron+Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2C0D9928118D10002B3DC0 /* Meeron+Bundle.swift */; };
 		FC3262EA27D8954D00D5AA13 /* TeamRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3262E927D8954D00D5AA13 /* TeamRepository.swift */; };
 		FC3262EC27D8C20500D5AA13 /* MeetingParticipantProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3262EB27D8C20500D5AA13 /* MeetingParticipantProfileCell.swift */; };
 		FC33307E27F8150E0088CF8E /* UICollectionViewFlowLayout+CustomLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33307D27F8150E0088CF8E /* UICollectionViewFlowLayout+CustomLayout.swift */; };
@@ -241,6 +243,8 @@
 		FC2ABF4827ECB41F001B3F33 /* WorkspaceParicipationProfileCreationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceParicipationProfileCreationRepository.swift; sourceTree = "<group>"; };
 		FC2ABF4A27ECC885001B3F33 /* UIViewController+DismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+DismissKeyboard.swift"; sourceTree = "<group>"; };
 		FC2ABF4C27ECCC5C001B3F33 /* IntroductionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroductionViewController.xib; sourceTree = "<group>"; };
+		FC2C0D9728118C53002B3DC0 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		FC2C0D9928118D10002B3DC0 /* Meeron+Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meeron+Bundle.swift"; sourceTree = "<group>"; };
 		FC3262E927D8954D00D5AA13 /* TeamRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRepository.swift; sourceTree = "<group>"; };
 		FC3262EB27D8C20500D5AA13 /* MeetingParticipantProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingParticipantProfileCell.swift; sourceTree = "<group>"; };
 		FC33307D27F8150E0088CF8E /* UICollectionViewFlowLayout+CustomLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+CustomLayout.swift"; sourceTree = "<group>"; };
@@ -467,6 +471,8 @@
 			children = (
 				FC6AB4DE27C0C4D800797C44 /* Assets.xcassets */,
 				FC6AB4E327C0C4D800797C44 /* Info.plist */,
+				FC2C0D9728118C53002B3DC0 /* Keys.plist */,
+				FC2C0D9928118D10002B3DC0 /* Meeron+Bundle.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1182,6 +1188,7 @@
 				FCFABB2927F595600005D9D0 /* UserProfileViewController.xib in Resources */,
 				FCAE0D3B27D4A48800B05D94 /* MeetingProfileSelectCell.xib in Resources */,
 				FC8DE90627E9E66F008648A7 /* UserErrorViewController.xib in Resources */,
+				FC2C0D9828118C53002B3DC0 /* Keys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1448,6 +1455,7 @@
 				FCAE0D4127D4FFC600B05D94 /* MeetingParticipantCreationViewModel.swift in Sources */,
 				FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */,
 				FCF46BDC27EF5279009D89AF /* TeamCell.swift in Sources */,
+				FC2C0D9A28118D10002B3DC0 /* Meeron+Bundle.swift in Sources */,
 				FC39DFD127D76E49002465EB /* MeetingTeamSelectViewModel.swift in Sources */,
 				FC47215C27CA14E700F7A035 /* User.swift in Sources */,
 				FCA73F2027E8943500295247 /* WorkspaceCreation.swift in Sources */,
