@@ -22,8 +22,6 @@ class TeamCreationResultViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        doneButton.addShadow()
-        
         doneButton.rx.tap
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in

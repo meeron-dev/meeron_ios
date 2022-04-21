@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol MeetingAgendaDocumentCellProtocol {
-    func showDocument(url:String, fileName:String)
+    func showDocument(url:String)
 }
 
 class MeetingAgendaDocumentCell:UITableViewCell {
@@ -33,7 +33,6 @@ class MeetingAgendaDocumentCell:UITableViewCell {
     }
     
     @objc func showDocument() {
-        guard let fileName = documentLabel.text else {return}
-        delegate?.showDocument(url: documentUrl, fileName: fileName)
+        delegate?.showDocument(url: documentUrl)
     }
 }

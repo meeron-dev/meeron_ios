@@ -193,14 +193,11 @@ class MeetingParticipantCreationViewModel {
     
     func createMeetingAgenda() {
         if meetingCreationData!.agendas.count == 0 {
-            meetingCreationData!.agendas = []
             sucessMeetingDocumentsCreationSubject.onNext(true)
             return
         }else if meetingCreationData!.agendas.count == 1 {
-            if meetingCreationData!.agendas[0] == AgendaCreation() || meetingCreationData!.agendas[0].title == "" {
-                meetingCreationData!.agendas = []
+            if meetingCreationData!.agendas[0] == AgendaCreation() {
                 sucessMeetingDocumentsCreationSubject.onNext(true)
-                
                 return
             }
         }

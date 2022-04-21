@@ -34,15 +34,6 @@ class AuthRepository {
         keychainManager.deleteToken()
     }
     
-    func deleteWorkspaceInfo() {
-        UserDefaults.standard.removeObject(forKey: "workspaceId")
-        UserDefaults.standard.removeObject(forKey: "workspaceUserId")
-        UserDefaults.standard.removeObject(forKey: "workspaceNickname")
-        UserDefaults.standard.removeObject(forKey: "workspaceAdmin")
-        UserDefaults.standard.removeObject(forKey: "workspaceName")
-        UserDefaults.standard.removeObject(forKey: "workspaceUserId")
-    }
-    
     func deleteUserInfo() {
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)

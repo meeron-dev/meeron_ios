@@ -2473,6 +2473,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="wxA-Wa-mAm">
                         <barButtonItem key="leftBarButtonItem" id="rx2-H5-MR7"/>
+                        <barButtonItem key="rightBarButtonItem" image="calendarCloseX" id="2Vn-fd-xbc">
+                            <inset key="imageInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="meetingAgendaLabel" destination="MXn-ba-GGG" id="vUZ-de-0iz"/>
@@ -3812,9 +3815,6 @@
                                     <color key="baseForegroundColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="baseBackgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <action selector="back:" destination="FcZ-b1-spP" eventType="touchUpInside" id="caq-iy-0c1"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hj1-xY-9WZ"/>
@@ -4328,7 +4328,6 @@
                     <navigationItem key="navigationItem" title="팀" id="pKI-pv-Q2f"/>
                     <connections>
                         <outlet property="calendarImageView" destination="8jn-MM-XuP" id="cUx-An-0mM"/>
-                        <outlet property="calendarImageViewWidth" destination="jur-fO-AZM" id="rHz-Q7-00M"/>
                         <outlet property="manageImageView" destination="h8o-a8-N9b" id="UDu-MW-dQ7"/>
                         <outlet property="manageImageViewWidth" destination="l0E-UD-j8T" id="RFf-xN-SQh"/>
                         <outlet property="participantCountLabelHeight" destination="lTg-du-Bxo" id="e9t-Td-0vx"/>

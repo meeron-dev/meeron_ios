@@ -25,10 +25,6 @@ class WorkspaceNameViewController:UIViewController {
         configureUI()
         setupTextField()
         
-      
-    }
-    @IBAction func back(_ sender: Any) {
-        dismiss(animated: true)
     }
     
     func setupTextField() {

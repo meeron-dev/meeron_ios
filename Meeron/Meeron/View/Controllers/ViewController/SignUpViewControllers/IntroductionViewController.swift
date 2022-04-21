@@ -38,7 +38,8 @@ class IntroductionViewController:UIViewController{
     var introductions = [
         Introduction(title1: UserDefaults.standard.string(forKey: "userName")!, title2: "님,",title3: "이제 회의는 걱정마세요",title4: "", subTitle: "똑똑한 회의 관리, 미론과 함께", description1: "회의 준비부터 마무리까지 맡겨 주세요", description2: "", imageName: "illustration_onboarding_1", backGroundImageName: ""),
         Introduction(title1: "", title2: "출근 전", title3: "", title4: "1분이면 충분해요", subTitle: "주어진 회의를 한눈에", description1: "캘린더와 회의카드로 회의 일정을", description2: "확인하고 준비해보아요", imageName: "illustration_onboarding_2", backGroundImageName: ""),
-        Introduction(title1: "", title2: "실속 없는", title3: "회의는", title4:" 그만", subTitle: "모두에게 명확한 회의", description1: "회의 전에 정보를 숙지하고,", description2: "본인의 상태를 공유할 수 있어요", imageName: "illustration_onboarding_3", backGroundImageName: "circle+triangle+X")]
+        Introduction(title1: "", title2: "실속 없는", title3: "회의는", title4:" 그만", subTitle: "모두에게 명확한 회의", description1: "회의 전에 정보를 숙지하고,", description2: "본인의 상태를 공유할 수 있어요", imageName: "illustration_onboarding_3", backGroundImageName: "circle+triangle+X"),
+        Introduction(title1: "", title2: "마무리까지", title3: "", title4: "완벽하게", subTitle: "이번 회의도 문제없이", description1: "회의 결과를 확인하고", description2: "부담없이 피드백을 남겨보아요", imageName: "illustration_onboarding_4", backGroundImageName: "")]
     
     
     override func viewDidLoad() {

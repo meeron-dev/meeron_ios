@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Kingfisher
 
 class MeetingParticipantProfileCell:UICollectionViewCell {
     
@@ -32,25 +31,18 @@ class MeetingParticipantProfileCell:UICollectionViewCell {
         profileNameLabel.text = data.nickname
         profilePositionLabel.text = data.position
         profileData = data
-        
-        if data.profileImageUrl == "" {
-            profileImageView.image = UIImage(named: ImageNameConstant.profile)
-            return
-        }
-        
-        if let profileUrl = data.profileImageUrl {
-            
-            API().getImageResource(url: profileUrl) { imageResource in
-                DispatchQueue.main.async {
-                    self.profileImageView.kf.indicatorType = .activity
-                    self.profileImageView.kf.setImage(with: imageResource)
+        /*
+        if data.profileImageUrl != nil {
+            let imgURL = URL(string: data.profileImageUrl!)!
+            DispatchQueue.global().async {
+                let imgData = try? Data(contentsOf: imgURL)
+                if imgData != nil {
+                    DispatchQueue.main.async {
+                        self.profileImageView.image = UIImage(data: imgData!)
+                    }
                 }
             }
-            
-        }
-        if profileImageView.image == nil {
-            profileImageView.image = UIImage(named: ImageNameConstant.profile)
-        }
+        }*/
         
     }
     
@@ -86,7 +78,7 @@ class MeetingParticipantProfileCell:UICollectionViewCell {
         
         profileImageView.image = UIImage(named: ImageNameConstant.profile)
         managerLabel.text = ""
-        profileImageView.contentMode = .scaleAspectFill
+        
         selectedView.backgroundColor = nil
     }
     

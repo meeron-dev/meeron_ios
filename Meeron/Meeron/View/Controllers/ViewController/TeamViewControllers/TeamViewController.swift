@@ -14,7 +14,6 @@ class TeamViewController:UIViewController {
     @IBOutlet weak var teamCollectionView:UICollectionView!
     @IBOutlet weak var teamParticipantCollectionView:UICollectionView!
     @IBOutlet weak var calendarImageView:UIImageView!
-    @IBOutlet weak var calendarImageViewWidth: NSLayoutConstraint!
     @IBOutlet weak var manageImageView:UIImageView!
     @IBOutlet weak var manageImageViewWidth: NSLayoutConstraint!
     
@@ -37,22 +36,13 @@ class TeamViewController:UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         teamVM.loadTeam()
-        teamVM.loadParticipant()
     }
     
     private func addTapper() {
-        
-        teamVM.nowTeamSubject
-            .withUnretained(self)
-            .subscribe(onNext: { owner, nowTeam in
-                if let _ = nowTeam {
-                    owner.setCalendarTapper()
-                }else {
-                    owner.deleteCalendarTapper()
-                }
-            }).disposed(by: disposeBag)
-        
-        
+        calendarImageView.isUserInteractionEnabled = true
+        let calendarTapper = UITapGestureRecognizer()
+        calendarTapper.addTarget(self, action: #selector(goCalendarView))
+        calendarImageView.addGestureRecognizer(calendarTapper)
         
         
         teamVM.nowTeamSubject
@@ -66,22 +56,6 @@ class TeamViewController:UIViewController {
             }).disposed(by: disposeBag)
     }
     
-    func deleteCalendarTapper() {
-        calendarImageView.image = nil
-        calendarImageViewWidth.constant = 0
-    }
-    
-    func setCalendarTapper() {
-        
-        calendarImageView.image = UIImage(named: ImageNameConstant.calendar)
-        calendarImageViewWidth.constant = 41
-        
-        calendarImageView.isUserInteractionEnabled = true
-        let calendarTapper = UITapGestureRecognizer()
-        calendarTapper.addTarget(self, action: #selector(goCalendarView))
-        calendarImageView.addGestureRecognizer(calendarTapper)
-    }
-    
     func deleteManagerTapper() {
         manageImageView.image = nil
         manageImageViewWidth.constant = 0
@@ -89,7 +63,7 @@ class TeamViewController:UIViewController {
     
     func setManagerTapper() {
         
-        manageImageView.image = UIImage(named: ImageNameConstant.management)
+        manageImageView.image = UIImage(named: "ic_team_Setting")
         manageImageViewWidth.constant = 41
         
         manageImageView.isUserInteractionEnabled = true
@@ -192,21 +166,19 @@ class TeamViewController:UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { owner, indexPath in
                 let cell = owner.teamParticipantCollectionView.cellForItem(at: indexPath) as! MeetingProfileSelectCell
-                owner.showUserProfileView(data: cell.profileData, profileImage: cell.profileImageView.image)
+                owner.showUserProfileView(data: cell.profileData)
             }).disposed(by: disposeBag)
     }
     
-    func showUserProfileView(data: WorkspaceUser?, profileImage:UIImage?) {
+    func showUserProfileView(data: WorkspaceUser?) {
         guard let data = data else {
             return
         }
-    
 
         let userProfileVC = UserProfileViewController(nibName: "UserProfileViewController", bundle: nil)
-        userProfileVC.modalPresentationStyle = .overFullScreen
-        //userProfileVC.modalPresentationStyle = .fullScreen
+        userProfileVC.modalPresentationStyle = .fullScreen
         present(userProfileVC, animated: true, completion: nil)
-        userProfileVC.setProfileData(data: data, teamName: teamNameLabel.text ?? "NONE", profileImage: ((profileImage ?? UIImage(named: ImageNameConstant.profile)!)))
+        userProfileVC.setProfileData(data: data, teamName: teamNameLabel.text ?? "NONE")
     }
     
     func goCreationTeamView() {

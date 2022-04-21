@@ -116,8 +116,8 @@ class AgendaViewController:UIViewController {
 }
 
 extension AgendaViewController: MeetingAgendaDocumentCellProtocol {
-    func showDocument(url: String, fileName:String) {
-        API().downloadFile(url: url, fileName: fileName)
+    func showDocument(url: String) {
+        API().downloadFile(url: url)
     }
     
     

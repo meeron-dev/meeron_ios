@@ -14,7 +14,6 @@ class UserAccountManagementViewModel {
     let authRepository = AuthRepository()
     let logoutSubject = BehaviorSubject<Bool>(value: false)
     let withdrawSubject = BehaviorSubject<Bool>(value: false)
-    
     let disposeBag = DisposeBag()
     func logout() {
         authRepository.logout()
@@ -22,13 +21,8 @@ class UserAccountManagementViewModel {
             .subscribe(onNext: { owner, _ in
                 owner.deleteToken()
                 owner.logoutSubject.onNext(true)
-                owner.deleteWorkspaceInfo()
             }).disposed(by: disposeBag)
             
-    }
-    
-    func deleteWorkspaceInfo() {
-        authRepository.deleteWorkspaceInfo()
     }
     
     func deleteToken() {

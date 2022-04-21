@@ -53,6 +53,6 @@ class WorkspaceParicipationProfileCreationRepository {
             }
         let resource = Resource<Bool>(url: URLConstant.workspaceUsers, parameter: param, headers: headers, method: .post, encodingType: .URLEncoding )
         
-        return api.upload(resource: resource, data: workspaceProfile.image, fileName: "image.jpeg", mimeType: "image/jpeg")
+        return api.upload(resource: resource, data: workspaceProfile.image, fileName: "image", mimeType: "image/png")
     }
 }

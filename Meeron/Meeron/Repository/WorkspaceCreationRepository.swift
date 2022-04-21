@@ -47,7 +47,7 @@ class WorkspaceCreationRepository {
             }
         let resource = Resource<Bool>(url: URLConstant.workspaceUsers+"/admin", parameter: param, headers: headers, method: .post, encodingType: .URLEncoding )
         
-        return api.upload(resource: resource, data: workspaceProfile.image, fileName: "image.jpeg", mimeType: "image/jpeg")
+        return api.upload(resource: resource, data: workspaceProfile.image, fileName: "image", mimeType: "image/png")
     }
     
     func createWorkspaceDynamicLink(workspaceId:Int, completion: @escaping (String?)->() ) {

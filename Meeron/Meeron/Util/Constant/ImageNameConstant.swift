@@ -28,8 +28,5 @@ struct ImageNameConstant {
     static let inactivationOfAbsence = "ic_condition_X_disable"
     
     static let profile = "ic_profile_non"
-    
-    static let calendar = "calendar"
-    static let management = "ic_team_Setting"
 
 }
