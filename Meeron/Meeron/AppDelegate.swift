@@ -32,42 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.APNortheast2,
                                                                 identityPoolId: Bundle.main.s3PoolId)
         let configuration = AWSServiceConfiguration(region:.APNortheast2, credentialsProvider:credentialsProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
-        
-        /*self.window = UIWindow(frame: UIScreen.main.bounds)
-        let mainStroyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = mainStroyboard.instantiateViewController(withIdentifier: "LoginViewController")
-        self.window?.rootViewController = initialViewController
-        self.window?.makeKeyAndVisible()*/
-        
-        /*
-        if #available(iOS 13.0, *) {
-            let appleIDProvider = ASAuthorizationAppleIDProvider()
-            appleIDProvider.getCredentialState(forUserID: "001977.ccb7e61f3d4848728ad4a65391e05f44.1405") { credentialState, error in
-                switch credentialState {
-                case .authorized:
-                    print("인증 성공")
-                    DispatchQueue.main.async {
-                        let mainStroyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let initialViewController = mainStroyboard.instantiateViewController(withIdentifier: "TabBarController")
-                        self.window = UIWindow(frame: UIScreen.main.bounds)
-                        self.window?.rootViewController = initialViewController
-                        self.window?.makeKeyAndVisible()
-                    }
-                case .revoked:
-                    print("인증 만료")
-                default:
-                    print("예외 상황")
-                }
-            }
-        }*/
-        
-    
         
         return true
     }

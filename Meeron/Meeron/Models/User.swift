@@ -7,8 +7,8 @@
 
 import Foundation
 
-import RealmSwift
-
+//import RealmSwift
+/*
 class UserInfo: Object{
     @objc dynamic var userId: Int = 0
     let userWorkspaces:List<UserWorkspaceInfo> = List<UserWorkspaceInfo>()
@@ -35,7 +35,7 @@ class UserWorkspaceInfo: Object {
         self.workspaceUserId = workspaceUserId
     }
 }
-
+*/
 struct User:Codable {
     var userId: Int
     var loginEmail: String

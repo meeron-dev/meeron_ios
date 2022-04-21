@@ -13,8 +13,7 @@ import Kingfisher
 import UIKit
 import AWSS3
 
-
-import Amplify
+//import Amplify
 
 enum EncodingType {
     case JSONEncoding

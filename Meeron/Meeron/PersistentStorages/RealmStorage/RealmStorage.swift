@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import RealmSwift
+//import RealmSwift
 
 class RealmStorage {
-    let realm = try! Realm()
+    /*let realm = try! Realm()
     
     func storeUserInfo(userId:Int) {
         print(Realm.Configuration.defaultConfiguration.fileURL)
@@ -22,5 +22,5 @@ class RealmStorage {
     
     func storeUserWorkspace(userWorkspace:[[Int]]) {
         
-    }
+    }*/
 }

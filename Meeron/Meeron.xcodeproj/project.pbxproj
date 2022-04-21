@@ -728,7 +728,6 @@
 		FC6AB50B27C1343200797C44 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				FC9D7C3A280F1C7800602798 /* DataMapping */,
 				FC6AB50727C10CC300797C44 /* API.swift */,
 				FCDF92DE27CCACD400126AE0 /* URLConstant.swift */,
 			);
@@ -913,13 +912,6 @@
 				FC6AB50D27C1345F00797C44 /* ViewModel */,
 			);
 			path = Presentation;
-			sourceTree = "<group>";
-		};
-		FC9D7C3A280F1C7800602798 /* DataMapping */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataMapping;
 			sourceTree = "<group>";
 		};
 		FC9FD92B27C4BF48009DE526 /* Cell */ = {
