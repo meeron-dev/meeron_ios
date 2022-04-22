@@ -50,7 +50,7 @@ extension UIColor {
     }
     
     static var mrRed:UIColor {
-        return UIColor(red: 216/255, green: 109/255, blue: 109/255, alpha: 1)
+        return UIColor(red: 216/255, green: 110/255, blue: 110/255, alpha: 1)
     }
 }
 
