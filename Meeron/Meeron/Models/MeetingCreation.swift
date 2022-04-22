@@ -33,7 +33,7 @@ struct Document:Equatable {
 }
 
 
-struct Meeting: Codable{
+struct MeetingId:Codable{
     let meetingId:Int
     
 }
