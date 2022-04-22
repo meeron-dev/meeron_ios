@@ -12,13 +12,11 @@ struct TodayMeetings:Codable {
 }
 
 struct TodayMeeting:Codable {
-    
     let meeting:Meeting
     let team:TeamToday
     let agendas:[AgendaToday]
     let admins:[AdminToday]
     let attendCount:AttendCount
-    
 }
 
 struct Meeting:Codable {
