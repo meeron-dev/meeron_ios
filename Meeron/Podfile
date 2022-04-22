@@ -1,0 +1,29 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Meeron' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxAlamofire'
+  pod 'RxKakaoSDKAuth'
+  pod 'RxKakaoSDKUser'
+  pod 'AWSS3'
+  pod 'Firebase'
+  pod 'Firebase/DynamicLinks' 
+  pod 'Kingfisher'
+  pod 'JWTDecode'
+
+  # Pods for Meeron
+
+  target 'MeeronTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'MeeronUITests' do
+    # Pods for testing
+  end
+
+end
