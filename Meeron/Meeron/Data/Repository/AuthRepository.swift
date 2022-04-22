@@ -36,10 +36,10 @@ class AuthRepository {
     
     func deleteWorkspaceInfo() {
         UserDefaults.standard.removeObject(forKey: "workspaceId")
+        UserDefaults.standard.removeObject(forKey: "workspaceName")
         UserDefaults.standard.removeObject(forKey: "workspaceUserId")
         UserDefaults.standard.removeObject(forKey: "workspaceNickname")
         UserDefaults.standard.removeObject(forKey: "workspaceAdmin")
-        UserDefaults.standard.removeObject(forKey: "workspaceName")
         UserDefaults.standard.removeObject(forKey: "workspaceUserId")
     }
     
