@@ -14,7 +14,7 @@ target 'Meeron' do
   pod 'Firebase/DynamicLinks' 
   pod 'Kingfisher'
   pod 'JWTDecode'
-  
+
   # Pods for Meeron
 
   target 'MeeronTests' do
