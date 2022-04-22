@@ -19,5 +19,5 @@ jobs:
       
     - name: Run tests
       run: |
-        xcodebuild clean test -project Meeron/Meeron.xcworkspace -scheme Meeron -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=15.2'
+        xcodebuild clean test -project Meeron/Meeron -scheme Meeron -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=15.2'
 
