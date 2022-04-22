@@ -35,6 +35,7 @@ struct Document:Equatable {
 
 struct MeetingId: Codable{
     let meetingId:Int
+    
 }
 
 
