@@ -14,11 +14,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    #- name: Build
-    #  run: swift build -v
-      
-    - name: Run tests
+    - name: Build
       run: |
         pod install --repo-update --clean-install --project-directory=Meeron/
-        xcodebuild clean test -workspace Meeron/Meeron.xcworkspace -scheme Meeron -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=latest'
+        xcodebuild build -workspace Meeron/Meeron.xcworkspace -scheme Meeron -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=latest'
+      
+    #- name: Run tests
+      #run: |
+        #pod install --repo-update --clean-install --project-directory=Meeron/
+        #xcodebuild clean test -workspace Meeron/Meeron.xcworkspace -scheme Meeron -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=latest'
 
