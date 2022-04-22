@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>S3 Pool Id</key>
+	<string>S3 Pool Id를 입력해주세요</string>
+	<key>Kakao App Key</key>
+	<string>Kakao App Key를 입력해주세요</string>
+</dict>
+</plist>
