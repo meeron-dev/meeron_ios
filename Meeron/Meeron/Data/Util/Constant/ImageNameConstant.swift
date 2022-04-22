@@ -29,4 +29,7 @@ struct ImageNameConstant {
     
     static let profile = "ic_profile_non"
     
+    static let calendar = "calendar"
+    static let management = "ic_team_Setting"
+    
 }
