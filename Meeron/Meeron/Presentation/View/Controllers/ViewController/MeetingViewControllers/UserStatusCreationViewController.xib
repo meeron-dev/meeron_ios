@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserStatusCreationViewController" customModule="Meeron" customModuleProvider="target">
+            <connections>
+                <outlet property="absenceButton" destination="uHU-hZ-XJV" id="E76-Mk-y1V"/>
+                <outlet property="attendanceButton" destination="ULA-Tz-Avn" id="t2I-0T-Qjc"/>
+                <outlet property="doneButton" destination="A3x-Fw-g7g" id="xaF-Qg-oPm"/>
+                <outlet property="meetingTitleLabel" destination="muG-C8-sr5" id="kBg-y2-uzH"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="workspaceNameLabel" destination="NaX-G8-i3g" id="Fch-8c-UnB"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회의 참여 여부" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qzh-sb-Ka9">
+                    <rect key="frame" x="30" y="287.5" width="354" height="23"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="워크스페이스 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaX-G8-i3g">
+                    <rect key="frame" x="30" y="151" width="122" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muG-C8-sr5">
+                    <rect key="frame" x="30" y="187" width="269" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <color key="textColor" red="0.25490196078431371" green="0.25490196078431371" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상태 작성하기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZsX-2N-PJ0">
+                    <rect key="frame" x="157" y="69" width="100" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="TAE-dh-ZuY"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULA-Tz-Avn">
+                    <rect key="frame" x="95" y="392.5" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="71M-W0-4oQ"/>
+                        <constraint firstAttribute="width" constant="70" id="kNG-lI-uzf"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="ic_condition_circle_disable" title=""/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHU-hZ-XJV">
+                    <rect key="frame" x="249" y="392.5" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="6Ls-HN-GXP"/>
+                        <constraint firstAttribute="height" constant="70" id="onE-o9-Qcb"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="ic_condition_X_disable"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRL-eS-xCa">
+                    <rect key="frame" x="345" y="58" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="p3t-xL-f3j"/>
+                        <constraint firstAttribute="height" constant="44" id="uZp-NG-Ih1"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="calendarCloseX"/>
+                    <connections>
+                        <action selector="close:" destination="-1" eventType="touchUpInside" id="c75-Pd-mbr"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3x-Fw-g7g">
+                    <rect key="frame" x="45" y="780" width="324" height="57"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="57" id="cbb-Fs-Rzm"/>
+                    </constraints>
+                    <color key="tintColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled">
+                        <attributedString key="attributedTitle">
+                            <fragment content="확인">
+                                <attributes>
+                                    <font key="NSFont" size="18" name="AppleSDGothicNeo-SemiBold"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <color key="baseBackgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </buttonConfiguration>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="A3x-Fw-g7g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="45" id="2Xd-EB-QwE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="A3x-Fw-g7g" secondAttribute="trailing" constant="45" id="3qC-Cv-SEU"/>
+                <constraint firstItem="Qzh-sb-Ka9" firstAttribute="top" secondItem="muG-C8-sr5" secondAttribute="bottom" constant="80" id="9Ag-4F-J2B"/>
+                <constraint firstItem="Qzh-sb-Ka9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="DsH-g4-5Go"/>
+                <constraint firstItem="uHU-hZ-XJV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="77" id="FZu-3C-GaG"/>
+                <constraint firstItem="uHU-hZ-XJV" firstAttribute="centerY" secondItem="ULA-Tz-Avn" secondAttribute="centerY" id="UB7-hV-Xov"/>
+                <constraint firstItem="ZsX-2N-PJ0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WXT-JJ-JqK"/>
+                <constraint firstItem="NaX-G8-i3g" firstAttribute="top" secondItem="ZsX-2N-PJ0" secondAttribute="bottom" constant="60" id="Xyz-F8-vDL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="muG-C8-sr5" secondAttribute="trailing" constant="115" id="YFC-9Y-RNY"/>
+                <constraint firstItem="muG-C8-sr5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="ZXL-8Y-HKl"/>
+                <constraint firstItem="muG-C8-sr5" firstAttribute="top" secondItem="NaX-G8-i3g" secondAttribute="bottom" constant="15" id="bIk-r7-to0"/>
+                <constraint firstItem="NaX-G8-i3g" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="cSt-Uv-nee"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Qzh-sb-Ka9" secondAttribute="trailing" constant="30" id="eCa-8s-w4e"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oRL-eS-xCa" secondAttribute="trailing" constant="25" id="fLJ-A8-pzq"/>
+                <constraint firstItem="oRL-eS-xCa" firstAttribute="centerY" secondItem="ZsX-2N-PJ0" secondAttribute="centerY" id="jE7-K3-lgx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="A3x-Fw-g7g" secondAttribute="bottom" constant="25" id="lcV-vv-RAF"/>
+                <constraint firstItem="ZsX-2N-PJ0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="25" id="mrh-91-SQF"/>
+                <constraint firstItem="ULA-Tz-Avn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-77" id="wmY-y8-dDk"/>
+                <constraint firstItem="ULA-Tz-Avn" firstAttribute="top" secondItem="Qzh-sb-Ka9" secondAttribute="bottom" constant="82" id="xay-JN-sYc"/>
+            </constraints>
+            <point key="canvasLocation" x="135" y="86"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="calendarCloseX" width="24" height="24"/>
+        <image name="ic_condition_X_disable" width="61" height="61"/>
+        <image name="ic_condition_circle_disable" width="68" height="68"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

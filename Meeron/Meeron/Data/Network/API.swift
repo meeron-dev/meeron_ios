@@ -9,9 +9,11 @@ import Foundation
 import RxAlamofire
 import RxSwift
 import Alamofire
+import Kingfisher
 import UIKit
+import AWSS3
 
-import Amplify
+//import Amplify
 
 enum EncodingType {
     case JSONEncoding
@@ -80,6 +82,7 @@ struct API {
                 }
                 
                 if let data = data, let fileName = fileName, let mimeType = mimeType {
+                    
                     multipartFormData.append(data, withName: "files", fileName: fileName, mimeType: mimeType)
                 }
                 
@@ -104,12 +107,33 @@ struct API {
         })
     }
     
-    func download(url:String) {
+    func downloadFile(url:String, fileName:String) {
+        let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
+        getPreSignedURLRequest.bucket = "meeron-bucket"
+        getPreSignedURLRequest.key = "files/"+(url.split(separator: "/").map{String($0)}.last ?? "")
+        getPreSignedURLRequest.httpMethod = .GET
+        getPreSignedURLRequest.expires = Date(timeIntervalSinceNow: 3600)  // Change the value of the expires time interval as required
+        AWSS3PreSignedURLBuilder.default().getPreSignedURL(getPreSignedURLRequest).continueWith { (task:AWSTask<NSURL>) -> Any? in
+            if let error = task.error as NSError? {
+                print("Error: \(error)")
+                return nil
+            }
+            if let presignedURL = task.result?.absoluteURL {
+                
+                self.download(url: presignedURL, fileName: fileName)
+            }
+            return nil
+        }
+        
+    }
+    
+    
+    func download(url:URL, fileName:String) {
         let fileManager = FileManager.default
                 // 앱 경로
         let appURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
                 // 파일이름 url 의 맨 뒤 컴포넌트로 지정 (50MB.zip)
-        let fileName : String = URL(string: url)!.lastPathComponent
+        //let fileName : String = URL(string: url)!.lastPathComponent
                 // 파일 경로 생성
         let fileURL = appURL.appendingPathComponent(fileName)
                 // 파일 경로 지정 및 다운로드 옵션 설정 ( 이전 파일 삭제 , 디렉토리 생성 )
@@ -118,42 +142,40 @@ struct API {
         }
         
         
-        AF.download(url, to: destination)
+        AF.download(url, headers: ["Content-Type":"application/octet-stream"], to: destination)
             .downloadProgress { progress in
                 print(progress.fractionCompleted,"✔️")
             }.response {response in
                 if response.error != nil {
                     print("파일다운로드 실패")
                 }else{
-                    if let path = response.fileURL?.path {
-                        if response.fileURL?.lastPathComponent.split(separator: ".")[1] == "png" {
-                            let image = UIImage(contentsOfFile: path)
-                            guard let image = image  else {return }
-                            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                        }
-                    }
-                    print(response.fileURL?.lastPathComponent)
                     print("파일다운로드 완료")
                 }
-                
             }
-        
     }
     
-    func downloadFile(url:String) {
-        
-        let downloadToFileName = FileManager.default.urls(for: .documentDirectory,
-                                                          in: .userDomainMask)[0]
-            .appendingPathComponent("myFile.txt")
-        let storageOperation = Amplify.Storage.downloadFile(key: String(url.split(separator: "/").last!), local: downloadToFileName)
-        let progressSink = storageOperation.progressPublisher.sink { progress in print("Progress: \(progress)") }
-        let resultSink = storageOperation.resultPublisher.sink {
-            if case let .failure(storageError) = $0 {
-                print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
+    func getImageResource(url:String, completion: @escaping (ImageResource?)->()) {
+        let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
+        getPreSignedURLRequest.bucket = "meeron-bucket"
+        getPreSignedURLRequest.key = "files/"+(url.split(separator: "/").map{String($0)}.last ?? "")
+        getPreSignedURLRequest.httpMethod = .GET
+        getPreSignedURLRequest.expires = Date(timeIntervalSinceNow: 3600)  // Change the value of the expires time interval as required
+        AWSS3PreSignedURLBuilder.default().getPreSignedURL(getPreSignedURLRequest).continueWith { (task:AWSTask<NSURL>) -> Any? in
+            if let error = task.error as NSError? {
+                print("Error: \(error)")
+                return nil
             }
+            if let presignedURL = task.result {
+                
+                DispatchQueue.main.async {
+                    let resource = ImageResource(downloadURL: URL(string: presignedURL.absoluteString!)!, cacheKey: "files/"+(url.split(separator: "/").map{String($0)}.last ?? ""))
+                    completion(resource)
+                }
+            }
+            return nil
         }
-        receiveValue: {
-            print("Completed")
-        }
+        completion(nil)
     }
+    
+    
 }

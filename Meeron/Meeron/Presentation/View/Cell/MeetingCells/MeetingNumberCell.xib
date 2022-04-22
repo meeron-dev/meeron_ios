@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MeetingNumberCell" customModule="Meeron" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZ0-cx-fCQ">
+                        <rect key="frame" x="-1" y="-1" width="52" height="52"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="n" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJV-60-qpH">
+                                <rect key="frame" x="19.5" y="11.5" width="13" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
+                                <color key="textColor" red="0.50588235290000005" green="0.50588235290000005" blue="0.50588235290000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96862745098039216" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="52" id="FSb-fe-Yfd"/>
+                            <constraint firstItem="YJV-60-qpH" firstAttribute="centerY" secondItem="RZ0-cx-fCQ" secondAttribute="centerY" id="JTb-4R-5rc"/>
+                            <constraint firstAttribute="height" constant="52" id="VfV-YS-YpP"/>
+                            <constraint firstItem="YJV-60-qpH" firstAttribute="centerX" secondItem="RZ0-cx-fCQ" secondAttribute="centerX" id="eFi-0V-Jc4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="RZ0-cx-fCQ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="awx-B7-aWM"/>
+                <constraint firstItem="RZ0-cx-fCQ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="lJn-14-uLY"/>
+            </constraints>
+            <connections>
+                <outlet property="numberLabel" destination="YJV-60-qpH" id="fwT-Z7-XCI"/>
+            </connections>
+            <point key="canvasLocation" x="135" y="86"/>
+        </collectionViewCell>
+    </objects>
+</document>
