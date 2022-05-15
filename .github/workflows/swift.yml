@@ -18,3 +18,13 @@ jobs:
       run: |
         pod install --repo-update --clean-install --project-directory=Meeron/
         xcodebuild build -workspace Meeron/Meeron.xcworkspace -scheme Meeron -destination 'platform=iOS Simulator,name=iPhone 13 Pro,OS=latest'
+        
+    - name: action-slack
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        author_name: Github Action Test # default: 8398a7@action-slack
+        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+      if: always() # Pick up events even if the job fails or is canceled.
