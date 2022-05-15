@@ -28,7 +28,7 @@ class HomeViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeVM.failTokenSubject
+        homeVM.goLoginViewSubject
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 owner.goLoginView()

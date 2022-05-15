@@ -9,7 +9,6 @@ import Foundation
 import RxSwift
 
 protocol UserRepository {
-    func reissueToken() -> Observable<Token?>
     func fetchUser() -> Observable<User?>
     func fetchUserWorkspace(id:Int) -> Observable<UserWorkspace?>
     func saveUserId(id:Int)

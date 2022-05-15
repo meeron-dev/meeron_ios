@@ -43,17 +43,13 @@ class LoginViewController: UIViewController {
     }
     
     func goNextView(type:UserSignUpState) {
-        /*let termsVC = self.storyboard?.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
-        
-        termsVC.modalPresentationStyle = .fullScreen
-        present(termsVC, animated: true, completion: nil)*/
         if type == .terms {
             let termsVC = self.storyboard?.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
             
             termsVC.modalPresentationStyle = .fullScreen
             present(termsVC, animated: true, completion: nil)
         }else if type == .userName {
-            let userNameVC = self.storyboard?.instantiateViewController(withIdentifier: "UserNameViewController") as! TermsViewController
+            let userNameVC = self.storyboard?.instantiateViewController(withIdentifier: "UserNameViewController") as! UserNameViewController
             
             userNameVC.modalPresentationStyle = .fullScreen
             present(userNameVC, animated: true, completion: nil)

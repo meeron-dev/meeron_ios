@@ -10,7 +10,7 @@ import RxSwift
 
 class HomeViewModel {
     
-    let failTokenSubject = PublishSubject<Bool>()
+    let goLoginViewSubject = PublishSubject<Bool>()
     
     let workspaceNameSubject = BehaviorSubject<String>(value: "워크스페이스")
     
@@ -36,21 +36,10 @@ class HomeViewModel {
                     owner.loadUserWorkspace(id: user.userId)
                     
                 }else {
-                    owner.reissueToken()
+                    owner.goLoginViewSubject.onNext(true)
                 }
             }).disposed(by: disposeBag)
         
-    }
-    func reissueToken() {
-        userRepository.reissueToken()
-            .withUnretained(self)
-            .subscribe(onNext: { owner, token in
-                if let token = token {
-                    owner.saveToken(token: token)
-                }else {
-                    owner.failTokenSubject.onNext(true)
-                }
-            }).disposed(by: disposeBag)
     }
     
     func saveToken(token:Token) {

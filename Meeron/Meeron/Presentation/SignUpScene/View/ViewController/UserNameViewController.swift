@@ -34,8 +34,16 @@ class UserNameViewController:UIViewController {
             .subscribe(onNext: { owner, success in
                 if success {
                     owner.goPickCreationParticipationView()
+                }else {
+                    owner.goLoginView()
                 }
             }).disposed(by: disposeBag)
+    }
+    
+    func goLoginView() {
+        let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        loginVC.modalPresentationStyle = .fullScreen
+        present(loginVC, animated: true, completion: nil)
     }
     
     func setupTextField() {

@@ -10,17 +10,7 @@ import RxSwift
 
 class DefaultUserRepository: UserRepository {
     
-    
     let api = API()
-    
-    func reissueToken() -> Observable<Token?> {
-        guard let refreshToken = KeychainManager().read(service: "Meeron", account: "refreshToken") else {return Observable.just(nil)}
-        
-        let resource = Resource<Token>(url: URLConstant.reissue, parameter: [:], headers: [.authorization(bearerToken: refreshToken)], method: .post, encodingType: .URLEncoding)
-        
-        return api.requestData(resource: resource)
-        
-    }
     
     func fetchUser() -> Observable<User?> {
         

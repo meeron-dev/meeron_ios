@@ -35,39 +35,105 @@ struct Resource<T:Codable> {
     }
 }
 
+final class TokenRequestInterceptor: RequestInterceptor {
+    let disposeBag = DisposeBag()
+    let retryLimit = 3
+    let api = API()
+    let keychainManager = KeychainManager()
+    
+    func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
+        completion(.success(urlRequest))
+    }
+    
+    func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
+        
+        guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 else {
+            completion(.doNotRetryWithError(error))
+            return
+        }
+        
+        
+        if request.retryCount < retryLimit {
+            guard let refreshToken = keychainManager.read(service: "Meeron", account: "refreshToken") else {return completion(.doNotRetry)}
+            
+            let resource = Resource<Token>(url: URLConstant.reissue, parameter: [:], headers: [.authorization(bearerToken: refreshToken)], method: .post, encodingType: .URLEncoding)
+            
+            AF.request(resource.url, method: resource.method, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
+                .responseDecodable(completionHandler: { (response:AFDataResponse<Token>)  in
+                guard let statusCode = response.response?.statusCode else { completion(.doNotRetry)
+                    return
+                }
+                    
+                switch statusCode {
+                case 200..<300:
+                    guard let token = response.value else {return completion(.doNotRetry)}
+                    print(token)
+                    _ = self.keychainManager.saveLoginToken(accessToken: token.accessToken, refreshToken: token.refreshToken)
+                    completion(.retry)
+                    return
+                default:
+                    print("⭐️",response.debugDescription)
+                    completion(.doNotRetry)
+                }
+            })
+            
+            
+        }
+    }
+        
+    
+}
+
 
 
 struct API {
     
     func requestData<T:Codable>(resource:Resource<T>) -> Observable<T?> {
-        print(resource)
         
-        return RxAlamofire.requestData(resource.method, resource.url, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
-            .flatMap({ (response, data) -> Observable<T?> in
-                print("✅", response)
-                switch response.statusCode {
-                case 200...299 :
-                    let decodedData = try JSONDecoder().decode(T.self, from: data)
-                    return Observable.just(decodedData)
+        return Observable.create{ observable in
+            AF.request(resource.url, method: resource.method, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
+                .validate()
+                .responseDecodable(completionHandler: { (response:AFDataResponse<T>)  in
+                guard let statusCode = response.response?.statusCode else { observable.onNext(nil)
+                    return
+                }
+                    
+                switch statusCode {
+                case 200..<300:
+                    observable.onNext(response.value)
                 default:
                     print("📍",response.debugDescription)
-                    return Observable.just(nil)
+                    observable.onNext(nil)
                 }
             })
+            return Disposables.create()
+        }
+        
     }
     
+    
     func requestResponse(resource:Resource<Bool>) -> Observable<Bool> {
-        return RxAlamofire.requestResponse(resource.method, resource.url, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
-            .flatMap { response -> Observable<Bool> in
-                switch response.statusCode{
-                case 200...299:
-                    print("✅",response.debugDescription)
-                    return Observable.just(true)
-                default:
-                    print("📍",response.debugDescription)
-                    return Observable.just(false)
+        return Observable.create { observable in
+            AF.request(resource.url, method: resource.method, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers, interceptor: TokenRequestInterceptor())
+                .validate()
+                .response { response in
+                    guard let statusCode = response.response?.statusCode else {
+                        observable.onNext(false)
+                        return
+                    }
+                    
+                    switch statusCode {
+                    case 200...299:
+                        print("✅",response.debugDescription)
+                        observable.onNext(true)
+                    default:
+                        print("📍",response.debugDescription)
+                        observable.onNext(false)
+                    }
                 }
+            return Disposables.create()
         }
+        
     }
     
     
@@ -87,7 +153,7 @@ struct API {
                 }
                 
             
-            }, to: resource.url, usingThreshold: UInt64.init(), method: resource.method, headers: ["Content-Type": "multipart/form", "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!])
+            }, to: resource.url, usingThreshold: UInt64.init(), method: resource.method, headers: ["Content-Type": "multipart/form", "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!], interceptor: TokenRequestInterceptor())
                 .response { response in
                     print("✔️",response.debugDescription)
                     guard let statusCode = response.response?.statusCode else {
@@ -100,7 +166,6 @@ struct API {
                     default:
                         return observable.onNext(false)
                     }
-                    
                 }
             
             return Disposables.create()
@@ -176,6 +241,5 @@ struct API {
         }
         completion(nil)
     }
-    
     
 }

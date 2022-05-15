@@ -10,19 +10,20 @@ import RxSwift
 
 class UserNameViewModel {
     
-    let signUpRepository = DefaultSignUpRepository()
+    let signUpUseCase = DefaultSignUpUseCase()
     
     let successPatchNameSubject = BehaviorSubject<Bool>(value: false)
     
     let disposeBag = DisposeBag()
     
     func patchUserName(name:String) {
-        signUpRepository.saveUserName(name: name)
+        signUpUseCase
+            .saveUserName(name: name)
             .withUnretained(self)
             .subscribe(onNext: { owner, success in
+                owner.successPatchNameSubject.onNext(success)
                 if success {
                     UserDefaults.standard.set(name, forKey: "userName")
-                    owner.successPatchNameSubject.onNext(success)
                 }
             }).disposed(by: disposeBag)
     }
