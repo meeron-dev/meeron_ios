@@ -12,7 +12,6 @@ import Alamofire
 class MeetingCreationRepository {
     
     let headers:HTTPHeaders = [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)]
-    let api = API()
     
     
     func createMeeting(data:MeetingCreation) -> Observable<MeetingId?> {
@@ -30,7 +29,7 @@ class MeetingCreationRepository {
         print("회의 생성 파라미터",parameter)
         let resource = Resource<MeetingId>(url: URLConstant.meetings, parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
         
-        return  api.requestData(resource: resource)
+        return  API.requestData(resource: resource)
     }
     
     func createMeetingParticipant(data:MeetingCreation, meetingId:String) -> Observable<Bool> {
@@ -38,7 +37,7 @@ class MeetingCreationRepository {
         let parameter = ["workspaceUserIds":data.participants.map{$0.workspaceUserId}]
         let resource = Resource<Bool>(url: URLConstant.meetings + "/" + meetingId + "/attendees" , parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
         print("참가자 생성", parameter)
-        return  api.requestResponse(resource: resource)
+        return  API.requestResponse(resource: resource)
     }
     
     func createMeetingAgenda(datas:[AgendaCreation], meetingId:String) -> Observable<MeetingCreationAgendaResponses?> {
@@ -61,7 +60,7 @@ class MeetingCreationRepository {
         let parameter = ["agendas":agendas]
         print("아젠다",parameter)
         let resource = Resource<MeetingCreationAgendaResponses>(url: URLConstant.meetings + "/" + meetingId + "/agendas", parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
-        return  api.requestData(resource: resource)
+        return  API.requestData(resource: resource)
     }
     
     func createMeetingDocument(data:Data, fileName:String, agendaId:String) -> Observable<Bool> {
@@ -75,6 +74,6 @@ class MeetingCreationRepository {
         }else if fileName.split(separator: ".")[1] == "text" {
             mimeType = "text/plain"
         }
-        return api.upload(resource: resource, data: data, fileName: fileName, mimeType: mimeType)
+        return API.upload(resource: resource, data: data, fileName: fileName, mimeType: mimeType)
     }
 }

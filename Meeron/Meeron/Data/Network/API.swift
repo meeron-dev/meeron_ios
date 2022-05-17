@@ -88,10 +88,10 @@ final class TokenRequestInterceptor: RequestInterceptor {
 
 struct API {
     
-    func requestData<T:Codable>(resource:Resource<T>) -> Observable<T?> {
+    static func requestData<T:Codable>(resource:Resource<T>) -> Observable<T?> {
         
         return Observable.create{ observable in
-            AF.request(resource.url, method: resource.method, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers)
+            AF.request(resource.url, method: resource.method, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers, interceptor: TokenRequestInterceptor())
                 .validate()
                 .responseDecodable(completionHandler: { (response:AFDataResponse<T>)  in
                 guard let statusCode = response.response?.statusCode else { observable.onNext(nil)
@@ -112,7 +112,7 @@ struct API {
     }
     
     
-    func requestResponse(resource:Resource<Bool>) -> Observable<Bool> {
+    static func requestResponse(resource:Resource<Bool>) -> Observable<Bool> {
         return Observable.create { observable in
             AF.request(resource.url, method: resource.method, parameters: resource.parameter, encoding: resource.encoding, headers: resource.headers, interceptor: TokenRequestInterceptor())
                 .validate()
@@ -138,7 +138,7 @@ struct API {
     
     
     
-    func upload(resource: Resource<Bool>, data:Data?, fileName:String?, mimeType:String?) -> Observable<Bool> {
+    static func upload(resource: Resource<Bool>, data:Data?, fileName:String?, mimeType:String?) -> Observable<Bool> {
         print(resource)
         return Observable.create({ observable in
             AF.upload(multipartFormData: { multipartFormData in
@@ -172,7 +172,7 @@ struct API {
         })
     }
     
-    func downloadFile(url:String, fileName:String) {
+    static func downloadFile(url:String, fileName:String) {
         let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
         getPreSignedURLRequest.bucket = "meeron-bucket"
         getPreSignedURLRequest.key = "files/"+(url.split(separator: "/").map{String($0)}.last ?? "")
@@ -193,7 +193,7 @@ struct API {
     }
     
     
-    func download(url:URL, fileName:String) {
+    static func download(url:URL, fileName:String) {
         let fileManager = FileManager.default
                 // 앱 경로
         let appURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -219,7 +219,7 @@ struct API {
             }
     }
     
-    func getImageResource(url:String, completion: @escaping (ImageResource?)->()) {
+    static func getImageResource(url:String, completion: @escaping (ImageResource?)->()) {
         let getPreSignedURLRequest = AWSS3GetPreSignedURLRequest()
         getPreSignedURLRequest.bucket = "meeron-bucket"
         getPreSignedURLRequest.key = "files/"+(url.split(separator: "/").map{String($0)}.last ?? "")

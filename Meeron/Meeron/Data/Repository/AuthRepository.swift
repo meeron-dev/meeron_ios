@@ -11,8 +11,6 @@ import RxSwift
 
 class AuthRepository {
     
-    let api = API()
-    
     let keychainManager = KeychainManager()
     
     let disposeBag = DisposeBag()
@@ -21,13 +19,13 @@ class AuthRepository {
         let headers:HTTPHeaders = [ "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!, "refreshToken": "Bearer " + KeychainManager().read(service: "Meeron", account: "refreshToken")!]
         
         let resource = Resource<Bool>(url: URLConstant.logout, parameter: [:], headers: headers, method: .post, encodingType: .URLEncoding)
-        return api.requestResponse(resource: resource)
+        return API.requestResponse(resource: resource)
     }
 
     
     func withdraw() -> Observable<Bool> {
         let resource = Resource<Bool>(url: URLConstant.withdraw, parameter: [:], headers: [ "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!], method: .delete, encodingType: .URLEncoding)
-        return api.requestResponse(resource: resource)
+        return API.requestResponse(resource: resource)
     }
     
     func deleteToken() {

@@ -10,15 +10,13 @@ import RxSwift
 
 class DefaultUserRepository: UserRepository {
     
-    let api = API()
-    
     func fetchUser() -> Observable<User?> {
         
         guard let accessToken = KeychainManager().read(service: "Meeron", account: "accessToken") else {return Observable.just(nil)}
         
         let resource = Resource<User>(url: URLConstant.user, parameter:[:], headers: [.authorization(bearerToken: accessToken)], method: .get, encodingType: .URLEncoding)
         
-        return api.requestData(resource: resource)
+        return API.requestData(resource: resource)
     }
     
     func fetchUserWorkspace(id:Int) -> Observable<UserWorkspace?> {
@@ -27,7 +25,7 @@ class DefaultUserRepository: UserRepository {
         
         print("🤭", resource)
         
-        return api.requestData(resource: resource)
+        return API.requestData(resource: resource)
     }
     
     func saveUserId(id:Int) {
@@ -50,7 +48,7 @@ class DefaultUserRepository: UserRepository {
         guard let workspaceId = UserDefaults.standard.string(forKey: "workspaceId") else {return Observable.just(nil)}
         
         let resource = Resource<Workspace>(url: URLConstant.workspace+"/\(workspaceId)", parameter: [:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
-        return api.requestData(resource: resource)
+        return API.requestData(resource: resource)
     }
     
     func saveWorkspace(data:Workspace) {
@@ -60,7 +58,7 @@ class DefaultUserRepository: UserRepository {
     func fetchWorkspaceUser(workspaceUserId:String) -> Observable<WorkspaceUser?> {
         let resource = Resource<WorkspaceUser>(url: URLConstant.workspaceUsers+"/\(workspaceUserId)", parameter:[:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding )
         
-        return api.requestData(resource: resource)
+        return API.requestData(resource: resource)
     }
     
     func modifyUserProfile(data: WorkspaceProfile) -> Observable<Bool> {
@@ -79,7 +77,7 @@ class DefaultUserRepository: UserRepository {
             }
         let resource = Resource<Bool>(url: URLConstant.workspaceUsers+"/\(workspaceUserId)", parameter: param, headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .put, encodingType: .URLEncoding )
         
-        return api.upload(resource: resource, data: data.image, fileName: "image.jpeg", mimeType: "image/jpeg")
+        return API.upload(resource: resource, data: data.image, fileName: "image.jpeg", mimeType: "image/jpeg")
     }
     
 }

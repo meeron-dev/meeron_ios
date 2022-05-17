@@ -43,7 +43,7 @@ class DefaultLoginUseCase: LoginUseCase {
     }
     
     func fetchToken(email: String, nickname: String?, profileImageUrl: String?, provider: String) -> Observable<Token?> {
-        return signUpRepository.fetchLoginToken(email: email, nickname: nickname, profileImageUrl: profileImageUrl, provider: provider)
+        return tokenRepository.fetchLoginToken(email: email, nickname: nickname, profileImageUrl: profileImageUrl, provider: provider)
     }
     
     func saveToken(token: Token) -> Bool {

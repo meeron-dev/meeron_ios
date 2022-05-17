@@ -9,8 +9,5 @@ import Foundation
 import RxSwift
 
 protocol SignUpRepository {
-    
-    func fetchLoginToken(email:String, nickname:String?, profileImageUrl:String?, provider:String) -> Observable<Token?>
-    
     func saveUserName(name:String) -> Observable<Bool>
 }

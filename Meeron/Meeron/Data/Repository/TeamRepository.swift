@@ -21,14 +21,14 @@ class TeamRepository {
         let urlString = URLConstant.teamInWorkspace+"?workspaceId="+workspaceId
         let resource = Resource<Teams>(url:urlString, parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         
-        return api.requestData(resource: resource)
+        return API.requestData(resource: resource)
     }
     
     func loadUsersInWorkspaceTeam(teamId:String) -> Observable<WorkspaceUserProfiles?> {
         
         let resource = Resource<WorkspaceUserProfiles>(url:URLConstant.teamInWorkspace+"/"+teamId+"/workspace-users", parameter: ["teamId":teamId], headers: headers, method: .get, encodingType: .URLEncoding)
         
-        return api.requestData(resource: resource)
+        return API.requestData(resource: resource)
     }
     
     func loadUsersWithoutTeam() -> Observable<WorkspaceUserProfiles?> {
@@ -39,7 +39,7 @@ class TeamRepository {
         
         let resource = Resource<WorkspaceUserProfiles>(url: URLConstant.teamInWorkspace+"/none/workspace-users?workspaceId=\(workspaceId)", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         
-        return api.requestData(resource: resource)
+        return API.requestData(resource: resource)
     }
     
     func createTeam(name:String) -> Observable<TeamCreationResponse?> {
@@ -48,7 +48,7 @@ class TeamRepository {
         }
         let resource = Resource<TeamCreationResponse>(url: URLConstant.teamInWorkspace, parameter: ["workspaceId":workspaceId,"teamName":name], headers: headers, method: .post, encodingType: .JSONEncoding)
         
-        return api.requestData(resource: resource)
+        return API.requestData(resource: resource)
     }
     
     func createParticipant(teamId:Int, datas:[WorkspaceUser]) -> Observable<Bool>{
@@ -62,7 +62,7 @@ class TeamRepository {
         
         let resource = Resource<Bool>(url: URLConstant.teamInWorkspace+"/\(teamId)/workspace-users", parameter: ["adminWorkspaceUserId":workspaceUserId,"joinTeamWorkspaceUserIds":participantIds], headers: headers, method: .patch, encodingType: .JSONEncoding)
         
-        return api.requestResponse(resource: resource)
+        return API.requestResponse(resource: resource)
         
     }
     
@@ -70,7 +70,7 @@ class TeamRepository {
         guard let workspaceUserId =  UserDefaults.standard.string(forKey: "workspaceUserId") else {return Observable.just(false)}
         
         let resource = Resource<Bool>(url: URLConstant.teamInWorkspace+"/\(teamId)", parameter: ["adminWorkspaceUserId":workspaceUserId], headers: headers, method: .post, encodingType: .JSONEncoding)
-        return api.requestResponse(resource: resource)
+        return API.requestResponse(resource: resource)
     }
     
     func deleteParticipant(data:WorkspaceUser) -> Observable<Bool> {
@@ -78,7 +78,7 @@ class TeamRepository {
         
         let resource = Resource<Bool>(url: URLConstant.workspaceUsers+"/\(data.workspaceUserId)/team", parameter: ["adminWorkspaceUserId":workspaceUserId], headers: headers, method: .patch, encodingType: .JSONEncoding)
         
-        return api.requestResponse(resource: resource)
+        return API.requestResponse(resource: resource)
     }
     
     func patchNewTeamName(name:String, teamId:Int) {
@@ -86,6 +86,7 @@ class TeamRepository {
         
         
         let resource = Resource<Bool>(url: URLConstant.teamInWorkspace+"/\(teamId)/name", parameter: ["adminWorkspaceUserId":workspaceUserId, "teamName": name], headers: headers, method: .patch, encodingType: .JSONEncoding)
-        api.requestResponse(resource: resource)
+        
+        API.requestResponse(resource: resource)
     }
 }

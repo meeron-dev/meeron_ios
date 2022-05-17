@@ -67,7 +67,7 @@ class MeetingProfileSelectViewModel {
 
         let resource = Resource<WorkspaceUserProfiles>(url:encodedURLString, parameter: [:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
         
-        API().requestData(resource: resource)
+        API.requestData(resource: resource)
             .subscribe(onNext: { workspaceUserProfiles in
                 if let workspaceUserProfiles = workspaceUserProfiles {
                     self.userProfilesSubject.onNext(workspaceUserProfiles.workspaceUsers)

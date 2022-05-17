@@ -13,12 +13,11 @@ import RxSwift
 class AgendaRepository {
     
     let headers:HTTPHeaders = [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)]
-    let api = API()
     
     func loadAgenda(meetingId:Int, agendaOrder:Int) -> Observable<Agenda?> {
         let resource = Resource<Agenda>(url: URLConstant.meetings+"/\(meetingId)/agendas/\(agendaOrder)", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         
-        return api.requestData(resource: resource)
+        return API.requestData(resource: resource)
     }
     
 }

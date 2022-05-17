@@ -112,7 +112,7 @@ class MeetingProfileSelectCell: UICollectionViewCell {
         
         if let profileUrl = data.profileImageUrl {
             
-            API().getImageResource(url: profileUrl) { imageResource in
+            API.getImageResource(url: profileUrl) { imageResource in
                 DispatchQueue.main.async {
                     self.profileImageView.kf.indicatorType = .activity
                     self.profileImageView.kf.setImage(with: imageResource)
@@ -140,7 +140,7 @@ class MeetingProfileSelectCell: UICollectionViewCell {
         }
         
         if let profileUrl = data.profileImageUrl {
-            API().getImageResource(url: profileUrl) { imageResource in
+            API.getImageResource(url: profileUrl) { imageResource in
                 DispatchQueue.main.async {
                     self.profileImageView.kf.indicatorType = .activity
                     self.profileImageView.kf.setImage(with: imageResource)

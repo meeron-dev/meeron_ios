@@ -12,6 +12,6 @@ class WorkspaceUserRepository {
     func loadWorkspaceUser(id:Int) -> Observable<User?> {
         let resource = Resource<User>(url: URLConstant.workspaceUsers+"/\(id)/user", parameter: [:], headers: [ "Authorization": "Bearer " + KeychainManager().read(service: "Meeron", account: "accessToken")!], method: .get, encodingType: .URLEncoding)
         
-        return API().requestData(resource: resource)
+        return API.requestData(resource: resource)
     }
 }

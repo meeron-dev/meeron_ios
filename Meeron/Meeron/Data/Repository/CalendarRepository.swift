@@ -13,8 +13,6 @@ class CalendarRepository {
     
     let headers:HTTPHeaders = [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)]
     
-    let api = API()
-    
     func getId(type:CalendarType) -> String {
         switch type {
         case .workspace:
@@ -30,7 +28,7 @@ class CalendarRepository {
     
         let resource = Resource<MeetingDays>(url: "\(URLConstant.calendarMeetingDays)?date=\(date)&type=\(type)&id=\(getId(type: type))", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         
-        return api.requestData(resource: resource)
+        return API.requestData(resource: resource)
     }
     
     func loadMeetingOnDate(date:String, type:CalendarType) -> Observable<CalendarMeetings?> {
@@ -39,6 +37,6 @@ class CalendarRepository {
         let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters:.urlQueryAllowed)
         let resource = Resource<CalendarMeetings>(url: encodedURLString!, parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         
-        return api.requestData(resource: resource)
+        return API.requestData(resource: resource)
     }
 }

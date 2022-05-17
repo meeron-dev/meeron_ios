@@ -14,18 +14,16 @@ class WorkspaceCreationRepository {
     
     let headers:HTTPHeaders = [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)]
     
-    let api = API()
-    
     func postWorkspaceName(name:String) -> Observable<WorkspaceCreationResponse?> {
         
         let resource = Resource<WorkspaceCreationResponse>(url: URLConstant.workspace, parameter: ["name":name], headers: headers, method: .post, encodingType: .JSONEncoding)
         
-        return api.requestData(resource: resource)
+        return API.requestData(resource: resource)
     }
     
     func postWorkspaceTeamName(name:String, workspaceId:Int) -> Observable<Bool> {
         let resource = Resource<Bool>(url: URLConstant.teamInWorkspace, parameter: ["workspaceId":workspaceId, "teamName":name], headers: headers, method: .post, encodingType: .JSONEncoding)
-        return api.requestResponse(resource: resource)
+        return API.requestResponse(resource: resource)
     }
     
     func postWorkspaceManagerProfile(workspaceProfile:WorkspaceProfile, workspaceId:String) -> Observable<Bool> {
@@ -47,7 +45,7 @@ class WorkspaceCreationRepository {
             }
         let resource = Resource<Bool>(url: URLConstant.workspaceUsers+"/admin", parameter: param, headers: headers, method: .post, encodingType: .URLEncoding )
         
-        return api.upload(resource: resource, data: workspaceProfile.image, fileName: "image.jpeg", mimeType: "image/jpeg")
+        return API.upload(resource: resource, data: workspaceProfile.image, fileName: "image.jpeg", mimeType: "image/jpeg")
     }
     
     func createWorkspaceDynamicLink(workspaceId:Int, completion: @escaping (String?)->() ) {

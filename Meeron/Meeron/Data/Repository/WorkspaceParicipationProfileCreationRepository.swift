@@ -12,11 +12,9 @@ import RxSwift
 class WorkspaceParicipationProfileCreationRepository {
     let headers:HTTPHeaders = [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)]
     
-    let api = API()
-    
     func checkWorkspace(workspaceId:String) -> Observable<Bool>{
         let resource = Resource<Bool>(url: (URLConstant.workspace+"/\(workspaceId)"), parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
-        return api.requestResponse(resource: resource)
+        return API.requestResponse(resource: resource)
         
     }
     
@@ -30,7 +28,7 @@ class WorkspaceParicipationProfileCreationRepository {
         }
         
         let resource = Resource<WorkspaceProfileNicknameCheckResponse>(url: encodedURLString, parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
-        return api.requestData(resource: resource)
+        return API.requestData(resource: resource)
         
     }
     
@@ -53,6 +51,6 @@ class WorkspaceParicipationProfileCreationRepository {
             }
         let resource = Resource<Bool>(url: URLConstant.workspaceUsers, parameter: param, headers: headers, method: .post, encodingType: .URLEncoding )
         
-        return api.upload(resource: resource, data: workspaceProfile.image, fileName: "image.jpeg", mimeType: "image/jpeg")
+        return API.upload(resource: resource, data: workspaceProfile.image, fileName: "image.jpeg", mimeType: "image/jpeg")
     }
 }
