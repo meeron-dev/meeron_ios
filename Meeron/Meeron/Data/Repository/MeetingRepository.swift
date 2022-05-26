@@ -13,15 +13,16 @@ class MeetingRepository {
     
     let headers: HTTPHeaders = [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)]
     
-    func loadTodayMeeting() -> Observable<TodayMeetings?> {
+    func loadTodayMeeting() -> Observable<[TodayMeeting]?> {
         
         guard let worksapceId = UserDefaults.standard.string(forKey: "workspaceId"), let workspaceUserId = UserDefaults.standard.string(forKey: "workspaceUserId") else {return Observable.just(nil)}
         
         let url = "\(URLConstant.todayMeeting)?workspaceId=\(worksapceId)&workspaceUserId=\(workspaceUserId)"
         
-        let resource = Resource<TodayMeetings>(url: url, parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
+        let resource = Resource<TodayMeetingsResponseDTO>(url: url, parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         
         return API.requestData(resource: resource)
+            .map{$0?.toDomain()}
     }
     
     func loadMeetingBasicInfo(meetingId:Int) -> Observable<MeetingBasicInfo?>{

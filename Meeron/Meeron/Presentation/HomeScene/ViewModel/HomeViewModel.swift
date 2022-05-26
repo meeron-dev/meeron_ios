@@ -21,20 +21,27 @@ class HomeViewModel {
     
     let todayMeetingCountSubject = BehaviorSubject<Int>(value: 0)
     
-    let meetingRepository = MeetingRepository()
-    let userRepository = DefaultUserRepository()
     
-    let keychainManager = KeychainManager()
     let disposeBag = DisposeBag()
     
+    let getUserUseCase = GetUserUseCase()
+    let getUserWorkspaceUseCase = GetUserWorkspaceUseCase()
+    let saveUserWorkspaceUseCase = SaveUserWorkspaceUseCase()
+    let saveUserIdUseCase = SaveUserIdUseCase()
+    
+    let getWorkspaceUseCase = GetWorkspaceUseCase()
+    let saveWorkspaceUseCase = SaveWorkspaceUseCase()
+    
+    let getTodayMeetingUseCase = GetTodayMeetingUseCase()
+    
     func loadUser() {
-        userRepository.fetchUser()
+        getUserUseCase
+            .execute()
             .withUnretained(self)
             .subscribe(onNext: { owner, user in
                 if let user = user {
                     owner.saveUserId(id: user.userId)
                     owner.loadUserWorkspace(id: user.userId)
-                    
                 }else {
                     owner.goLoginViewSubject.onNext(true)
                 }
@@ -42,21 +49,14 @@ class HomeViewModel {
         
     }
     
-    func saveToken(token:Token) {
-        if keychainManager.saveLoginToken(accessToken: token.accessToken, refreshToken: token.refreshToken) {
-            loadUser()
-        }
-    }
-    
     func loadUserWorkspace(id:Int) {
-        
-        userRepository.fetchUserWorkspace(id: id)
+        getUserWorkspaceUseCase
+            .execute(id: id)
             .withUnretained(self)
-            .subscribe(onNext: { owner, userWorkspace in
-                if let userWorkspace = userWorkspace {
-                    print("🤓", userWorkspace)
-                    if userWorkspace.myWorkspaceUsers.count > 0 {
-                        owner.saveUserWorkspace(data: userWorkspace.myWorkspaceUsers)
+            .subscribe(onNext: { owner, myWorkspaceUsers in
+                if let myWorkspaceUsers = myWorkspaceUsers {
+                    if myWorkspaceUsers.count > 0 {
+                        owner.saveUserWorkspace(data: myWorkspaceUsers)
                         owner.loadWorkspaceInfo()
                     }else {
                         owner.hasWorkspaceSubject.onNext(false)
@@ -67,20 +67,22 @@ class HomeViewModel {
     }
     
     func saveUserId(id:Int) {
-        userRepository.saveUserId(id: id)
+        saveUserIdUseCase
+            .execute(id: id)
     }
     
     func saveUserWorkspace(data:[MyWorkspaceUser]) {
-        userRepository.saveUserWorkspace(data: data)
+        saveUserWorkspaceUseCase
+            .execute(data: data)
         
     }
     
     func loadWorkspaceInfo()  {
-        userRepository.fetchWorkspaceInfo()
+        getWorkspaceUseCase
+            .execute()
             .withUnretained(self)
             .subscribe(onNext: { owner, workspace in
                 if let workspace = workspace {
-                    print("🟡", workspace)
                     owner.workspaceNameSubject.onNext(workspace.workspaceName)
                     owner.saveWorksapce(data: workspace)
                     owner.loadTodayMeeting()
@@ -89,23 +91,24 @@ class HomeViewModel {
     }
     
     func saveWorksapce(data:Workspace) {
-        userRepository.saveWorkspace(data: data)
+        saveWorkspaceUseCase
+            .execute(data: data)
     }
     
     func loadTodayMeeting() {
-        meetingRepository.loadTodayMeeting()
+        getTodayMeetingUseCase
+            .execute()
             .withUnretained(self)
             .subscribe(onNext: { owner, meetings in
                 if let meetings = meetings {
-                    print(meetings)
-                    if meetings.meetings.count <= 10 {
-                        owner.todayMeetings = meetings.meetings
-                        owner.todayMeetingsSubject.onNext(meetings.meetings)
-                        owner.todayMeetingCountSubject.onNext(meetings.meetings.count)
+                    if meetings.count <= 10 {
+                        owner.todayMeetings = meetings
+                        owner.todayMeetingsSubject.onNext(meetings)
+                        owner.todayMeetingCountSubject.onNext(meetings.count)
                     }else {
-                        owner.todayMeetings = Array(meetings.meetings[..<11])
-                        owner.todayMeetingsSubject.onNext(Array(meetings.meetings[..<11]))
-                        owner.todayMeetingCountSubject.onNext(meetings.meetings.count)
+                        owner.todayMeetings = Array(meetings[..<11])
+                        owner.todayMeetingsSubject.onNext(Array(meetings[..<11]))
+                        owner.todayMeetingCountSubject.onNext(meetings.count)
                     }
                     
                 }

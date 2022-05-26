@@ -11,7 +11,8 @@ import RxSwift
 class GetTodayMeetingUseCase {
     
     private let meetingRepository = MeetingRepository()
-    func getTodayMeeting() -> Observable<TodayMeetings?>{
+    
+    func execute() -> Observable<[TodayMeeting]?>{
         return meetingRepository.loadTodayMeeting()
     }
 }

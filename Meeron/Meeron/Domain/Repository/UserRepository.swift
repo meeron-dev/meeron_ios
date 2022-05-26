@@ -10,11 +10,9 @@ import RxSwift
 
 protocol UserRepository {
     func fetchUser() -> Observable<User?>
-    func fetchUserWorkspace(id:Int) -> Observable<UserWorkspace?>
+    func fetchUserWorkspace(id:Int) -> Observable<[MyWorkspaceUser]?>
     func saveUserId(id:Int)
     func saveUserWorkspace(data:[MyWorkspaceUser])
-    func fetchWorkspaceInfo() -> Observable<Workspace?>
-    func saveWorkspace(data:Workspace)
     func fetchWorkspaceUser(workspaceUserId:String) -> Observable<WorkspaceUser?>
     func modifyUserProfile(data: WorkspaceProfile) -> Observable<Bool>
 }

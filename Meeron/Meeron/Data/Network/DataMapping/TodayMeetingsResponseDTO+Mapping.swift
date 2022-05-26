@@ -12,7 +12,7 @@ struct TodayMeetingsResponseDTO: Codable {
 }
 
 extension TodayMeetingsResponseDTO {
-    func toDomain() -> TodayMeetings  {
-        return .init(meetings: meetings.map{ $0.toDomain() })
+    func toDomain() -> [TodayMeeting]  {
+        return meetings.map{$0.toDomain()}
     }
 }

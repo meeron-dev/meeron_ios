@@ -14,18 +14,18 @@ class DefaultUserRepository: UserRepository {
         
         guard let accessToken = KeychainManager().read(service: "Meeron", account: "accessToken") else {return Observable.just(nil)}
         
-        let resource = Resource<User>(url: URLConstant.user, parameter:[:], headers: [.authorization(bearerToken: accessToken)], method: .get, encodingType: .URLEncoding)
+        let resource = Resource<UserResponseDTO>(url: URLConstant.user, parameter:[:], headers: [.authorization(bearerToken: accessToken)], method: .get, encodingType: .URLEncoding)
         
         return API.requestData(resource: resource)
+            .map{$0?.toDomain()}
     }
     
-    func fetchUserWorkspace(id:Int) -> Observable<UserWorkspace?> {
+    func fetchUserWorkspace(id:Int) -> Observable<[MyWorkspaceUser]?> {
         
-        let resource = Resource<UserWorkspace>(url: URLConstant.userWorkspace+"/\(id)/workspace-users", parameter: ["userId":String(id)], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
-        
-        print("🤭", resource)
+        let resource = Resource<UserWorkspaceResponseDTO>(url: URLConstant.userWorkspace+"/\(id)/workspace-users", parameter: ["userId":String(id)], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
         
         return API.requestData(resource: resource)
+            .map{$0?.toDomain()}
     }
     
     func saveUserId(id:Int) {
@@ -43,17 +43,7 @@ class DefaultUserRepository: UserRepository {
         print("ADMIN",UserDefaults.standard.bool(forKey: "workspaceAdmin"))
     }
     
-    func fetchWorkspaceInfo() -> Observable<Workspace?> {
-        print("🟡")
-        guard let workspaceId = UserDefaults.standard.string(forKey: "workspaceId") else {return Observable.just(nil)}
-        
-        let resource = Resource<Workspace>(url: URLConstant.workspace+"/\(workspaceId)", parameter: [:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
-        return API.requestData(resource: resource)
-    }
     
-    func saveWorkspace(data:Workspace) {
-        UserDefaults.standard.set(data.workspaceName, forKey: "workspaceName")
-    }
     
     func fetchWorkspaceUser(workspaceUserId:String) -> Observable<WorkspaceUser?> {
         let resource = Resource<WorkspaceUser>(url: URLConstant.workspaceUsers+"/\(workspaceUserId)", parameter:[:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding )
