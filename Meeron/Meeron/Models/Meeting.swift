@@ -13,9 +13,9 @@ struct TodayMeetings:Codable {
 
 struct TodayMeeting:Codable {
     let meeting:Meeting
-    let team:TeamToday
+    let team:Team
     let agendas:[AgendaToday]
-    let admins:[AdminToday]
+    let admins:[MyWorkspaceUser]
     let attendCount:AttendCount
 }
 
@@ -29,10 +29,10 @@ struct Meeting:Codable {
     let place: String?
 }
 
-struct TeamToday:Codable {
+/*struct TeamToday:Codable {
     let teamId: Int
     let teamName: String
-}
+}*/
 
 struct AgendaToday:Codable {
     let agendaId: Int
