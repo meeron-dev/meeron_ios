@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 
 protocol UserRepository {
+    func saveUserName(name:String) -> Observable<Bool>
     func fetchUser() -> Observable<User?>
     func fetchUserWorkspace(id:Int) -> Observable<[MyWorkspaceUser]?>
     func saveUserId(id:Int)

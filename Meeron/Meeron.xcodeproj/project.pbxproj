@@ -10,7 +10,6 @@
 		3718BE8AF541385CF808C252 /* Pods_Meeron_MeeronUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5EF8D64124D0454D3C4E9B /* Pods_Meeron_MeeronUITests.framework */; };
 		83511768BAE0E1B0E00A950F /* Pods_Meeron.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 383E64CC54A9384A6DD9195F /* Pods_Meeron.framework */; };
 		EEFC4BCCA91F31025BC2118A /* Pods_MeeronTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD834A38ED0D19B51564F255 /* Pods_MeeronTests.framework */; };
-		FC05A9792836947600289EA9 /* MyMeeronUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05A9782836947600289EA9 /* MyMeeronUseCase.swift */; };
 		FC06E98327C3ABFF004065E3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06E98227C3ABFF004065E3 /* HomeViewController.swift */; };
 		FC06E98927C3DC71004065E3 /* UIColor+CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06E98827C3DC71004065E3 /* UIColor+CustomColor.swift */; };
 		FC06E98C27C3F02C004065E3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC06E98B27C3F02C004065E3 /* TabBarController.swift */; };
@@ -28,7 +27,6 @@
 		FC1CBF1427F48F42000BACEC /* TeamCreationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1CBF1327F48F42000BACEC /* TeamCreationResultViewController.swift */; };
 		FC1CBF1627F4923F000BACEC /* TeamCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1CBF1527F4923F000BACEC /* TeamCreationViewModel.swift */; };
 		FC1FB2C828101BF00001019B /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1FB2C728101BF00001019B /* UserRepository.swift */; };
-		FC1FB2CA28101D740001019B /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1FB2C928101D740001019B /* SignUpRepository.swift */; };
 		FC1FB2CC28101E1F0001019B /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1FB2CB28101E1F0001019B /* LoginUseCase.swift */; };
 		FC1FB2CE281041F10001019B /* TokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1FB2CD281041F10001019B /* TokenRepository.swift */; };
 		FC1FB2D02810420D0001019B /* DefaultTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1FB2CF2810420D0001019B /* DefaultTokenRepository.swift */; };
@@ -65,7 +63,6 @@
 		FC47215A27C9D23900F7A035 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47215927C9D23900F7A035 /* KeychainManager.swift */; };
 		FC47215C27CA14E700F7A035 /* WorkspaceUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47215B27CA14E700F7A035 /* WorkspaceUser.swift */; };
 		FC484DA727E38CFC00F15151 /* IntroductionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC484DA627E38CFC00F15151 /* IntroductionCell.swift */; };
-		FC49E78C2830E9EA00739056 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC49E78B2830E9EA00739056 /* SignUpUseCase.swift */; };
 		FC4CDF0427E2F9380011B622 /* ImageNameConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4CDF0327E2F9380011B622 /* ImageNameConstant.swift */; };
 		FC4CDF0627E3872A0011B622 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4CDF0527E3872A0011B622 /* IntroductionViewController.swift */; };
 		FC4D5A0727DE11490000AE18 /* CalendarRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D5A0627DE11480000AE18 /* CalendarRepository.swift */; };
@@ -81,6 +78,9 @@
 		FC5D5AC327E02E70000A4FB5 /* AllCalendarMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D5AC227E02E70000A4FB5 /* AllCalendarMonthCell.swift */; };
 		FC5D5AC727E0345C000A4FB5 /* FontNameConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5D5AC627E0345C000A4FB5 /* FontNameConstant.swift */; };
 		FC651A8827D256C800A64D8A /* AgendaSelectBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC651A8727D256C800A64D8A /* AgendaSelectBarCell.swift */; };
+		FC65F76D2846640B001281E0 /* SaveUserNameUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65F76C2846640B001281E0 /* SaveUserNameUseCase.swift */; };
+		FC65F76F28466C22001281E0 /* SaveTokenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65F76E28466C22001281E0 /* SaveTokenUseCase.swift */; };
+		FC65F77128466CD2001281E0 /* GetUserSignUpStateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC65F77028466CD2001281E0 /* GetUserSignUpStateUseCase.swift */; };
 		FC6AB4D827C0C4D700797C44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */; };
 		FC6AB4DA27C0C4D700797C44 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6AB4D927C0C4D700797C44 /* LoginViewController.swift */; };
 		FC6AB4DD27C0C4D700797C44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC6AB4DB27C0C4D700797C44 /* Main.storyboard */; };
@@ -103,7 +103,6 @@
 		FC721FD227F0B7FD0086CE91 /* TeamParticipantAdditionalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC721FD127F0B7FD0086CE91 /* TeamParticipantAdditionalViewModel.swift */; };
 		FC721FD527F0BB130086CE91 /* TeamNameCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC721FD427F0BB130086CE91 /* TeamNameCreationViewController.swift */; };
 		FC7B37C827DF8E2F005C3D23 /* CalendarMeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7B37C727DF8E2F005C3D23 /* CalendarMeetingCell.swift */; };
-		FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */; };
 		FC8393A427C66F6400981622 /* CalendarDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8393A327C66F6400981622 /* CalendarDateCell.swift */; };
 		FC8DE8FC27E9A870008648A7 /* TextFieldLimitNumberConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DE8FB27E9A870008648A7 /* TextFieldLimitNumberConstant.swift */; };
 		FC8DE8FE27E9D04D008648A7 /* WorkspaceParticipationSolutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8DE8FD27E9D04D008648A7 /* WorkspaceParticipationSolutionViewController.swift */; };
@@ -160,7 +159,6 @@
 		FCB70BA227C92CD4008831F7 /* AllCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB70BA127C92CD4008831F7 /* AllCalendarViewController.swift */; };
 		FCBC2BE727E5F12300C376F1 /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBC2BE627E5F12300C376F1 /* UserNameViewController.swift */; };
 		FCBC2BE927E5FAC500C376F1 /* UserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBC2BE827E5FAC500C376F1 /* UserNameViewModel.swift */; };
-		FCBC2BEB27E5FC8100C376F1 /* DefaultSignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBC2BEA27E5FC8100C376F1 /* DefaultSignUpRepository.swift */; };
 		FCBC2BED27E6140900C376F1 /* PickCreationParticipationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBC2BEC27E6140900C376F1 /* PickCreationParticipationViewController.swift */; };
 		FCC19A5E27E7671600270906 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCC19A5D27E7671600270906 /* GoogleService-Info.plist */; };
 		FCC4D84E27F2A4BC007A60A9 /* MeetingNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC4D84C27F2A4BC007A60A9 /* MeetingNumberCell.swift */; };
@@ -239,7 +237,6 @@
 		8F5EF8D64124D0454D3C4E9B /* Pods_Meeron_MeeronUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Meeron_MeeronUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD834A38ED0D19B51564F255 /* Pods_MeeronTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeeronTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE9DA68492809C9169A960CA /* Pods-MeeronTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeeronTests.release.xcconfig"; path = "Target Support Files/Pods-MeeronTests/Pods-MeeronTests.release.xcconfig"; sourceTree = "<group>"; };
-		FC05A9782836947600289EA9 /* MyMeeronUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMeeronUseCase.swift; sourceTree = "<group>"; };
 		FC06E98227C3ABFF004065E3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FC06E98827C3DC71004065E3 /* UIColor+CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColor.swift"; sourceTree = "<group>"; };
 		FC06E98B27C3F02C004065E3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -257,7 +254,6 @@
 		FC1CBF1327F48F42000BACEC /* TeamCreationResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCreationResultViewController.swift; sourceTree = "<group>"; };
 		FC1CBF1527F4923F000BACEC /* TeamCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCreationViewModel.swift; sourceTree = "<group>"; };
 		FC1FB2C728101BF00001019B /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
-		FC1FB2C928101D740001019B /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
 		FC1FB2CB28101E1F0001019B /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		FC1FB2CD281041F10001019B /* TokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRepository.swift; sourceTree = "<group>"; };
 		FC1FB2CF2810420D0001019B /* DefaultTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTokenRepository.swift; sourceTree = "<group>"; };
@@ -294,7 +290,6 @@
 		FC47215927C9D23900F7A035 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		FC47215B27CA14E700F7A035 /* WorkspaceUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceUser.swift; sourceTree = "<group>"; };
 		FC484DA627E38CFC00F15151 /* IntroductionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionCell.swift; sourceTree = "<group>"; };
-		FC49E78B2830E9EA00739056 /* SignUpUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		FC4CDF0327E2F9380011B622 /* ImageNameConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNameConstant.swift; sourceTree = "<group>"; };
 		FC4CDF0527E3872A0011B622 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
 		FC4D5A0627DE11480000AE18 /* CalendarRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRepository.swift; sourceTree = "<group>"; };
@@ -310,6 +305,9 @@
 		FC5D5AC227E02E70000A4FB5 /* AllCalendarMonthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCalendarMonthCell.swift; sourceTree = "<group>"; };
 		FC5D5AC627E0345C000A4FB5 /* FontNameConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontNameConstant.swift; sourceTree = "<group>"; };
 		FC651A8727D256C800A64D8A /* AgendaSelectBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaSelectBarCell.swift; sourceTree = "<group>"; };
+		FC65F76C2846640B001281E0 /* SaveUserNameUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveUserNameUseCase.swift; sourceTree = "<group>"; };
+		FC65F76E28466C22001281E0 /* SaveTokenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTokenUseCase.swift; sourceTree = "<group>"; };
+		FC65F77028466CD2001281E0 /* GetUserSignUpStateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserSignUpStateUseCase.swift; sourceTree = "<group>"; };
 		FC6AB4D227C0C4D700797C44 /* Meeron.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meeron.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6AB4D727C0C4D700797C44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FC6AB4D927C0C4D700797C44 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -336,7 +334,6 @@
 		FC721FD127F0B7FD0086CE91 /* TeamParticipantAdditionalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamParticipantAdditionalViewModel.swift; sourceTree = "<group>"; };
 		FC721FD427F0BB130086CE91 /* TeamNameCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamNameCreationViewController.swift; sourceTree = "<group>"; };
 		FC7B37C727DF8E2F005C3D23 /* CalendarMeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMeetingCell.swift; sourceTree = "<group>"; };
-		FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		FC7CA8EE27C2255400110D24 /* Meeron.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Meeron.entitlements; sourceTree = "<group>"; };
 		FC8393A327C66F6400981622 /* CalendarDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateCell.swift; sourceTree = "<group>"; };
 		FC8DE8FB27E9A870008648A7 /* TextFieldLimitNumberConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldLimitNumberConstant.swift; sourceTree = "<group>"; };
@@ -394,7 +391,6 @@
 		FCB70BA127C92CD4008831F7 /* AllCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCalendarViewController.swift; sourceTree = "<group>"; };
 		FCBC2BE627E5F12300C376F1 /* UserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewController.swift; sourceTree = "<group>"; };
 		FCBC2BE827E5FAC500C376F1 /* UserNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewModel.swift; sourceTree = "<group>"; };
-		FCBC2BEA27E5FC8100C376F1 /* DefaultSignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignUpRepository.swift; sourceTree = "<group>"; };
 		FCBC2BEC27E6140900C376F1 /* PickCreationParticipationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickCreationParticipationViewController.swift; sourceTree = "<group>"; };
 		FCC19A5D27E7671600270906 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FCC4D84C27F2A4BC007A60A9 /* MeetingNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingNumberCell.swift; sourceTree = "<group>"; };
@@ -590,7 +586,6 @@
 			isa = PBXGroup;
 			children = (
 				FC1FB2C728101BF00001019B /* UserRepository.swift */,
-				FC1FB2C928101D740001019B /* SignUpRepository.swift */,
 				FC1FB2CD281041F10001019B /* TokenRepository.swift */,
 				FC1FB2D1281045DD0001019B /* LoginRepository.swift */,
 			);
@@ -600,13 +595,10 @@
 		FC1FB2C32810185D0001019B /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				FC65F77228466E93001281E0 /* MeUseCase */,
 				FCA68D25283FD8D70090DE31 /* WorkspaceUseCase */,
 				FCA68D1E283FD4960090DE31 /* UserUseCase */,
 				FCA68D09283FC7480090DE31 /* MeetingUseCase */,
-				FC49E78B2830E9EA00739056 /* SignUpUseCase.swift */,
-				FC1FB2CB28101E1F0001019B /* LoginUseCase.swift */,
-				FC05A9782836947600289EA9 /* MyMeeronUseCase.swift */,
-				FCA68D0E283FCA160090DE31 /* GetUserUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -661,7 +653,6 @@
 		FC3262E827D8946600D5AA13 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				FCBC2BEA27E5FC8100C376F1 /* DefaultSignUpRepository.swift */,
 				FC1FB2CF2810420D0001019B /* DefaultTokenRepository.swift */,
 				FCEDA9F927EB6C2E0012D876 /* DefaultUserRepository.swift */,
 				FC1FB2D32810460A0001019B /* DefaultLoginRepository.swift */,
@@ -755,6 +746,17 @@
 				FCBC2BE827E5FAC500C376F1 /* UserNameViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FC65F77228466E93001281E0 /* MeUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				FC1FB2CB28101E1F0001019B /* LoginUseCase.swift */,
+				FCA68D0E283FCA160090DE31 /* GetUserUseCase.swift */,
+				FC65F76E28466C22001281E0 /* SaveTokenUseCase.swift */,
+				FC65F77028466CD2001281E0 /* GetUserSignUpStateUseCase.swift */,
+			);
+			path = MeUseCase;
 			sourceTree = "<group>";
 		};
 		FC6AB4C927C0C4D700797C44 = {
@@ -858,7 +860,6 @@
 		FC6AB50E27C13B0600797C44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FC7CA8EC27C1FA5700110D24 /* ErrorResponse.swift */,
 				FC47215B27CA14E700F7A035 /* WorkspaceUser.swift */,
 				FCEFFD7427CF304300D54CD4 /* MeetingCreation.swift */,
 				FC39DFD227D777CF002465EB /* Team.swift */,
@@ -1088,6 +1089,7 @@
 				FCA68D26283FD90E0090DE31 /* GetUserWorkspaceUseCase.swift */,
 				FCA68D1F283FD4CB0090DE31 /* SaveUserWorkspaceUseCase.swift */,
 				FCA68D21283FD57D0090DE31 /* SaveUserIdUseCase.swift */,
+				FC65F76C2846640B001281E0 /* SaveUserNameUseCase.swift */,
 			);
 			path = UserUseCase;
 			sourceTree = "<group>";
@@ -1526,7 +1528,6 @@
 				FC6AB51027C13B1900797C44 /* LoginViewModel.swift in Sources */,
 				FCD75C1E27CFD6B100D0FDD4 /* MeetingBaiscInfoCreationViewController.swift in Sources */,
 				FCFABB2127F579990005D9D0 /* MeetingResultViewController.swift in Sources */,
-				FC05A9792836947600289EA9 /* MyMeeronUseCase.swift in Sources */,
 				FCA73F2727E8A52300295247 /* WorkspaceProfileCreationViewController.swift in Sources */,
 				FCD75C2427CFD83500D0FDD4 /* MeetingCreationResultViewController.swift in Sources */,
 				FC9B23CB27F20D9800C8C8A3 /* UserStatusCreationViewController.swift in Sources */,
@@ -1536,7 +1537,6 @@
 				FC33308627F8A4410088CF8E /* UserStatusCreationViewModel.swift in Sources */,
 				FC3808A427D0CF2F0023D713 /* AgendaIssueCell.swift in Sources */,
 				FCA68D1D283FD1230090DE31 /* AgendaCount.swift in Sources */,
-				FC1FB2CA28101D740001019B /* SignUpRepository.swift in Sources */,
 				FC1FB2D2281045DD0001019B /* LoginRepository.swift in Sources */,
 				FCFABB1F27F578D10005D9D0 /* MeetingAgendaDocumentCell.swift in Sources */,
 				FC0D0F1527F7282E0047C0D9 /* MeetingViewModel.swift in Sources */,
@@ -1547,13 +1547,12 @@
 				FC3808A627D0CFA30023D713 /* AgendaDocumentCell.swift in Sources */,
 				FC8DE8FC27E9A870008648A7 /* TextFieldLimitNumberConstant.swift in Sources */,
 				FCDFFD1C283F6B4F003F07A0 /* TodayMeetingResponseDTO+Mapping.swift in Sources */,
-				FC49E78C2830E9EA00739056 /* SignUpUseCase.swift in Sources */,
 				FCA73F1727E890E800295247 /* TeamNameViewController.swift in Sources */,
 				FC38089627D09DBA0023D713 /* MeetingTeamSelectViewController.swift in Sources */,
+				FC65F76D2846640B001281E0 /* SaveUserNameUseCase.swift in Sources */,
 				FC721FD527F0BB130086CE91 /* TeamNameCreationViewController.swift in Sources */,
 				FC9FC1FA27D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift in Sources */,
 				FC36BA4927F9DB6A008014AB /* MyMeeronViewController.swift in Sources */,
-				FCBC2BEB27E5FC8100C376F1 /* DefaultSignUpRepository.swift in Sources */,
 				FCEDA9FA27EB6C2E0012D876 /* DefaultUserRepository.swift in Sources */,
 				FCA68D22283FD57D0090DE31 /* SaveUserIdUseCase.swift in Sources */,
 				FCDFFD16283F63C2003F07A0 /* GetTodayMeetingUseCase.swift in Sources */,
@@ -1595,6 +1594,7 @@
 				FCA68D1B283FD0FD0090DE31 /* Admin.swift in Sources */,
 				FCA68D0B283FC81A0090DE31 /* UserResponseDTO+Mapping.swift in Sources */,
 				FCFABB1927F54AAC0005D9D0 /* AgendaViewController.swift in Sources */,
+				FC65F76F28466C22001281E0 /* SaveTokenUseCase.swift in Sources */,
 				FC19AAF827C75933000B5119 /* CalendarViewModel.swift in Sources */,
 				FC484DA727E38CFC00F15151 /* IntroductionCell.swift in Sources */,
 				FCEFFD7727CF342A00D54CD4 /* MeetingTimeCreationViewController.swift in Sources */,
@@ -1610,6 +1610,7 @@
 				FCDFFD1E283F6C58003F07A0 /* TeamResponseDTO+Mapping.swift in Sources */,
 				FC8DE90827E9F0CD008648A7 /* WorkspaceParicipationProfileCreationViewController.swift in Sources */,
 				FCFABB1D27F5781C0005D9D0 /* MeetingAgendaIssueCell.swift in Sources */,
+				FC65F77128466CD2001281E0 /* GetUserSignUpStateUseCase.swift in Sources */,
 				FCBC2BE727E5F12300C376F1 /* UserNameViewController.swift in Sources */,
 				FC1CBF1627F4923F000BACEC /* TeamCreationViewModel.swift in Sources */,
 				FC0D0F1D27F764E80047C0D9 /* MeetingParticipantCountViewController.swift in Sources */,
@@ -1648,7 +1649,6 @@
 				FCA68D0F283FCA160090DE31 /* GetUserUseCase.swift in Sources */,
 				FC721FBA27F03B2F0086CE91 /* UIColor+UIImage.swift in Sources */,
 				FCAE0D4127D4FFC600B05D94 /* MeetingParticipantCreationViewModel.swift in Sources */,
-				FC7CA8ED27C1FA5700110D24 /* ErrorResponse.swift in Sources */,
 				FCF46BDC27EF5279009D89AF /* TeamCell.swift in Sources */,
 				FC2C0D9A28118D10002B3DC0 /* Meeron+Bundle.swift in Sources */,
 				FC39DFD127D76E49002465EB /* MeetingTeamSelectViewModel.swift in Sources */,

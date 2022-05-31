@@ -10,15 +10,15 @@ import RxSwift
 
 class UserNameViewModel {
     
-    let signUpUseCase = DefaultSignUpUseCase()
+    let saveUserNameUseCase = SaveUserNameUseCase()
     
     let successPatchNameSubject = BehaviorSubject<Bool>(value: false)
     
     let disposeBag = DisposeBag()
     
     func patchUserName(name:String) {
-        signUpUseCase
-            .saveUserName(name: name)
+        saveUserNameUseCase
+            .execute(name: name)
             .withUnretained(self)
             .subscribe(onNext: { owner, success in
                 owner.successPatchNameSubject.onNext(success)

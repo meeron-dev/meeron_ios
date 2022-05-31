@@ -15,7 +15,9 @@ class LoginViewModel {
     
     let userSignUpStateSubject = PublishSubject<UserSignUpState>()
     
-    let loginUseCase = DefaultLoginUseCase()
+    let loginUseCase = LoginUseCase()
+    let saveTokenUseCase = SaveTokenUseCase()
+    let getUserSignUpStateUseCase = GetUserSignUpStateUseCase()
     
     let disposeBag = DisposeBag()
     
@@ -56,7 +58,8 @@ class LoginViewModel {
     
     func fetchToken(email:String, nickname:String?, profileImageUrl:String?, provider:String) {
         
-        loginUseCase.fetchToken(email: email, nickname: nickname, profileImageUrl: profileImageUrl, provider: provider)
+        loginUseCase
+            .execute(email: email, nickname: nickname, profileImageUrl: profileImageUrl, provider: provider)
             .share()
             .withUnretained(self)
             .subscribe(onNext: { owner, token in
@@ -71,7 +74,7 @@ class LoginViewModel {
     
     
     func saveToken(token:Token) {
-        if loginUseCase.saveToken(token: token) {
+        if saveTokenUseCase.execute(token: token) {
             checkUserSignUpState()
         }else {
             userSignUpStateSubject.onNext(.login)
@@ -80,6 +83,6 @@ class LoginViewModel {
     }
     
     func checkUserSignUpState() {
-        userSignUpStateSubject.onNext(loginUseCase.checkUserSignUpState())
+        userSignUpStateSubject.onNext(getUserSignUpStateUseCase.execute())
     }
 }

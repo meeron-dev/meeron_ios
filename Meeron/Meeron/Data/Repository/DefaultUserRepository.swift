@@ -7,8 +7,17 @@
 
 import Foundation
 import RxSwift
+import Alamofire
 
 class DefaultUserRepository: UserRepository {
+    
+    func saveUserName(name:String) -> Observable<Bool>{
+        let headers:HTTPHeaders = [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)]
+        
+        let resource = Resource<Bool>(url: URLConstant.userName, parameter: ["name":name], headers: headers, method: .patch, encodingType: .JSONEncoding)
+        
+        return API.requestResponse(resource: resource)
+    }
     
     func fetchUser() -> Observable<User?> {
         
