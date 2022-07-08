@@ -17,7 +17,7 @@ class AllCalendarYearCell:UITableViewCell {
         super.awakeFromNib()
     }
     
-    func setData(data: YearMeetingCount, nowYear:String) {
+    func setData(data: AllCalendarMeetingYearCount, nowYear:String) {
         
         if String(data.year) == nowYear {
             yearLabel.textColor = .mrBlue

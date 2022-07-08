@@ -20,8 +20,8 @@ class CalendarViewModel {
     
     let yearSubject = PublishSubject<String>()
     let monthSubject = PublishSubject<String>()
-    let daysSubject = PublishSubject<[MeetingDate?]>()
-    var days:[MeetingDate?] = []
+    let daysSubject = PublishSubject<[Day?]>()
+    var days:[Day?] = []
     let calendarHeightSubject = PublishSubject<CGFloat>()
     
     let selectedDateSubject = BehaviorSubject<String>(value: Date().toSlashDateString())
@@ -35,7 +35,8 @@ class CalendarViewModel {
     
     let yearMonthSubject = PublishSubject<String>()
     
-    let calendarRepository = CalendarRepository()
+    let getCalendarMeetingsUseCase = GetCalendarMeetingsUseCase()
+    let getCalendarMeetingDaysUseCase = GetCalendarMeetingDaysUseCase()
     
     let calendarType:CalendarType
     
@@ -53,10 +54,10 @@ class CalendarViewModel {
     }
     
     func loadSelectedDateMeetings() {
-        calendarRepository.loadMeetingOnDate(date: selectedDate, type: calendarType)
+        getCalendarMeetingsUseCase.execute(date: selectedDate, type: calendarType)
             .withUnretained(self)
             .subscribe(onNext: { owner, calendarMeetings in
-                if let calendarMeetings = calendarMeetings?.meetings {
+                if let calendarMeetings = calendarMeetings {
                     owner.selectedDateMeetingsSubject.onNext(calendarMeetings)
                     owner.selectedDateMeetingCountSubject.onNext(calendarMeetings.count)
                 }else {
@@ -88,7 +89,8 @@ class CalendarViewModel {
         
         let yearMonth = firstDayOfMonth.toYearMonthSlashString()
         
-        calendarRepository.loadMeetingDatesInMonth(date: firstDayOfMonth.toYearMonthSlashString(), type: calendarType)
+        getCalendarMeetingDaysUseCase
+            .execute(date: firstDayOfMonth.toYearMonthSlashString(), type: calendarType)
             .withUnretained(self)
             .subscribe(onNext: { owner, dates in
                 if let dates = dates {
@@ -104,7 +106,7 @@ class CalendarViewModel {
             if day < 1{
                 days.append(nil)
             }else{
-                days.append(MeetingDate(date: yearMonth+"/"+String(day), hasMeeting: meetingDates.contains(day)))
+                days.append(Day(date: yearMonth+"/"+String(day), hasMeeting: meetingDates.contains(day)))
             }
         }
         

@@ -21,7 +21,7 @@ class CalendarDateCell:UICollectionViewCell {
         hasMeetingView.layer.cornerRadius = hasMeetingView.frame.width/2
     }
     
-    func setData(data:MeetingDate?, selectedDate:String) {
+    func setData(data:Day?, selectedDate:String) {
         hasMeetingView.backgroundColor = nil
         guard let data = data else {
             self.dateLabel.text = ""
