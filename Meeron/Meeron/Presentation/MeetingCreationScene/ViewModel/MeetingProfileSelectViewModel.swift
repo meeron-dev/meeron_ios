@@ -25,6 +25,8 @@ class MeetingProfileSelectViewModel {
         managers = data
     }
     
+    let getUserInWorkspaceUseCase = GetUserInWorkspaceUseCase()
+    
     func isManager(data:WorkspaceUser) -> Bool {
         if managers.contains(data) {
             return true
@@ -55,22 +57,13 @@ class MeetingProfileSelectViewModel {
     }
     
     
-    func loadUserInWorkspace(searchNickname:String) {
-        let workspaceId = UserDefaults.standard.string(forKey: "workspaceId")!
-        
-        let urlString = URLConstant.workspaceUserProfile+"?workspaceId="+workspaceId+"&nickname="+searchNickname
-        let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters:.urlQueryAllowed)
-        
-        guard let encodedURLString = encodedURLString else {
-            return
-        }
-
-        let resource = Resource<WorkspaceUserProfiles>(url:encodedURLString, parameter: [:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
-        
-        API.requestData(resource: resource)
-            .subscribe(onNext: { workspaceUserProfiles in
-                if let workspaceUserProfiles = workspaceUserProfiles {
-                    self.userProfilesSubject.onNext(workspaceUserProfiles.workspaceUsers)
+    func loadUserInWorkspace(nickname:String) {
+        getUserInWorkspaceUseCase
+            .execute(nickname: nickname)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, workspaceUsers in
+                if let workspaceUsers = workspaceUsers {
+                    owner.userProfilesSubject.onNext(workspaceUsers)
                 }
             }).disposed(by: disposeBag)
     }

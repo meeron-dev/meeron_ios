@@ -32,6 +32,8 @@
 		FC1FB2D02810420D0001019B /* DefaultTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1FB2CF2810420D0001019B /* DefaultTokenRepository.swift */; };
 		FC1FB2D2281045DD0001019B /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1FB2D1281045DD0001019B /* LoginRepository.swift */; };
 		FC1FB2D42810460A0001019B /* DefaultLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1FB2D32810460A0001019B /* DefaultLoginRepository.swift */; };
+		FC20D5F2287B37E00014F147 /* GetTeamsInWorkspaceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC20D5F1287B37E00014F147 /* GetTeamsInWorkspaceUseCase.swift */; };
+		FC20D5F4287B389B0014F147 /* TeamsResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC20D5F3287B389B0014F147 /* TeamsResponseDTO+Mapping.swift */; };
 		FC21795527FB1CAD00313152 /* WorkspaceManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC21795427FB1CAD00313152 /* WorkspaceManagementViewController.swift */; };
 		FC21795727FB246B00313152 /* UserAccountManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC21795627FB246B00313152 /* UserAccountManagementViewController.swift */; };
 		FC21795B27FB324F00313152 /* UserAccountManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC21795A27FB324F00313152 /* UserAccountManagementViewModel.swift */; };
@@ -61,7 +63,6 @@
 		FC39DFD127D76E49002465EB /* MeetingTeamSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC39DFD027D76E49002465EB /* MeetingTeamSelectViewModel.swift */; };
 		FC39DFD327D777CF002465EB /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC39DFD227D777CF002465EB /* Team.swift */; };
 		FC47215A27C9D23900F7A035 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47215927C9D23900F7A035 /* KeychainManager.swift */; };
-		FC47215C27CA14E700F7A035 /* WorkspaceUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC47215B27CA14E700F7A035 /* WorkspaceUser.swift */; };
 		FC484DA727E38CFC00F15151 /* IntroductionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC484DA627E38CFC00F15151 /* IntroductionCell.swift */; };
 		FC4CDF0427E2F9380011B622 /* ImageNameConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4CDF0327E2F9380011B622 /* ImageNameConstant.swift */; };
 		FC4CDF0627E3872A0011B622 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4CDF0527E3872A0011B622 /* IntroductionViewController.swift */; };
@@ -164,6 +165,13 @@
 		FCAE0D3D27D4EFA500B05D94 /* MeetingTeamSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE0D3C27D4EFA500B05D94 /* MeetingTeamSelectCell.swift */; };
 		FCAE0D3F27D4FCC700B05D94 /* MeetingParticipantTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE0D3E27D4FCC700B05D94 /* MeetingParticipantTeamCell.swift */; };
 		FCAE0D4127D4FFC600B05D94 /* MeetingParticipantCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAE0D4027D4FFC600B05D94 /* MeetingParticipantCreationViewModel.swift */; };
+		FCAF7113287C434B006E3B52 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAF7112287C434B006E3B52 /* Team.swift */; };
+		FCAF7115287C43C3006E3B52 /* WorkspaceUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAF7114287C43C3006E3B52 /* WorkspaceUser.swift */; };
+		FCAF7117287C4433006E3B52 /* WorkspaceUsersResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAF7116287C4433006E3B52 /* WorkspaceUsersResponseDTO+Mapping.swift */; };
+		FCAF7119287C448D006E3B52 /* WorkspaceUserResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAF7118287C448D006E3B52 /* WorkspaceUserResponseDTO+Mapping.swift */; };
+		FCAF711B287C45D3006E3B52 /* GetUsersInWorkspaceTeamUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAF711A287C45D3006E3B52 /* GetUsersInWorkspaceTeamUseCase.swift */; };
+		FCAF711D287C464D006E3B52 /* GetUsersWithoutTeamUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAF711C287C464D006E3B52 /* GetUsersWithoutTeamUseCase.swift */; };
+		FCAF7120287C4A52006E3B52 /* GetUserInWorkspaceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAF711F287C4A52006E3B52 /* GetUserInWorkspaceUseCase.swift */; };
 		FCB36CF727CCF5A000ACF591 /* MeetingDateCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB36CF627CCF5A000ACF591 /* MeetingDateCreationViewController.swift */; };
 		FCB36CF927CD1BB700ACF591 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB36CF827CD1BB700ACF591 /* PickerViewController.swift */; };
 		FCB70BA227C92CD4008831F7 /* AllCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB70BA127C92CD4008831F7 /* AllCalendarViewController.swift */; };
@@ -275,6 +283,8 @@
 		FC1FB2CF2810420D0001019B /* DefaultTokenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTokenRepository.swift; sourceTree = "<group>"; };
 		FC1FB2D1281045DD0001019B /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		FC1FB2D32810460A0001019B /* DefaultLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLoginRepository.swift; sourceTree = "<group>"; };
+		FC20D5F1287B37E00014F147 /* GetTeamsInWorkspaceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTeamsInWorkspaceUseCase.swift; sourceTree = "<group>"; };
+		FC20D5F3287B389B0014F147 /* TeamsResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeamsResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		FC21795427FB1CAD00313152 /* WorkspaceManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceManagementViewController.swift; sourceTree = "<group>"; };
 		FC21795627FB246B00313152 /* UserAccountManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountManagementViewController.swift; sourceTree = "<group>"; };
 		FC21795A27FB324F00313152 /* UserAccountManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountManagementViewModel.swift; sourceTree = "<group>"; };
@@ -304,7 +314,6 @@
 		FC39DFD027D76E49002465EB /* MeetingTeamSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingTeamSelectViewModel.swift; sourceTree = "<group>"; };
 		FC39DFD227D777CF002465EB /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		FC47215927C9D23900F7A035 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
-		FC47215B27CA14E700F7A035 /* WorkspaceUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceUser.swift; sourceTree = "<group>"; };
 		FC484DA627E38CFC00F15151 /* IntroductionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionCell.swift; sourceTree = "<group>"; };
 		FC4CDF0327E2F9380011B622 /* ImageNameConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNameConstant.swift; sourceTree = "<group>"; };
 		FC4CDF0527E3872A0011B622 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
@@ -412,6 +421,13 @@
 		FCAE0D3C27D4EFA500B05D94 /* MeetingTeamSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingTeamSelectCell.swift; sourceTree = "<group>"; };
 		FCAE0D3E27D4FCC700B05D94 /* MeetingParticipantTeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingParticipantTeamCell.swift; sourceTree = "<group>"; };
 		FCAE0D4027D4FFC600B05D94 /* MeetingParticipantCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingParticipantCreationViewModel.swift; sourceTree = "<group>"; };
+		FCAF7112287C434B006E3B52 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		FCAF7114287C43C3006E3B52 /* WorkspaceUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceUser.swift; sourceTree = "<group>"; };
+		FCAF7116287C4433006E3B52 /* WorkspaceUsersResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceUsersResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		FCAF7118287C448D006E3B52 /* WorkspaceUserResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkspaceUserResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		FCAF711A287C45D3006E3B52 /* GetUsersInWorkspaceTeamUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersInWorkspaceTeamUseCase.swift; sourceTree = "<group>"; };
+		FCAF711C287C464D006E3B52 /* GetUsersWithoutTeamUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersWithoutTeamUseCase.swift; sourceTree = "<group>"; };
+		FCAF711F287C4A52006E3B52 /* GetUserInWorkspaceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserInWorkspaceUseCase.swift; sourceTree = "<group>"; };
 		FCB36CF627CCF5A000ACF591 /* MeetingDateCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingDateCreationViewController.swift; sourceTree = "<group>"; };
 		FCB36CF827CD1BB700ACF591 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		FCB70BA127C92CD4008831F7 /* AllCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCalendarViewController.swift; sourceTree = "<group>"; };
@@ -629,6 +645,8 @@
 		FC1FB2C32810185D0001019B /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				FCAF711E287C4A36006E3B52 /* WorkspaceUser */,
+				FC20D5F0287B37C00014F147 /* TeamUseCase */,
 				FC65F781284677A6001281E0 /* CalendarUseCase */,
 				FC65F77228466E93001281E0 /* MeUseCase */,
 				FCA68D25283FD8D70090DE31 /* WorkspaceUseCase */,
@@ -641,6 +659,7 @@
 		FC1FB2C4281018AC0001019B /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				FCAF7111287C4337006E3B52 /* Team */,
 				FC65F77C28467689001281E0 /* Calendar */,
 				FCA68D2A283FDBFE0090DE31 /* Workspace */,
 				FCA68D15283FD0650090DE31 /* Agenda */,
@@ -649,6 +668,7 @@
 				FCA68D0C283FC9C40090DE31 /* User.swift */,
 				FCA68D10283FCED20090DE31 /* MyWorkspaceUser.swift */,
 				FCA68D1A283FD0FD0090DE31 /* Admin.swift */,
+				FCAF7114287C43C3006E3B52 /* WorkspaceUser.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -678,10 +698,28 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		FC20D5EE287B36590014F147 /* MeetingCreationScene */ = {
+			isa = PBXGroup;
+			children = (
+				FC7B37CD27DF9760005C3D23 /* ViewModel */,
+				FCEFFD6D27CF07C100D54CD4 /* View */,
+			);
+			path = MeetingCreationScene;
+			sourceTree = "<group>";
+		};
+		FC20D5F0287B37C00014F147 /* TeamUseCase */ = {
+			isa = PBXGroup;
+			children = (
+				FC20D5F1287B37E00014F147 /* GetTeamsInWorkspaceUseCase.swift */,
+				FCAF711A287C45D3006E3B52 /* GetUsersInWorkspaceTeamUseCase.swift */,
+				FCAF711C287C464D006E3B52 /* GetUsersWithoutTeamUseCase.swift */,
+			);
+			path = TeamUseCase;
+			sourceTree = "<group>";
+		};
 		FC21795827FB31F400313152 /* HomeViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				FC7B37CD27DF9760005C3D23 /* MeetingCreationViewModels */,
 			);
 			path = HomeViewModels;
 			sourceTree = "<group>";
@@ -694,9 +732,9 @@
 				FC1FB2D32810460A0001019B /* DefaultLoginRepository.swift */,
 				FC4D5A0627DE11480000AE18 /* DefaultCalendarRepository.swift */,
 				FC4D5A0A27DE188A0000AE18 /* DefaultAllCalendarRepository.swift */,
+				FC3262E927D8954D00D5AA13 /* TeamRepository.swift */,
 				FCA68D28283FDB320090DE31 /* WorkspaceRepository.swift */,
 				FC56F55227DCA80E00E54DFE /* MeetingRepository.swift */,
-				FC3262E927D8954D00D5AA13 /* TeamRepository.swift */,
 				FC9A803E27D9D49300C3B836 /* MeetingCreationRepository.swift */,
 				FCA73F2327E89B7E00295247 /* WorkspaceCreationRepository.swift */,
 				FC2ABF4827ECB41F001B3F33 /* WorkspaceParicipationProfileCreationRepository.swift */,
@@ -909,7 +947,6 @@
 			children = (
 				FC6AB4DB27C0C4D700797C44 /* Main.storyboard */,
 				FC33307F27F848730088CF8E /* AgendaViewModel.swift */,
-				FCEFFD6D27CF07C100D54CD4 /* MeetingCreationViewControllers */,
 				FC9B23C827F20BE900C8C8A3 /* MeetingViewControllers */,
 				FCA7217727EEBBA5000A7DC5 /* TeamViewControllers */,
 				FCA73F2227E8977500295247 /* WorkspaceCreationViewControllers */,
@@ -937,7 +974,6 @@
 		FC6AB50E27C13B0600797C44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FC47215B27CA14E700F7A035 /* WorkspaceUser.swift */,
 				FCEFFD7427CF304300D54CD4 /* MeetingCreation.swift */,
 				FC39DFD227D777CF002465EB /* Team.swift */,
 				FCA73F1F27E8943500295247 /* WorkspaceCreation.swift */,
@@ -1006,7 +1042,7 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		FC7B37CD27DF9760005C3D23 /* MeetingCreationViewModels */ = {
+		FC7B37CD27DF9760005C3D23 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				FC9FC1F927D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift */,
@@ -1015,7 +1051,7 @@
 				FC9FC1F727D5E8A800340283 /* MeetingProfileSelectViewModel.swift */,
 				FC39DFD027D76E49002465EB /* MeetingTeamSelectViewModel.swift */,
 			);
-			path = MeetingCreationViewModels;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FC8DE90927E9F0D5008648A7 /* ErrorViewControllers */ = {
@@ -1069,6 +1105,7 @@
 				FC49E7872830E89600739056 /* SignUpScene */,
 				FC1FB2D5281054160001019B /* LoginScene */,
 				FC7A7E64282CF83200C13716 /* HomeScene */,
+				FC20D5EE287B36590014F147 /* MeetingCreationScene */,
 				FC65F7732846702E001281E0 /* CalendarScene */,
 				FCA7217027EEB6F4000A7DC5 /* View */,
 				FC6AB50D27C1345F00797C44 /* ViewModel */,
@@ -1224,8 +1261,27 @@
 				FC65F78A28467D34001281E0 /* AllCalendarMeetingYearCountResponseDTO+Mapping.swift */,
 				FCC7E53E28782236007CC42F /* AllCalendarMeetingMonthCountsResponseDTO+Mapping.swift */,
 				FCC7E54028782273007CC42F /* AllCalendarMeetingMonthCountResponseDTO+Mapping.swift */,
+				FC20D5F3287B389B0014F147 /* TeamsResponseDTO+Mapping.swift */,
+				FCAF7116287C4433006E3B52 /* WorkspaceUsersResponseDTO+Mapping.swift */,
+				FCAF7118287C448D006E3B52 /* WorkspaceUserResponseDTO+Mapping.swift */,
 			);
 			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		FCAF7111287C4337006E3B52 /* Team */ = {
+			isa = PBXGroup;
+			children = (
+				FCAF7112287C434B006E3B52 /* Team.swift */,
+			);
+			path = Team;
+			sourceTree = "<group>";
+		};
+		FCAF711E287C4A36006E3B52 /* WorkspaceUser */ = {
+			isa = PBXGroup;
+			children = (
+				FCAF711F287C4A52006E3B52 /* GetUserInWorkspaceUseCase.swift */,
+			);
+			path = WorkspaceUser;
 			sourceTree = "<group>";
 		};
 		FCC4D84B27F2A49C007A60A9 /* MeetingCells */ = {
@@ -1242,7 +1298,7 @@
 			path = MeetingCells;
 			sourceTree = "<group>";
 		};
-		FCEFFD6D27CF07C100D54CD4 /* MeetingCreationViewControllers */ = {
+		FCEFFD6D27CF07C100D54CD4 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				FCB36CF627CCF5A000ACF591 /* MeetingDateCreationViewController.swift */,
@@ -1255,7 +1311,7 @@
 				FC38089327D0779C0023D713 /* MeetingProfileSelectViewController.swift */,
 				FC38089527D09DBA0023D713 /* MeetingTeamSelectViewController.swift */,
 			);
-			path = MeetingCreationViewControllers;
+			path = View;
 			sourceTree = "<group>";
 		};
 		FCF46BD827EF4D2E009D89AF /* TeamViewModels */ = {
@@ -1550,6 +1606,7 @@
 				FCA68D24283FD73B0090DE31 /* UserWorkspaceResponseDTO+Mapping.swift in Sources */,
 				FCA68D19283FD0B70090DE31 /* MeetingBasicInfo.swift in Sources */,
 				FCA68D2C283FDC370090DE31 /* WorkspaceResponseDTO+Mapping.swift in Sources */,
+				FCAF7117287C4433006E3B52 /* WorkspaceUsersResponseDTO+Mapping.swift in Sources */,
 				FC721FC427F051840086CE91 /* UIViewController+PopUp.swift in Sources */,
 				FC3788DC27ED42C5009948E2 /* WorkspaceProfileCreationViewModel.swift in Sources */,
 				FC6AB4DA27C0C4D700797C44 /* LoginViewController.swift in Sources */,
@@ -1595,6 +1652,7 @@
 				FCC7E54328782428007CC42F /* GetAllCalendarMeetingYearCountsUseCase.swift in Sources */,
 				FC8DE90127E9E338008648A7 /* WorkspaceErrorViewController.swift in Sources */,
 				FCFABB2427F580330005D9D0 /* MeetingWhiteBackgroundNumberCell.swift in Sources */,
+				FCAF711B287C45D3006E3B52 /* GetUsersInWorkspaceTeamUseCase.swift in Sources */,
 				FCA68D14283FCF890090DE31 /* AttendCount.swift in Sources */,
 				FCC7E54128782273007CC42F /* AllCalendarMeetingMonthCountResponseDTO+Mapping.swift in Sources */,
 				FC33308627F8A4410088CF8E /* UserStatusCreationViewModel.swift in Sources */,
@@ -1613,6 +1671,7 @@
 				FCDFFD1C283F6B4F003F07A0 /* TodayMeetingResponseDTO+Mapping.swift in Sources */,
 				FCA73F1727E890E800295247 /* TeamNameViewController.swift in Sources */,
 				FC38089627D09DBA0023D713 /* MeetingTeamSelectViewController.swift in Sources */,
+				FCAF7113287C434B006E3B52 /* Team.swift in Sources */,
 				FC65F76D2846640B001281E0 /* SaveUserNameUseCase.swift in Sources */,
 				FC721FD527F0BB130086CE91 /* TeamNameCreationViewController.swift in Sources */,
 				FC9FC1FA27D620DB00340283 /* MeetingBaiscInfoCreationViewModel.swift in Sources */,
@@ -1641,6 +1700,7 @@
 				FC36BA4227F9465F008014AB /* AppDelegate.swift in Sources */,
 				FCA73F1927E8922700295247 /* WorkspaceCreationResultViewController.swift in Sources */,
 				FC9FD92D27C4BF60009DE526 /* MeetingCardCell.swift in Sources */,
+				FC20D5F4287B389B0014F147 /* TeamsResponseDTO+Mapping.swift in Sources */,
 				FCA68D27283FD90E0090DE31 /* GetUserWorkspaceUseCase.swift in Sources */,
 				FCB36CF727CCF5A000ACF591 /* MeetingDateCreationViewController.swift in Sources */,
 				FC0A6B9C27D1EB2300DBC745 /* MeetingAgendaCreationViewModel.swift in Sources */,
@@ -1657,6 +1717,7 @@
 				FC5D5ABF27E02486000A4FB5 /* AllCalendarViewModel.swift in Sources */,
 				FCA68D1B283FD0FD0090DE31 /* Admin.swift in Sources */,
 				FCA68D0B283FC81A0090DE31 /* UserResponseDTO+Mapping.swift in Sources */,
+				FCAF7115287C43C3006E3B52 /* WorkspaceUser.swift in Sources */,
 				FCFABB1927F54AAC0005D9D0 /* AgendaViewController.swift in Sources */,
 				FC65F76F28466C22001281E0 /* SaveTokenUseCase.swift in Sources */,
 				FC19AAF827C75933000B5119 /* CalendarViewModel.swift in Sources */,
@@ -1683,9 +1744,11 @@
 				FC65F77E284676AB001281E0 /* CalendarMeetingDays.swift in Sources */,
 				FCA68D11283FCED20090DE31 /* MyWorkspaceUser.swift in Sources */,
 				FC3262EC27D8C20500D5AA13 /* MeetingParticipantProfileCell.swift in Sources */,
+				FC20D5F2287B37E00014F147 /* GetTeamsInWorkspaceUseCase.swift in Sources */,
 				FCA68D20283FD4CB0090DE31 /* SaveUserWorkspaceUseCase.swift in Sources */,
 				FC65F78B28467D34001281E0 /* AllCalendarMeetingYearCountResponseDTO+Mapping.swift in Sources */,
 				FC8DE8FE27E9D04D008648A7 /* WorkspaceParticipationSolutionViewController.swift in Sources */,
+				FCAF711D287C464D006E3B52 /* GetUsersWithoutTeamUseCase.swift in Sources */,
 				FC3262EA27D8954D00D5AA13 /* TeamRepository.swift in Sources */,
 				FC2ABF4927ECB41F001B3F33 /* WorkspaceParicipationProfileCreationRepository.swift in Sources */,
 				FC1FB2D02810420D0001019B /* DefaultTokenRepository.swift in Sources */,
@@ -1716,14 +1779,15 @@
 				FC21795D27FB32A600313152 /* AuthRepository.swift in Sources */,
 				FC06E98F27C3F63E004065E3 /* SizeValueConstant.swift in Sources */,
 				FCA68D0F283FCA160090DE31 /* GetUserUseCase.swift in Sources */,
+				FCAF7120287C4A52006E3B52 /* GetUserInWorkspaceUseCase.swift in Sources */,
 				FC721FBA27F03B2F0086CE91 /* UIColor+UIImage.swift in Sources */,
 				FCAE0D4127D4FFC600B05D94 /* MeetingParticipantCreationViewModel.swift in Sources */,
 				FCF46BDC27EF5279009D89AF /* TeamCell.swift in Sources */,
 				FC2C0D9A28118D10002B3DC0 /* Meeron+Bundle.swift in Sources */,
 				FC39DFD127D76E49002465EB /* MeetingTeamSelectViewModel.swift in Sources */,
 				FC65F78728467BDE001281E0 /* Day.swift in Sources */,
-				FC47215C27CA14E700F7A035 /* WorkspaceUser.swift in Sources */,
 				FCA73F2027E8943500295247 /* WorkspaceCreation.swift in Sources */,
+				FCAF7119287C448D006E3B52 /* WorkspaceUserResponseDTO+Mapping.swift in Sources */,
 				FCA68D30283FDDA70090DE31 /* SaveWorkspaceUseCase.swift in Sources */,
 				FC65F77728467418001281E0 /* CalendarMeeting.swift in Sources */,
 				FC65F780284676D2001281E0 /* CalendarMeetingDaysResponseDTO+Mapping.swift in Sources */,

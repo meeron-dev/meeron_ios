@@ -18,12 +18,12 @@ class MeetingBaiscInfoCreationViewModel {
     let validTitleSubject = BehaviorSubject<Bool>(value: false)
     let validPurposeSubject = BehaviorSubject<Bool>(value: false)
     let validTeamSubject = BehaviorSubject<Bool>(value: false)
-    
-    let disposeBag = DisposeBag()
    
     var meetingCreationData:MeetingCreation?
     var meetingDateSubject = BehaviorSubject<String>(value: "")
     var meetingTimeSubject = BehaviorSubject<String>(value: "")
+    
+    let disposeBag = DisposeBag()
     
     func saveTitle(title:String) {
         self.title = title

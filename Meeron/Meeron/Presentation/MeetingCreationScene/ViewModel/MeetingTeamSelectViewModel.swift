@@ -15,7 +15,7 @@ class MeetingTeamSelectViewModel {
     var selectedTeam:Team?
     var selectedTeamSubject = BehaviorSubject<Team?>(value: nil)
     
-    let teamRepository = TeamRepository()
+    let getTeamsInWorkspaceUseCase = GetTeamsInWorkspaceUseCase()
     
     let disposeBag = DisposeBag()
     
@@ -27,12 +27,13 @@ class MeetingTeamSelectViewModel {
     
     
     func loadTeamInWorkspace() {
-        teamRepository.loadTeamInWorkspace()
+        getTeamsInWorkspaceUseCase
+            .execute()
             .withUnretained(self)
             .subscribe(onNext: { owner, teams in
                 if let teams = teams {
-                    owner.teams = teams.teams
-                    owner.teamsSubject.onNext(teams.teams)
+                    owner.teams = teams
+                    owner.teamsSubject.onNext(teams)
                 }
             }).disposed(by: disposeBag)
     }

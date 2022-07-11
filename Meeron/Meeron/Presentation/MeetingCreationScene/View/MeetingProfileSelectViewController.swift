@@ -67,7 +67,7 @@ class MeetingProfileSelectViewController:UIViewController {
         searchTextField.rx.text.orEmpty
             .distinctUntilChanged()
             .subscribe(onNext: {
-                self.meetingProfileSelectVM.loadUserInWorkspace(searchNickname: $0)
+                self.meetingProfileSelectVM.loadUserInWorkspace(nickname: $0)
             }).disposed(by: disposeBag)
     }
     

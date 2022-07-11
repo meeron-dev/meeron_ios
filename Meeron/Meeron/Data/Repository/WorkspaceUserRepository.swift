@@ -14,4 +14,20 @@ class WorkspaceUserRepository {
         
         return API.requestData(resource: resource)
     }
+    
+    func getUserInWorkspace(nickname:String) -> Observable<[WorkspaceUser]?> {
+        let workspaceId = UserDefaults.standard.string(forKey: "workspaceId")!
+        
+        let urlString = URLConstant.workspaceUsers+"?workspaceId="+workspaceId+"&nickname="+nickname
+        let encodedURLString = urlString.addingPercentEncoding(withAllowedCharacters:.urlQueryAllowed)
+        
+        guard let encodedURLString = encodedURLString else {
+            return Observable.just(nil)
+        }
+
+        let resource = Resource<WorkspaceUsersResponseDTO>(url:encodedURLString, parameter: [:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding)
+    
+        return API.requestData(resource: resource)
+            .map{$0?.toDomain()}
+    }
 }

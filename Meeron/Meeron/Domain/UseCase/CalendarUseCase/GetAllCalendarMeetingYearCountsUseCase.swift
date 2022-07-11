@@ -9,8 +9,8 @@ import Foundation
 import RxSwift
 
 class GetAllCalendarMeetingYearCountsUseCase {
-    let allCalendarRepository = AllCalendarRepository()
-    func getAllCalendarMeetingYearCounts(type: CalendarType) -> Observable<[AllCalendarMeetingYearCount]?> {
+    let allCalendarRepository = DefaultAllCalendarRepository()
+    func execute(type: CalendarType) -> Observable<[AllCalendarMeetingYearCount]?> {
         return allCalendarRepository.getAllCalendarMeetingYearCounts(type: type)
     }
 }

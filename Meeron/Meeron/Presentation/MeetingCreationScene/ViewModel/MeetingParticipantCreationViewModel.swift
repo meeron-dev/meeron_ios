@@ -28,7 +28,6 @@ class MeetingParticipantCreationViewModel {
     let meetingTimeSubject = BehaviorSubject<String>(value: "")
     let meetingTitleSubject = BehaviorSubject<String>(value: "")
     
-    let teamRepository = TeamRepository()
     let meetingCreationRepository = MeetingCreationRepository()
     
     let sucessMeetingDocumentCreationSubject = PublishSubject<Bool>()
@@ -37,6 +36,10 @@ class MeetingParticipantCreationViewModel {
     let sucessMeetingParticipantCreationSubject = BehaviorSubject<Bool>(value: false)
     
     let disposeBag = DisposeBag()
+    
+    let getTeamsInWorkspaceUseCase = GetTeamsInWorkspaceUseCase()
+    let getUsersWithoutTeamUseCase = GetUsersWithoutTeamUseCase()
+    let getUsersInWorkspaceTeamUseCase = GetUsersInWorkspaceTeamUseCase()
     
     init(){
         nowTeamSubject
@@ -118,16 +121,17 @@ class MeetingParticipantCreationViewModel {
     }
     
     func loadTeamInWorkspace() {
-        teamRepository.loadTeamInWorkspace()
+        getTeamsInWorkspaceUseCase
+            .execute()
             .withUnretained(self)
             .subscribe(onNext: { owner, teams in
                 if let teams = teams {
-                    if teams.teams.count > 0 {
-                        owner.nowTeamSubject.onNext(teams.teams[0])
+                    if teams.count > 0 {
+                        owner.nowTeamSubject.onNext(teams[0])
                     }
-                    if teams.teams.count > 1 {
-                        owner.teams = Array(teams.teams[1...])
-                        owner.teamsSubject.onNext(Array(teams.teams[1...]))
+                    if teams.count > 1 {
+                        owner.teams = Array(teams[1...])
+                        owner.teamsSubject.onNext(Array(teams[1...]))
                     }
                 }
             }).disposed(by: disposeBag)
@@ -137,13 +141,13 @@ class MeetingParticipantCreationViewModel {
         guard let nowTeam = nowTeam else {
             return
         }
-        
-        teamRepository.loadUsersInWorkspaceTeam(teamId: String(nowTeam.teamId))
+        getUsersInWorkspaceTeamUseCase
+            .execute(teamId: String(nowTeam.teamId))
             .withUnretained(self)
             .subscribe(onNext: { owner, users in
                 if let users = users {
-                    owner.userProfiles = users.workspaceUsers
-                    owner.userProfilesSubejct.onNext(users.workspaceUsers)
+                    owner.userProfiles = users
+                    owner.userProfilesSubejct.onNext(users)
                 }
                 
             }).disposed(by: disposeBag)

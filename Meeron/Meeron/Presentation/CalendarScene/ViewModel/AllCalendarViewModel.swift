@@ -31,7 +31,7 @@ class AllCalendarViewModel {
     
     func loadYearMeetingCount() {
         getAllCalendarMeetingYearCountsUseCase
-            .getAllCalendarMeetingYearCounts(type: calendarType)
+            .execute(type: calendarType)
             .withUnretained(self)
             .subscribe(onNext: { owner, allCalendarMeetingYearCounts in
                 
@@ -48,7 +48,7 @@ class AllCalendarViewModel {
     
     func loadMonthMeetingCount() {
         getAllCalendarMeetingMonthCountsUseCase
-            .getAllCalendarMeetingMonthCounts(type: calendarType, year: nowYear)
+            .execute(type: calendarType, year: nowYear)
             .withUnretained(self)
             .subscribe(onNext: { owner, allCalendarMonthMeetingCounts in
                 if let allCalendarMonthMeetingCounts = allCalendarMonthMeetingCounts {

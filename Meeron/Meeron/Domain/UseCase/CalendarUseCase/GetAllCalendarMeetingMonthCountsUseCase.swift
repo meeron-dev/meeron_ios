@@ -9,8 +9,8 @@ import Foundation
 import RxSwift
 
 class GetAllCalendarMeetingMonthCountsUseCase {
-    let allCalendarRepository = AllCalendarRepository()
-    func getAllCalendarMeetingMonthCounts(type: CalendarType, year: String) -> Observable<[AllCalendarMeetingMonthCount]?> {
+    let allCalendarRepository = DefaultAllCalendarRepository()
+    func execute(type: CalendarType, year: String) -> Observable<[AllCalendarMeetingMonthCount]?> {
         return allCalendarRepository.getAllCalendarMeetingMonthCounts(type: type, year: year)
     }
 }

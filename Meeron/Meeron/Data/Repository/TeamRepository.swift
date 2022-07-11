@@ -13,33 +13,36 @@ class TeamRepository {
     let headers:HTTPHeaders = [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)]
     let api = API()
     
-    func loadTeamInWorkspace() -> Observable<Teams?> {
+    func getTeamsInWorkspace() -> Observable<[Team]?> {
         guard let workspaceId = UserDefaults.standard.string(forKey: "workspaceId") else {
             return Observable.just(nil)
         }
                 
         let urlString = URLConstant.teamInWorkspace+"?workspaceId="+workspaceId
-        let resource = Resource<Teams>(url:urlString, parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
+        let resource = Resource<TeamsResponseDTO>(url:urlString, parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         
         return API.requestData(resource: resource)
+            .map{$0?.toDomain()}
     }
     
-    func loadUsersInWorkspaceTeam(teamId:String) -> Observable<WorkspaceUserProfiles?> {
+    func getUsersInWorkspaceTeam(teamId:String) -> Observable<[WorkspaceUser]?> {
         
-        let resource = Resource<WorkspaceUserProfiles>(url:URLConstant.teamInWorkspace+"/"+teamId+"/workspace-users", parameter: ["teamId":teamId], headers: headers, method: .get, encodingType: .URLEncoding)
+        let resource = Resource<WorkspaceUsersResponseDTO>(url:URLConstant.teamInWorkspace+"/"+teamId+"/workspace-users", parameter: ["teamId":teamId], headers: headers, method: .get, encodingType: .URLEncoding)
         
         return API.requestData(resource: resource)
+            .map{$0?.toDomain()}
     }
     
-    func loadUsersWithoutTeam() -> Observable<WorkspaceUserProfiles?> {
+    func getUsersWithoutTeam() -> Observable<[WorkspaceUser]?> {
         
         guard let workspaceId = UserDefaults.standard.string(forKey: "workspaceId") else {
             return Observable.just(nil)
         }
         
-        let resource = Resource<WorkspaceUserProfiles>(url: URLConstant.teamInWorkspace+"/none/workspace-users?workspaceId=\(workspaceId)", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
+        let resource = Resource<WorkspaceUsersResponseDTO>(url: URLConstant.teamInWorkspace+"/none/workspace-users?workspaceId=\(workspaceId)", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         
         return API.requestData(resource: resource)
+            .map{$0?.toDomain()}
     }
     
     func createTeam(name:String) -> Observable<TeamCreationResponse?> {
