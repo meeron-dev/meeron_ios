@@ -55,9 +55,10 @@ class DefaultUserRepository: UserRepository {
     
     
     func fetchWorkspaceUser(workspaceUserId:String) -> Observable<WorkspaceUser?> {
-        let resource = Resource<WorkspaceUser>(url: URLConstant.workspaceUsers+"/\(workspaceUserId)", parameter:[:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding )
+        let resource = Resource<WorkspaceUserResponseDTO>(url: URLConstant.workspaceUsers+"/\(workspaceUserId)", parameter:[:], headers: [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)], method: .get, encodingType: .URLEncoding )
         
         return API.requestData(resource: resource)
+            .map{$0?.toDomain()}
     }
     
     func modifyUserProfile(data: WorkspaceProfile) -> Observable<Bool> {

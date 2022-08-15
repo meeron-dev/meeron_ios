@@ -13,16 +13,18 @@ class ParticipantRepository {
 
     let headers:HTTPHeaders = [.authorization(bearerToken: KeychainManager().read(service: "Meeron", account: "accessToken")!)]
     
-    func loadParticipantsCountByTeam(meetingId:Int) -> Observable<ParticipantCountsByTeam?> {
-        let resource = Resource<ParticipantCountsByTeam>(url: URLConstant.meetings+"/\(meetingId)/attendees/teams", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
+    func loadParticipantsCountByTeam(meetingId:Int) -> Observable<[ParticipantCountByTeam]?> {
+        let resource = Resource<ParticipantCountsByTeamResponseDTO>(url: URLConstant.meetings+"/\(meetingId)/attendees/teams", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         
         return API.requestData(resource: resource)
+            .map{$0?.toDomain()}
     }
     
-    func loadParticipantCountInfo(teamId:Int, meetingId:Int) -> Observable<ParticipantCount?> {
-        let resource = Resource<ParticipantCount>(url: URLConstant.meetings+"/\(meetingId)/attendees/teams/\(teamId)", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
+    func loadParticipantCountInfo(teamId:Int, meetingId:Int) -> Observable<ParticipantInfo?> {
+        let resource = Resource<ParticipantInfoResponseDTO>(url: URLConstant.meetings+"/\(meetingId)/attendees/teams/\(teamId)", parameter: [:], headers: headers, method: .get, encodingType: .URLEncoding)
         
         return API.requestData(resource: resource)
+            .map{$0?.toDomain()}
     }
     
     func patchParicipantStatus(meetingId:Int, status:ParicipantStatusType) -> Observable<Bool> {

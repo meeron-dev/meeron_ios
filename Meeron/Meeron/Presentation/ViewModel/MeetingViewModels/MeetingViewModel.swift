@@ -47,7 +47,7 @@ class MeetingViewModel {
             .withUnretained(self)
             .subscribe(onNext: { owner, data in
                 if let data = data {
-                    owner.participantCountsByTeamSubject.onNext(data.attendees)
+                    owner.participantCountsByTeamSubject.onNext(data)
                 }
             }).disposed(by: disposeBag)
     }

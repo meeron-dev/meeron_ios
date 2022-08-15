@@ -20,6 +20,8 @@ class TeamParticipantAdditionalViewModel {
     let selectedParticipantsCountSubject = BehaviorSubject<Int>(value: 0)
     let noParticipantLabelWidthSubejct = BehaviorSubject<CGFloat>(value: 0)
     
+    let getUsersWithoutTeamUseCase = GetUsersWithoutTeamUseCase()
+    
     let disposeBag = DisposeBag()
     
     let teamId:Int
@@ -61,11 +63,12 @@ class TeamParticipantAdditionalViewModel {
     
     
     func loadUsersWithoutTeam() {
-        teamRepository.loadUsersWithoutTeam()
+        getUsersWithoutTeamUseCase
+            .execute()
             .withUnretained(self)
             .subscribe(onNext: { owner, users in
                 if let users = users {
-                    owner.participantsSubject.onNext(users.workspaceUsers)
+                    owner.participantsSubject.onNext(users)
                 }
             }).disposed(by: disposeBag)
     }

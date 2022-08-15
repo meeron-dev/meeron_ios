@@ -37,7 +37,7 @@ class MeetingParticipantCountViewModel {
             }).disposed(by: disposeBag)
     }
     
-    func saveParticipantCountInfo(data:ParticipantCount) {
+    func saveParticipantCountInfo(data:ParticipantInfo) {
         var attendanceProfiles:[WorkspaceUser] = []
         var absenceProfiles:[WorkspaceUser] = []
         var unknownProfiles:[WorkspaceUser] = []

@@ -40,7 +40,7 @@ class MeetingCreationRepository {
         return  API.requestResponse(resource: resource)
     }
     
-    func createMeetingAgenda(datas:[AgendaCreation], meetingId:String) -> Observable<MeetingCreationAgendaResponses?> {
+    func createMeetingAgenda(datas:[AgendaCreation], meetingId:String) -> Observable<AgendaIds?> {
         var agendas:[Any] = []
         for i in 0..<datas.count {
             var issues:[[String:String]] = []
@@ -59,8 +59,9 @@ class MeetingCreationRepository {
         
         let parameter = ["agendas":agendas]
         print("아젠다",parameter)
-        let resource = Resource<MeetingCreationAgendaResponses>(url: URLConstant.meetings + "/" + meetingId + "/agendas", parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
+        let resource = Resource<AgendaIdsResponseDTO>(url: URLConstant.meetings + "/" + meetingId + "/agendas", parameter: parameter, headers: headers, method: .post, encodingType: .JSONEncoding)
         return  API.requestData(resource: resource)
+            .map{$0?.toDomain()}
     }
     
     func createMeetingDocument(data:Data, fileName:String, agendaId:String) -> Observable<Bool> {

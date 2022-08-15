@@ -23,7 +23,10 @@ class TeamViewModel {
     
     let participantCountLabelHeightSubject = BehaviorSubject<CGFloat>(value: 20)
     
-    let teamRepository = TeamRepository()
+    //let teamRepository = TeamRepository()
+    let getTeamsInWorkspaceUseCase = GetTeamsInWorkspaceUseCase()
+    let getUsersWithoutTeamUseCase = GetUsersWithoutTeamUseCase()
+    let getUsersInWorkspaceTeamUseCase = GetUsersInWorkspaceTeamUseCase()
     
     let disposeBag = DisposeBag()
     
@@ -46,23 +49,24 @@ class TeamViewModel {
     }
     
     func loadTeam() {
-        teamRepository.loadTeamInWorkspace()
+        getTeamsInWorkspaceUseCase
+            .execute()
             .withUnretained(self)
             .subscribe(onNext: { owner, teams in
                 if var teams = teams {
-                    for i in 0..<teams.teams.count {
-                        teams.teams[i].teamOrder = i+1
+                    for i in 0..<teams.count {
+                        teams[i].teamOrder = i+1
                     }
                     
                     if UserDefaults.standard.bool(forKey: "workspaceAdmin") {
-                        if teams.teams.count >= 5 {
-                            owner.teams = teams.teams
+                        if teams.count >= 5 {
+                            owner.teams = teams
                         }else {
-                            owner.teams = [nil]+teams.teams
+                            owner.teams = [nil]+teams
                         }
                         print(owner.teams,"📍")
                     }else {
-                        owner.teams = teams.teams
+                        owner.teams = teams
                     }
                     print("📍",owner.teams)
                     owner.loadNoneTeam()
@@ -71,11 +75,13 @@ class TeamViewModel {
     }
     
     func loadNoneTeam() {
-        teamRepository.loadUsersWithoutTeam()
+        
+        getUsersWithoutTeamUseCase
+            .execute()
             .withUnretained(self)
             .subscribe(onNext: { owner, users in
                 if let users = users {
-                    if users.workspaceUsers.count > 0 {
+                    if users.count > 0 {
                         owner.hasNoneTeam = true
                         owner.teams.append(nil)
                         
@@ -113,13 +119,14 @@ class TeamViewModel {
     }
     
     func loadParticipantInNoneTeam() {
-            teamRepository.loadUsersWithoutTeam()
-                .withUnretained(self)
-                .subscribe(onNext: { owner, users in
-                    if let users = users {
-                        owner.saveParticipant(users: users.workspaceUsers)
-                    }
-                }).disposed(by: disposeBag)
+        getUsersWithoutTeamUseCase
+            .execute()
+            .withUnretained(self)
+            .subscribe(onNext: { owner, users in
+                if let users = users {
+                    owner.saveParticipant(users: users)
+                }
+            }).disposed(by: disposeBag)
         
     }
     
@@ -128,12 +135,12 @@ class TeamViewModel {
             return
         }
 
-        
-        teamRepository.loadUsersInWorkspaceTeam(teamId: String(nowTeam.teamId))
+        getUsersInWorkspaceTeamUseCase
+            .execute(teamId: String(nowTeam.teamId))
             .withUnretained(self)
             .subscribe(onNext: { owner, users in
                 if let users = users {
-                    owner.saveParticipant(users: users.workspaceUsers)
+                    owner.saveParticipant(users: users)
                 }
                 
             }).disposed(by: disposeBag)

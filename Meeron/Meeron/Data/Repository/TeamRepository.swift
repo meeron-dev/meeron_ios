@@ -45,13 +45,14 @@ class TeamRepository {
             .map{$0?.toDomain()}
     }
     
-    func createTeam(name:String) -> Observable<TeamCreationResponse?> {
+    func createTeam(name:String) -> Observable<TeamCreation?> {
         guard let workspaceId = UserDefaults.standard.string(forKey: "workspaceId") else {
             return Observable.just(nil)
         }
-        let resource = Resource<TeamCreationResponse>(url: URLConstant.teamInWorkspace, parameter: ["workspaceId":workspaceId,"teamName":name], headers: headers, method: .post, encodingType: .JSONEncoding)
+        let resource = Resource<TeamCreationResponseDTO>(url: URLConstant.teamInWorkspace, parameter: ["workspaceId":workspaceId,"teamName":name], headers: headers, method: .post, encodingType: .JSONEncoding)
         
         return API.requestData(resource: resource)
+            .map{$0?.toDomain()}
     }
     
     func createParticipant(teamId:Int, datas:[WorkspaceUser]) -> Observable<Bool>{
@@ -90,6 +91,6 @@ class TeamRepository {
         
         let resource = Resource<Bool>(url: URLConstant.teamInWorkspace+"/\(teamId)/name", parameter: ["adminWorkspaceUserId":workspaceUserId, "teamName": name], headers: headers, method: .patch, encodingType: .JSONEncoding)
         
-        API.requestResponse(resource: resource)
+        _ = API.requestResponse(resource: resource)
     }
 }

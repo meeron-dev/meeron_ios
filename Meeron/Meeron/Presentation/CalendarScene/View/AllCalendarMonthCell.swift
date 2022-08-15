@@ -18,7 +18,7 @@ class AllCalendarMonthCell:UICollectionViewCell {
         
     }
     
-    func setData(data:MonthMeetingCount, nowMonth:String) {
+    func setData(data: AllCalendarMeetingMonthCount, nowMonth: String) {
         print(data, nowMonth)
         if String(data.month) == nowMonth {
             monthLabel.textColor = .mrBlue

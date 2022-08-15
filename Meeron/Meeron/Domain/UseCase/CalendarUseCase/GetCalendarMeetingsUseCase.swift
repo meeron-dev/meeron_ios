@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 class GetCalendarMeetingsUseCase {
-    let calendarRepository = CalendarRepository()
+    let calendarRepository = DefaultCalendarRepository()
     
     func execute(date:String, type: CalendarType) -> Observable<[CalendarMeeting]?> {
         return calendarRepository.getCalendarMeetings(date: date, type: type)

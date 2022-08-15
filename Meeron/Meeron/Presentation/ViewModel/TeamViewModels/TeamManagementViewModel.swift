@@ -16,6 +16,8 @@ class TeamManagementViewModel {
     let participantsSubject = BehaviorSubject<[WorkspaceUser]>(value: [])
     let successTeamDeleteSubejct = PublishSubject<Bool>()
     
+    let getUsersWithoutTeamUseCase = GetUsersWithoutTeamUseCase()
+    let getUsersInWorkspaceTeamUseCase = GetUsersInWorkspaceTeamUseCase()
     let teamRepository = TeamRepository()
     let disposeBag = DisposeBag()
     
@@ -28,21 +30,23 @@ class TeamManagementViewModel {
     
     func loadParticipant() {
         if nowTeam == nil {
-            teamRepository.loadUsersWithoutTeam()
+            getUsersWithoutTeamUseCase
+                .execute()
                 .withUnretained(self)
                 .subscribe(onNext: { owner, users in
                     if let users = users {
-                        owner.participantsSubject.onNext(users.workspaceUsers)
-                        owner.participants = users.workspaceUsers
+                        owner.participantsSubject.onNext(users)
+                        owner.participants = users
                     }
                 }).disposed(by: disposeBag)
         }else {
-            teamRepository.loadUsersInWorkspaceTeam(teamId: String(nowTeam!.teamId))
+            getUsersInWorkspaceTeamUseCase
+                .execute(teamId: String(nowTeam!.teamId))
                 .withUnretained(self)
                 .subscribe(onNext: { owner, users in
                     if let users = users {
-                        owner.participantsSubject.onNext(users.workspaceUsers)
-                        owner.participants = users.workspaceUsers
+                        owner.participantsSubject.onNext(users)
+                        owner.participants = users
                     }
                 }).disposed(by: disposeBag)
         }
